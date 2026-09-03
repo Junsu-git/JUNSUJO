@@ -1,0 +1,1889 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="게임의 규칙과 흐름을 설계하는 Unity 게임 개발자 조준수의 포트폴리오">
+  <meta name="theme-color" content="#0b1524">
+  <meta property="og:title" content="조준수 | Unity Game Developer">
+  <meta property="og:description" content="기획을 플레이 가능한 규칙과 기능으로 연결하는 Unity 게임 개발자 포트폴리오">
+  <meta property="og:type" content="website">
+  <title>조준수 | Unity Game Developer</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #08111e;
+      --bg-deep: #050b13;
+      --panel: #101d2d;
+      --panel-strong: #14263a;
+      --panel-soft: rgba(21, 39, 59, 0.74);
+      --line: rgba(147, 184, 214, 0.17);
+      --line-strong: rgba(102, 192, 244, 0.42);
+      --text: #f4f8fb;
+      --muted: #91a8bb;
+      --blue: #66c0f4;
+      --blue-bright: #8fd8ff;
+      --green: #a4d007;
+      --gold: #f2c96d;
+      --purple: #b8a6ff;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+      --radius-lg: 26px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --pointer-x: 50vw;
+      --pointer-y: 30vh;
+      --header-h: 72px;
+      font-family: Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg-deep);
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--text);
+      background:
+        linear-gradient(180deg, rgba(6, 13, 23, 0.02), var(--bg-deep) 78%),
+        radial-gradient(circle at 86% 9%, rgba(56, 116, 165, 0.18), transparent 29%),
+        var(--bg);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      opacity: 0.2;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.023) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.023) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, black, transparent 76%);
+    }
+
+    .ambient-light {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background: radial-gradient(
+        620px circle at var(--pointer-x) var(--pointer-y),
+        rgba(102, 192, 244, 0.12),
+        transparent 66%
+      );
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--blue-bright);
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 1000;
+      padding: 10px 14px;
+      color: #06111d;
+      background: var(--blue-bright);
+      border-radius: 8px;
+      transform: translateY(-160%);
+      transition: transform 180ms ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--header-h);
+      border-bottom: 1px solid var(--line);
+      background: rgba(6, 14, 24, 0.84);
+      backdrop-filter: blur(18px);
+    }
+
+    .header-inner,
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .header-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 36px;
+      aspect-ratio: 1;
+      place-items: center;
+      color: #06111d;
+      background: linear-gradient(145deg, var(--blue-bright), var(--blue));
+      border-radius: 11px;
+      box-shadow: 0 7px 28px rgba(102, 192, 244, 0.24);
+    }
+
+    .brand-copy {
+      display: grid;
+      line-height: 1.02;
+    }
+
+    .brand-copy small {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.64rem;
+      font-weight: 650;
+      letter-spacing: 0.15em;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .site-nav a {
+      position: relative;
+      padding: 11px 13px;
+      color: var(--muted);
+      font-size: 0.86rem;
+      font-weight: 700;
+      transition: color 180ms ease, background-color 180ms ease;
+      border-radius: 9px;
+    }
+
+    .site-nav a:hover,
+    .site-nav a[aria-current="true"] {
+      color: var(--text);
+      background: rgba(102, 192, 244, 0.08);
+    }
+
+    .site-nav a[aria-current="true"]::after {
+      content: "";
+      position: absolute;
+      right: 13px;
+      bottom: 5px;
+      left: 13px;
+      height: 2px;
+      background: var(--blue);
+      border-radius: 999px;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    main {
+      overflow: clip;
+    }
+
+    section {
+      position: relative;
+      padding-block: 108px;
+      scroll-margin-top: var(--header-h);
+    }
+
+    .hero {
+      min-height: calc(100svh - var(--header-h));
+      display: grid;
+      align-items: center;
+      padding-block: 88px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
+      align-items: center;
+      gap: clamp(48px, 8vw, 104px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 22px;
+      color: var(--blue-bright);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 22px;
+      height: 2px;
+      background: currentColor;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 24px;
+      font-size: clamp(3.1rem, 7.4vw, 6.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.075em;
+    }
+
+    h1 .outline {
+      display: block;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(143, 216, 255, 0.72);
+      text-shadow: 0 0 44px rgba(102, 192, 244, 0.12);
+    }
+
+    .hero-lead {
+      max-width: 660px;
+      margin-bottom: 34px;
+      color: #c9d7e2;
+      font-size: clamp(1.05rem, 2vw, 1.32rem);
+      line-height: 1.72;
+      word-break: keep-all;
+    }
+
+    .hero-lead strong {
+      color: var(--text);
+    }
+
+    .hero-actions,
+    .project-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 19px;
+      border: 1px solid var(--line-strong);
+      border-radius: 10px;
+      color: var(--text);
+      background: rgba(102, 192, 244, 0.07);
+      font-size: 0.9rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: var(--blue-bright);
+      background: rgba(102, 192, 244, 0.13);
+    }
+
+    .button-primary {
+      color: #05101b;
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--blue-bright), var(--blue));
+      box-shadow: 0 12px 34px rgba(102, 192, 244, 0.2);
+    }
+
+    .button-primary:hover {
+      background: linear-gradient(135deg, #b7e8ff, var(--blue-bright));
+    }
+
+    .hero-dashboard {
+      position: relative;
+      padding: 20px;
+      background: linear-gradient(145deg, rgba(27, 50, 74, 0.88), rgba(12, 25, 40, 0.92));
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      transform-style: preserve-3d;
+    }
+
+    .hero-dashboard::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: -46px -38px;
+      background: radial-gradient(circle, rgba(102, 192, 244, 0.17), transparent 67%);
+      filter: blur(18px);
+    }
+
+    .window-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+    }
+
+    .window-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .window-dots i {
+      display: block;
+      width: 7px;
+      height: 7px;
+      background: #34506a;
+      border-radius: 50%;
+    }
+
+    .profile-card {
+      padding: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 17px;
+      background:
+        linear-gradient(135deg, rgba(102, 192, 244, 0.1), transparent 48%),
+        rgba(4, 13, 23, 0.62);
+    }
+
+    .profile-status {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      color: #dce8f0;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .status-dot {
+      width: 9px;
+      height: 9px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 16px rgba(164, 208, 7, 0.55);
+    }
+
+    .profile-card h2 {
+      margin-bottom: 7px;
+      font-size: clamp(1.7rem, 4vw, 2.35rem);
+      letter-spacing: -0.045em;
+    }
+
+    .profile-card > p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .dashboard-list {
+      display: grid;
+      gap: 9px;
+      margin-top: 26px;
+    }
+
+    .dashboard-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 20px;
+      padding: 13px 14px;
+      border: 1px solid transparent;
+      border-radius: 9px;
+      background: rgba(255, 255, 255, 0.035);
+      transition: border-color 180ms ease, background-color 180ms ease;
+    }
+
+    .dashboard-row:hover {
+      border-color: var(--line-strong);
+      background: rgba(102, 192, 244, 0.08);
+    }
+
+    .dashboard-row span {
+      font-size: 0.83rem;
+      font-weight: 750;
+    }
+
+    .dashboard-row small {
+      color: var(--blue-bright);
+      font-weight: 800;
+    }
+
+    .scroll-cue {
+      position: absolute;
+      right: 0;
+      bottom: 30px;
+      left: 0;
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      font-size: 0.67rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+    }
+
+    .scroll-cue::after {
+      content: "";
+      width: 1px;
+      height: 34px;
+      margin-top: 10px;
+      background: linear-gradient(var(--blue), transparent);
+      animation: breathe 1.8s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+      50% { transform: scaleY(0.55); opacity: 0.45; }
+    }
+
+    .section-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(250px, 0.54fr);
+      align-items: end;
+      gap: 40px;
+      margin-bottom: 44px;
+    }
+
+    .section-kicker {
+      margin-bottom: 13px;
+      color: var(--blue-bright);
+      font-size: 0.72rem;
+      font-weight: 850;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin-bottom: 0;
+      font-size: clamp(2.15rem, 5vw, 4.1rem);
+      line-height: 1.05;
+      letter-spacing: -0.055em;
+      word-break: keep-all;
+    }
+
+    .section-description {
+      margin-bottom: 3px;
+      color: var(--muted);
+      line-height: 1.75;
+      word-break: keep-all;
+    }
+
+    .featured-project {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(23, 42, 62, 0.93), rgba(10, 21, 35, 0.96));
+      box-shadow: var(--shadow);
+    }
+
+    .featured-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(330px, 0.65fr);
+      min-height: 480px;
+    }
+
+    .media-stage {
+      position: relative;
+      display: flex;
+      min-height: 440px;
+      align-items: end;
+      overflow: hidden;
+      padding: 32px;
+      background:
+        radial-gradient(circle at 28% 34%, rgba(143, 216, 255, 0.3), transparent 11%),
+        radial-gradient(circle at 70% 72%, rgba(184, 166, 255, 0.2), transparent 16%),
+        linear-gradient(135deg, #173a50, #132239 46%, #221b38);
+    }
+
+    .media-stage::before,
+    .media-stage::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(143, 216, 255, 0.16);
+      border-radius: 50%;
+    }
+
+    .media-stage::before {
+      width: 330px;
+      height: 330px;
+      top: -80px;
+      right: -70px;
+      box-shadow: 0 0 0 54px rgba(143, 216, 255, 0.025), 0 0 0 110px rgba(143, 216, 255, 0.018);
+    }
+
+    .media-stage::after {
+      width: 120px;
+      height: 120px;
+      bottom: 72px;
+      left: 18%;
+      border-radius: 28px;
+      transform: rotate(28deg);
+      background: rgba(102, 192, 244, 0.035);
+    }
+
+    .media-grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.22;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 35px 35px;
+      transform: perspective(500px) rotateX(64deg) scale(1.5) translateY(29%);
+      transform-origin: bottom;
+    }
+
+    .media-label {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      gap: 5px;
+    }
+
+    .media-label strong {
+      font-size: clamp(1.45rem, 3vw, 2.35rem);
+      letter-spacing: -0.04em;
+    }
+
+    .media-label span {
+      color: rgba(239, 248, 255, 0.72);
+      font-size: 0.78rem;
+      font-weight: 750;
+      letter-spacing: 0.1em;
+    }
+
+    .featured-summary {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(30px, 4vw, 50px);
+    }
+
+    .project-index {
+      margin-bottom: 12px;
+      color: var(--blue-bright);
+      font-size: 0.68rem;
+      font-weight: 850;
+      letter-spacing: 0.16em;
+    }
+
+    .featured-summary h3 {
+      margin-bottom: 18px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.06;
+      letter-spacing: -0.055em;
+      word-break: keep-all;
+    }
+
+    .featured-summary > p {
+      color: #b3c3d1;
+      line-height: 1.72;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 24px 0 30px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tag-list li {
+      padding: 7px 10px;
+      border: 1px solid rgba(102, 192, 244, 0.2);
+      border-radius: 999px;
+      color: #c8e7f8;
+      background: rgba(102, 192, 244, 0.075);
+      font-size: 0.72rem;
+      font-weight: 750;
+    }
+
+    .pending-button {
+      opacity: 0.62;
+      cursor: not-allowed;
+    }
+
+    .featured-details {
+      padding: 0 clamp(24px, 4vw, 50px) 42px;
+      border-top: 1px solid var(--line);
+    }
+
+    .tab-list {
+      display: flex;
+      gap: 2px;
+      overflow-x: auto;
+      margin: 0 -2px 32px;
+      padding: 18px 2px 0;
+      scrollbar-width: thin;
+    }
+
+    .tab-button {
+      min-width: max-content;
+      padding: 12px 15px;
+      color: var(--muted);
+      background: transparent;
+      border: 0;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .tab-button:hover,
+    .tab-button[aria-selected="true"] {
+      color: var(--text);
+      border-bottom-color: var(--blue);
+    }
+
+    .tab-panel {
+      animation: panel-in 240ms ease both;
+    }
+
+    .tab-panel[hidden] {
+      display: none;
+    }
+
+    @keyframes panel-in {
+      from { opacity: 0; transform: translateY(8px); }
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .detail-box {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .detail-box strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--blue-bright);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+    }
+
+    .detail-box p,
+    .detail-box li {
+      color: #bdccd7;
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+
+    .detail-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .plain-list {
+      margin: 0;
+      padding-left: 19px;
+    }
+
+    .plain-list li + li {
+      margin-top: 7px;
+    }
+
+    .placeholder-line {
+      color: var(--muted) !important;
+      font-style: italic;
+    }
+
+    .library-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 54px 0 22px;
+      color: #c4d2de;
+      font-size: 0.76rem;
+      font-weight: 850;
+      letter-spacing: 0.13em;
+    }
+
+    .library-label::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: var(--line);
+    }
+
+    .project-library {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: linear-gradient(145deg, rgba(20, 38, 58, 0.9), rgba(9, 20, 33, 0.95));
+      box-shadow: 0 20px 54px rgba(0, 0, 0, 0.21);
+      transform-style: preserve-3d;
+      transition: border-color 200ms ease, box-shadow 200ms ease;
+    }
+
+    .project-card:hover {
+      border-color: var(--line-strong);
+      box-shadow: 0 24px 62px rgba(0, 0, 0, 0.33);
+    }
+
+    .card-art {
+      position: relative;
+      min-height: 235px;
+      display: flex;
+      align-items: end;
+      overflow: hidden;
+      padding: 24px;
+    }
+
+    .card-art.nuri {
+      background:
+        radial-gradient(circle at 22% 33%, rgba(164, 208, 7, 0.25), transparent 17%),
+        radial-gradient(circle at 75% 58%, rgba(102, 192, 244, 0.23), transparent 23%),
+        linear-gradient(140deg, #14394a, #142b30 52%, #1f2c19);
+    }
+
+    .card-art.warrior {
+      background:
+        radial-gradient(circle at 68% 34%, rgba(242, 201, 109, 0.25), transparent 17%),
+        radial-gradient(circle at 28% 76%, rgba(184, 166, 255, 0.21), transparent 24%),
+        linear-gradient(140deg, #32213b, #22243b 52%, #392a21);
+    }
+
+    .card-art::before {
+      content: "";
+      position: absolute;
+      width: 190px;
+      aspect-ratio: 1;
+      top: -38px;
+      right: -34px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 34px;
+      transform: rotate(28deg);
+      box-shadow: 0 0 0 24px rgba(255, 255, 255, 0.018), 0 0 0 54px rgba(255, 255, 255, 0.012);
+    }
+
+    .art-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .art-copy small {
+      display: block;
+      margin-bottom: 6px;
+      color: rgba(242, 248, 252, 0.65);
+      font-size: 0.66rem;
+      font-weight: 850;
+      letter-spacing: 0.12em;
+    }
+
+    .art-copy strong {
+      font-size: 1.7rem;
+      letter-spacing: -0.04em;
+    }
+
+    .award-badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 2;
+      padding: 8px 11px;
+      border: 1px solid rgba(208, 239, 101, 0.32);
+      border-radius: 999px;
+      color: #eaff9f;
+      background: rgba(21, 35, 14, 0.58);
+      backdrop-filter: blur(8px);
+      font-size: 0.68rem;
+      font-weight: 850;
+    }
+
+    .card-body {
+      padding: 27px;
+    }
+
+    .card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      margin-bottom: 15px;
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .card-body h3 {
+      margin-bottom: 12px;
+      font-size: 1.6rem;
+      letter-spacing: -0.04em;
+    }
+
+    .card-body > p {
+      min-height: 51px;
+      color: #b7c7d3;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      word-break: keep-all;
+    }
+
+    .project-toggle {
+      width: 100%;
+      min-height: 45px;
+      margin-top: 11px;
+      color: #d7e9f5;
+      background: rgba(102, 192, 244, 0.055);
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .project-toggle:hover {
+      background: rgba(102, 192, 244, 0.1);
+      border-color: var(--line-strong);
+    }
+
+    .card-details {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 320ms ease;
+    }
+
+    .card-details > div {
+      overflow: hidden;
+    }
+
+    .card-details.is-open {
+      grid-template-rows: 1fr;
+    }
+
+    .card-details-inner {
+      padding: 0 27px 27px;
+    }
+
+    .card-details-inner ul {
+      margin: 0;
+      padding: 20px 0 0 19px;
+      border-top: 1px solid var(--line);
+      color: #b7c7d3;
+      font-size: 0.85rem;
+      line-height: 1.65;
+    }
+
+    .card-details-inner li + li {
+      margin-top: 7px;
+    }
+
+    .section-band {
+      background: rgba(11, 24, 38, 0.72);
+      border-block: 1px solid var(--line);
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .timeline-column {
+      padding: clamp(24px, 4vw, 38px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(7, 17, 29, 0.48);
+    }
+
+    .timeline-column h3 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+      color: var(--blue-bright);
+      font-size: 0.76rem;
+      letter-spacing: 0.13em;
+    }
+
+    .timeline-column h3::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      background: var(--blue);
+      border-radius: 50%;
+      box-shadow: 0 0 13px rgba(102, 192, 244, 0.55);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 22px;
+    }
+
+    .timeline-item + .timeline-item {
+      margin-top: 29px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      top: 7px;
+      left: 1px;
+      width: 7px;
+      height: 7px;
+      border: 2px solid var(--blue);
+      border-radius: 50%;
+    }
+
+    .timeline-item::after {
+      content: "";
+      position: absolute;
+      top: 18px;
+      bottom: -31px;
+      left: 5px;
+      width: 1px;
+      background: var(--line);
+    }
+
+    .timeline-item:last-child::after {
+      display: none;
+    }
+
+    .timeline-date {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 0.7rem;
+      font-weight: 750;
+    }
+
+    .timeline-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 1rem;
+    }
+
+    .timeline-item p {
+      margin-bottom: 0;
+      color: #a9bac7;
+      font-size: 0.84rem;
+      line-height: 1.65;
+    }
+
+    .grade {
+      display: inline-flex;
+      margin-top: 9px;
+      padding: 5px 8px;
+      color: #ddf48b;
+      background: rgba(164, 208, 7, 0.08);
+      border: 1px solid rgba(164, 208, 7, 0.18);
+      border-radius: 6px;
+      font-size: 0.68rem;
+      font-weight: 800;
+    }
+
+    .skills-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.22fr) minmax(310px, 0.78fr);
+      gap: 28px;
+    }
+
+    .evidence-panel,
+    .tool-panel {
+      padding: clamp(25px, 4vw, 38px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: linear-gradient(145deg, rgba(20, 38, 58, 0.76), rgba(8, 18, 30, 0.86));
+    }
+
+    .panel-heading {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 29px;
+    }
+
+    .panel-heading h3 {
+      margin-bottom: 6px;
+      font-size: 1.28rem;
+      letter-spacing: -0.03em;
+    }
+
+    .panel-heading p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 0.79rem;
+      line-height: 1.6;
+    }
+
+    .evidence-row + .evidence-row {
+      margin-top: 27px;
+    }
+
+    .evidence-meta {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 11px;
+    }
+
+    .evidence-meta strong {
+      font-size: 0.92rem;
+    }
+
+    .evidence-meta span {
+      color: var(--blue-bright);
+      font-size: 0.68rem;
+      font-weight: 850;
+    }
+
+    .evidence-track {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 6px;
+    }
+
+    .evidence-track i {
+      height: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.065);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.045);
+    }
+
+    .evidence-track i.is-proven {
+      border-color: rgba(102, 192, 244, 0.3);
+      background: linear-gradient(90deg, #3c8dbb, var(--blue));
+      box-shadow: 0 0 17px rgba(102, 192, 244, 0.12);
+    }
+
+    .evidence-labels {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 6px;
+      margin-top: 8px;
+      color: #6f8799;
+      font-size: 0.61rem;
+      text-align: center;
+    }
+
+    .tool-group + .tool-group {
+      margin-top: 25px;
+      padding-top: 23px;
+      border-top: 1px solid var(--line);
+    }
+
+    .tool-group h4 {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 0.69rem;
+      letter-spacing: 0.12em;
+    }
+
+    .tool-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tool-cloud span {
+      padding: 8px 10px;
+      color: #d9e5ed;
+      background: rgba(255, 255, 255, 0.037);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-size: 0.73rem;
+      font-weight: 750;
+    }
+
+    .contact-card {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 40px;
+      padding: clamp(34px, 7vw, 72px);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(circle at 84% 50%, rgba(102, 192, 244, 0.2), transparent 28%),
+        linear-gradient(135deg, #172e45, #0d1d30 62%, #131d31);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-card::after {
+      content: "JS";
+      position: absolute;
+      top: -35px;
+      right: 4%;
+      color: rgba(255, 255, 255, 0.025);
+      font-size: 14rem;
+      font-weight: 900;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .contact-card .section-title {
+      max-width: 680px;
+      margin-bottom: 17px;
+      font-size: clamp(2.2rem, 5vw, 4.4rem);
+    }
+
+    .contact-card p {
+      max-width: 620px;
+      margin-bottom: 0;
+      color: #b7c9d6;
+      line-height: 1.7;
+    }
+
+    .contact-card .button {
+      position: relative;
+      z-index: 2;
+      min-width: 190px;
+    }
+
+    .site-footer {
+      padding: 30px 0 42px;
+      color: #708798;
+      font-size: 0.72rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 680ms ease, transform 680ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .click-ripple {
+      position: fixed;
+      z-index: 999;
+      width: 10px;
+      height: 10px;
+      pointer-events: none;
+      border: 1px solid rgba(143, 216, 255, 0.72);
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0.3);
+      animation: ripple-out 620ms ease-out forwards;
+    }
+
+    @keyframes ripple-out {
+      to {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(8.5);
+      }
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .featured-top,
+      .skills-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-block: 74px 108px;
+      }
+
+      .hero-dashboard {
+        max-width: 610px;
+      }
+
+      .scroll-cue {
+        display: none;
+      }
+
+      .section-header {
+        grid-template-columns: 1fr;
+        align-items: start;
+        gap: 18px;
+      }
+
+      .featured-top {
+        min-height: unset;
+      }
+
+      .media-stage {
+        min-height: 390px;
+      }
+
+      .contact-card {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-card .button {
+        width: fit-content;
+      }
+    }
+
+    @media (max-width: 760px) {
+      :root {
+        --header-h: 64px;
+      }
+
+      .header-inner,
+      .container {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .menu-toggle {
+        display: grid;
+        place-items: center;
+      }
+
+      .site-nav {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 14px;
+        left: 14px;
+        display: grid;
+        padding: 10px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(7, 16, 28, 0.97);
+        box-shadow: var(--shadow);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition: opacity 180ms ease, transform 180ms ease, visibility 180ms;
+      }
+
+      .site-nav.is-open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .site-nav a {
+        padding: 13px 14px;
+      }
+
+      section {
+        padding-block: 82px;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 17vw, 5.2rem);
+      }
+
+      .project-library,
+      .timeline,
+      .detail-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .media-stage {
+        min-height: 310px;
+      }
+
+      .featured-summary {
+        padding: 31px 24px 36px;
+      }
+
+      .featured-details {
+        padding: 0 22px 30px;
+      }
+
+      .project-card {
+        transform: none !important;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .brand-copy small {
+        display: none;
+      }
+
+      .hero-actions,
+      .project-actions {
+        display: grid;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .profile-card {
+        padding: 22px;
+      }
+
+      .media-stage {
+        min-height: 270px;
+        padding: 22px;
+      }
+
+      .card-art {
+        min-height: 210px;
+      }
+
+      .panel-heading,
+      .evidence-meta {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .contact-card .button {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .ambient-light,
+      .click-ripple {
+        display: none;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">본문으로 바로가기</a>
+  <div class="ambient-light" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#hero" aria-label="조준수 포트폴리오 첫 화면으로 이동">
+        <span class="brand-mark" aria-hidden="true">J</span>
+        <span class="brand-copy">조준수<small>UNITY GAME DEVELOPER</small></span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="메뉴 열기">
+        <span aria-hidden="true">☰</span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="주요 메뉴">
+        <a href="#hero" aria-current="true">소개</a>
+        <a href="#projects">프로젝트</a>
+        <a href="#experience">경험</a>
+        <a href="#skills">역량</a>
+        <a href="#contact">연락처</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" id="hero" data-nav-section>
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Portfolio · 2026</p>
+          <h1>조준수<span class="outline">Joonsoo Jo</span></h1>
+          <p class="hero-lead">
+            게임의 규칙과 흐름을 설계하고, 이를 <strong>플레이 가능한 기능으로 연결하는</strong>
+            Unity 게임 개발자입니다.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">프로젝트 살펴보기 <span aria-hidden="true">↓</span></a>
+            <a class="button" href="mailto:wnstn2228@naver.com">이메일 보내기</a>
+          </div>
+        </div>
+
+        <aside class="hero-dashboard tilt-card reveal" aria-label="포트폴리오 요약">
+          <div class="window-bar">
+            <span>DEVELOPER PROFILE</span>
+            <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          </div>
+          <div class="profile-card">
+            <div class="profile-status"><span class="status-dot" aria-hidden="true"></span>포트폴리오 열람 가능</div>
+            <h2>Design → Build</h2>
+            <p>기획 의도를 구조화하고 실제 게임 기능과 사용자 경험으로 구현합니다.</p>
+            <div class="dashboard-list">
+              <div class="dashboard-row"><span>기능 개발 프로젝트</span><small>2</small></div>
+              <div class="dashboard-row"><span>기획·문서 프로젝트</span><small>1</small></div>
+              <div class="dashboard-row"><span>공모전 수상</span><small>1</small></div>
+              <div class="dashboard-row"><span>보드게임 플레이 테스트</span><small>5회</small></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+      <div class="scroll-cue" aria-hidden="true">SCROLL TO EXPLORE</div>
+    </section>
+
+    <section id="projects" data-nav-section>
+      <div class="container">
+        <header class="section-header reveal">
+          <div>
+            <p class="section-kicker">Selected Work</p>
+            <h2 class="section-title">규칙을 경험으로 바꾼 프로젝트</h2>
+          </div>
+          <p class="section-description">핵심 프로젝트 한 개를 깊게 보여주고, 서로 다른 강점을 증명하는 두 프로젝트를 함께 구성했습니다.</p>
+        </header>
+
+        <article class="featured-project reveal" aria-labelledby="pharmacy-title">
+          <div class="featured-top">
+            <div class="media-stage" aria-label="내 약국에는 정상이 없다 프로젝트 이미지 자리">
+              <div class="media-grid" aria-hidden="true"></div>
+              <div class="media-label">
+                <span>MEDIA SLOT · 추후 수정</span>
+                <strong>대표 이미지 / 플레이 화면</strong>
+              </div>
+            </div>
+
+            <div class="featured-summary">
+              <span class="project-index">FEATURED PROJECT · 01</span>
+              <h3 id="pharmacy-title" aria-label="내 약국에는 정상이 없다.">내 약국에는<br aria-hidden="true">정상이 없다.</h3>
+              <p>핵심 플레이 루프부터 데이터 구조, 게임 기능, UI 연출까지 연결한 기능 개발 프로젝트입니다.</p>
+              <ul class="tag-list" aria-label="사용 기술">
+                <li>Unity</li>
+                <li>Lead Developer</li>
+                <li>GitHub</li>
+                <li>Notion</li>
+                <li>Codex Workflow</li>
+              </ul>
+              <div class="project-actions">
+                <a class="button button-primary" href="#pharmacy-details">케이스 스터디 보기</a>
+                <button class="button pending-button" type="button" disabled>플레이 링크 · 추후 수정</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="featured-details" id="pharmacy-details">
+            <div class="tab-list" role="tablist" aria-label="내 약국에는 정상이 없다 상세 정보">
+              <button class="tab-button" id="tab-overview" type="button" role="tab" aria-selected="true" aria-controls="panel-overview">개요</button>
+              <button class="tab-button" id="tab-role" type="button" role="tab" aria-selected="false" aria-controls="panel-role" tabindex="-1">담당 역할</button>
+              <button class="tab-button" id="tab-process" type="button" role="tab" aria-selected="false" aria-controls="panel-process" tabindex="-1">문제 해결</button>
+              <button class="tab-button" id="tab-proof" type="button" role="tab" aria-selected="false" aria-controls="panel-proof" tabindex="-1">결과·증거</button>
+            </div>
+
+            <div class="tab-panel" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview">
+              <div class="detail-grid">
+                <div class="detail-box"><strong>기간</strong><p>2026.03 — 2026.07</p></div>
+                <div class="detail-box"><strong>구분</strong><p>기능 개발</p></div>
+                <div class="detail-box"><strong>역할</strong><p>리드 개발자</p></div>
+              </div>
+            </div>
+
+            <div class="tab-panel" id="panel-role" role="tabpanel" aria-labelledby="tab-role" hidden>
+              <div class="detail-grid">
+                <div class="detail-box"><strong>GAME DESIGN</strong><p>게임을 구성하는 핵심 플레이 루프를 기획했습니다.</p></div>
+                <div class="detail-box"><strong>DATA &amp; FEATURES</strong><p>플레이 루프에 필요한 데이터 구조를 설계하고 게임 기능을 제작했습니다.</p></div>
+                <div class="detail-box"><strong>UI EXPERIENCE</strong><p>게임의 반응과 흐름이 전달되도록 UI 연출을 제작했습니다.</p></div>
+              </div>
+            </div>
+
+            <div class="tab-panel" id="panel-process" role="tabpanel" aria-labelledby="tab-process" hidden>
+              <div class="detail-grid">
+                <div class="detail-box"><strong>문제 정의</strong><p class="placeholder-line">구체적인 문제 상황 · 추후 수정</p></div>
+                <div class="detail-box"><strong>해결 과정</strong><p class="placeholder-line">선택한 해결 방법과 판단 근거 · 추후 수정</p></div>
+                <div class="detail-box"><strong>회고</strong><p class="placeholder-line">결과에서 얻은 학습과 개선점 · 추후 수정</p></div>
+              </div>
+            </div>
+
+            <div class="tab-panel" id="panel-proof" role="tabpanel" aria-labelledby="tab-proof" hidden>
+              <div class="detail-grid">
+                <div class="detail-box"><strong>플레이 영상</strong><p class="placeholder-line">영상 또는 GIF · 추후 수정</p></div>
+                <div class="detail-box"><strong>구현 화면</strong><p class="placeholder-line">스크린샷과 설명 · 추후 수정</p></div>
+                <div class="detail-box"><strong>저장소</strong><p class="placeholder-line">공개 가능한 링크 · 추후 수정</p></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <p class="library-label reveal">PROJECT LIBRARY · 02—03</p>
+
+        <div class="project-library">
+          <article class="project-card tilt-card reveal" aria-labelledby="nuri-title">
+            <div class="card-art nuri">
+              <span class="award-badge">AI 기술상 수상</span>
+              <div class="art-copy"><small>MEDIA SLOT · 추후 수정</small><strong>누리살이</strong></div>
+            </div>
+            <div class="card-body">
+              <div class="card-meta"><span>2025.06 — 2025.09</span><span>기능 개발</span><span>리드 개발자</span></div>
+              <h3 id="nuri-title">누리살이</h3>
+              <p>플레이 루프와 재미 요소를 직접 기획하고 구현해 공모전 AI 기술상으로 연결한 프로젝트입니다.</p>
+              <ul class="tag-list" aria-label="누리살이 사용 기술">
+                <li>Unity</li><li>GameAify</li><li>Clip Studio</li><li>GitHub</li><li>Gemini</li>
+              </ul>
+              <button class="project-toggle" type="button" aria-expanded="false" aria-controls="nuri-details">상세 내용 펼치기</button>
+            </div>
+            <div class="card-details" id="nuri-details">
+              <div><div class="card-details-inner">
+                <ul>
+                  <li>게임 플레이를 위한 플레이 루프와 재미 요소를 기획했습니다.</li>
+                  <li>기획한 기능을 Unity에서 구현했습니다.</li>
+                  <li>GameAify 게임 제작 공모전 AI 기술상을 수상했습니다.</li>
+                  <li>작업 이미지와 상세 구현 설명은 추후 수정 예정입니다.</li>
+                </ul>
+              </div></div>
+            </div>
+          </article>
+
+          <article class="project-card tilt-card reveal" aria-labelledby="warrior-title">
+            <div class="card-art warrior">
+              <div class="art-copy"><small>FIGMA · RULEBOOK · PLAYTEST</small><strong>최후의 전사</strong></div>
+            </div>
+            <div class="card-body">
+              <div class="card-meta"><span>2025.09 — 2025.11</span><span>기획 / 문서</span><span>제작 PM</span></div>
+              <h3 id="warrior-title">최후의 전사</h3>
+              <p>아이디어를 규칙으로 구체화하고, Figma 제작물과 5회의 테스트를 거쳐 룰북까지 정리한 보드게임 프로젝트입니다.</p>
+              <ul class="tag-list" aria-label="최후의 전사 사용 기술">
+                <li>Figma</li><li>Notion</li><li>Google Docs</li><li>Gemini</li><li>NotebookLM</li>
+              </ul>
+              <button class="project-toggle" type="button" aria-expanded="false" aria-controls="warrior-details">상세 내용 펼치기</button>
+            </div>
+            <div class="card-details" id="warrior-details">
+              <div><div class="card-details-inner">
+                <ul>
+                  <li>Google Docs로 회의록을 기록하고 공유했습니다.</li>
+                  <li>Notion에서 아이디어와 게임 기능을 구체화했습니다.</li>
+                  <li>Figma로 보드게임 구성물을 제작했습니다.</li>
+                  <li>5회 플레이 테스트 후 룰북을 제작했습니다.</li>
+                </ul>
+              </div></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-band" id="experience" data-nav-section>
+      <div class="container">
+        <header class="section-header reveal">
+          <div>
+            <p class="section-kicker">Experience &amp; Education</p>
+            <h2 class="section-title">배우고, 만들고,<br>현장에 적용한 시간</h2>
+          </div>
+          <p class="section-description">게임 개발 교육과 실무 경험을 바탕으로, 프로젝트 안에서 기획과 구현의 연결점을 찾아왔습니다.</p>
+        </header>
+
+        <div class="timeline">
+          <div class="timeline-column reveal">
+            <h3>EXPERIENCE</h3>
+            <div class="timeline-item">
+              <span class="timeline-date">2024.07 — 2026.09</span>
+              <strong>유한대학교 교수학습지원센터</strong>
+              <p>근로 장학생</p>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-date">2018.12 — 2019.01</span>
+              <strong>레이존</strong>
+              <p>주니어 개발자 · Unreal 기반 대형 터치스크린 콘텐츠를 모바일 환경에 맞게 로컬라이징</p>
+            </div>
+          </div>
+
+          <div class="timeline-column reveal">
+            <h3>EDUCATION</h3>
+            <div class="timeline-item">
+              <span class="timeline-date">2024.03 — 2027.02</span>
+              <strong>유한대학교</strong>
+              <p>컴퓨터소프트웨어학과 게임콘텐츠전공</p>
+              <span class="grade">전 학기 평점 4.5</span>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-date">2019.06 — 2021.06</span>
+              <strong>Christ University</strong>
+              <p>BBA (Bachelor of Business Administration) · 중퇴</p>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-date">2016.03 — 2019.02</span>
+              <strong>서울디지텍고등학교</strong>
+              <p>게임개발학과</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" data-nav-section>
+      <div class="container">
+        <header class="section-header reveal">
+          <div>
+            <p class="section-kicker">Skills &amp; Workflow</p>
+            <h2 class="section-title">숫자보다 작업 근거로<br>보여주는 역량</h2>
+          </div>
+          <p class="section-description">임의의 숙련도 퍼센트 대신, 프로젝트에서 실제로 수행한 단계를 기준으로 시각화했습니다.</p>
+        </header>
+
+        <div class="skills-layout">
+          <div class="evidence-panel reveal">
+            <div class="panel-heading">
+              <div><h3>Evidence Progress</h3><p>채워진 칸은 포트폴리오 원문에서 확인되는 수행 근거입니다.</p></div>
+            </div>
+
+            <div class="evidence-row">
+              <div class="evidence-meta"><strong>Unity 기능 개발</strong><span>3 / 4 단계</span></div>
+              <div class="evidence-track" role="progressbar" aria-label="Unity 기능 개발 근거 단계" aria-valuemin="0" aria-valuemax="4" aria-valuenow="3">
+                <i class="is-proven"></i><i class="is-proven"></i><i class="is-proven"></i><i></i>
+              </div>
+              <div class="evidence-labels"><span>기획</span><span>구조</span><span>구현</span><span>공개</span></div>
+            </div>
+
+            <div class="evidence-row">
+              <div class="evidence-meta"><strong>게임 플레이 설계</strong><span>3 / 4 단계</span></div>
+              <div class="evidence-track" role="progressbar" aria-label="게임 플레이 설계 근거 단계" aria-valuemin="0" aria-valuemax="4" aria-valuenow="3">
+                <i class="is-proven"></i><i class="is-proven"></i><i class="is-proven"></i><i></i>
+              </div>
+              <div class="evidence-labels"><span>루프</span><span>재미</span><span>기능화</span><span>지표</span></div>
+            </div>
+
+            <div class="evidence-row">
+              <div class="evidence-meta"><strong>보드게임 제작 PM</strong><span>4 / 4 단계</span></div>
+              <div class="evidence-track" role="progressbar" aria-label="보드게임 제작 PM 근거 단계" aria-valuemin="0" aria-valuemax="4" aria-valuenow="4">
+                <i class="is-proven"></i><i class="is-proven"></i><i class="is-proven"></i><i class="is-proven"></i>
+              </div>
+              <div class="evidence-labels"><span>기획</span><span>제작</span><span>테스트</span><span>룰북</span></div>
+            </div>
+
+            <div class="evidence-row">
+              <div class="evidence-meta"><strong>협업 문서화</strong><span>3 / 4 단계</span></div>
+              <div class="evidence-track" role="progressbar" aria-label="협업 문서화 근거 단계" aria-valuemin="0" aria-valuemax="4" aria-valuenow="3">
+                <i class="is-proven"></i><i class="is-proven"></i><i class="is-proven"></i><i></i>
+              </div>
+              <div class="evidence-labels"><span>회의록</span><span>구체화</span><span>산출물</span><span>공개</span></div>
+            </div>
+          </div>
+
+          <aside class="tool-panel reveal" aria-label="사용 도구">
+            <div class="panel-heading"><div><h3>Tool Stack</h3><p>핵심 제작 도구와 프로젝트 보조 워크플로를 구분했습니다.</p></div></div>
+            <div class="tool-group">
+              <h4>CORE DEVELOPMENT</h4>
+              <div class="tool-cloud"><span>Unity</span><span>GitHub</span></div>
+            </div>
+            <div class="tool-group">
+              <h4>DESIGN &amp; DOCUMENTATION</h4>
+              <div class="tool-cloud"><span>Figma</span><span>Notion</span><span>Google Docs</span><span>Clip Studio</span></div>
+            </div>
+            <div class="tool-group">
+              <h4>AI-ASSISTED WORKFLOW</h4>
+              <div class="tool-cloud"><span>Codex</span><span>Gemini</span><span>NotebookLM</span><span>GameAify</span></div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" data-nav-section>
+      <div class="container">
+        <div class="contact-card reveal">
+          <div>
+            <p class="section-kicker">Contact</p>
+            <h2 class="section-title">함께 플레이할<br>다음 프로젝트를 찾습니다.</h2>
+            <p>게임의 재미를 규칙으로 정리하고, 구현 가능한 기능으로 연결하는 개발자가 필요하다면 연락해 주세요.</p>
+          </div>
+          <a class="button button-primary" href="mailto:wnstn2228@naver.com">wnstn2228@naver.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="current-year">2026</span> Joonsoo Jo. All rights reserved.</span>
+      <span>Designed for GitHub Pages · Single-file portfolio</span>
+    </div>
+  </footer>
+
+  <noscript>
+    <div style="position:fixed;right:12px;bottom:12px;z-index:200;padding:10px 14px;border:1px solid #34506a;border-radius:8px;background:#0b1524;color:#d9e5ed;font-size:12px;">
+      JavaScript가 꺼져 있어 일부 인터랙션이 비활성화됩니다.
+    </div>
+  </noscript>
+
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const finePointer = window.matchMedia('(pointer: fine)').matches;
+
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+
+      const menuButton = document.querySelector('.menu-toggle');
+      const navigation = document.getElementById('site-nav');
+
+      const closeMenu = () => {
+        navigation.classList.remove('is-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', '메뉴 열기');
+      };
+
+      menuButton.addEventListener('click', () => {
+        const isOpen = navigation.classList.toggle('is-open');
+        menuButton.setAttribute('aria-expanded', String(isOpen));
+        menuButton.setAttribute('aria-label', isOpen ? '메뉴 닫기' : '메뉴 열기');
+      });
+
+      navigation.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeMenu();
+      });
+
+      const tabs = [...document.querySelectorAll('[role="tab"]')];
+      const activateTab = (tab, focus = false) => {
+        tabs.forEach((item) => {
+          const active = item === tab;
+          item.setAttribute('aria-selected', String(active));
+          item.tabIndex = active ? 0 : -1;
+          document.getElementById(item.getAttribute('aria-controls')).hidden = !active;
+        });
+        if (focus) tab.focus();
+      };
+
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => activateTab(tab));
+        tab.addEventListener('keydown', (event) => {
+          if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+          event.preventDefault();
+          let nextIndex = index;
+          if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
+          if (event.key === 'ArrowLeft') nextIndex = (index - 1 + tabs.length) % tabs.length;
+          if (event.key === 'Home') nextIndex = 0;
+          if (event.key === 'End') nextIndex = tabs.length - 1;
+          activateTab(tabs[nextIndex], true);
+        });
+      });
+
+      document.querySelectorAll('.project-toggle').forEach((button) => {
+        const detail = document.getElementById(button.getAttribute('aria-controls'));
+        button.addEventListener('click', () => {
+          const isOpen = detail.classList.toggle('is-open');
+          button.setAttribute('aria-expanded', String(isOpen));
+          button.textContent = isOpen ? '상세 내용 접기' : '상세 내용 펼치기';
+        });
+      });
+
+      const navLinks = [...navigation.querySelectorAll('a')];
+      const observedSections = [...document.querySelectorAll('[data-nav-section]')];
+      const updateNavigation = (sectionId) => {
+        navLinks.forEach((link) => {
+          const isCurrent = link.getAttribute('href') === `#${sectionId}`;
+          if (isCurrent) link.setAttribute('aria-current', 'true');
+          else link.removeAttribute('aria-current');
+        });
+      };
+
+      if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          });
+        }, { threshold: 0.14 });
+
+        document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
+
+        const navObserver = new IntersectionObserver((entries) => {
+          const visible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          if (visible) updateNavigation(visible.target.id);
+        }, { rootMargin: '-24% 0px -58% 0px', threshold: [0.05, 0.25, 0.55] });
+
+        observedSections.forEach((section) => navObserver.observe(section));
+      } else {
+        document.querySelectorAll('.reveal').forEach((element) => element.classList.add('is-visible'));
+      }
+
+      if (!reducedMotion && finePointer) {
+        let pointerFrame;
+        window.addEventListener('pointermove', (event) => {
+          window.cancelAnimationFrame(pointerFrame);
+          pointerFrame = window.requestAnimationFrame(() => {
+            root.style.setProperty('--pointer-x', `${event.clientX}px`);
+            root.style.setProperty('--pointer-y', `${event.clientY}px`);
+          });
+        }, { passive: true });
+
+        document.addEventListener('click', (event) => {
+          const ripple = document.createElement('span');
+          ripple.className = 'click-ripple';
+          ripple.style.left = `${event.clientX}px`;
+          ripple.style.top = `${event.clientY}px`;
+          document.body.appendChild(ripple);
+          ripple.addEventListener('animationend', () => ripple.remove(), { once: true });
+        });
+
+        document.querySelectorAll('.tilt-card').forEach((card) => {
+          card.addEventListener('pointermove', (event) => {
+            const rect = card.getBoundingClientRect();
+            const rotateY = ((event.clientX - rect.left) / rect.width - 0.5) * 4;
+            const rotateX = ((event.clientY - rect.top) / rect.height - 0.5) * -4;
+            card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+          });
+          card.addEventListener('pointerleave', () => {
+            card.style.transform = '';
+          });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
