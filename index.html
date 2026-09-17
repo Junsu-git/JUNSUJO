@@ -439,7 +439,7 @@
       color: var(--muted);
       font-size: 1.05rem;
       line-height: 1.68;
-      max-width: 760px;
+      max-width: 980px;
       word-break: keep-all;
     }
 
@@ -1321,18 +1321,22 @@
       font-weight: 750;
     }
 
+    #contact {
+      padding-block: 68px 90px;
+    }
+
     .contact-card {
       position: relative;
       overflow: hidden;
       display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+      grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
       align-items: center;
-      gap: clamp(28px, 5vw, 48px);
-      padding: clamp(36px, 6vw, 64px);
+      gap: clamp(24px, 4vw, 44px);
+      padding: clamp(28px, 4vw, 40px) clamp(28px, 4.5vw, 48px);
       border: 1px solid var(--line-strong);
       border-radius: var(--radius-lg);
       background:
-        radial-gradient(circle at 90% 50%, rgba(102, 192, 244, 0.12), transparent 42%),
+        radial-gradient(circle at 90% 50%, rgba(102, 192, 244, 0.1), transparent 42%),
         linear-gradient(135deg, #15273b, #0c1b2c 65%, #0f1826);
       box-shadow: var(--shadow);
     }
@@ -1340,45 +1344,26 @@
     .contact-card-main {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
     }
 
     .contact-card .section-title {
       max-width: none;
       margin-bottom: 0;
-      font-size: clamp(2rem, 4.2vw, 3.2rem);
-      line-height: 1.22;
+      font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+      line-height: 1.24;
       letter-spacing: -0.04em;
       word-break: keep-all;
-    }
-
-    .contact-desc {
-      max-width: 580px;
-      margin: 0;
-      color: #b7c9d6;
-      font-size: 1rem;
-      line-height: 1.7;
-      word-break: keep-all;
-    }
-
-    .contact-status-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.84rem;
-      font-weight: 750;
-      color: #d8ff6b;
-      margin-top: 4px;
     }
 
     .contact-channels {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      background: rgba(7, 16, 27, 0.65);
+      gap: 10px;
+      background: rgba(7, 16, 27, 0.62);
       border: 1px solid var(--line);
       border-radius: var(--radius-md);
-      padding: 22px;
+      padding: 18px;
     }
 
     .contact-channel-item {
@@ -1386,7 +1371,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      padding: 14px 16px;
+      padding: 13px 16px;
       background: rgba(102, 192, 244, 0.05);
       border: 1px solid var(--line);
       border-radius: 9px;
@@ -1436,16 +1421,6 @@
       font-weight: 800;
       color: var(--blue-bright);
       white-space: nowrap;
-    }
-
-    .contact-channel-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      padding-top: 10px;
-      border-top: 1px solid rgba(147, 184, 214, 0.1);
-      font-size: 0.76rem;
-      color: var(--muted);
     }
 
     .site-footer {
@@ -1527,8 +1502,8 @@
 
       .contact-card {
         grid-template-columns: 1fr;
-        gap: 28px;
-        padding: 32px 22px;
+        gap: 20px;
+        padding: 22px 18px;
       }
     }
 
@@ -1934,13 +1909,6 @@
           <p class="hero-lead">
             게임의 규칙과 흐름을 설계하고, 이를 <strong>플레이 가능한 기능으로 연결하는</strong> 게임 개발자입니다.
           </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#experience">경험·학력 보기 <span aria-hidden="true">↓</span></a>
-            <a class="button" href="#skills">기술 스택 <span aria-hidden="true">↓</span></a>
-            <a class="button" href="#projects">프로젝트 <span aria-hidden="true">↓</span></a>
-            <a class="button" href="#assignments">과제 <span aria-hidden="true">→</span></a>
-            <a class="button" href="#contact">연락하기</a>
-          </div>
         </div>
       </div>
       <div class="scroll-cue" aria-hidden="true">SCROLL</div>
@@ -2221,7 +2189,7 @@
           <p class="section-label" data-section-label data-en="ASSIGNMENTS">과제</p>
           <h2 class="section-title">전공 과제 및 분석 아카이브</h2>
           <p class="section-description">
-            전공 포트폴리오 수업 및 프로젝트 과정에서 수행한 개별 과제, 시스템 프로토타입 결과물, 기획 및 기술 분석 보고서를 단계별로 아카이빙합니다.
+            전공 수업 및 프로젝트 과정에서 수행한 개별 과제와 분석 보고서 아카이브입니다.
           </p>
         </header>
 
@@ -2314,12 +2282,6 @@
           <div class="contact-card-main">
             <p class="section-label" data-section-label data-en="CONTACT">연락처</p>
             <h2 class="section-title">함께 플레이할 다음 프로젝트를 찾습니다.</h2>
-            <p class="contact-desc">
-              게임의 규칙과 흐름을 설계하고, 구현 가능한 기능으로 연결하는 게임 개발자 조준수입니다. 채용 제안, 프로젝트 협업, 포트폴리오 관련 문의는 언제든 편하게 연락해 주세요.
-            </p>
-            <div class="contact-status-tag">
-              <span>● 신입 게임 클라이언트 개발 &amp; 기획 지원 중</span>
-            </div>
           </div>
 
           <div class="contact-channels">
@@ -2344,11 +2306,6 @@
               </div>
               <span class="channel-action">저장소 방문 ↗</span>
             </a>
-
-            <div class="contact-channel-meta">
-              <span>📍 위치: 부천 / 서울 (유한대학교 4.5 졸업 예정)</span>
-              <span>⚡ 빠른 응답: 상시 확인 및 24시간 이내 회신</span>
-            </div>
           </div>
         </div>
       </div>
