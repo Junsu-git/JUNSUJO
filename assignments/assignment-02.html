@@ -391,6 +391,37 @@
       background: rgba(255, 255, 255, 0.018);
     }
 
+    /* Proposal Images */
+    .proposal-image-wrapper {
+      margin: 28px 0;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--line-strong);
+      background: #08111e;
+      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.45);
+    }
+
+    .proposal-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 300ms ease;
+    }
+
+    .proposal-img:hover {
+      transform: scale(1.008);
+    }
+
+    .image-caption {
+      padding: 12px 18px;
+      font-size: 0.82rem;
+      color: #9cb4c7;
+      background: rgba(14, 25, 40, 0.96);
+      border-top: 1px solid var(--line);
+      text-align: center;
+      line-height: 1.5;
+    }
+
     /* Media Mockup Box */
     .media-box {
       background: #09121e;
@@ -564,12 +595,11 @@
       <div class="section-num-label">PART 00</div>
       <h2>이벤트 기획서 원페이저 (One-Pager)</h2>
 
-      <!-- Visual Slot -->
-      <div class="media-box">
-        <div class="media-box-icon">🎨</div>
-        <strong>에린의 조각들 메인 배너 시안</strong>
-        <p>공식 나오 외형 및 셀 셰이딩 3D 표현을 참고한 비공식 제안용 이벤트 메인 배너 슬롯<br>(./assets/erins-fragments/event-banner-v2-nao.png)</p>
-      </div>
+      <!-- Event Banner Image -->
+      <figure class="proposal-image-wrapper">
+        <img src="../assets/erins-fragments/event-banner-v2-nao.png" alt="에린의 조각들 이벤트 메인 배너 — 공식 나오 외형을 참고한 비공식 3D 표현 시안" class="proposal-img" loading="lazy">
+        <figcaption class="image-caption">▲ 에린의 조각들 이벤트 메인 배너 — 공식 나오 외형을 참고한 비공식 3D 표현 시안</figcaption>
+      </figure>
 
       <div class="callout callout-green">
         <strong>💡 한 문장 기획</strong>
@@ -1118,12 +1148,11 @@
           </table>
         </div>
 
-        <!-- Visual Slot -->
-        <div class="media-box">
-          <div class="media-box-icon">📱</div>
-          <strong>활동 선택판과 조각 앨범 UI 시안 슬롯</strong>
-          <p>좌측 12개 카드 선택판과 우측 조각 수집 앨범(4/12 완료 및 보상 수령 상태)<br>(./assets/erins-fragments/event-selection-album-v1.png)</p>
-        </div>
+        <!-- Activity Selection & Fragment Album UI Image -->
+        <figure class="proposal-image-wrapper">
+          <img src="../assets/erins-fragments/event-selection-album-v1.png" alt="활동 선택판과 조각 앨범 — 비공식 UI 기획 시안" class="proposal-img" loading="lazy">
+          <figcaption class="image-caption">▲ 활동 선택판과 조각 앨범 — 비공식 UI 기획 시안 (좌측: 12개 활동 선택판 / 우측: 조각 수집 앨범)</figcaption>
+        </figure>
       </div>
     </section>
 
