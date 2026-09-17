@@ -232,161 +232,23 @@
 
     .hero {
       min-height: calc(100svh - var(--header-h));
-      display: grid;
-      align-items: center;
-      padding-block: 88px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      padding-block: clamp(64px, 14vh, 120px);
     }
 
     .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
-      align-items: center;
-      gap: 48px;
+      display: block;
       width: 100%;
-    }
-
-    @media (max-width: 980px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 36px;
-      }
     }
 
     .hero-copy {
       width: 100%;
+      max-width: 1100px;
+      margin-inline: auto;
       text-align: left;
-    }
-
-    /* Hero Profile Card (Right Column Balance) */
-    .hero-profile-card {
-      background: linear-gradient(145deg, rgba(16, 32, 51, 0.92), rgba(8, 17, 30, 0.98));
-      border: 1px solid var(--line-strong);
-      border-radius: var(--radius-md);
-      padding: 28px;
-      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      position: relative;
-    }
-
-    .hero-profile-card::before {
-      content: "";
-      position: absolute;
-      top: -1px;
-      left: 28px;
-      right: 28px;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--blue-bright), transparent);
-    }
-
-    .profile-card-header {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 20px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .profile-avatar-badge {
-      position: relative;
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, rgba(102, 192, 244, 0.2), rgba(16, 29, 45, 0.9));
-      border: 1px solid var(--line-strong);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
-      flex-shrink: 0;
-    }
-
-    .avatar-status-dot {
-      position: absolute;
-      bottom: -2px;
-      right: -2px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #a4d007;
-      border: 2px solid #08111e;
-      box-shadow: 0 0 8px #a4d007;
-    }
-
-    .profile-role-tag {
-      font-size: 0.72rem;
-      font-weight: 850;
-      letter-spacing: 0.12em;
-      color: var(--blue-bright);
-      text-transform: uppercase;
-    }
-
-    .profile-name {
-      margin: 2px 0 0;
-      font-size: 1.35rem;
-      font-weight: 850;
-      letter-spacing: -0.02em;
-      color: #fff;
-    }
-
-    .profile-en {
-      font-size: 0.85rem;
-      color: var(--muted);
-      font-weight: 600;
-      margin-left: 6px;
-    }
-
-    .profile-meta-list {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .profile-meta-item {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-      font-size: 0.88rem;
-    }
-
-    .profile-meta-item .meta-label {
-      font-size: 0.73rem;
-      font-weight: 800;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .profile-meta-item .meta-value {
-      color: #dbe7f2;
-      line-height: 1.5;
-    }
-
-    .profile-card-footer {
-      margin-top: 22px;
-      padding-top: 16px;
-      border-top: 1px solid var(--line);
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .profile-quick-link {
-      padding: 6px 13px;
-      border-radius: 6px;
-      background: rgba(102, 192, 244, 0.08);
-      border: 1px solid rgba(102, 192, 244, 0.22);
-      color: var(--blue-bright);
-      font-size: 0.8rem;
-      font-weight: 750;
-      text-decoration: none;
-      transition: all 180ms ease;
-    }
-
-    .profile-quick-link:hover {
-      background: rgba(102, 192, 244, 0.2);
-      color: #fff;
-      transform: translateY(-2px);
-      text-decoration: none;
     }
 
     .eyebrow {
@@ -415,35 +277,41 @@
       margin-top: 0;
     }
 
-    h1 {
-      margin-bottom: 30px;
-      font-size: clamp(4.3rem, 11vw, 9rem);
-      line-height: 0.86;
-      letter-spacing: -0.078em;
+    .hero-name-row {
+      display: flex;
+      align-items: baseline;
+      gap: clamp(16px, 3.5vw, 32px);
+      flex-wrap: wrap;
+      margin: 0 0 24px;
     }
 
-    h1 .outline {
-      display: block;
-      margin-top: 17px;
+    h1 {
+      margin: 0;
+      font-size: clamp(3.8rem, 10vw, 7.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      font-weight: 900;
+      color: var(--text);
+    }
+
+    .hero-name-en {
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
       color: var(--blue-bright);
-      font-size: 0.64em;
-      font-weight: 700;
-      letter-spacing: -0.045em;
-      -webkit-text-stroke: 0;
-      text-shadow: 0 0 44px rgba(102, 192, 244, 0.13);
     }
 
     .hero-lead {
-      max-width: 860px;
-      margin-bottom: 34px;
+      max-width: 920px;
+      margin-bottom: 36px;
       color: #c9d7e2;
-      font-size: clamp(1.14rem, 2.2vw, 1.55rem);
-      line-height: 1.68;
+      font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+      line-height: 1.7;
       word-break: keep-all;
     }
 
     .hero-lead strong {
-      color: var(--text);
+      color: #fff;
     }
 
     .hero-actions,
@@ -1457,47 +1325,127 @@
       position: relative;
       overflow: hidden;
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
       align-items: center;
-      gap: 40px;
-      padding: clamp(34px, 7vw, 72px);
+      gap: clamp(28px, 5vw, 48px);
+      padding: clamp(36px, 6vw, 64px);
       border: 1px solid var(--line-strong);
       border-radius: var(--radius-lg);
       background:
-        radial-gradient(circle at 84% 50%, rgba(102, 192, 244, 0.2), transparent 28%),
-        linear-gradient(135deg, #172e45, #0d1d30 62%, #131d31);
+        radial-gradient(circle at 90% 50%, rgba(102, 192, 244, 0.12), transparent 42%),
+        linear-gradient(135deg, #15273b, #0c1b2c 65%, #0f1826);
       box-shadow: var(--shadow);
     }
 
-    .contact-card::after {
-      content: "JS";
-      position: absolute;
-      top: -35px;
-      right: 4%;
-      color: rgba(255, 255, 255, 0.025);
-      font-size: 14rem;
-      font-weight: 900;
-      line-height: 1;
-      pointer-events: none;
+    .contact-card-main {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
 
     .contact-card .section-title {
-      max-width: 680px;
-      margin-bottom: 17px;
-      font-size: clamp(2.2rem, 5vw, 4.4rem);
-    }
-
-    .contact-card p {
-      max-width: 620px;
+      max-width: none;
       margin-bottom: 0;
-      color: #b7c9d6;
-      line-height: 1.7;
+      font-size: clamp(2rem, 4.2vw, 3.2rem);
+      line-height: 1.22;
+      letter-spacing: -0.04em;
+      word-break: keep-all;
     }
 
-    .contact-card .button {
-      position: relative;
-      z-index: 2;
-      min-width: 190px;
+    .contact-desc {
+      max-width: 580px;
+      margin: 0;
+      color: #b7c9d6;
+      font-size: 1rem;
+      line-height: 1.7;
+      word-break: keep-all;
+    }
+
+    .contact-status-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.84rem;
+      font-weight: 750;
+      color: #d8ff6b;
+      margin-top: 4px;
+    }
+
+    .contact-channels {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: rgba(7, 16, 27, 0.65);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 22px;
+    }
+
+    .contact-channel-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      background: rgba(102, 192, 244, 0.05);
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 180ms ease;
+    }
+
+    .contact-channel-item:hover {
+      background: rgba(102, 192, 244, 0.12);
+      border-color: var(--blue-bright);
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+
+    .channel-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .channel-icon {
+      font-size: 1.3rem;
+    }
+
+    .channel-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .channel-label {
+      font-size: 0.68rem;
+      font-weight: 850;
+      color: var(--blue-bright);
+      letter-spacing: 0.08em;
+    }
+
+    .channel-val {
+      font-size: 0.92rem;
+      font-weight: 750;
+      color: #fff;
+    }
+
+    .channel-action {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--blue-bright);
+      white-space: nowrap;
+    }
+
+    .contact-channel-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(147, 184, 214, 0.1);
+      font-size: 0.76rem;
+      color: var(--muted);
     }
 
     .site-footer {
@@ -1542,6 +1490,17 @@
       }
     }
 
+    @media (max-width: 1080px) {
+      .header-inner,
+      .container {
+        width: min(100% - 44px, 1180px);
+      }
+
+      .timeline {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 920px) {
       .featured-top,
       .skills-layout {
@@ -1550,10 +1509,6 @@
 
       .hero {
         padding-block: 74px 108px;
-      }
-
-      .scroll-cue {
-        display: none;
       }
 
       .section-header {
@@ -1572,10 +1527,8 @@
 
       .contact-card {
         grid-template-columns: 1fr;
-      }
-
-      .contact-card .button {
-        width: fit-content;
+        gap: 28px;
+        padding: 32px 22px;
       }
     }
 
@@ -1959,10 +1912,10 @@
 
       <nav class="site-nav" id="site-nav" aria-label="주요 메뉴">
         <a href="#hero" aria-current="true">소개</a>
-        <a href="#projects">프로젝트</a>
-        <a href="#assignments">과제 아카이브</a>
-        <a href="#skills">기술 스택</a>
         <a href="#experience">경험·학력</a>
+        <a href="#skills">기술 스택</a>
+        <a href="#projects">프로젝트</a>
+        <a href="#assignments">과제</a>
         <a href="#contact">연락처</a>
       </nav>
     </div>
@@ -1971,76 +1924,144 @@
   <main id="main-content">
     <section class="hero" id="hero" data-nav-section>
       <div class="container hero-grid">
-        <!-- Hero Left Column -->
         <div class="hero-copy reveal">
           <p class="section-label" data-section-label data-en="ABOUT">소개</p>
           <p class="eyebrow">Game Developer · Portfolio 2026</p>
-          <h1>조준수<span class="outline">JoJunsu</span></h1>
+          <div class="hero-name-row">
+            <h1>조준수</h1>
+            <span class="hero-name-en">JoJunsu</span>
+          </div>
           <p class="hero-lead">
             게임의 규칙과 흐름을 설계하고, 이를 <strong>플레이 가능한 기능으로 연결하는</strong> 게임 개발자입니다.
           </p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#projects">프로젝트 살펴보기 <span aria-hidden="true">↓</span></a>
-            <a class="button" href="#assignments">과제 아카이브 <span aria-hidden="true">→</span></a>
-            <a class="button" href="mailto:wnstn2228@naver.com">이메일 보내기</a>
-          </div>
-        </div>
-
-        <!-- Hero Right Column (Balanced Profile Card) -->
-        <div class="hero-profile-card reveal" aria-label="개발자 핵심 프로필 요약">
-          <div class="profile-card-header">
-            <div class="profile-avatar-badge">
-              <span>🎮</span>
-              <div class="avatar-status-dot" title="프로젝트 진행 중 / 구직 활동 중"></div>
-            </div>
-            <div>
-              <div class="profile-role-tag">GAME DEVELOPER</div>
-              <h3 class="profile-name">조준수 <span class="profile-en">Jo Junsu</span></h3>
-            </div>
-          </div>
-
-          <div class="profile-meta-list">
-            <div class="profile-meta-item">
-              <span class="meta-label">전공 &amp; 학력</span>
-              <span class="meta-value">
-                유한대학교 컴퓨터소프트웨어학과 게임콘텐츠전공<br>
-                <small style="color: var(--gold); font-weight: 750;">전 학기 평점 4.5 / 성적 우수</small>
-              </span>
-            </div>
-            <div class="profile-meta-item">
-              <span class="meta-label">핵심 직무</span>
-              <span class="meta-value"><strong>게임 클라이언트 개발 &amp; 시스템 기획</strong></span>
-            </div>
-            <div class="profile-meta-item">
-              <span class="meta-label">주요 기술 스택</span>
-              <span class="meta-value">C# · Unity · 객체지향 설계 · FSM 패턴 · Git/GitHub</span>
-            </div>
-            <div class="profile-meta-item">
-              <span class="meta-label">현재 활동</span>
-              <span class="meta-value">
-                <span style="color: #d8ff6b; font-weight: 750;">● 2026 캡스톤 디자인 팀 리드</span> · 신입/인턴 지원
-              </span>
-            </div>
-          </div>
-
-          <div class="profile-card-footer">
-            <a class="profile-quick-link" href="https://github.com/Junsu-git" target="_blank" rel="noopener noreferrer">
-              GitHub ↗
-            </a>
-            <a class="profile-quick-link" href="mailto:wnstn2228@naver.com">
-              Email ↗
-            </a>
-            <a class="profile-quick-link" href="#assignments">
-              과제 아카이브 →
-            </a>
+            <a class="button button-primary" href="#experience">경험·학력 보기 <span aria-hidden="true">↓</span></a>
+            <a class="button" href="#skills">기술 스택 <span aria-hidden="true">↓</span></a>
+            <a class="button" href="#projects">프로젝트 <span aria-hidden="true">↓</span></a>
+            <a class="button" href="#assignments">과제 <span aria-hidden="true">→</span></a>
+            <a class="button" href="#contact">연락하기</a>
           </div>
         </div>
       </div>
-      <div class="scroll-cue" aria-hidden="true">SCROLL TO EXPLORE</div>
+      <div class="scroll-cue" aria-hidden="true">SCROLL</div>
     </section>
 
-    <!-- Projects Section (2x2 Grid) -->
-    <section id="projects" data-nav-section>
+    <!-- 02. Experience & Education Section -->
+    <section class="section-band" id="experience" data-nav-section>
+      <div class="container">
+        <header class="section-header reveal">
+          <div>
+            <p class="section-label" data-section-label data-en="EXPERIENCE &amp; EDUCATION">경험과 학력</p>
+            <h2 class="section-title">개발 교육 및 실무 경험</h2>
+          </div>
+        </header>
+
+        <div class="timeline">
+          <div class="timeline-column reveal">
+            <h3>EXPERIENCE</h3>
+            <div class="timeline-item">
+              <span class="timeline-date">2024.07 — 2026.09</span>
+              <strong>유한대학교 교수학습지원센터</strong>
+              <p>근로 장학생</p>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-date">2018.12 — 2019.01</span>
+              <strong>레이존</strong>
+              <p>주니어 개발자 · Unreal 기반 대형 터치스크린 콘텐츠를 모바일 환경에 맞게 로컬라이징</p>
+            </div>
+          </div>
+
+          <div class="timeline-column reveal">
+            <h3>EDUCATION</h3>
+            <div class="timeline-item">
+              <span class="timeline-date">2024.03 — 2027.02</span>
+              <strong>유한대학교</strong>
+              <p>컴퓨터소프트웨어학과 게임콘텐츠전공</p>
+              <span class="grade">전 학기 평점 4.5</span>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-date">2019.06 — 2021.06</span>
+              <strong>Christ University</strong>
+              <p>BBA (Bachelor of Business Administration) · 중퇴</p>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-date">2016.03 — 2019.02</span>
+              <strong>서울디지텍고등학교</strong>
+              <p>게임개발학과</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03. Development Skills Section -->
+    <section id="skills" data-nav-section>
+      <div class="container">
+        <header class="section-header reveal">
+          <div>
+            <p class="section-label" data-section-label data-en="TECH STACK &amp; SKILLS">기술 스택</p>
+            <h2 class="section-title">기술 스택 &amp; 개발 역량</h2>
+          </div>
+        </header>
+
+        <div class="skills-layout">
+          <div class="skill-panel reveal">
+            <div class="panel-heading">
+              <div><h3>Core Skills</h3></div>
+            </div>
+
+            <div class="skill-rating" data-score="4">
+              <div class="skill-rating-meta"><strong>C# 프로그래밍</strong><span><b>4.0</b> / 5</span></div>
+              <div class="rating-track" role="progressbar" aria-label="C# 프로그래밍 역량" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4"><span class="rating-fill" style="--rating:80%"></span></div>
+              <div class="rating-scale"><span>기초</span><span>숙련</span></div>
+            </div>
+
+            <div class="skill-rating" data-score="4">
+              <div class="skill-rating-meta"><strong>Unity 엔진 활용</strong><span><b>4.0</b> / 5</span></div>
+              <div class="rating-track" role="progressbar" aria-label="Unity 엔진 활용 역량" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4"><span class="rating-fill" style="--rating:80%"></span></div>
+              <div class="rating-scale"><span>기초</span><span>숙련</span></div>
+            </div>
+
+            <div class="skill-rating" data-score="3.5">
+              <div class="skill-rating-meta"><strong>객체지향·코드 구조 설계</strong><span><b>3.5</b> / 5</span></div>
+              <div class="rating-track" role="progressbar" aria-label="객체지향과 코드 구조 설계 역량" aria-valuemin="0" aria-valuemax="5" aria-valuenow="3.5"><span class="rating-fill" style="--rating:70%"></span></div>
+              <div class="rating-scale"><span>기초</span><span>숙련</span></div>
+            </div>
+
+            <div class="skill-rating" data-score="3.5">
+              <div class="skill-rating-meta"><strong>Git·버전 관리 &amp; 협업</strong><span><b>3.5</b> / 5</span></div>
+              <div class="rating-track" role="progressbar" aria-label="Git과 버전 관리 협업 역량" aria-valuemin="0" aria-valuemax="5" aria-valuenow="3.5"><span class="rating-fill" style="--rating:70%"></span></div>
+              <div class="rating-scale"><span>기초</span><span>숙련</span></div>
+            </div>
+
+            <div class="skill-rating" data-score="4.5">
+              <div class="skill-rating-meta"><strong>기획 분석 및 기술 문서화</strong><span><b>4.5</b> / 5</span></div>
+              <div class="rating-track" role="progressbar" aria-label="기획 분석 및 기술 문서화 역량" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4.5"><span class="rating-fill" style="--rating:90%"></span></div>
+              <div class="rating-scale"><span>기초</span><span>숙련</span></div>
+            </div>
+          </div>
+
+          <aside class="tool-panel reveal" aria-label="사용 도구">
+            <div class="panel-heading"><div><h3>Tool Stack</h3></div></div>
+            <div class="tool-group">
+              <h4>CORE DEVELOPMENT</h4>
+              <div class="tool-cloud"><span>C#</span><span>Unity</span><span>GitHub</span></div>
+            </div>
+            <div class="tool-group">
+              <h4>DESIGN &amp; DOCUMENTATION</h4>
+              <div class="tool-cloud"><span>Figma</span><span>Notion</span><span>Google Docs</span><span>Clip Studio</span></div>
+            </div>
+            <div class="tool-group">
+              <h4>AI-ASSISTED WORKFLOW</h4>
+              <div class="tool-cloud"><span>Codex</span><span>Gemini</span><span>NotebookLM</span><span>GameAify</span></div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04. Projects Section (2x2 Grid) -->
+    <section class="section-band" id="projects" data-nav-section>
       <div class="container">
         <header class="section-header reveal">
           <p class="section-label" data-section-label data-en="PROJECTS">프로젝트</p>
@@ -2190,21 +2211,22 @@
           </article>
 
         </div>
+      </div>
+    </section>
 
-        <!-- More Works & Assignments Subsection -->
-        <div class="more-works-area reveal" id="assignments" data-nav-section>
-          <header class="more-works-header">
-            <div>
-              <p class="section-label" data-section-label data-en="MORE WORKS &amp; ARCHIVE">과제 아카이브</p>
-              <h3 class="more-works-title">전공 과제 및 추가 작업</h3>
-            </div>
-            <p class="more-works-description">
-              전공 포트폴리오 수업 및 프로젝트 과정에서 수행한 개별 과제, 시스템 프로토타입 결과물, 기획 및 기술 분석 보고서를 단계별로 아카이빙합니다.
-            </p>
-          </header>
+    <!-- 05. Assignments Section -->
+    <section id="assignments" data-nav-section>
+      <div class="container">
+        <header class="section-header reveal">
+          <p class="section-label" data-section-label data-en="ASSIGNMENTS">과제</p>
+          <h2 class="section-title">전공 과제 및 분석 아카이브</h2>
+          <p class="section-description">
+            전공 포트폴리오 수업 및 프로젝트 과정에서 수행한 개별 과제, 시스템 프로토타입 결과물, 기획 및 기술 분석 보고서를 단계별로 아카이빙합니다.
+          </p>
+        </header>
 
-          <div class="archive-card-list">
-            <!-- Card 1: Assignment 01 (Study: 자바 람다 배우기 14일 학습 계획) -->
+        <div class="archive-card-list">
+          <!-- Card 1: Assignment 01 (Study: 자바 람다 배우기 14일 학습 계획) -->
             <article class="archive-card">
               <div class="archive-card-thumbnail">
                 <div class="archive-card-thumb-badge">ASSIGNMENT 01</div>
@@ -2283,130 +2305,51 @@
             </article>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="skills" data-nav-section>
-      <div class="container">
-        <header class="section-header reveal">
-          <div>
-            <p class="section-label" data-section-label data-en="TECH STACK &amp; SKILLS">기술 스택</p>
-            <h2 class="section-title">기술 스택 &amp; 개발 역량</h2>
-          </div>
-        </header>
-
-        <div class="skills-layout">
-          <div class="skill-panel reveal">
-            <div class="panel-heading">
-              <div><h3>Core Skills</h3></div>
-            </div>
-
-            <div class="skill-rating" data-score="4">
-              <div class="skill-rating-meta"><strong>C# 프로그래밍</strong><span><b>4.0</b> / 5</span></div>
-              <div class="rating-track" role="progressbar" aria-label="C# 프로그래밍 역량" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4"><span class="rating-fill" style="--rating:80%"></span></div>
-              <div class="rating-scale"><span>기초</span><span>숙련</span></div>
-            </div>
-
-            <div class="skill-rating" data-score="4">
-              <div class="skill-rating-meta"><strong>Unity 엔진 활용</strong><span><b>4.0</b> / 5</span></div>
-              <div class="rating-track" role="progressbar" aria-label="Unity 엔진 활용 역량" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4"><span class="rating-fill" style="--rating:80%"></span></div>
-              <div class="rating-scale"><span>기초</span><span>숙련</span></div>
-            </div>
-
-            <div class="skill-rating" data-score="3.5">
-              <div class="skill-rating-meta"><strong>객체지향·코드 구조 설계</strong><span><b>3.5</b> / 5</span></div>
-              <div class="rating-track" role="progressbar" aria-label="객체지향과 코드 구조 설계 역량" aria-valuemin="0" aria-valuemax="5" aria-valuenow="3.5"><span class="rating-fill" style="--rating:70%"></span></div>
-              <div class="rating-scale"><span>기초</span><span>숙련</span></div>
-            </div>
-
-            <div class="skill-rating" data-score="3.5">
-              <div class="skill-rating-meta"><strong>Git·버전 관리 &amp; 협업</strong><span><b>3.5</b> / 5</span></div>
-              <div class="rating-track" role="progressbar" aria-label="Git과 버전 관리 협업 역량" aria-valuemin="0" aria-valuemax="5" aria-valuenow="3.5"><span class="rating-fill" style="--rating:70%"></span></div>
-              <div class="rating-scale"><span>기초</span><span>숙련</span></div>
-            </div>
-
-            <div class="skill-rating" data-score="4.5">
-              <div class="skill-rating-meta"><strong>기획 분석 및 기술 문서화</strong><span><b>4.5</b> / 5</span></div>
-              <div class="rating-track" role="progressbar" aria-label="기획 분석 및 기술 문서화 역량" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4.5"><span class="rating-fill" style="--rating:90%"></span></div>
-              <div class="rating-scale"><span>기초</span><span>숙련</span></div>
-            </div>
-          </div>
-
-          <aside class="tool-panel reveal" aria-label="사용 도구">
-            <div class="panel-heading"><div><h3>Tool Stack</h3></div></div>
-            <div class="tool-group">
-              <h4>CORE DEVELOPMENT</h4>
-              <div class="tool-cloud"><span>C#</span><span>Unity</span><span>GitHub</span></div>
-            </div>
-            <div class="tool-group">
-              <h4>DESIGN &amp; DOCUMENTATION</h4>
-              <div class="tool-cloud"><span>Figma</span><span>Notion</span><span>Google Docs</span><span>Clip Studio</span></div>
-            </div>
-            <div class="tool-group">
-              <h4>AI-ASSISTED WORKFLOW</h4>
-              <div class="tool-cloud"><span>Codex</span><span>Gemini</span><span>NotebookLM</span><span>GameAify</span></div>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-band" id="experience" data-nav-section>
-      <div class="container">
-        <header class="section-header reveal">
-          <div>
-            <p class="section-label" data-section-label data-en="EXPERIENCE &amp; EDUCATION">경험과 학력</p>
-            <h2 class="section-title">개발 교육 및 실무 경험</h2>
-          </div>
-        </header>
-
-        <div class="timeline">
-          <div class="timeline-column reveal">
-            <h3>EXPERIENCE</h3>
-            <div class="timeline-item">
-              <span class="timeline-date">2024.07 — 2026.09</span>
-              <strong>유한대학교 교수학습지원센터</strong>
-              <p>근로 장학생</p>
-            </div>
-            <div class="timeline-item">
-              <span class="timeline-date">2018.12 — 2019.01</span>
-              <strong>레이존</strong>
-              <p>주니어 개발자 · Unreal 기반 대형 터치스크린 콘텐츠를 모바일 환경에 맞게 로컬라이징</p>
-            </div>
-          </div>
-
-          <div class="timeline-column reveal">
-            <h3>EDUCATION</h3>
-            <div class="timeline-item">
-              <span class="timeline-date">2024.03 — 2027.02</span>
-              <strong>유한대학교</strong>
-              <p>컴퓨터소프트웨어학과 게임콘텐츠전공</p>
-              <span class="grade">전 학기 평점 4.5</span>
-            </div>
-            <div class="timeline-item">
-              <span class="timeline-date">2019.06 — 2021.06</span>
-              <strong>Christ University</strong>
-              <p>BBA (Bachelor of Business Administration) · 중퇴</p>
-            </div>
-            <div class="timeline-item">
-              <span class="timeline-date">2016.03 — 2019.02</span>
-              <strong>서울디지텍고등학교</strong>
-              <p>게임개발학과</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    <!-- 06. Contact Section -->
     <section id="contact" data-nav-section>
       <div class="container">
         <div class="contact-card reveal">
-          <div>
+          <div class="contact-card-main">
             <p class="section-label" data-section-label data-en="CONTACT">연락처</p>
-            <h2 class="section-title">함께 플레이할<br>다음 프로젝트를 찾습니다.</h2>
-            <p>게임의 재미를 규칙으로 정리하고, 구현 가능한 기능으로 연결하는 개발자가 필요하다면 연락해 주세요.</p>
+            <h2 class="section-title">함께 플레이할 다음 프로젝트를 찾습니다.</h2>
+            <p class="contact-desc">
+              게임의 규칙과 흐름을 설계하고, 구현 가능한 기능으로 연결하는 게임 개발자 조준수입니다. 채용 제안, 프로젝트 협업, 포트폴리오 관련 문의는 언제든 편하게 연락해 주세요.
+            </p>
+            <div class="contact-status-tag">
+              <span>● 신입 게임 클라이언트 개발 &amp; 기획 지원 중</span>
+            </div>
           </div>
-          <a class="button button-primary" href="mailto:wnstn2228@naver.com">wnstn2228@naver.com</a>
+
+          <div class="contact-channels">
+            <a class="contact-channel-item" href="mailto:wnstn2228@naver.com">
+              <div class="channel-left">
+                <span class="channel-icon" aria-hidden="true">✉️</span>
+                <div class="channel-info">
+                  <span class="channel-label">EMAIL</span>
+                  <strong class="channel-val">wnstn2228@naver.com</strong>
+                </div>
+              </div>
+              <span class="channel-action">메일 보내기 ↗</span>
+            </a>
+
+            <a class="contact-channel-item" href="https://github.com/Junsu-git" target="_blank" rel="noopener noreferrer">
+              <div class="channel-left">
+                <span class="channel-icon" aria-hidden="true">💻</span>
+                <div class="channel-info">
+                  <span class="channel-label">GITHUB</span>
+                  <strong class="channel-val">github.com/Junsu-git</strong>
+                </div>
+              </div>
+              <span class="channel-action">저장소 방문 ↗</span>
+            </a>
+
+            <div class="contact-channel-meta">
+              <span>📍 위치: 부천 / 서울 (유한대학교 4.5 졸업 예정)</span>
+              <span>⚡ 빠른 응답: 상시 확인 및 24시간 이내 회신</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
