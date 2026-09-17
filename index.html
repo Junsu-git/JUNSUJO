@@ -1344,6 +1344,231 @@
       }
     }
 
+    /* ==========================================================================
+       More Works & Assignments Section (Horizontal Cards)
+       ========================================================================== */
+    .more-works-area {
+      margin-top: 70px;
+      padding-top: 50px;
+      border-top: 1px solid var(--line);
+    }
+
+    .more-works-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 24px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+
+    .more-works-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      margin-bottom: 0;
+    }
+
+    .more-works-description {
+      max-width: 520px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+
+    .archive-card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .archive-card {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+    }
+
+    .archive-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--line-strong);
+      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.35), 0 0 24px rgba(102, 192, 244, 0.1);
+    }
+
+    .archive-card.is-upcoming {
+      opacity: 0.72;
+    }
+
+    .archive-card.is-upcoming:hover {
+      transform: none;
+      border-color: var(--line);
+      box-shadow: none;
+    }
+
+    .archive-card-thumbnail {
+      position: relative;
+      background: linear-gradient(135deg, rgba(20, 38, 58, 0.9), rgba(11, 21, 36, 0.95));
+      border-right: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      text-align: center;
+      min-height: 180px;
+    }
+
+    .archive-card-thumb-badge {
+      font-size: 0.68rem;
+      font-weight: 850;
+      letter-spacing: 0.14em;
+      color: var(--blue-bright);
+      margin-bottom: 12px;
+    }
+
+    .archive-card-thumb-icon {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      filter: drop-shadow(0 4px 12px rgba(102, 192, 244, 0.2));
+    }
+
+    .archive-card-thumb-sub {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    .archive-card-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px 28px;
+    }
+
+    .archive-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .badge-category {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--blue-bright);
+      background: rgba(102, 192, 244, 0.1);
+      padding: 4px 9px;
+      border-radius: 6px;
+      border: 1px solid rgba(102, 192, 244, 0.2);
+    }
+
+    .badge-status {
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 999px;
+    }
+
+    .badge-status.status-complete {
+      color: #eaff9f;
+      background: rgba(164, 208, 7, 0.12);
+      border: 1px solid rgba(164, 208, 7, 0.3);
+    }
+
+    .badge-status.status-upcoming {
+      color: #d1dbe5;
+      background: rgba(145, 168, 187, 0.12);
+      border: 1px solid rgba(145, 168, 187, 0.25);
+    }
+
+    .badge-date {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-left: auto;
+    }
+
+    .archive-card-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.35;
+      margin: 0 0 10px;
+      color: var(--text);
+    }
+
+    .archive-card-summary {
+      font-size: 0.92rem;
+      color: #b1c4d4;
+      line-height: 1.62;
+      margin: 0 0 18px;
+      word-break: keep-all;
+    }
+
+    .archive-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
+
+    .archive-card-footer .tag-list {
+      margin: 0;
+      gap: 6px;
+    }
+
+    .archive-card-footer .tag-list li {
+      font-size: 0.68rem;
+      padding: 5px 8px;
+    }
+
+    .archive-link-btn {
+      min-height: 40px;
+      padding: 0 16px;
+      font-size: 0.82rem;
+      white-space: nowrap;
+      margin-left: auto;
+    }
+
+    @media (max-width: 768px) {
+      .archive-card {
+        grid-template-columns: 1fr;
+      }
+
+      .archive-card-thumbnail {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        min-height: 130px;
+        padding: 18px;
+      }
+
+      .archive-card-content {
+        padding: 20px 18px;
+      }
+
+      .badge-date {
+        margin-left: 0;
+        width: 100%;
+      }
+
+      .archive-card-footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .archive-link-btn {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html {
         scroll-behavior: auto;
@@ -1389,6 +1614,7 @@
       <nav class="site-nav" id="site-nav" aria-label="주요 메뉴">
         <a href="#hero" aria-current="true">소개</a>
         <a href="#projects">프로젝트</a>
+        <a href="#assignments">과제 아카이브</a>
         <a href="#experience">경험·학력</a>
         <a href="#skills">개발 역량</a>
         <a href="#contact">연락처</a>
@@ -1628,6 +1854,82 @@
             </div>
           </div>
         </article>
+
+        <!-- More Works & Assignments Subsection -->
+        <div class="more-works-area reveal" id="assignments" data-nav-section>
+          <header class="more-works-header">
+            <div>
+              <p class="section-label" data-section-label data-en="MORE WORKS &amp; ARCHIVE">과제 아카이브</p>
+              <h3 class="more-works-title">전공 과제 및 추가 작업</h3>
+            </div>
+            <p class="more-works-description">
+              전공 포트폴리오 수업 및 프로젝트 과정에서 수행한 개별 과제, 시스템 프로토타입 결과물, 기획 및 기술 분석 보고서를 단계별로 아카이빙합니다.
+            </p>
+          </header>
+
+          <div class="archive-card-list">
+            <!-- Card 1: Sample Assignment 01 -->
+            <article class="archive-card">
+              <div class="archive-card-thumbnail">
+                <div class="archive-card-thumb-badge">ASSIGNMENT 01</div>
+                <div class="archive-card-thumb-icon">🎮</div>
+                <span class="archive-card-thumb-sub">PROTOTYPE &amp; DOCS</span>
+              </div>
+              <div class="archive-card-content">
+                <div class="archive-card-meta">
+                  <span class="badge-category">전공 포트폴리오 과제</span>
+                  <span class="badge-status status-complete">제출 완료</span>
+                  <span class="badge-date">2026.09 · 1주차</span>
+                </div>
+                <h4 class="archive-card-title">01. 게임 플레이 루프 분석 및 FSM 상태 전이 프로토타입</h4>
+                <p class="archive-card-summary">
+                  핵심 게임 플레이 루프의 단계별 규칙을 정의하고, Unity 환경에서 FSM(유한 상태 머신) 기반의 적 AI 순찰·추적·공격 상태 전이를 구현한 과제 결과물입니다.
+                </p>
+                <div class="archive-card-footer">
+                  <ul class="tag-list" aria-label="사용 기술">
+                    <li>Unity 2022.3</li>
+                    <li>C#</li>
+                    <li>FSM Pattern</li>
+                    <li>Game Loop</li>
+                  </ul>
+                  <a class="button button-primary archive-link-btn" href="assignments/assignment-01.html">
+                    과제 결과물 보기 <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 2: Upcoming Assignment 02 -->
+            <article class="archive-card is-upcoming">
+              <div class="archive-card-thumbnail">
+                <div class="archive-card-thumb-badge">ASSIGNMENT 02</div>
+                <div class="archive-card-thumb-icon">🗺️</div>
+                <span class="archive-card-thumb-sub">LEVEL DESIGN</span>
+              </div>
+              <div class="archive-card-content">
+                <div class="archive-card-meta">
+                  <span class="badge-category">전공 포트폴리오 과제</span>
+                  <span class="badge-status status-upcoming">진행 예정</span>
+                  <span class="badge-date">2026.09 · 2주차</span>
+                </div>
+                <h4 class="archive-card-title">02. 타일맵 기반 레벨 디자인 및 Cinemachine 카메라 연동</h4>
+                <p class="archive-card-summary">
+                  2D Grid 타일맵을 활용한 스테이지 기믹 배치 및 Cinemachine Virtual Camera의 충돌 억제(Confiner) 영역 설계를 다루는 차주 과제 슬롯입니다.
+                </p>
+                <div class="archive-card-footer">
+                  <ul class="tag-list" aria-label="사용 기술">
+                    <li>Unity 2D</li>
+                    <li>Tilemap</li>
+                    <li>Cinemachine</li>
+                  </ul>
+                  <button class="button pending-button archive-link-btn" type="button" disabled>
+                    과제 준비 중 <span aria-hidden="true">·</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
 
