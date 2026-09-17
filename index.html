@@ -477,6 +477,13 @@
         linear-gradient(140deg, #32213b, #22243b 52%, #392a21);
     }
 
+    .media-stage.capstone-stage {
+      background:
+        radial-gradient(circle at 72% 30%, rgba(184, 166, 255, 0.28), transparent 18%),
+        radial-gradient(circle at 25% 70%, rgba(102, 192, 244, 0.24), transparent 22%),
+        linear-gradient(140deg, #24143a, #151a32 52%, #11253a);
+    }
+
     .media-stage::before,
     .media-stage::after {
       content: "";
@@ -1647,7 +1654,7 @@
         <header class="section-header reveal">
           <div>
             <p class="section-label" data-section-label data-en="PROJECTS">프로젝트</p>
-            <h2 class="section-title">기획을 실제 결과물로<br>연결한 세 가지 작업</h2>
+            <h2 class="section-title">기획을 실제 결과물로<br>연결한 네 가지 작업</h2>
           </div>
           <p class="section-description">모든 프로젝트를 같은 기준으로 비교할 수 있도록 개요, 담당 역할, 문제 해결, 결과·증거 순서로 정리했습니다.</p>
         </header>
@@ -1657,7 +1664,7 @@
             <div class="media-stage" aria-label="내 약국에는 정상이 없다 프로젝트 이미지 자리">
               <div class="media-grid" aria-hidden="true"></div>
               <div class="media-label">
-                <span>MEDIA SLOT · 추후 수정</span>
+                <span>MEDIA SLOT · 인게임 믹싱 &amp; 조제</span>
                 <strong>대표 이미지 / 플레이 화면</strong>
               </div>
             </div>
@@ -1674,8 +1681,8 @@
                 <li>Codex Workflow</li>
               </ul>
               <div class="project-actions">
-                <a class="button button-primary" href="#pharmacy-details">케이스 스터디 보기</a>
-                <button class="button pending-button" type="button" disabled>플레이 링크 · 추후 수정</button>
+                <a class="button button-primary" href="projects/project-01-pharmacy.html">프로젝트 상세 리뷰 보기 ↗</a>
+                <a class="button" href="#pharmacy-details">요약 보기</a>
               </div>
             </div>
           </div>
@@ -1727,7 +1734,7 @@
             <div class="media-stage nuri-stage" aria-label="누리살이 프로젝트 이미지 자리">
               <div class="media-grid" aria-hidden="true"></div>
               <div class="media-label">
-                <span>MEDIA SLOT · 추후 수정</span>
+                <span>MEDIA SLOT · AI 기술상 출품작</span>
                 <strong>대표 이미지 / 플레이 화면</strong>
               </div>
             </div>
@@ -1741,8 +1748,8 @@
                 <li>Unity</li><li>GameAify</li><li>Clip Studio</li><li>GitHub</li><li>Gemini</li>
               </ul>
               <div class="project-actions">
-                <a class="button button-primary" href="#nuri-details">케이스 스터디 보기</a>
-                <button class="button pending-button" type="button" disabled>플레이 링크 · 추후 수정</button>
+                <a class="button button-primary" href="projects/project-02-nuri.html">프로젝트 상세 리뷰 보기 ↗</a>
+                <a class="button" href="#nuri-details">요약 보기</a>
               </div>
             </div>
           </div>
@@ -1794,7 +1801,7 @@
             <div class="media-stage warrior-stage" aria-label="최후의 전사 프로젝트 이미지 자리">
               <div class="media-grid" aria-hidden="true"></div>
               <div class="media-label">
-                <span>MEDIA SLOT · 추후 수정</span>
+                <span>MEDIA SLOT · Figma 컴포넌트 &amp; 룰북</span>
                 <strong>Figma 제작물 / 룰북</strong>
               </div>
             </div>
@@ -1807,8 +1814,8 @@
                 <li>Figma</li><li>Notion</li><li>Google Docs</li><li>Gemini</li><li>NotebookLM</li>
               </ul>
               <div class="project-actions">
-                <a class="button button-primary" href="#warrior-details">케이스 스터디 보기</a>
-                <button class="button pending-button" type="button" disabled>룰북 링크 · 추후 수정</button>
+                <a class="button button-primary" href="projects/project-03-warrior.html">프로젝트 상세 리뷰 보기 ↗</a>
+                <a class="button" href="#warrior-details">요약 보기</a>
               </div>
             </div>
           </div>
@@ -1855,6 +1862,73 @@
           </div>
         </article>
 
+        <article class="featured-project case-study reveal" aria-labelledby="capstone-title">
+          <div class="featured-top">
+            <div class="media-stage capstone-stage" aria-label="2026 캡스톤 디자인 프로젝트 이미지 자리">
+              <div class="media-grid" aria-hidden="true"></div>
+              <div class="media-label">
+                <span>MEDIA SLOT · 3D 액션 시스템</span>
+                <strong>FSM 상태 머신 &amp; 인게임 전투</strong>
+              </div>
+            </div>
+
+            <div class="featured-summary">
+              <span class="project-result" style="color: #dfd6ff; border-color: rgba(184, 166, 255, 0.4); background: rgba(184, 166, 255, 0.15);">2026 캡스톤 디자인 (졸업작품)</span>
+              <span class="project-type">UNITY · FSM ACTION SYSTEM</span>
+              <h3 id="capstone-title">2026 캡스톤 디자인<br aria-hidden="true">Unity 프로젝트</h3>
+              <p>모듈형 FSM 아키텍처와 반응형 액션 시스템을 결합한 3D 전투 졸업작품 프로젝트입니다.</p>
+              <ul class="tag-list" aria-label="캡스톤 프로젝트 사용 기술">
+                <li>Unity 2022.3</li><li>C#</li><li>FSM Pattern</li><li>Git-Flow</li><li>Notion</li>
+              </ul>
+              <div class="project-actions">
+                <a class="button button-primary" href="projects/project-04-capstone.html">프로젝트 상세 리뷰 보기 ↗</a>
+                <a class="button" href="#capstone-details">요약 보기</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="featured-details" id="capstone-details">
+            <div class="tab-list" role="tablist" aria-label="2026 캡스톤 디자인 상세 정보">
+              <button class="tab-button" id="capstone-overview-tab" type="button" role="tab" aria-selected="true" aria-controls="capstone-overview-panel">개요</button>
+              <button class="tab-button" id="capstone-role-tab" type="button" role="tab" aria-selected="false" aria-controls="capstone-role-panel" tabindex="-1">담당 역할</button>
+              <button class="tab-button" id="capstone-process-tab" type="button" role="tab" aria-selected="false" aria-controls="capstone-process-panel" tabindex="-1">문제 해결</button>
+              <button class="tab-button" id="capstone-proof-tab" type="button" role="tab" aria-selected="false" aria-controls="capstone-proof-panel" tabindex="-1">결과·증거</button>
+            </div>
+
+            <div class="tab-panel" id="capstone-overview-panel" role="tabpanel" aria-labelledby="capstone-overview-tab">
+              <div class="detail-grid">
+                <div class="detail-box"><strong>기간</strong><p>2026.09 — 2026.12</p></div>
+                <div class="detail-box"><strong>구분</strong><p>졸업작품 (캡스톤 디자인)</p></div>
+                <div class="detail-box"><strong>역할</strong><p>메인 시스템 개발자 &amp; 기획</p></div>
+              </div>
+            </div>
+
+            <div class="tab-panel" id="capstone-role-panel" role="tabpanel" aria-labelledby="capstone-role-tab" hidden>
+              <div class="detail-grid">
+                <div class="detail-box"><strong>ACTION COMBAT</strong><p>타격 판정과 히트스탑, 패링을 프레임 단위로 제어하는 전투 시스템을 설계했습니다.</p></div>
+                <div class="detail-box"><strong>AI FSM</strong><p>순찰, 추적, 콤보 공격을 관리하는 인터페이스 기반 유한 상태 머신을 구축했습니다.</p></div>
+                <div class="detail-box"><strong>DATA PIPELINE</strong><p>ScriptableObject 기반으로 몬스터와 스킬 데이터를 모듈화했습니다.</p></div>
+              </div>
+            </div>
+
+            <div class="tab-panel" id="capstone-process-panel" role="tabpanel" aria-labelledby="capstone-process-tab" hidden>
+              <div class="detail-grid">
+                <div class="detail-box"><strong>확장성 확보</strong><p>상태 추가 시 기존 코드를 수정하지 않는 개방-폐쇄 원칙(OCP)을 적용했습니다.</p></div>
+                <div class="detail-box"><strong>시각적 디버깅</strong><p>Scene 뷰 Gizmos로 AI 시야각과 판정 반경을 실시간으로 시각화했습니다.</p></div>
+                <div class="detail-box"><strong>단계별 마일스톤</strong><p>플레이 루프부터 보스전 기믹까지 4단계 마일스톤을 수립하여 관리 중입니다.</p></div>
+              </div>
+            </div>
+
+            <div class="tab-panel" id="capstone-proof-panel" role="tabpanel" aria-labelledby="capstone-proof-tab" hidden>
+              <div class="detail-grid">
+                <div class="detail-box"><strong>산출물</strong><p>상세 리뷰 페이지 &amp; WebGL 빌드</p></div>
+                <div class="detail-box"><strong>아키텍처</strong><p>C# IState 인터페이스 &amp; 이벤트 버스</p></div>
+                <div class="detail-box"><strong>진행 상태</strong><p>중간평가 마일스톤 정상 진행 중</p></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
         <!-- More Works & Assignments Subsection -->
         <div class="more-works-area reveal" id="assignments" data-nav-section>
           <header class="more-works-header">
@@ -1868,29 +1942,30 @@
           </header>
 
           <div class="archive-card-list">
-            <!-- Card 1: Assignment 01 (매일 게임 플레이) -->
+            <!-- Card 1: Assignment 01 (Study: 자바 람다 배우기 14일 학습 계획) -->
             <article class="archive-card">
               <div class="archive-card-thumbnail">
                 <div class="archive-card-thumb-badge">ASSIGNMENT 01</div>
-                <div class="archive-card-thumb-icon">🎮</div>
-                <span class="archive-card-thumb-sub">DAILY PLAY &amp; FSM</span>
+                <div class="archive-card-thumb-icon">☕</div>
+                <span class="archive-card-thumb-sub">JAVA LAMBDAS 14-DAY</span>
               </div>
               <div class="archive-card-content">
                 <div class="archive-card-meta">
-                  <span class="badge-category">매일 게임 플레이 과제</span>
-                  <span class="badge-status status-complete">템플릿 유지</span>
-                  <span class="badge-date">2026.09 · 1주차</span>
+                  <span class="badge-category">도서 스터디 과제</span>
+                  <span class="badge-status status-upcoming">계획 템플릿</span>
+                  <span class="badge-date">10일~24일 (14일간)</span>
                 </div>
-                <h4 class="archive-card-title">01. [매일 게임 플레이] 게임 플레이 루프 분석 및 FSM 상태 전이 프로토타입</h4>
+                <h4 class="archive-card-title">01. [Study] 『자바 람다 배우기』 14일 학습 계획 및 기록 템플릿</h4>
                 <p class="archive-card-summary">
-                  핵심 게임 플레이 루프의 단계별 규칙을 정의하고, Unity 환경에서 FSM(유한 상태 머신) 기반의 적 AI 순찰·추적·공격 상태 전이를 구현한 과제 결과물 템플릿입니다.
+                  도서 『자바 람다 배우기』(토비 웨슨 저)를 기반으로 AI 생성 코드 판단 역량을 기르기 위한 14일 집중 스터디 계획표 및 매일 응용 과제·YouTube 연동 기록 템플릿입니다.
                 </p>
                 <div class="archive-card-footer">
                   <ul class="tag-list" aria-label="사용 기술">
-                    <li>Unity 2022.3</li>
-                    <li>C#</li>
-                    <li>FSM Pattern</li>
-                    <li>Game Loop</li>
+                    <li>Java 람다</li>
+                    <li>함수형 인터페이스</li>
+                    <li>타입 추론</li>
+                    <li>14일 스터디</li>
+                    <li>AI 코드 리뷰</li>
                   </ul>
                   <a class="button button-primary archive-link-btn" href="assignments/assignment-01.html">
                     과제 결과물 보기 <span aria-hidden="true">→</span>
@@ -1899,10 +1974,43 @@
               </div>
             </article>
 
-            <!-- Card 2: Assignment 02 (게임 이벤트 기획서) -->
+            <!-- Card 2: Assignment 02 (GamePlay: 인기순위 50위 분석 & 게임 플레이 이력) -->
+            <article class="archive-card">
+              <div class="archive-card-thumbnail">
+                <div class="archive-card-thumb-badge">ASSIGNMENT 02</div>
+                <div class="archive-card-thumb-icon">🎮</div>
+                <span class="archive-card-thumb-sub">RANK TOP 50 &amp; ARCHIVE</span>
+              </div>
+              <div class="archive-card-content">
+                <div class="archive-card-meta">
+                  <span class="badge-category">게임 플레이 분석</span>
+                  <span class="badge-status status-complete">2개 탭 구성</span>
+                  <span class="badge-date">2026.09 기준</span>
+                </div>
+                <h4 class="archive-card-title">02. [GamePlay] 모바일 인기순위 50위 분석 &amp; 게임 플레이 이력</h4>
+                <p class="archive-card-summary">
+                  모바일인덱스 실시간 인기순위 TOP 45 데이터 및 상위 게임(제우스, 리니지M) 실기 분석과, 5년간 51레벨을 달성한 『디즈니 킹덤』 플레이 이력을 버튼 탭 바 스위칭으로 제공합니다.
+                </p>
+                <div class="archive-card-footer">
+                  <ul class="tag-list" aria-label="사용 기술">
+                    <li>모바일인덱스</li>
+                    <li>인기순위 50위</li>
+                    <li>디즈니 킹덤</li>
+                    <li>리니지M</li>
+                    <li>제우스: 오만의 신</li>
+                    <li>탭 바 전환</li>
+                  </ul>
+                  <a class="button button-primary archive-link-btn" href="assignments/assignment-02.html">
+                    과제 결과물 보기 <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 3: Assignment 03 (게임 이벤트 기획서) -->
             <article class="archive-card">
               <div class="archive-card-thumbnail" style="background: linear-gradient(180deg, rgba(8, 17, 30, 0.35), rgba(8, 17, 30, 0.88)), url('assets/erins-fragments/event-banner-v2-nao.png') center/cover no-repeat;">
-                <div class="archive-card-thumb-badge" style="background: rgba(6, 14, 24, 0.7); padding: 3px 8px; border-radius: 4px;">ASSIGNMENT 02</div>
+                <div class="archive-card-thumb-badge" style="background: rgba(6, 14, 24, 0.7); padding: 3px 8px; border-radius: 4px;">ASSIGNMENT 03</div>
                 <div class="archive-card-thumb-icon" style="filter: drop-shadow(0 4px 10px rgba(0,0,0,0.8));">✨</div>
                 <span class="archive-card-thumb-sub" style="color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.8); font-weight: 800;">마비노기 모바일</span>
               </div>
@@ -1912,7 +2020,7 @@
                   <span class="badge-status status-complete">기획서 완료</span>
                   <span class="badge-date">2026.09.17</span>
                 </div>
-                <h4 class="archive-card-title">02. [게임 이벤트 기획서] 마비노기 모바일 — 『에린의 조각들』</h4>
+                <h4 class="archive-card-title">03. [게임 이벤트 기획서] 마비노기 모바일 — 『에린의 조각들』</h4>
                 <p class="archive-card-summary">
                   『트렌드 코리아 2026』의 픽셀라이프 키워드를 바탕으로, 짧은 접속에서도 다양한 선택과 완결감을 주는 마비노기 모바일 선택형 일상 이벤트 '에린의 조각들' 상세 기획서입니다.
                 </p>
@@ -1924,7 +2032,7 @@
                     <li>픽셀라이프</li>
                     <li>원페이저 &amp; 상세스펙</li>
                   </ul>
-                  <a class="button button-primary archive-link-btn" href="assignments/assignment-02.html">
+                  <a class="button button-primary archive-link-btn" href="assignments/assignment-03.html">
                     기획서 상세 보기 <span aria-hidden="true">→</span>
                   </a>
                 </div>
