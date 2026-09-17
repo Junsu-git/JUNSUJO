@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="게임의 규칙과 흐름을 설계하는 Unity 게임 개발자 조준수의 포트폴리오">
+  <meta name="description" content="게임의 규칙과 흐름을 설계하고 플레이 가능한 기능으로 연결하는 게임 개발자 조준수의 포트폴리오">
   <meta name="theme-color" content="#0b1524">
-  <meta property="og:title" content="조준수 | Unity Game Developer">
-  <meta property="og:description" content="기획을 플레이 가능한 규칙과 기능으로 연결하는 Unity 게임 개발자 포트폴리오">
+  <meta property="og:title" content="조준수 | Game Developer">
+  <meta property="og:description" content="기획을 플레이 가능한 규칙과 기능으로 연결하는 게임 개발자 포트폴리오">
   <meta property="og:type" content="website">
-  <title>조준수 | Unity Game Developer</title>
+  <title>조준수 | Game Developer</title>
 
   <style>
     :root {
@@ -238,14 +238,155 @@
     }
 
     .hero-grid {
-      display: block;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+      align-items: center;
+      gap: 48px;
+      width: 100%;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
     }
 
     .hero-copy {
       width: 100%;
-      max-width: 1000px;
-      margin-inline: auto;
       text-align: left;
+    }
+
+    /* Hero Profile Card (Right Column Balance) */
+    .hero-profile-card {
+      background: linear-gradient(145deg, rgba(16, 32, 51, 0.92), rgba(8, 17, 30, 0.98));
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      position: relative;
+    }
+
+    .hero-profile-card::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: 28px;
+      right: 28px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--blue-bright), transparent);
+    }
+
+    .profile-card-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .profile-avatar-badge {
+      position: relative;
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(102, 192, 244, 0.2), rgba(16, 29, 45, 0.9));
+      border: 1px solid var(--line-strong);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+
+    .avatar-status-dot {
+      position: absolute;
+      bottom: -2px;
+      right: -2px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #a4d007;
+      border: 2px solid #08111e;
+      box-shadow: 0 0 8px #a4d007;
+    }
+
+    .profile-role-tag {
+      font-size: 0.72rem;
+      font-weight: 850;
+      letter-spacing: 0.12em;
+      color: var(--blue-bright);
+      text-transform: uppercase;
+    }
+
+    .profile-name {
+      margin: 2px 0 0;
+      font-size: 1.35rem;
+      font-weight: 850;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+
+    .profile-en {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 600;
+      margin-left: 6px;
+    }
+
+    .profile-meta-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .profile-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      font-size: 0.88rem;
+    }
+
+    .profile-meta-item .meta-label {
+      font-size: 0.73rem;
+      font-weight: 800;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .profile-meta-item .meta-value {
+      color: #dbe7f2;
+      line-height: 1.5;
+    }
+
+    .profile-card-footer {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .profile-quick-link {
+      padding: 6px 13px;
+      border-radius: 6px;
+      background: rgba(102, 192, 244, 0.08);
+      border: 1px solid rgba(102, 192, 244, 0.22);
+      color: var(--blue-bright);
+      font-size: 0.8rem;
+      font-weight: 750;
+      text-decoration: none;
+      transition: all 180ms ease;
+    }
+
+    .profile-quick-link:hover {
+      background: rgba(102, 192, 244, 0.2);
+      color: #fff;
+      transform: translateY(-2px);
+      text-decoration: none;
     }
 
     .eyebrow {
@@ -373,11 +514,11 @@
     }
 
     .section-header {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(250px, 0.54fr);
-      align-items: end;
-      gap: 40px;
-      margin-bottom: 44px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 36px;
     }
 
     .section-label {
@@ -385,7 +526,7 @@
       align-items: center;
       gap: 11px;
       width: fit-content;
-      margin: 0 0 17px;
+      margin: 0 0 10px;
       color: var(--text);
       font-size: 1rem;
       font-weight: 850;
@@ -419,17 +560,215 @@
 
     .section-title {
       margin-bottom: 0;
-      font-size: clamp(2.15rem, 5vw, 4.1rem);
-      line-height: 1.05;
-      letter-spacing: -0.055em;
+      font-size: clamp(2rem, 4.2vw, 3.2rem);
+      line-height: 1.15;
+      letter-spacing: -0.04em;
       word-break: keep-all;
     }
 
     .section-description {
-      margin-bottom: 3px;
+      margin: 4px 0 0;
       color: var(--muted);
-      line-height: 1.75;
+      font-size: 1.05rem;
+      line-height: 1.68;
+      max-width: 760px;
       word-break: keep-all;
+    }
+
+    /* 2x2 Grid for Headliner Projects */
+    .projects-grid-2x2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 880px) {
+      .projects-grid-2x2 {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
+    .project-grid-card {
+      background: linear-gradient(145deg, rgba(20, 38, 58, 0.9), rgba(10, 21, 35, 0.98));
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+    }
+
+    .project-grid-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--line-strong);
+      box-shadow: 0 18px 45px rgba(10, 25, 45, 0.5);
+    }
+
+    .project-card-media {
+      position: relative;
+      height: 180px;
+      background: linear-gradient(135deg, rgba(16, 32, 51, 0.9), rgba(6, 14, 24, 0.95));
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 16px 20px;
+      overflow: hidden;
+    }
+
+    .project-card-media::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(102, 192, 244, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(102, 192, 244, 0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+    }
+
+    .project-card-num-badge {
+      position: absolute;
+      top: 14px;
+      left: 18px;
+      font-size: 0.72rem;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      color: var(--blue-bright);
+      background: rgba(102, 192, 244, 0.12);
+      border: 1px solid rgba(102, 192, 244, 0.3);
+      padding: 3px 9px;
+      border-radius: 6px;
+    }
+
+    .project-card-slot-label {
+      position: relative;
+      z-index: 2;
+      color: #b9d0e2;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .project-card-slot-label strong {
+      display: block;
+      color: #fff;
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin-top: 2px;
+    }
+
+    .project-card-body {
+      padding: 22px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .project-card-header {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .project-card-role-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: 0.78rem;
+      color: var(--gold);
+      font-weight: 750;
+    }
+
+    .project-card-title {
+      margin: 0;
+      font-size: 1.35rem;
+      font-weight: 850;
+      line-height: 1.25;
+      letter-spacing: -0.03em;
+      color: var(--text);
+    }
+
+    .project-card-desc {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #a6bccd;
+      line-height: 1.65;
+      word-break: keep-all;
+    }
+
+    .project-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-top: 14px;
+      border-top: 1px solid rgba(147, 184, 214, 0.1);
+    }
+
+    .project-card-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .project-card-tags li {
+      font-size: 0.74rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #b5cad9;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-weight: 650;
+    }
+
+    .project-detail-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.84rem;
+      font-weight: 800;
+      background: rgba(102, 192, 244, 0.1);
+      border: 1px solid rgba(102, 192, 244, 0.35);
+      color: var(--blue-bright);
+      text-decoration: none;
+      transition: all 180ms ease;
+      white-space: nowrap;
+    }
+
+    .project-detail-btn:hover {
+      background: var(--blue);
+      color: #06111d;
+      border-color: transparent;
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+
+    /* Archive Tag Chip for Decluttering */
+    .archive-tag-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 6px;
+      background: rgba(102, 192, 244, 0.09);
+      border: 1px solid rgba(102, 192, 244, 0.25);
+      color: var(--blue-bright);
+      font-size: 0.82rem;
+      font-weight: 750;
     }
 
     .featured-project {
@@ -1611,7 +1950,7 @@
     <div class="header-inner">
       <a class="brand" href="#hero" aria-label="조준수 포트폴리오 첫 화면으로 이동">
         <span class="brand-mark" aria-hidden="true">J</span>
-        <span class="brand-copy">조준수<small>UNITY GAME DEVELOPER</small></span>
+        <span class="brand-copy">조준수<small>GAME DEVELOPER</small></span>
       </a>
 
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="메뉴 열기">
@@ -1622,8 +1961,8 @@
         <a href="#hero" aria-current="true">소개</a>
         <a href="#projects">프로젝트</a>
         <a href="#assignments">과제 아카이브</a>
+        <a href="#skills">기술 스택</a>
         <a href="#experience">경험·학력</a>
-        <a href="#skills">개발 역량</a>
         <a href="#contact">연락처</a>
       </nav>
     </div>
@@ -1632,302 +1971,225 @@
   <main id="main-content">
     <section class="hero" id="hero" data-nav-section>
       <div class="container hero-grid">
+        <!-- Hero Left Column -->
         <div class="hero-copy reveal">
           <p class="section-label" data-section-label data-en="ABOUT">소개</p>
-          <p class="eyebrow">Unity Game Developer · Portfolio 2026</p>
+          <p class="eyebrow">Game Developer · Portfolio 2026</p>
           <h1>조준수<span class="outline">JoJunsu</span></h1>
           <p class="hero-lead">
-            게임의 규칙과 흐름을 설계하고, 이를 <strong>플레이 가능한 기능으로 연결하는</strong>
-            Unity 게임 개발자입니다.
+            게임의 규칙과 흐름을 설계하고, 이를 <strong>플레이 가능한 기능으로 연결하는</strong> 게임 개발자입니다.
           </p>
           <div class="hero-actions">
             <a class="button button-primary" href="#projects">프로젝트 살펴보기 <span aria-hidden="true">↓</span></a>
+            <a class="button" href="#assignments">과제 아카이브 <span aria-hidden="true">→</span></a>
             <a class="button" href="mailto:wnstn2228@naver.com">이메일 보내기</a>
+          </div>
+        </div>
+
+        <!-- Hero Right Column (Balanced Profile Card) -->
+        <div class="hero-profile-card reveal" aria-label="개발자 핵심 프로필 요약">
+          <div class="profile-card-header">
+            <div class="profile-avatar-badge">
+              <span>🎮</span>
+              <div class="avatar-status-dot" title="프로젝트 진행 중 / 구직 활동 중"></div>
+            </div>
+            <div>
+              <div class="profile-role-tag">GAME DEVELOPER</div>
+              <h3 class="profile-name">조준수 <span class="profile-en">Jo Junsu</span></h3>
+            </div>
+          </div>
+
+          <div class="profile-meta-list">
+            <div class="profile-meta-item">
+              <span class="meta-label">전공 &amp; 학력</span>
+              <span class="meta-value">
+                유한대학교 컴퓨터소프트웨어학과 게임콘텐츠전공<br>
+                <small style="color: var(--gold); font-weight: 750;">전 학기 평점 4.5 / 성적 우수</small>
+              </span>
+            </div>
+            <div class="profile-meta-item">
+              <span class="meta-label">핵심 직무</span>
+              <span class="meta-value"><strong>게임 클라이언트 개발 &amp; 시스템 기획</strong></span>
+            </div>
+            <div class="profile-meta-item">
+              <span class="meta-label">주요 기술 스택</span>
+              <span class="meta-value">C# · Unity · 객체지향 설계 · FSM 패턴 · Git/GitHub</span>
+            </div>
+            <div class="profile-meta-item">
+              <span class="meta-label">현재 활동</span>
+              <span class="meta-value">
+                <span style="color: #d8ff6b; font-weight: 750;">● 2026 캡스톤 디자인 팀 리드</span> · 신입/인턴 지원
+              </span>
+            </div>
+          </div>
+
+          <div class="profile-card-footer">
+            <a class="profile-quick-link" href="https://github.com/Junsu-git" target="_blank" rel="noopener noreferrer">
+              GitHub ↗
+            </a>
+            <a class="profile-quick-link" href="mailto:wnstn2228@naver.com">
+              Email ↗
+            </a>
+            <a class="profile-quick-link" href="#assignments">
+              과제 아카이브 →
+            </a>
           </div>
         </div>
       </div>
       <div class="scroll-cue" aria-hidden="true">SCROLL TO EXPLORE</div>
     </section>
 
+    <!-- Projects Section (2x2 Grid) -->
     <section id="projects" data-nav-section>
       <div class="container">
         <header class="section-header reveal">
-          <div>
-            <p class="section-label" data-section-label data-en="PROJECTS">프로젝트</p>
-            <h2 class="section-title">기획을 실제 결과물로<br>연결한 네 가지 작업</h2>
-          </div>
-          <p class="section-description">모든 프로젝트를 같은 기준으로 비교할 수 있도록 개요, 담당 역할, 문제 해결, 결과·증거 순서로 정리했습니다.</p>
+          <p class="section-label" data-section-label data-en="PROJECTS">프로젝트</p>
+          <h2 class="section-title">기획을 플레이 가능한 기능으로 구현한 4대 프로젝트</h2>
+          <p class="section-description">
+            코어 루프 설계부터 시스템 구조, 담당 역할 및 구현 결과를 한눈에 확인할 수 있는 대표 프로젝트입니다.
+          </p>
         </header>
 
-        <article class="featured-project case-study reveal" aria-labelledby="pharmacy-title">
-          <div class="featured-top">
-            <div class="media-stage" aria-label="내 약국에는 정상이 없다 프로젝트 이미지 자리">
-              <div class="media-grid" aria-hidden="true"></div>
-              <div class="media-label">
-                <span>MEDIA SLOT · 인게임 믹싱 &amp; 조제</span>
-                <strong>대표 이미지 / 플레이 화면</strong>
+        <!-- 2x2 Grid Layout for Headliner Projects -->
+        <div class="projects-grid-2x2 reveal">
+          
+          <!-- (0, 0) Project 01: 내 약국에는 정상이 없다 -->
+          <article class="project-grid-card">
+            <div class="project-card-media">
+              <span class="project-card-num-badge">PROJECT 01</span>
+              <div class="project-card-slot-label">
+                <span>IN-GAME MIXING &amp; TYCOON</span>
+                <strong>내 약국에는 정상이 없다.</strong>
               </div>
             </div>
-
-            <div class="featured-summary">
-              <span class="project-type">FEATURED · UNITY DEVELOPMENT</span>
-              <h3 id="pharmacy-title" aria-label="내 약국에는 정상이 없다.">내 약국에는<br aria-hidden="true">정상이 없다.</h3>
-              <p>핵심 플레이 루프부터 데이터 구조, 게임 기능, UI 연출까지 연결한 기능 개발 프로젝트입니다.</p>
-              <ul class="tag-list" aria-label="사용 기술">
-                <li>Unity</li>
-                <li>Lead Developer</li>
-                <li>GitHub</li>
-                <li>Notion</li>
-                <li>Codex Workflow</li>
-              </ul>
-              <div class="project-actions">
-                <a class="button button-primary" href="projects/project-01-pharmacy.html">프로젝트 상세 리뷰 보기 ↗</a>
-                <a class="button" href="#pharmacy-details">요약 보기</a>
+            <div class="project-card-body">
+              <div class="project-card-header">
+                <div class="project-card-role-row">
+                  <span>리드 개발자 (기능 개발)</span>
+                  <span>·</span>
+                  <span>2026.03 — 2026.07</span>
+                </div>
+                <h3 class="project-card-title">내 약국에는 정상이 없다.</h3>
+                <p class="project-card-desc">
+                  약초 채집부터 시약 조합, 손님 응대까지 이어지는 타이쿤 코어 루프와 인게임 믹싱 시스템, 데이터 테이블 및 UI 연출을 구현했습니다.
+                </p>
+              </div>
+              <div class="project-card-footer">
+                <ul class="project-card-tags">
+                  <li>Unity · C#</li>
+                  <li>조제 타이쿤</li>
+                  <li>FSM 상태머신</li>
+                </ul>
+                <a class="project-detail-btn" href="projects/project-01-pharmacy.html">
+                  상세 리뷰 보기 <span aria-hidden="true">↗</span>
+                </a>
               </div>
             </div>
-          </div>
+          </article>
 
-          <div class="featured-details" id="pharmacy-details">
-            <div class="tab-list" role="tablist" aria-label="내 약국에는 정상이 없다 상세 정보">
-              <button class="tab-button" id="pharmacy-overview-tab" type="button" role="tab" aria-selected="true" aria-controls="pharmacy-overview-panel">개요</button>
-              <button class="tab-button" id="pharmacy-role-tab" type="button" role="tab" aria-selected="false" aria-controls="pharmacy-role-panel" tabindex="-1">담당 역할</button>
-              <button class="tab-button" id="pharmacy-process-tab" type="button" role="tab" aria-selected="false" aria-controls="pharmacy-process-panel" tabindex="-1">문제 해결</button>
-              <button class="tab-button" id="pharmacy-proof-tab" type="button" role="tab" aria-selected="false" aria-controls="pharmacy-proof-panel" tabindex="-1">결과·증거</button>
-            </div>
-
-            <div class="tab-panel" id="pharmacy-overview-panel" role="tabpanel" aria-labelledby="pharmacy-overview-tab">
-              <div class="detail-grid">
-                <div class="detail-box"><strong>기간</strong><p>2026.03 — 2026.07</p></div>
-                <div class="detail-box"><strong>구분</strong><p>기능 개발</p></div>
-                <div class="detail-box"><strong>역할</strong><p>리드 개발자</p></div>
+          <!-- (0, 1) Project 02: 누리살이 -->
+          <article class="project-grid-card">
+            <div class="project-card-media" style="background: linear-gradient(135deg, rgba(20, 45, 30, 0.9), rgba(6, 14, 24, 0.95));">
+              <span class="project-card-num-badge" style="background: rgba(164, 208, 7, 0.15); color: #d8ff6b; border-color: rgba(164, 208, 7, 0.35);">PROJECT 02 · AI 수상작</span>
+              <div class="project-card-slot-label">
+                <span>3D ADVENTURE · KOREAN FOLKLORE</span>
+                <strong>누리살이</strong>
               </div>
             </div>
-
-            <div class="tab-panel" id="pharmacy-role-panel" role="tabpanel" aria-labelledby="pharmacy-role-tab" hidden>
-              <div class="detail-grid">
-                <div class="detail-box"><strong>GAME DESIGN</strong><p>게임을 구성하는 핵심 플레이 루프를 기획했습니다.</p></div>
-                <div class="detail-box"><strong>DATA &amp; FEATURES</strong><p>플레이 루프에 필요한 데이터 구조를 설계하고 게임 기능을 제작했습니다.</p></div>
-                <div class="detail-box"><strong>UI EXPERIENCE</strong><p>게임의 반응과 흐름이 전달되도록 UI 연출을 제작했습니다.</p></div>
+            <div class="project-card-body">
+              <div class="project-card-header">
+                <div class="project-card-role-row">
+                  <span style="color: #d8ff6b;">리드 개발자 (GameAify AI 기술상 수상)</span>
+                  <span>·</span>
+                  <span>2026.07 — 2026.08</span>
+                </div>
+                <h3 class="project-card-title">누리살이</h3>
+                <p class="project-card-desc">
+                  생성형 AI 파이프라인(텍스처, 스토리, NPC 대화)과 게임 엔진을 결합하여 한국 전통 설화를 재해석한 3D 어드벤처 타이틀입니다.
+                </p>
+              </div>
+              <div class="project-card-footer">
+                <ul class="project-card-tags">
+                  <li>Unity</li>
+                  <li>GameAify AI</li>
+                  <li>한국 설화 3D</li>
+                </ul>
+                <a class="project-detail-btn" href="projects/project-02-nuri.html">
+                  상세 리뷰 보기 <span aria-hidden="true">↗</span>
+                </a>
               </div>
             </div>
+          </article>
 
-            <div class="tab-panel" id="pharmacy-process-panel" role="tabpanel" aria-labelledby="pharmacy-process-tab" hidden>
-              <div class="detail-grid">
-                <div class="detail-box"><strong>문제 정의</strong><p class="placeholder-line">구체적인 문제 상황 · 추후 수정</p></div>
-                <div class="detail-box"><strong>해결 과정</strong><p class="placeholder-line">선택한 해결 방법과 판단 근거 · 추후 수정</p></div>
-                <div class="detail-box"><strong>회고</strong><p class="placeholder-line">결과에서 얻은 학습과 개선점 · 추후 수정</p></div>
+          <!-- (1, 0) Project 03: 최후의 전사 -->
+          <article class="project-grid-card">
+            <div class="project-card-media" style="background: linear-gradient(135deg, rgba(45, 30, 20, 0.9), rgba(6, 14, 24, 0.95));">
+              <span class="project-card-num-badge" style="background: rgba(242, 201, 109, 0.15); color: #ffea9f; border-color: rgba(242, 201, 109, 0.35);">PROJECT 03 · 보드게임</span>
+              <div class="project-card-slot-label">
+                <span>TABLETOP STRATEGY &amp; RULEBOOK</span>
+                <strong>최후의 전사</strong>
               </div>
             </div>
-
-            <div class="tab-panel" id="pharmacy-proof-panel" role="tabpanel" aria-labelledby="pharmacy-proof-tab" hidden>
-              <div class="detail-grid">
-                <div class="detail-box"><strong>플레이 영상</strong><p class="placeholder-line">영상 또는 GIF · 추후 수정</p></div>
-                <div class="detail-box"><strong>구현 화면</strong><p class="placeholder-line">스크린샷과 설명 · 추후 수정</p></div>
-                <div class="detail-box"><strong>저장소</strong><p class="placeholder-line">공개 가능한 링크 · 추후 수정</p></div>
+            <div class="project-card-body">
+              <div class="project-card-header">
+                <div class="project-card-role-row">
+                  <span style="color: var(--gold);">총괄 PM · 룰 기획 &amp; Figma 디자인</span>
+                  <span>·</span>
+                  <span>2024.09 — 2024.12</span>
+                </div>
+                <h3 class="project-card-title">최후의 전사</h3>
+                <p class="project-card-desc">
+                  실물 보드게임 메커니즘 기획, 턴제 밸런싱 시뮬레이션, Figma 컴포넌트 시스템 구축 및 12페이지 분량의 공식 룰북 제작을 총괄했습니다.
+                </p>
+              </div>
+              <div class="project-card-footer">
+                <ul class="project-card-tags">
+                  <li>보드게임 기획</li>
+                  <li>Figma 시스템</li>
+                  <li>공식 룰북 PM</li>
+                </ul>
+                <a class="project-detail-btn" href="projects/project-03-warrior.html">
+                  상세 리뷰 보기 <span aria-hidden="true">↗</span>
+                </a>
               </div>
             </div>
-          </div>
-        </article>
+          </article>
 
-        <article class="featured-project case-study reveal" aria-labelledby="nuri-title">
-          <div class="featured-top">
-            <div class="media-stage nuri-stage" aria-label="누리살이 프로젝트 이미지 자리">
-              <div class="media-grid" aria-hidden="true"></div>
-              <div class="media-label">
-                <span>MEDIA SLOT · AI 기술상 출품작</span>
-                <strong>대표 이미지 / 플레이 화면</strong>
+          <!-- (1, 1) Project 04: 2026 캡스톤 디자인 프로젝트 -->
+          <article class="project-grid-card">
+            <div class="project-card-media" style="background: linear-gradient(135deg, rgba(35, 20, 50, 0.9), rgba(6, 14, 24, 0.95));">
+              <span class="project-card-num-badge" style="background: rgba(184, 166, 255, 0.15); color: #ded4ff; border-color: rgba(184, 166, 255, 0.35);">PROJECT 04 · 캡스톤 액션</span>
+              <div class="project-card-slot-label">
+                <span>3D ACTION FSM &amp; GIT-FLOW</span>
+                <strong>2026 캡스톤 디자인 Unity 프로젝트</strong>
               </div>
             </div>
-
-            <div class="featured-summary">
-              <span class="project-result">GameAify AI 기술상 수상</span>
-              <span class="project-type">UNITY · FEATURE DEVELOPMENT</span>
-              <h3 id="nuri-title">누리살이</h3>
-              <p>플레이 루프와 재미 요소를 직접 기획하고 구현해 공모전 AI 기술상으로 연결한 프로젝트입니다.</p>
-              <ul class="tag-list" aria-label="누리살이 사용 기술">
-                <li>Unity</li><li>GameAify</li><li>Clip Studio</li><li>GitHub</li><li>Gemini</li>
-              </ul>
-              <div class="project-actions">
-                <a class="button button-primary" href="projects/project-02-nuri.html">프로젝트 상세 리뷰 보기 ↗</a>
-                <a class="button" href="#nuri-details">요약 보기</a>
+            <div class="project-card-body">
+              <div class="project-card-header">
+                <div class="project-card-role-row">
+                  <span style="color: var(--purple);">메인 시스템 개발 &amp; 기획</span>
+                  <span>·</span>
+                  <span>2026.03 — 2026.11 (진행 중)</span>
+                </div>
+                <h3 class="project-card-title">2026 캡스톤 디자인 Unity 프로젝트</h3>
+                <p class="project-card-desc">
+                  FSM 기반 플레이어 전투/스킬 연계 판정, 에너미 AI 공격 패턴, 기획-개발 데이터 파이프라인 및 Git-Flow 브랜치 협업을 총괄하고 있습니다.
+                </p>
+              </div>
+              <div class="project-card-footer">
+                <ul class="project-card-tags">
+                  <li>C# FSM</li>
+                  <li>3D 전투 액션</li>
+                  <li>Git-Flow 협업</li>
+                </ul>
+                <a class="project-detail-btn" href="projects/project-04-capstone.html">
+                  상세 리뷰 보기 <span aria-hidden="true">↗</span>
+                </a>
               </div>
             </div>
-          </div>
+          </article>
 
-          <div class="featured-details" id="nuri-details">
-            <div class="tab-list" role="tablist" aria-label="누리살이 상세 정보">
-              <button class="tab-button" id="nuri-overview-tab" type="button" role="tab" aria-selected="true" aria-controls="nuri-overview-panel">개요</button>
-              <button class="tab-button" id="nuri-role-tab" type="button" role="tab" aria-selected="false" aria-controls="nuri-role-panel" tabindex="-1">담당 역할</button>
-              <button class="tab-button" id="nuri-process-tab" type="button" role="tab" aria-selected="false" aria-controls="nuri-process-panel" tabindex="-1">문제 해결</button>
-              <button class="tab-button" id="nuri-proof-tab" type="button" role="tab" aria-selected="false" aria-controls="nuri-proof-panel" tabindex="-1">결과·증거</button>
-            </div>
-
-            <div class="tab-panel" id="nuri-overview-panel" role="tabpanel" aria-labelledby="nuri-overview-tab">
-              <div class="detail-grid">
-                <div class="detail-box"><strong>기간</strong><p>2025.06 — 2025.09</p></div>
-                <div class="detail-box"><strong>구분</strong><p>기능 개발</p></div>
-                <div class="detail-box"><strong>역할</strong><p>리드 개발자</p></div>
-              </div>
-            </div>
-
-            <div class="tab-panel" id="nuri-role-panel" role="tabpanel" aria-labelledby="nuri-role-tab" hidden>
-              <div class="detail-grid">
-                <div class="detail-box"><strong>PLAY LOOP</strong><p>게임 플레이를 구성하는 핵심 루프를 기획했습니다.</p></div>
-                <div class="detail-box"><strong>FUN FACTOR</strong><p>플레이 과정에서 작동할 재미 요소와 기능을 구체화했습니다.</p></div>
-                <div class="detail-box"><strong>IMPLEMENTATION</strong><p>기획한 기능을 Unity에서 직접 구현했습니다.</p></div>
-              </div>
-            </div>
-
-            <div class="tab-panel" id="nuri-process-panel" role="tabpanel" aria-labelledby="nuri-process-tab" hidden>
-              <div class="detail-grid">
-                <div class="detail-box"><strong>문제 정의</strong><p class="placeholder-line">구체적인 문제 상황 · 추후 수정</p></div>
-                <div class="detail-box"><strong>해결 과정</strong><p class="placeholder-line">선택한 해결 방법과 판단 근거 · 추후 수정</p></div>
-                <div class="detail-box"><strong>회고</strong><p class="placeholder-line">결과에서 얻은 학습과 개선점 · 추후 수정</p></div>
-              </div>
-            </div>
-
-            <div class="tab-panel" id="nuri-proof-panel" role="tabpanel" aria-labelledby="nuri-proof-tab" hidden>
-              <div class="detail-grid">
-                <div class="detail-box"><strong>수상</strong><p>GameAify 게임 제작 공모전 AI 기술상</p></div>
-                <div class="detail-box"><strong>구현 화면</strong><p class="placeholder-line">스크린샷과 기능 설명 · 추후 수정</p></div>
-                <div class="detail-box"><strong>저장소</strong><p class="placeholder-line">공개 가능한 링크 · 추후 수정</p></div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="featured-project case-study reveal" aria-labelledby="warrior-title">
-          <div class="featured-top">
-            <div class="media-stage warrior-stage" aria-label="최후의 전사 프로젝트 이미지 자리">
-              <div class="media-grid" aria-hidden="true"></div>
-              <div class="media-label">
-                <span>MEDIA SLOT · Figma 컴포넌트 &amp; 룰북</span>
-                <strong>Figma 제작물 / 룰북</strong>
-              </div>
-            </div>
-
-            <div class="featured-summary">
-              <span class="project-type">FIGMA · RULEBOOK · PLAYTEST</span>
-              <h3 id="warrior-title">최후의 전사</h3>
-              <p>아이디어를 규칙으로 구체화하고, Figma 제작물과 5회의 테스트를 거쳐 룰북까지 정리한 보드게임 프로젝트입니다.</p>
-              <ul class="tag-list" aria-label="최후의 전사 사용 기술">
-                <li>Figma</li><li>Notion</li><li>Google Docs</li><li>Gemini</li><li>NotebookLM</li>
-              </ul>
-              <div class="project-actions">
-                <a class="button button-primary" href="projects/project-03-warrior.html">프로젝트 상세 리뷰 보기 ↗</a>
-                <a class="button" href="#warrior-details">요약 보기</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="featured-details" id="warrior-details">
-            <div class="tab-list" role="tablist" aria-label="최후의 전사 상세 정보">
-              <button class="tab-button" id="warrior-overview-tab" type="button" role="tab" aria-selected="true" aria-controls="warrior-overview-panel">개요</button>
-              <button class="tab-button" id="warrior-role-tab" type="button" role="tab" aria-selected="false" aria-controls="warrior-role-panel" tabindex="-1">담당 역할</button>
-              <button class="tab-button" id="warrior-process-tab" type="button" role="tab" aria-selected="false" aria-controls="warrior-process-panel" tabindex="-1">문제 해결</button>
-              <button class="tab-button" id="warrior-proof-tab" type="button" role="tab" aria-selected="false" aria-controls="warrior-proof-panel" tabindex="-1">결과·증거</button>
-            </div>
-
-            <div class="tab-panel" id="warrior-overview-panel" role="tabpanel" aria-labelledby="warrior-overview-tab">
-              <div class="detail-grid">
-                <div class="detail-box"><strong>기간</strong><p>2025.09 — 2025.11</p></div>
-                <div class="detail-box"><strong>구분</strong><p>기획 / 문서</p></div>
-                <div class="detail-box"><strong>역할</strong><p>보드게임 제작 PM</p></div>
-              </div>
-            </div>
-
-            <div class="tab-panel" id="warrior-role-panel" role="tabpanel" aria-labelledby="warrior-role-tab" hidden>
-              <div class="detail-grid">
-                <div class="detail-box"><strong>RECORD</strong><p>Google Docs로 회의록을 기록하고 공유했습니다.</p></div>
-                <div class="detail-box"><strong>PLANNING</strong><p>Notion에서 아이디어와 게임 기능을 구체화했습니다.</p></div>
-                <div class="detail-box"><strong>PRODUCTION</strong><p>Figma로 보드게임 구성물을 제작하고 룰북으로 정리했습니다.</p></div>
-              </div>
-            </div>
-
-            <div class="tab-panel" id="warrior-process-panel" role="tabpanel" aria-labelledby="warrior-process-tab" hidden>
-              <div class="detail-grid">
-                <div class="detail-box"><strong>검증 방법</strong><p>제작한 보드게임을 대상으로 총 5회의 플레이 테스트를 진행했습니다.</p></div>
-                <div class="detail-box"><strong>개선 과정</strong><p class="placeholder-line">테스트별 변경 규칙과 판단 근거 · 추후 수정</p></div>
-                <div class="detail-box"><strong>회고</strong><p class="placeholder-line">테스트에서 얻은 학습과 개선점 · 추후 수정</p></div>
-              </div>
-            </div>
-
-            <div class="tab-panel" id="warrior-proof-panel" role="tabpanel" aria-labelledby="warrior-proof-tab" hidden>
-              <div class="detail-grid">
-                <div class="detail-box"><strong>PLAYTEST</strong><p>총 5회 진행</p></div>
-                <div class="detail-box"><strong>FIGMA</strong><p>보드게임 구성물 제작</p></div>
-                <div class="detail-box"><strong>DOCUMENT</strong><p>최종 룰북 제작</p></div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="featured-project case-study reveal" aria-labelledby="capstone-title">
-          <div class="featured-top">
-            <div class="media-stage capstone-stage" aria-label="2026 캡스톤 디자인 프로젝트 이미지 자리">
-              <div class="media-grid" aria-hidden="true"></div>
-              <div class="media-label">
-                <span>MEDIA SLOT · 3D 액션 시스템</span>
-                <strong>FSM 상태 머신 &amp; 인게임 전투</strong>
-              </div>
-            </div>
-
-            <div class="featured-summary">
-              <span class="project-result" style="color: #dfd6ff; border-color: rgba(184, 166, 255, 0.4); background: rgba(184, 166, 255, 0.15);">2026 캡스톤 디자인 (졸업작품)</span>
-              <span class="project-type">UNITY · FSM ACTION SYSTEM</span>
-              <h3 id="capstone-title">2026 캡스톤 디자인<br aria-hidden="true">Unity 프로젝트</h3>
-              <p>모듈형 FSM 아키텍처와 반응형 액션 시스템을 결합한 3D 전투 졸업작품 프로젝트입니다.</p>
-              <ul class="tag-list" aria-label="캡스톤 프로젝트 사용 기술">
-                <li>Unity 2022.3</li><li>C#</li><li>FSM Pattern</li><li>Git-Flow</li><li>Notion</li>
-              </ul>
-              <div class="project-actions">
-                <a class="button button-primary" href="projects/project-04-capstone.html">프로젝트 상세 리뷰 보기 ↗</a>
-                <a class="button" href="#capstone-details">요약 보기</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="featured-details" id="capstone-details">
-            <div class="tab-list" role="tablist" aria-label="2026 캡스톤 디자인 상세 정보">
-              <button class="tab-button" id="capstone-overview-tab" type="button" role="tab" aria-selected="true" aria-controls="capstone-overview-panel">개요</button>
-              <button class="tab-button" id="capstone-role-tab" type="button" role="tab" aria-selected="false" aria-controls="capstone-role-panel" tabindex="-1">담당 역할</button>
-              <button class="tab-button" id="capstone-process-tab" type="button" role="tab" aria-selected="false" aria-controls="capstone-process-panel" tabindex="-1">문제 해결</button>
-              <button class="tab-button" id="capstone-proof-tab" type="button" role="tab" aria-selected="false" aria-controls="capstone-proof-panel" tabindex="-1">결과·증거</button>
-            </div>
-
-            <div class="tab-panel" id="capstone-overview-panel" role="tabpanel" aria-labelledby="capstone-overview-tab">
-              <div class="detail-grid">
-                <div class="detail-box"><strong>기간</strong><p>2026.09 — 2026.12</p></div>
-                <div class="detail-box"><strong>구분</strong><p>졸업작품 (캡스톤 디자인)</p></div>
-                <div class="detail-box"><strong>역할</strong><p>메인 시스템 개발자 &amp; 기획</p></div>
-              </div>
-            </div>
-
-            <div class="tab-panel" id="capstone-role-panel" role="tabpanel" aria-labelledby="capstone-role-tab" hidden>
-              <div class="detail-grid">
-                <div class="detail-box"><strong>ACTION COMBAT</strong><p>타격 판정과 히트스탑, 패링을 프레임 단위로 제어하는 전투 시스템을 설계했습니다.</p></div>
-                <div class="detail-box"><strong>AI FSM</strong><p>순찰, 추적, 콤보 공격을 관리하는 인터페이스 기반 유한 상태 머신을 구축했습니다.</p></div>
-                <div class="detail-box"><strong>DATA PIPELINE</strong><p>ScriptableObject 기반으로 몬스터와 스킬 데이터를 모듈화했습니다.</p></div>
-              </div>
-            </div>
-
-            <div class="tab-panel" id="capstone-process-panel" role="tabpanel" aria-labelledby="capstone-process-tab" hidden>
-              <div class="detail-grid">
-                <div class="detail-box"><strong>확장성 확보</strong><p>상태 추가 시 기존 코드를 수정하지 않는 개방-폐쇄 원칙(OCP)을 적용했습니다.</p></div>
-                <div class="detail-box"><strong>시각적 디버깅</strong><p>Scene 뷰 Gizmos로 AI 시야각과 판정 반경을 실시간으로 시각화했습니다.</p></div>
-                <div class="detail-box"><strong>단계별 마일스톤</strong><p>플레이 루프부터 보스전 기믹까지 4단계 마일스톤을 수립하여 관리 중입니다.</p></div>
-              </div>
-            </div>
-
-            <div class="tab-panel" id="capstone-proof-panel" role="tabpanel" aria-labelledby="capstone-proof-tab" hidden>
-              <div class="detail-grid">
-                <div class="detail-box"><strong>산출물</strong><p>상세 리뷰 페이지 &amp; WebGL 빌드</p></div>
-                <div class="detail-box"><strong>아키텍처</strong><p>C# IState 인터페이스 &amp; 이벤트 버스</p></div>
-                <div class="detail-box"><strong>진행 상태</strong><p>중간평가 마일스톤 정상 진행 중</p></div>
-              </div>
-            </div>
-          </div>
-        </article>
+        </div>
 
         <!-- More Works & Assignments Subsection -->
         <div class="more-works-area reveal" id="assignments" data-nav-section>
@@ -1960,13 +2222,7 @@
                   도서 『자바 람다 배우기』(토비 웨슨 저)를 기반으로 AI 생성 코드 판단 역량을 기르기 위한 14일 집중 스터디 계획표 및 매일 응용 과제·YouTube 연동 기록 템플릿입니다.
                 </p>
                 <div class="archive-card-footer">
-                  <ul class="tag-list" aria-label="사용 기술">
-                    <li>Java 람다</li>
-                    <li>함수형 인터페이스</li>
-                    <li>타입 추론</li>
-                    <li>14일 스터디</li>
-                    <li>AI 코드 리뷰</li>
-                  </ul>
+                  <span class="archive-tag-chip">14일 집중 스터디 플랜 &amp; 템플릿</span>
                   <a class="button button-primary archive-link-btn" href="assignments/assignment-01.html">
                     과제 결과물 보기 <span aria-hidden="true">→</span>
                   </a>
@@ -1989,17 +2245,10 @@
                 </div>
                 <h4 class="archive-card-title">02. [GamePlay] 모바일 인기순위 50위 분석 &amp; 게임 플레이 이력</h4>
                 <p class="archive-card-summary">
-                  모바일인덱스 실시간 인기순위 TOP 45 데이터 및 상위 게임(제우스, 리니지M) 실기 분석과, 5년간 51레벨을 달성한 『디즈니 킹덤』 플레이 이력을 버튼 탭 바 스위칭으로 제공합니다.
+                  모바일인덱스 실시간 인기순위 TOP 50의 50일간 드롭다운 실기 분석(제우스, 리니지M 등)과, PC·콘솔·모바일 누적 30종 이상의 게임 플레이 이력 아카이브를 버튼 탭 바로 제공합니다.
                 </p>
                 <div class="archive-card-footer">
-                  <ul class="tag-list" aria-label="사용 기술">
-                    <li>모바일인덱스</li>
-                    <li>인기순위 50위</li>
-                    <li>디즈니 킹덤</li>
-                    <li>리니지M</li>
-                    <li>제우스: 오만의 신</li>
-                    <li>탭 바 전환</li>
-                  </ul>
+                  <span class="archive-tag-chip">50위 분석 &amp; 플레이 이력 (2개 탭)</span>
                   <a class="button button-primary archive-link-btn" href="assignments/assignment-02.html">
                     과제 결과물 보기 <span aria-hidden="true">→</span>
                   </a>
@@ -2025,13 +2274,7 @@
                   『트렌드 코리아 2026』의 픽셀라이프 키워드를 바탕으로, 짧은 접속에서도 다양한 선택과 완결감을 주는 마비노기 모바일 선택형 일상 이벤트 '에린의 조각들' 상세 기획서입니다.
                 </p>
                 <div class="archive-card-footer">
-                  <ul class="tag-list" aria-label="사용 기술">
-                    <li>게임기획서</li>
-                    <li>마비노기 모바일</li>
-                    <li>트렌드 코리아 2026</li>
-                    <li>픽셀라이프</li>
-                    <li>원페이저 &amp; 상세스펙</li>
-                  </ul>
+                  <span class="archive-tag-chip">마비노기 모바일 이벤트 기획서 &amp; 상세스펙</span>
                   <a class="button button-primary archive-link-btn" href="assignments/assignment-03.html">
                     기획서 상세 보기 <span aria-hidden="true">→</span>
                   </a>
@@ -2043,14 +2286,78 @@
       </div>
     </section>
 
+    <section id="skills" data-nav-section>
+      <div class="container">
+        <header class="section-header reveal">
+          <div>
+            <p class="section-label" data-section-label data-en="TECH STACK &amp; SKILLS">기술 스택</p>
+            <h2 class="section-title">기술 스택 &amp; 개발 역량</h2>
+          </div>
+        </header>
+
+        <div class="skills-layout">
+          <div class="skill-panel reveal">
+            <div class="panel-heading">
+              <div><h3>Core Skills</h3></div>
+            </div>
+
+            <div class="skill-rating" data-score="4">
+              <div class="skill-rating-meta"><strong>C# 프로그래밍</strong><span><b>4.0</b> / 5</span></div>
+              <div class="rating-track" role="progressbar" aria-label="C# 프로그래밍 역량" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4"><span class="rating-fill" style="--rating:80%"></span></div>
+              <div class="rating-scale"><span>기초</span><span>숙련</span></div>
+            </div>
+
+            <div class="skill-rating" data-score="4">
+              <div class="skill-rating-meta"><strong>Unity 엔진 활용</strong><span><b>4.0</b> / 5</span></div>
+              <div class="rating-track" role="progressbar" aria-label="Unity 엔진 활용 역량" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4"><span class="rating-fill" style="--rating:80%"></span></div>
+              <div class="rating-scale"><span>기초</span><span>숙련</span></div>
+            </div>
+
+            <div class="skill-rating" data-score="3.5">
+              <div class="skill-rating-meta"><strong>객체지향·코드 구조 설계</strong><span><b>3.5</b> / 5</span></div>
+              <div class="rating-track" role="progressbar" aria-label="객체지향과 코드 구조 설계 역량" aria-valuemin="0" aria-valuemax="5" aria-valuenow="3.5"><span class="rating-fill" style="--rating:70%"></span></div>
+              <div class="rating-scale"><span>기초</span><span>숙련</span></div>
+            </div>
+
+            <div class="skill-rating" data-score="3.5">
+              <div class="skill-rating-meta"><strong>Git·버전 관리 &amp; 협업</strong><span><b>3.5</b> / 5</span></div>
+              <div class="rating-track" role="progressbar" aria-label="Git과 버전 관리 협업 역량" aria-valuemin="0" aria-valuemax="5" aria-valuenow="3.5"><span class="rating-fill" style="--rating:70%"></span></div>
+              <div class="rating-scale"><span>기초</span><span>숙련</span></div>
+            </div>
+
+            <div class="skill-rating" data-score="4.5">
+              <div class="skill-rating-meta"><strong>기획 분석 및 기술 문서화</strong><span><b>4.5</b> / 5</span></div>
+              <div class="rating-track" role="progressbar" aria-label="기획 분석 및 기술 문서화 역량" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4.5"><span class="rating-fill" style="--rating:90%"></span></div>
+              <div class="rating-scale"><span>기초</span><span>숙련</span></div>
+            </div>
+          </div>
+
+          <aside class="tool-panel reveal" aria-label="사용 도구">
+            <div class="panel-heading"><div><h3>Tool Stack</h3></div></div>
+            <div class="tool-group">
+              <h4>CORE DEVELOPMENT</h4>
+              <div class="tool-cloud"><span>C#</span><span>Unity</span><span>GitHub</span></div>
+            </div>
+            <div class="tool-group">
+              <h4>DESIGN &amp; DOCUMENTATION</h4>
+              <div class="tool-cloud"><span>Figma</span><span>Notion</span><span>Google Docs</span><span>Clip Studio</span></div>
+            </div>
+            <div class="tool-group">
+              <h4>AI-ASSISTED WORKFLOW</h4>
+              <div class="tool-cloud"><span>Codex</span><span>Gemini</span><span>NotebookLM</span><span>GameAify</span></div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section class="section-band" id="experience" data-nav-section>
       <div class="container">
         <header class="section-header reveal">
           <div>
             <p class="section-label" data-section-label data-en="EXPERIENCE &amp; EDUCATION">경험과 학력</p>
-            <h2 class="section-title">개발 교육과<br>실무 경험</h2>
+            <h2 class="section-title">개발 교육 및 실무 경험</h2>
           </div>
-          <p class="section-description">게임 개발 교육과 실무 경험을 바탕으로, 프로젝트 안에서 기획과 구현의 연결점을 찾아왔습니다.</p>
         </header>
 
         <div class="timeline">
@@ -2087,72 +2394,6 @@
               <p>게임개발학과</p>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="skills" data-nav-section>
-      <div class="container">
-        <header class="section-header reveal">
-          <div>
-            <p class="section-label" data-section-label data-en="DEVELOPMENT SKILLS">개발 역량</p>
-            <h2 class="section-title">5점 척도로 정리한<br>개발 기술</h2>
-          </div>
-          <p class="section-description">현재 역량을 동일한 5점 척도로 표현해 기술별 강점과 보완 지점을 한눈에 비교할 수 있도록 구성했습니다.</p>
-        </header>
-
-        <div class="skills-layout">
-          <div class="skill-panel reveal">
-            <div class="panel-heading">
-              <div><h3>Development Capability</h3><p>모든 항목은 5점 만점의 자기평가입니다.</p></div>
-            </div>
-
-            <div class="skill-rating" data-score="4">
-              <div class="skill-rating-meta"><strong>C# 프로그래밍</strong><span><b>4.0</b> / 5</span></div>
-              <div class="rating-track" role="progressbar" aria-label="C# 프로그래밍 자기평가" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4"><span class="rating-fill" style="--rating:80%"></span></div>
-              <div class="rating-scale"><span>0</span><span>5점</span></div>
-            </div>
-
-            <div class="skill-rating" data-score="4">
-              <div class="skill-rating-meta"><strong>Unity 엔진 활용</strong><span><b>4.0</b> / 5</span></div>
-              <div class="rating-track" role="progressbar" aria-label="Unity 엔진 활용 자기평가" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4"><span class="rating-fill" style="--rating:80%"></span></div>
-              <div class="rating-scale"><span>0</span><span>5점</span></div>
-            </div>
-
-            <div class="skill-rating" data-score="3.5">
-              <div class="skill-rating-meta"><strong>객체지향·코드 구조 설계</strong><span><b>3.5</b> / 5</span></div>
-              <div class="rating-track" role="progressbar" aria-label="객체지향과 코드 구조 설계 자기평가" aria-valuemin="0" aria-valuemax="5" aria-valuenow="3.5"><span class="rating-fill" style="--rating:70%"></span></div>
-              <div class="rating-scale"><span>0</span><span>5점</span></div>
-            </div>
-
-            <div class="skill-rating" data-score="3">
-              <div class="skill-rating-meta"><strong>Git·협업</strong><span><b>3.0</b> / 5</span></div>
-              <div class="rating-track" role="progressbar" aria-label="Git과 협업 자기평가" aria-valuemin="0" aria-valuemax="5" aria-valuenow="3"><span class="rating-fill" style="--rating:60%"></span></div>
-              <div class="rating-scale"><span>0</span><span>5점</span></div>
-            </div>
-
-            <div class="skill-rating" data-score="4.5">
-              <div class="skill-rating-meta"><strong>기술 문서화</strong><span><b>4.5</b> / 5</span></div>
-              <div class="rating-track" role="progressbar" aria-label="기술 문서화 자기평가" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4.5"><span class="rating-fill" style="--rating:90%"></span></div>
-              <div class="rating-scale"><span>0</span><span>5점</span></div>
-            </div>
-          </div>
-
-          <aside class="tool-panel reveal" aria-label="사용 도구">
-            <div class="panel-heading"><div><h3>Tool Stack</h3><p>핵심 제작 도구와 프로젝트 보조 워크플로를 구분했습니다.</p></div></div>
-            <div class="tool-group">
-              <h4>CORE DEVELOPMENT</h4>
-              <div class="tool-cloud"><span>C#</span><span>Unity</span><span>GitHub</span></div>
-            </div>
-            <div class="tool-group">
-              <h4>DESIGN &amp; DOCUMENTATION</h4>
-              <div class="tool-cloud"><span>Figma</span><span>Notion</span><span>Google Docs</span><span>Clip Studio</span></div>
-            </div>
-            <div class="tool-group">
-              <h4>AI-ASSISTED WORKFLOW</h4>
-              <div class="tool-cloud"><span>Codex</span><span>Gemini</span><span>NotebookLM</span><span>GameAify</span></div>
-            </div>
-          </aside>
         </div>
       </div>
     </section>

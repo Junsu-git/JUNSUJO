@@ -257,6 +257,260 @@
       margin-top: 20px;
     }
 
+    /* 2-Column Responsive Dropdown (Accordion) for Tab 1 */
+    .rank-accordion-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 20px 0 16px;
+      flex-wrap: wrap;
+    }
+
+    .accordion-filter-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .accordion-filter-btn {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(20, 38, 58, 0.4);
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 750;
+      cursor: pointer;
+      transition: all 180ms ease;
+    }
+
+    .accordion-filter-btn:hover {
+      color: var(--text);
+      background: rgba(102, 192, 244, 0.12);
+    }
+
+    .accordion-filter-btn.is-active {
+      background: rgba(102, 192, 244, 0.2);
+      border-color: var(--blue-bright);
+      color: #fff;
+    }
+
+    .accordion-action-group {
+      display: flex;
+      gap: 8px;
+    }
+
+    .accordion-toggle-all-btn {
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: #0d1a29;
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 180ms ease;
+    }
+
+    .accordion-toggle-all-btn:hover {
+      color: var(--blue-bright);
+      border-color: var(--line-strong);
+    }
+
+    /* 2 Columns on Desktop, 1 Column on Mobile */
+    .rank-accordion-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin: 16px 0 28px;
+    }
+
+    @media (max-width: 820px) {
+      .rank-accordion-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    details.rank-accordion-item {
+      background: rgba(16, 29, 45, 0.85);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      transition: all 200ms ease;
+      overflow: hidden;
+    }
+
+    details.rank-accordion-item[open] {
+      border-color: var(--line-strong);
+      background: rgba(20, 38, 58, 0.95);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    details.rank-accordion-item.is-completed {
+      border-left: 3px solid var(--gold);
+    }
+
+    summary.rank-accordion-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 16px;
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+      font-weight: 750;
+      font-size: 0.93rem;
+      transition: background 180ms ease;
+      gap: 10px;
+    }
+
+    summary.rank-accordion-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary.rank-accordion-summary:hover {
+      background: rgba(102, 192, 244, 0.06);
+    }
+
+    .rank-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .rank-badge-pill {
+      flex-shrink: 0;
+      font-size: 0.75rem;
+      font-weight: 900;
+      color: #06111d;
+      background: var(--gold);
+      padding: 3px 9px;
+      border-radius: 5px;
+      letter-spacing: 0.04em;
+    }
+
+    .rank-badge-pill.pending {
+      background: rgba(145, 168, 187, 0.22);
+      color: var(--muted);
+    }
+
+    .rank-game-name {
+      font-weight: 750;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .rank-status-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .rank-status-tag {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    .rank-status-tag.completed {
+      background: rgba(164, 208, 7, 0.18);
+      color: #d8ff6b;
+      border: 1px solid rgba(164, 208, 7, 0.35);
+    }
+
+    .rank-status-tag.pending {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--muted);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .accordion-chevron {
+      font-size: 0.78rem;
+      color: var(--muted);
+      transition: transform 200ms ease;
+    }
+
+    details.rank-accordion-item[open] .accordion-chevron {
+      transform: rotate(180deg);
+      color: var(--blue-bright);
+    }
+
+    .rank-detail-body {
+      padding: 16px 18px 20px;
+      border-top: 1px solid rgba(147, 184, 214, 0.12);
+      background: rgba(9, 18, 30, 0.55);
+      font-size: 0.88rem;
+      line-height: 1.68;
+    }
+
+    .rank-detail-meta {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed rgba(147, 184, 214, 0.15);
+    }
+
+    .rank-detail-meta strong {
+      color: var(--text);
+    }
+
+    .rank-detail-desc {
+      color: #c5d7e5;
+      margin-bottom: 12px;
+    }
+
+    .rank-detail-pros {
+      background: rgba(164, 208, 7, 0.09);
+      border-left: 3px solid var(--green);
+      padding: 8px 12px;
+      border-radius: 4px;
+      margin-top: 8px;
+      font-size: 0.85rem;
+      color: #e2f4aa;
+    }
+
+    .rank-detail-cons {
+      background: rgba(255, 90, 95, 0.09);
+      border-left: 3px solid #ff5a5f;
+      padding: 8px 12px;
+      border-radius: 4px;
+      margin-top: 8px;
+      font-size: 0.85rem;
+      color: #ffc2c4;
+    }
+
+    .pending-template-box {
+      background: rgba(16, 32, 51, 0.4);
+      border: 1px dashed rgba(147, 184, 214, 0.2);
+      border-radius: 6px;
+      padding: 12px 14px;
+      margin-top: 8px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .pending-guide-list {
+      margin: 8px 0 0 18px;
+      padding: 0;
+      color: #9eb6c9;
+      font-size: 0.8rem;
+    }
+
+    .pending-guide-list li {
+      margin-bottom: 4px;
+    }
+
     /* Review Cards */
     .review-grid {
       display: grid;
@@ -520,12 +774,12 @@
       </div>
 
       <h1 class="detail-title">02. [GamePlay] 모바일 인기순위 게임 분석<br>&amp; 게임 플레이 이력 아카이브</h1>
-      <div class="detail-sub-title">모바일인덱스 실시간 매출 TOP 45 실기 분석 · 5년 장기 플레이어 관점 시스템 심층 고찰</div>
+      <div class="detail-sub-title">모바일인덱스 실시간 매출 TOP 50 드롭다운 실기 분석 · PC·콘솔·모바일 게임 플레이어 관점 시스템 심층 고찰</div>
 
       <p class="detail-lead">
         과제 규정에 맞추어 두 가지 관점의 게임 플레이를 하나의 페이지에 통합 구성했습니다. 
-        <strong>첫 번째 탭</strong>에서는 모바일인덱스 실시간 인기/매출 50위권 게임(제우스, 리니지M 등)을 직접 플레이하고 UX·시스템적 결함과 강점을 솔직하게 기록한 분석을 제공하며, 
-        <strong>두 번째 탭</strong>에서는 5년간 51레벨을 달성하며 오랜 시간 플레이해온 『디즈니 킹덤』을 중심으로 코어 루프와 라이브 서비스 수명 연장의 비결을 고찰합니다.
+        <strong>첫 번째 탭</strong>에서는 50일간 모바일인덱스 실시간 인기/매출 50위권 게임을 직접 플레이하며 분석하기 위해, 화면 공간을 효율적으로 활용하는 <strong>반응형 2열 드롭다운(아코디언)</strong> 구조로 상위 50위 게임의 랭크와 게임명, 세부 분석 및 대기 템플릿을 제공합니다. 
+        <strong>두 번째 탭</strong>에서는 몬스터헌터 월드(282.9h), ESCAPE FROM TARKOV(254.3h), 엘든 링(95.2h) 등 하드코어 장르부터 다양한 플랫폼과 장르를 직접 플레이하며 체득한 30종 이상의 플레이 아카이브와 코어 루프 분석을 제공합니다.
       </p>
     </section>
 
@@ -533,10 +787,10 @@
     <div class="tab-switcher-wrapper">
       <div class="tab-switcher" role="tablist" aria-label="과제 2 세부 뷰 선택">
         <button class="tab-switch-btn is-active" id="tab-btn-rank" role="tab" aria-selected="true" aria-controls="view-rank" type="button">
-          <span class="tab-icon">📊</span> 1. 모바일 인기순위 50위 게임 플레이 분석
+          <span class="tab-icon">📊</span> 1. 모바일 인기순위 50위 게임 플레이 분석 (50일 챌린지)
         </button>
         <button class="tab-switch-btn" id="tab-btn-history" role="tab" aria-selected="false" aria-controls="view-history" type="button">
-          <span class="tab-icon">🏰</span> 2. 보유 게임 플레이 이력 (디즈니 킹덤 외)
+          <span class="tab-icon">🎮</span> 2. 보유 게임 플레이 이력 (플레이 아카이브)
         </button>
       </div>
     </div>
@@ -546,72 +800,1223 @@
          =================================================================== -->
     <div class="tab-content-panel is-active" id="view-rank" role="tabpanel" aria-labelledby="tab-btn-rank">
       
-      <!-- 1-1. 직접 플레이한 톱 순위 게임 상세 리뷰 -->
+      <!-- 1-1. 50일 게임 플레이 분석 (TOP 50 드롭다운 아카이브) -->
       <section class="content-section" style="padding-top: 0;">
         <div class="section-num-label">TAB 01 · PART A</div>
-        <h2>실제 플레이 및 시스템 분석 (심층 리뷰)</h2>
+        <h2>50일 모바일 게임 플레이 분석 (TOP 50 드롭다운 아카이브)</h2>
         <p style="color: #b9cddc;">
-          모바일인덱스 2026-09-03 기준 최상위 랭크 게임을 직접 설치 및 플레이하고, 기획자/개발자 시선에서 튜토리얼, 조작감, UI/UX, 성장 경험의 장단점을 가감 없이 기록한 분석 카드입니다.
+          50일간 매일 순위권 모바일 게임을 플레이하고 분석하기 위해 공간을 최적화했습니다. 
+          <strong>데스크톱 2열 (모바일 1열)</strong> 드롭다운 형식으로 기본 상태에서는 랭크와 게임명만 깔끔하게 노출되며, 
+          항목을 클릭하면 플레이 타임, 레벨, 핵심 시스템 평가, 장단점 분석이 상세하게 펼쳐집니다.
         </p>
 
-        <div class="review-grid">
-          <!-- Review 1: 제우스: 오만의 신 -->
-          <article class="review-card">
-            <div class="review-card-header">
-              <div>
-                <span style="font-size: 0.72rem; color: var(--gold); font-weight: 800; letter-spacing: 0.08em;">GOOGLE PLAY 1위 / APP STORE 2위</span>
-                <h3 class="review-app-title">제우스: 오만의 신</h3>
+        <!-- Accordion Filter & Action Toolbar -->
+        <div class="rank-accordion-toolbar">
+          <div class="accordion-filter-group" role="group" aria-label="순위 필터">
+            <button class="accordion-filter-btn is-active" data-filter="all" type="button">전체 보기 (50)</button>
+            <button class="accordion-filter-btn" data-filter="completed" type="button">✓ 플레이 완료 (2)</button>
+            <button class="accordion-filter-btn" data-filter="pending" type="button">⏳ 대기 중 (48)</button>
+          </div>
+          <div class="accordion-action-group">
+            <button class="accordion-toggle-all-btn" id="btn-expand-all" type="button">전체 펼치기</button>
+            <button class="accordion-toggle-all-btn" id="btn-collapse-all" type="button">전체 접기</button>
+          </div>
+        </div>
+
+        <!-- 2-Column Responsive Dropdown Grid -->
+        <div class="rank-accordion-grid" id="rank-accordion-container">
+          
+          <!-- Rank 01 -->
+          <details class="rank-accordion-item is-completed" data-status="completed">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill">RANK 01</span>
+                <span class="rank-game-name">제우스: 오만의 신</span>
               </div>
-              <span class="review-rank-badge">RANK 1</span>
-            </div>
-
-            <div class="review-meta-row">
-              <span>플레이 일자: <strong>26/09/03</strong></span>
-              <span>플레이타임: <strong>40분</strong></span>
-              <span>달성 레벨: <strong>Lv. 7</strong></span>
-              <span>장르: <strong>RPG (Com2uS)</strong></span>
-            </div>
-
-            <div class="review-body">
-              자동 퀘스트 진행이 배제되어 있어 수동 조작 중심의 탐험을 유도한다. 그래픽 비주얼과 이펙트의 퀄리티는 준수하나, PC 클라이언트 환경에서 해상도 변경을 지원하지 않는 등 플랫폼 호환성 편의가 매우 미흡하다. 게임의 핵심 재미인 레이드 콘텐츠를 체험하기까지의 초반 진입 장벽이 지나치게 높게 설정되어 있다.
-            </div>
-
-            <div class="review-pros">
-              <strong>✨ 장점:</strong> 고품질 3D 그래픽 모델링과 연출, 자동 일변도에서 벗어난 수동 전투 감각.
-            </div>
-            <div class="review-cons">
-              <strong>⚠️ 치명적 단점:</strong> PC 빌드 해상도 조절 불가, 초반 레이드 진입 전까지의 지루한 허들과 불친절한 가이드.
-            </div>
-          </article>
-
-          <!-- Review 2: 리니지M -->
-          <article class="review-card">
-            <div class="review-card-header">
-              <div>
-                <span style="font-size: 0.72rem; color: var(--gold); font-weight: 800; letter-spacing: 0.08em;">APP STORE 1위 / GOOGLE PLAY 2위</span>
-                <h3 class="review-app-title">리니지M</h3>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag completed">✓ 플레이 완료</span>
+                <span class="accordion-chevron">▼</span>
               </div>
-              <span class="review-rank-badge">RANK 2</span>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>순위: <strong>Google Play 1위 / App Store 2위</strong></span>
+                <span>장르: <strong>RPG (Com2uS)</strong></span>
+                <span>플레이 일자: <strong>26/09/03</strong></span>
+                <span>플레이타임: <strong>40분</strong></span>
+                <span>달성 레벨: <strong>Lv. 7</strong></span>
+              </div>
+              <div class="rank-detail-desc">
+                자동 퀘스트 진행이 배제되어 있어 수동 조작 중심의 탐험을 유도한다. 그래픽 비주얼과 이펙트의 퀄리티는 준수하나, PC 클라이언트 환경에서 해상도 변경을 지원하지 않는 등 플랫폼 호환성 편의가 매우 미흡하다. 게임의 핵심 재미인 레이드 콘텐츠를 체험하기까지의 초반 진입 장벽이 지나치게 높게 설정되어 있다.
+              </div>
+              <div class="rank-detail-pros">
+                <strong>✨ 장점:</strong> 고품질 3D 그래픽 모델링과 연출, 자동 일변도에서 벗어난 수동 전투 감각.
+              </div>
+              <div class="rank-detail-cons">
+                <strong>⚠️ 치명적 단점:</strong> PC 빌드 해상도 조절 불가, 초반 레이드 진입 전까지의 지루한 허들과 불친절한 가이드.
+              </div>
             </div>
+          </details>
 
-            <div class="review-meta-row">
-              <span>플레이 일자: <strong>26/09/13</strong></span>
-              <span>플레이타임: <strong>2시간</strong></span>
-              <span>달성 레벨: <strong>Lv. 31</strong></span>
-              <span>장르: <strong>MMORPG (NC Corp.)</strong></span>
+          <!-- Rank 02 -->
+          <details class="rank-accordion-item is-completed" data-status="completed">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill">RANK 02</span>
+                <span class="rank-game-name">리니지M</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag completed">✓ 플레이 완료</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>순위: <strong>App Store 1위 / Google Play 2위</strong></span>
+                <span>장르: <strong>MMORPG (NC Corp.)</strong></span>
+                <span>플레이 일자: <strong>26/09/13</strong></span>
+                <span>플레이타임: <strong>2시간</strong></span>
+                <span>달성 레벨: <strong>Lv. 31</strong></span>
+              </div>
+              <div class="rank-detail-desc">
+                2시간 동안 진행하며 스킬 습득 시점과 방법을 전혀 안내하지 않아 성장의 갈피를 잡기 어렵다. 스킬 구매에 필요한 명예 상점 코인의 수급처가 툴팁 어디에도 명시되어 있지 않다. 보너스 스탯 획득 시에도 클래스별 주 스탯과 실제 전투 수치 간의 상호작용 설명이 결여되어 있으며, 공격 시 가해지는 데미지 수치 표기도 불분명하다. 특히 메인 퀘스트 목표가 필드에 있음에도 자동 사냥 클릭 시 타겟 몬스터 대신 엉뚱한 주변 잡몹만 우선 타겟팅하는 AI 알고리즘의 심각한 결함을 노출한다.
+              </div>
+              <div class="rank-detail-pros">
+                <strong>✨ 장점:</strong> 20년 이상 누적된 강력한 IP 파워와 안정적인 서버 및 백엔드 동시 접속 인프라.
+              </div>
+              <div class="rank-detail-cons">
+                <strong>⚠️ 치명적 단점:</strong> 신규 유저를 고려하지 않은 불친절한 UI/툴팁, 스탯 상호작용 설명 부재, 비효율적인 자동 사냥 AI 타겟팅 로직.
+              </div>
             </div>
+          </details>
 
-            <div class="review-body">
-              2시간 동안 진행하며 스킬 습득 시점과 방법을 전혀 안내하지 않아 성장의 갈피를 잡기 어렵다. 스킬 구매에 필요한 명예 상점 코인의 수급처가 툴팁 어디에도 명시되어 있지 않다. 보너스 스탯 획득 시에도 클래스별 주 스탯과 실제 전투 수치 간의 상호작용 설명이 결여되어 있으며, 공격 시 가해지는 데미지 수치 표기도 불분명하다. 특히 메인 퀘스트 목표가 필드에 있음에도 자동 사냥 클릭 시 타겟 몬스터 대신 엉뚱한 주변 잡몹만 우선 타겟팅하는 AI 알고리즘의 심각한 결함을 노출한다.
+          <!-- Rank 03 -->
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 03</span>
+                <span class="rank-game-name">SOL: enchant</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>Google Play 3위 · Netmarble Corporation</strong></span>
+                <span>장르: <strong>오픈월드 MMORPG</strong></span>
+                <span>일정: <strong>50일 챌린지 3일차 플레이 예정</strong></span>
+              </div>
+              <div class="pending-template-box">
+                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
+                <ul class="pending-guide-list">
+                  <li>온보딩/튜토리얼: 초반 진입 유도 및 시스템 안내 친절도 평가</li>
+                  <li>조작 및 전투: 수동 조작감 및 자동 사냥 AI 완성도 점검</li>
+                  <li>BM &amp; 경제: 초기 과금 유도 체계 및 무과금 유저의 성장 허들 분석</li>
+                  <li>기획적 개선점: UI/UX 동선 및 핵심 콘텐츠 개선 제안</li>
+                </ul>
+              </div>
             </div>
+          </details>
 
-            <div class="review-pros">
-              <strong>✨ 장점:</strong> 20년 이상 누적된 강력한 IP 파워와 안정적인 서버 및 백엔드 동시 접속 인프라.
+          <!-- Rank 04 -->
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 04</span>
+                <span class="rank-game-name">WOS: 화이트아웃 서바이벌</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>양대 마켓 4위권 · Century Games Pte. Ltd.</strong></span>
+                <span>장르: <strong>SLG 전략 서바이벌</strong></span>
+                <span>일정: <strong>50일 챌린지 4일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">
+                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
+                <ul class="pending-guide-list">
+                  <li>기지 건설 코어 루프와 난로 온도 유지 시스템의 생존 몰입감 점검</li>
+                  <li>연맹(길드) 간 영토 전쟁 및 실시간 집결 시스템 분석</li>
+                </ul>
+              </div>
             </div>
-            <div class="review-cons">
-              <strong>⚠️ 치명적 단점:</strong> 신규 유저를 고려하지 않은 불친절한 UI/툴팁, 스탯 상호작용 설명 부재, 비효율적인 자동 사냥 AI 타겟팅 로직.
+          </details>
+
+          <!-- Rank 05 -->
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 05</span>
+                <span class="rank-game-name">킹샷:Kingshot</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>양대 마켓 상위권 · Century Games Pte. Ltd.</strong></span>
+                <span>장르: <strong>캐주얼 아케이드 슈팅</strong></span>
+                <span>일정: <strong>50일 챌린지 5일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">
+                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
+                <ul class="pending-guide-list">
+                  <li>원터치 슈팅 감각과 탄도 궤적 피드백의 타격감 점검</li>
+                  <li>스테이지 클리어 기반의 보상 루프 및 인앱 결제 동선 분석</li>
+                </ul>
+              </div>
             </div>
-          </article>
+          </details>
+
+          <!-- Rank 06 -->
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 06</span>
+                <span class="rank-game-name">오딘: 발할라 라이징</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>Google Play 6위 · Kakao Games Corp. / 라이온하트</strong></span>
+                <span>장르: <strong>북유럽 심리스 오픈월드 MMORPG</strong></span>
+                <span>일정: <strong>50일 챌린지 6일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">
+                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
+                <ul class="pending-guide-list">
+                  <li>언리얼 엔진 기반 북유럽 신화 오픈월드 그래픽 연출 분석</li>
+                  <li>탈것 및 공중 활강 시스템의 필드 탐험 편의성 고찰</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <!-- Rank 07 -->
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 07</span>
+                <span class="rank-game-name">메이플 키우기</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>App Store 4위 / Google Play 7위 · NEXON Company</strong></span>
+                <span>장르: <strong>방치형 키우기 RPG</strong></span>
+                <span>일정: <strong>50일 챌린지 7일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">
+                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
+                <ul class="pending-guide-list">
+                  <li>원작 메이플스토리 도트 감성과 방치형 쾌속 성장 루프의 결합도 평가</li>
+                  <li>오프라인 방치 보상과 미니게임 콘텐츠의 유저 접속 유도 주기 분석</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <!-- Rank 08 -->
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 08</span>
+                <span class="rank-game-name">로블록스 (Roblox)</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>Google Play 8위 · Roblox Corporation</strong></span>
+                <span>장르: <strong>UGC 샌드박스 메타버스 플랫폼</strong></span>
+                <span>일정: <strong>50일 챌린지 8일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">
+                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
+                <ul class="pending-guide-list">
+                  <li>인기 상위 UGC 월드 탐방 및 크리에이터 이코노미 구조 분석</li>
+                  <li>모바일 조작 체계와 크로스플랫폼 인터페이스 접근성 점검</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <!-- Rank 09 -->
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 09</span>
+                <span class="rank-game-name">로얄 매치 Royal Match</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>Google Play 9위 · Dream Games</strong></span>
+                <span>장르: <strong>매치3 캐주얼 퍼즐</strong></span>
+                <span>일정: <strong>50일 챌린지 9일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">
+                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
+                <ul class="pending-guide-list">
+                  <li>광고 없는 매치3 쾌속 플레이 경험과 왕의 성 꾸미기 동기 분석</li>
+                  <li>난이도 상승 곡선(Super Hard 레벨)과 아이템 소모 유도 메커니즘</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <!-- Rank 10 -->
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 10</span>
+                <span class="rank-game-name">가십하버: 합성 &amp; 스토리 게임</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>양대 마켓 10위권 · Microfun Limited</strong></span>
+                <span>장르: <strong>머지(Merge) &amp; 드라마틱 스토리</strong></span>
+                <span>일정: <strong>50일 챌린지 10일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">
+                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
+                <ul class="pending-guide-list">
+                  <li>합성 피로도를 상쇄하는 막장 드라마 서사의 훅(Hook) 설계 분석</li>
+                  <li>에너지 충전 대기 시간과 과금 패키지 제안 타이밍 고찰</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <!-- Rank 11 -->
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 11</span>
+                <span class="rank-game-name">한게임포커 클래식 : 7포커 홀덤</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>Google Play 11위 · NHN Corp.</strong></span>
+                <span>장르: <strong>웹보드 / 카드 게임</strong></span>
+                <span>일정: <strong>50일 챌린지 11일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">
+                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
+                <ul class="pending-guide-list">
+                  <li>PC-모바일 간 크로스플레이 환경과 게임머니 규제 준수 UI 분석</li>
+                  <li>실시간 베팅 인터페이스의 템포 및 사운드 타격감 점검</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <!-- Rank 12 -->
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 12</span>
+                <span class="rank-game-name">쿠키런 키우기 - 쿠키런: 크럼블</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>Google Play 12위 / App Store 8위 · Devsisters</strong></span>
+                <span>장르: <strong>방치형 수집 캐주얼 RPG</strong></span>
+                <span>일정: <strong>50일 챌린지 12일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">
+                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
+                <ul class="pending-guide-list">
+                  <li>쿠키런 IP 시각적 매력의 방치형 장르 계승 여부 분석</li>
+                  <li>쿠키 캐릭터 승급 및 베이킹 하우스 커스터마이징 루프 점검</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <!-- Rank 13 -->
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 13</span>
+                <span class="rank-game-name">열혈강호: 넥스트</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>양대 마켓 상위권 · HONGKONG FAME CHAMPION</strong></span>
+                <span>장르: <strong>무협 액션 MMORPG</strong></span>
+                <span>일정: <strong>50일 챌린지 13일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">
+                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
+                <ul class="pending-guide-list">
+                  <li>원작 무협 만화 IP의 시나리오 컷씬 구현도 분석</li>
+                  <li>경공 이동 및 무공 연계 콤보 액션 타격감 점검</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <!-- Rank 14 -->
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 14</span>
+                <span class="rank-game-name">라스트 워: 서바이벌</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>Google Play 14위 / App Store 22위 · FUNFLY PTE. LTD.</strong></span>
+                <span>장르: <strong>하이퍼캐주얼 게이트 러너 + SLG</strong></span>
+                <span>일정: <strong>50일 챌린지 14일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">
+                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
+                <ul class="pending-guide-list">
+                  <li>미끼 광고(게이트 증식 러너)에서 코어 SLG로 전환되는 온보딩 괴리 분석</li>
+                  <li>영웅 수집 및 좀비 디펜스 모드의 리텐션 기여도 고찰</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <!-- Rank 15 -->
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 15</span>
+                <span class="rank-game-name">운빨존많겜</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>Google Play 15위 / App Store 7위 · 111%</strong></span>
+                <span>장르: <strong>실시간 협동 랜덤 타워디펜스</strong></span>
+                <span>일정: <strong>50일 챌린지 15일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">
+                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
+                <ul class="pending-guide-list">
+                  <li>극단적인 RNG(확률) 소환과 2인 협동 시너지의 긴장감 분석</li>
+                  <li>신화 영웅 조합과 행운석 경제 시스템의 밸런스 점검</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <!-- Rank 16 -->
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 16</span>
+                <span class="rank-game-name">승리의 여신: 니케</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>양대 마켓 상위권 · Level Infinite / 시프트업</strong></span>
+                <span>장르: <strong>서브컬처 원핸드 건슈팅 RPG</strong></span>
+                <span>일정: <strong>50일 챌린지 16일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">
+                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
+                <ul class="pending-guide-list">
+                  <li>후방 시점 라이브 2D 애니메이션 연출과 사격 반동 피드백 분석</li>
+                  <li>버스트 1/2/3 연계 스킬 조합 및 속성 상성 덱 빌딩 분석</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <!-- Rank 17 -->
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 17</span>
+                <span class="rank-game-name">마비노기 모바일</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">과제3 연계</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>Google Play 17위 / App Store 16위 · NEXON Company</strong></span>
+                <span>장르: <strong>판타지 라이프 MMORPG</strong></span>
+                <span>연계: <strong>과제 03 『에린의 조각들』 기획서 분석 대상</strong></span>
+              </div>
+              <div class="pending-template-box">
+                <div>📝 <strong>기획서 연계 분석 완료 항목</strong></div>
+                <div style="margin-top: 4px;">• 본인 누적 플레이: <strong>56시간 52분</strong></div>
+                <ul class="pending-guide-list">
+                  <li>세로/가로 모드 지원에 따른 캠프파이어 및 연주 UI 분석</li>
+                  <li>전투와 생활 콘텐츠의 밸런스 및 과제 3 복귀 이벤트 시스템 수립</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <!-- Rank 18 -->
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 18</span>
+                <span class="rank-game-name">FC 모바일</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>App Store 10위 / Google Play 18위 · NEXON Company</strong></span>
+                <span>장르: <strong>스포츠 축구 시뮬레이션</strong></span>
+                <span>일정: <strong>50일 챌린지 18일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">
+                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
+                <ul class="pending-guide-list">
+                  <li>모바일 가상 패드 조작감과 제스처 패스/슈팅 반응성 점검</li>
+                  <li>선수 이적시장 수수료 체계와 라이선스 카드 BM 분석</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <!-- Rank 19 -->
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 19</span>
+                <span class="rank-game-name">씨사이드 익스케이프: 합성 퍼즐</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>양대 마켓 19위 · Microfun Limited</strong></span>
+                <span>장르: <strong>휴양지 리모델링 &amp; 머지 퍼즐</strong></span>
+                <span>일정: <strong>50일 챌린지 19일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">
+                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
+                <ul class="pending-guide-list">
+                  <li>타일 합성 아이템 체인(Generator)의 쿨다운 설계 분석</li>
+                  <li>휴양지 건물 복원 진행률에 따른 심미적 보상 구조 평가</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <!-- Rank 20 -->
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 20</span>
+                <span class="rank-game-name">삼국지: 천하결전</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>Google Play 20위 · Efun Company</strong></span>
+                <span>장르: <strong>삼국지 전쟁 SLG</strong></span>
+                <span>일정: <strong>50일 챌린지 20일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">
+                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
+                <ul class="pending-guide-list">
+                  <li>장수 병과 상성 및 진형 배치 전략성 분석</li>
+                  <li>국가전 공성전 실시간 동기화 안정성 점검</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <!-- Rank 21 ~ 30 -->
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 21</span>
+                <span class="rank-game-name">테이스티 트레블: 합성 게임</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>Century Games Pte. Ltd. · 머지 시뮬레이션</strong></span>
+                <span>플레이 대기: <strong>21일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">글로벌 요리 레시피 컬렉션과 주문 완료 루프의 만족도 분석 예정.</div>
+            </div>
+          </details>
+
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 22</span>
+                <span class="rank-game-name">명조:워더링 웨이브</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>KURO GAMES · 오픈월드 액션 RPG</strong></span>
+                <span>플레이 대기: <strong>22일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">패링/회피 중심 하드코어 액션 손맛과 에코 파밍 시스템의 모바일 최적화 점검 예정.</div>
+            </div>
+          </details>
+
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 23</span>
+                <span class="rank-game-name">피망 포커 : 카지노 로얄</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>NEOWIZ · 모바일 웹보드</strong></span>
+                <span>플레이 대기: <strong>23일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">7포커/바둑이/홀덤 통합 로비 UI 편의성 및 실시간 셔플 알고리즘 신뢰도 고찰.</div>
+            </div>
+          </details>
+
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 24</span>
+                <span class="rank-game-name">꿈의 정원 (Gardenscapes)</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>Playrix · 매치3 &amp; 가든 데코</strong></span>
+                <span>플레이 대기: <strong>24일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">집사 오스틴의 서사와 정원 재건축 꾸미기 루프의 장기 리텐션 메커니즘 분석.</div>
+            </div>
+          </details>
+
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 25</span>
+                <span class="rank-game-name">라스트 Z: 서바이벌 슈터</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>Century Games · 서바이벌 아케이드</strong></span>
+                <span>플레이 대기: <strong>25일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">좀비 웨이브 방어와 무기 업그레이드 트리 설계의 즉각적 도파민 보상 분석.</div>
+            </div>
+          </details>
+
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 26</span>
+                <span class="rank-game-name">컴투스프로야구V26</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>Com2uS Corp. · 리얼 야구 스포츠</strong></span>
+                <span>플레이 대기: <strong>26일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">모션 캡처 투구/타격 물리 엔진과 KBO 시즌 라이브 카드 업데이트 시스템 점검.</div>
+            </div>
+          </details>
+
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 27</span>
+                <span class="rank-game-name">Pokémon GO</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>Niantic / Scopely · 위치기반 AR</strong></span>
+                <span>플레이 대기: <strong>27일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">현실 지리 연동 포켓스탑과 레이드 배틀을 통한 오프라인 커뮤니티 결속력 분석.</div>
+            </div>
+          </details>
+
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 28</span>
+                <span class="rank-game-name">라스트 어사일럼: 페스트</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>LONG TECH · 전략 서바이벌</strong></span>
+                <span>플레이 대기: <strong>28일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">포스트 아포칼립스 병원 및 피난처 재건 시뮬레이션의 자원 관리 밸런스 점검.</div>
+            </div>
+          </details>
+
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 29</span>
+                <span class="rank-game-name">EA SPORTS FC Online M</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>NEXON Company · 온라인 축구 연동</strong></span>
+                <span>플레이 대기: <strong>29일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">PC 온라인 구단 계정과의 실시간 자산/이적시장 연동 및 모바일 감독 모드 분석.</div>
+            </div>
+          </details>
+
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 30</span>
+                <span class="rank-game-name">뱀피르 (Vampire)</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>Studio W · 다크 판타지 액션 RPG</strong></span>
+                <span>플레이 대기: <strong>30일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">흡혈귀 콘셉트의 특화 스킬 메커니즘과 다크 아트워크 스타일 분석.</div>
+            </div>
+          </details>
+
+          <!-- Rank 31 ~ 40 -->
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 31</span>
+                <span class="rank-game-name">로얄 킹덤 (Royal Kingdom)</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>Dream Games · 매치3 &amp; 킹덤 빌드</strong></span>
+                <span>플레이 대기: <strong>31일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">로얄 매치의 후속작으로서 추가된 왕국 방어 퍼즐 메커니즘 비교 분석.</div>
+            </div>
+          </details>
+
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 32</span>
+                <span class="rank-game-name">협타디: 협동 타워 디펜스</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>SuperMagic · 캐주얼 협동 디펜스</strong></span>
+                <span>플레이 대기: <strong>32일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">타워 빌드 트리와 실시간 2인 멀티플레이 시너지 인터페이스 점검.</div>
+            </div>
+          </details>
+
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 33</span>
+                <span class="rank-game-name">뚜까펫: 서바이벌</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>Farlight Games · 탄막 슈팅 서바이벌</strong></span>
+                <span>플레이 대기: <strong>33일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">펫 육성과 로그라이트 무기 조합 스킬의 빌드 다양성 분석.</div>
+            </div>
+          </details>
+
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 34</span>
+                <span class="rank-game-name">메이플스토리M</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>NEXON Company · 횡스크롤 MMORPG</strong></span>
+                <span>플레이 대기: <strong>34일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">PC 원작 메이플(본인 282Lv) 대비 모바일 자동 조작과 빠른 사냥 템포 비교 분석.</div>
+            </div>
+          </details>
+
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 35</span>
+                <span class="rank-game-name">소녀전선2: 망명</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>HAOPLAY · 3D 턴제 택틱스 RPG</strong></span>
+                <span>플레이 대기: <strong>35일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">엄폐물 기반 3D 전술 타일 이동과 고품질 캐릭터 인터랙션 모델링 분석.</div>
+            </div>
+          </details>
+
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 36</span>
+                <span class="rank-game-name">트릭컬 리바이브</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>에피드게임즈 · 서브컬처 오토배틀러</strong></span>
+                <span>플레이 대기: <strong>36일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">볼살 당기기 등 고유 인터랙션과 유쾌한 밈 내러티브가 게임 몰입에 미치는 영향 분석.</div>
+            </div>
+          </details>
+
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 37</span>
+                <span class="rank-game-name">할리우드 머지 (Merge Hollywood)</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>Microfun Limited · 영화 세트장 합성</strong></span>
+                <span>플레이 대기: <strong>37일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">영화 촬영 세트장 복원과 배우 캐릭터 코스튬 합성 루프 점검.</div>
+            </div>
+          </details>
+
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 38</span>
+                <span class="rank-game-name">로그W : 리메인즈 오브 갓</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>EFUN UNIVERSE · 다크 판타지 MMORPG</strong></span>
+                <span>플레이 대기: <strong>38일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">어두운 세계관 아트워크 연출과 혈맹 기반 영지 쟁탈전 시스템 고찰.</div>
+            </div>
+          </details>
+
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 39</span>
+                <span class="rank-game-name">리니지W</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>NC Corp. · 글로벌 원빌드 MMORPG</strong></span>
+                <span>플레이 대기: <strong>39일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">리니지M(2위) 대비 다크 판타지 비주얼 연출 및 글로벌 국가 대항전 시스템 비교 분석.</div>
+            </div>
+          </details>
+
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 40</span>
+                <span class="rank-game-name">뮤 모나크2</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>Webzen Inc. · 레트로 MMORPG</strong></span>
+                <span>플레이 대기: <strong>40일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">클래식 뮤 온라인의 시각적 향수 자극과 고속 레벨업 방치 시스템 결합 분석.</div>
+            </div>
+          </details>
+
+          <!-- Rank 41 ~ 50 -->
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 41</span>
+                <span class="rank-game-name">에픽세븐</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>Smilegate Megaport · 2D 턴제 애니메이션 RPG</strong></span>
+                <span>플레이 대기: <strong>41일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">자체 유나 엔진 기반 고화질 풀 애니메이션 컷씬과 월드 아레나(RTA) 밴픽 심리전 분석.</div>
+            </div>
+          </details>
+
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 42</span>
+                <span class="rank-game-name">이환 (Neverness to Everness)</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>Hotta Studio / Perfect World · 어반 오픈월드 RPG</strong></span>
+                <span>플레이 대기: <strong>42일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">언리얼 엔진 5 기반 초자연 현대 도시 탐험과 부동산/차량 튜닝 라이프 콘텐츠 점검.</div>
+            </div>
+          </details>
+
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 43</span>
+                <span class="rank-game-name">WPL : 홀덤, 토너먼트</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>Zempot Inc. · 국제 규격 스포츠 홀덤</strong></span>
+                <span>플레이 대기: <strong>43일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">국제 토너먼트 규정 룰셋(TDA) 적용과 실시간 확률 핸드 히스토리 UX 분석.</div>
+            </div>
+          </details>
+
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 44</span>
+                <span class="rank-game-name">캔디크러쉬사가</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>King · 글로벌 스테디셀러 매치3</strong></span>
+                <span>플레이 대기: <strong>44일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">10년 이상 유지된 15,000개 이상의 레벨 밸런싱과 라이브 이벤트 설계 고찰.</div>
+            </div>
+          </details>
+
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 45</span>
+                <span class="rank-game-name">미스터리 타운: 합성</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>Microfun Limited · 미스터리 머지</strong></span>
+                <span>플레이 대기: <strong>45일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">탐정 수사 테마와 증거품 합성 메커니즘의 결합도 평가.</div>
+            </div>
+          </details>
+
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 46</span>
+                <span class="rank-game-name">명일방주: 엔드필드</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>GRYPH FRONTIER · 3D 전략 공장 자동화 RPG</strong></span>
+                <span>플레이 대기: <strong>46일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">탈로스II 행성 개척과 자동화 물류 생산 파이프라인 시스템 설계 분석.</div>
+            </div>
+          </details>
+
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 47</span>
+                <span class="rank-game-name">붕괴: 스타레일</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>COGNOSPHERE · 턴제 은하 판타지 RPG</strong></span>
+                <span>플레이 대기: <strong>47일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">시뮬레이션 우주 로그라이트 모드와 운명의 길 시너지 덱 빌딩 분석.</div>
+            </div>
+          </details>
+
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 48</span>
+                <span class="rank-game-name">브롤스타즈</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>Supercell · 3v3 실시간 배틀 액션</strong></span>
+                <span>플레이 대기: <strong>48일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">2분 30초 내외의 초단기 교전 루프와 브롤러별 직관적인 가젯/스타파워 시스템 분석.</div>
+            </div>
+          </details>
+
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 49</span>
+                <span class="rank-game-name">리그 오브 레전드: 와일드 리프트</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>Riot Games · 모바일 MOBA</strong></span>
+                <span>플레이 대기: <strong>49일차 예정</strong></span>
+              </div>
+              <div class="pending-template-box">PC 롤 대비 맵 크기 축소 및 스킬 타겟팅 어시스트의 모바일 최적화 편의성 분석.</div>
+            </div>
+          </details>
+
+          <details class="rank-accordion-item" data-status="pending">
+            <summary class="rank-accordion-summary">
+              <div class="rank-title-wrap">
+                <span class="rank-badge-pill pending">RANK 50</span>
+                <span class="rank-game-name">캣 히어로: 방치형 RPG</span>
+              </div>
+              <div class="rank-status-wrap">
+                <span class="rank-status-tag pending">대기중</span>
+                <span class="accordion-chevron">▼</span>
+              </div>
+            </summary>
+            <div class="rank-detail-body">
+              <div class="rank-detail-meta">
+                <span>마켓/개발: <strong>Game Duo Co.,Ltd. · 횡스크롤 고양이 키우기 RPG</strong></span>
+                <span>플레이 대기: <strong>50일차 예정 (챌린지 완주)</strong></span>
+              </div>
+              <div class="pending-template-box">귀여운 고양이 캐릭터 수집과 스킬 합성 루프, 50일 챌린지 대단원 종합 평가 예정.</div>
+            </div>
+          </details>
+
         </div>
       </section>
 
@@ -777,7 +2182,7 @@
     </div>
 
     <!-- ===================================================================
-         TAB 2: 보유 게임 플레이 이력 (디즈니 킹덤 외)
+         TAB 2: 보유 게임 플레이 이력 (플레이 아카이브)
          =================================================================== -->
     <div class="tab-content-panel" id="view-history" role="tabpanel" aria-labelledby="tab-btn-history" hidden>
       
@@ -863,15 +2268,7 @@
               </tr>
             </thead>
             <tbody>
-              <!-- 모바일 시뮬레이션 대표 -->
-              <tr class="highlight-row">
-                <td><span class="badge badge-primary">모바일</span></td>
-                <td><strong>디즈니 킹덤 (Disney Magic Kingdoms)</strong></td>
-                <td><strong>5년 누적</strong></td>
-                <td><strong style="color: var(--gold);">Lv. 51</strong></td>
-                <td>디즈니월드 경영 및 캐릭터 수집 시뮬레이션, 4단계 코어 루프 체득</td>
-              </tr>
-              <!-- 온라인 RPG -->
+              <!-- 온라인 MMORPG -->
               <tr>
                 <td><span class="badge" style="background: rgba(102,192,244,0.15); color: var(--blue-bright);">온라인 MMORPG</span></td>
                 <td><strong>메이플스토리</strong></td>
@@ -1026,60 +2423,60 @@
         </div>
       </section>
 
-      <!-- 2-2. 디즈니 킹덤 핵심 플레이 루프 심층 분석 -->
+      <!-- 2-2. 몬스터헌터 월드 핵심 플레이 루프 심층 분석 -->
       <section class="content-section">
         <div class="section-num-label">TAB 02 · PART B</div>
-        <h2>『디즈니 킹덤』 5년 장기 플레이어 관점 시스템 분석</h2>
+        <h2>『몬스터헌터 월드』 280시간 플레이어 관점 코어 루프 &amp; 생태계 상호작용 분석</h2>
         <div class="content-card">
           <p>
-            『디즈니 킹덤』은 전통적인 타이쿤의 건설/수익화 루프 위에 <strong>‘디즈니/픽사 IP 캐릭터 수집 및 토큰 파밍’</strong>을 핵심 드라이브로 결합한 구조입니다.
+            『몬스터헌터 월드』는 단순한 보스 처치를 넘어, <strong>‘살아 숨쉬는 생태계 상호작용 및 파밍 기반 헌팅 액션 루프’</strong>를 완성한 타이틀입니다. 마을과 필드, 전투와 성장의 유기적 연결 구조를 분석합니다.
           </p>
 
           <div class="loop-grid">
             <div class="loop-card">
               <span class="loop-card-step">STEP 01</span>
-              <h4>🪄 마법 수급 &amp; 정화</h4>
-              <p>어트랙션과 매점에서 마법(주요 화폐)을 수확하고, 어둠의 저주에 걸린 파크 부지를 정화하여 영토를 확장합니다.</p>
+              <h4>🍲 거점 정비 &amp; 식사 버프</h4>
+              <p>아날로그 기계 장치와 식생이 어우러진 조사 거점에서 장비를 점검하고, 모든 식재료를 해금한 주방 식사 버프로 체력/스태미나 및 특수 스킬을 장착합니다.</p>
             </div>
 
             <div class="loop-card">
               <span class="loop-card-step">STEP 02</span>
-              <h4>📋 캐릭터 활동 미션</h4>
-              <p>보유한 캐릭터들에게 60분~8시간 단위의 퀘스트 및 활동을 부여하여 고유 토큰(귀마개, 토큰 아이템)을 파밍합니다.</p>
+              <h4>🐾 흔적 조사 &amp; 영역 다툼</h4>
+              <p>안내벌레를 활용해 발자국과 점액 흔적을 추적하며 생태계를 탐색하고, 대형 몬스터 간의 세력 다툼(Turf War)을 전략적으로 유도합니다.</p>
             </div>
 
             <div class="loop-card">
               <span class="loop-card-step">STEP 03</span>
-              <h4>👑 캐릭터 소환 &amp; 레벨업</h4>
-              <p>수집된 토큰을 모아 신규 캐릭터를 파크에 환영(해금)하고, 레벨 10 만렙을 향해 육성하여 상위 퀘스트를 개방합니다.</p>
+              <h4>⚔️ 육질 판정 &amp; 헌팅 액션</h4>
+              <p>부위별 육질(참격/타격/탄) 판정과 클러치 클로 상처 유발 메커니즘을 고려하여, 몬스터의 약점 부위를 집중 파괴하고 경직을 이끌어냅니다.</p>
             </div>
 
             <div class="loop-card">
               <span class="loop-card-step">STEP 04</span>
-              <h4>🎪 기간 한정 라이브 이벤트</h4>
-              <p>신규 개봉 영화나 기념 테마에 맞춘 시즌 이벤트에 참여하여 한정 어트랙션과 보스 캐릭터를 획득합니다.</p>
+              <h4>🔨 소재 갈무리 &amp; 빌드 완성</h4>
+              <p>토벌 및 포획 후 수급한 레어 소재(물옥, 보옥 등)로 방어구 세트를 제작하고, 장식주 슬롯 세팅을 통해 나만의 헌팅 빌드를 지속 확장합니다.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- 2-3. 리텐션 요인과 개발자 관점의 개선안 -->
+      <!-- 2-3. 하드코어 장르 & 라이브 서비스 플레이어 관점 시스템 인사이트 -->
       <section class="content-section">
         <div class="section-num-label">TAB 02 · PART C</div>
-        <h2>5년 리텐션 요인 및 기획적 개선 제안</h2>
+        <h2>하드코어 &amp; 대규모 라이브 게임 플레이를 통한 기획적 인사이트</h2>
         <div class="content-card">
           <div class="points-grid">
             <div class="point-box">
-              <h4>🏰 시각적 만족감과 소유감</h4>
-              <p>원작 애니메이션 시그니처 모션을 완벽히 구현한 3D 캐릭터들이 내 파크를 자유롭게 누비는 모습이 최상위 리텐션 동기.</p>
+              <h4>🎒 타르코프(254h)의 하이리스크-하이리턴 경제 루프</h4>
+              <p>‘사망 시 전리품 완전 유실’이라는 극단적 긴장감과, 파산 시 스캐브(Scav) 모드로 밑천을 재수급할 수 있는 안전장치가 맞물려 끊어지지 않는 플레이 중독성을 생성함을 분석.</p>
             </div>
             <div class="point-box">
-              <h4>⚠️ 토큰 파밍 피로도 (RNG Fatigue) 개선안</h4>
-              <p>후반부 에픽 토큰 드랍 실패 시 누적 확률이 증가하는 가변형 천장(Pity) 시스템 또는 하위 토큰 합성 변환기 도입 제안.</p>
+              <h4>🗺️ 엘든 링(95h)의 소울라이크 호기심 기반 레벨 디자인</h4>
+              <p>보스 조우의 심리적 부담감을 오픈월드의 다채로운 탐험 루트와 인물 서사로 완화하고, 막히면 다른 지역을 탐색해 강해져 돌아오는 유연한 난이도 극복 메커니즘 체득.</p>
             </div>
             <div class="point-box">
-              <h4>⚠️ 부지 면적(Land Space) 제약 개선안</h4>
-              <p>어트랙션 면적을 모듈식으로 압축하는 '복합 테마 존' 프리셋 시스템 및 시즌별 테마 자동 스왑 기능 도입 제안.</p>
+              <h4>💎 로아(1641Lv) &amp; 메이플(282Lv)의 내실 수집과 리텐션</h4>
+              <p>단순 레벨업 외에 모코코 1,101개 완수 및 유니온 9039 달성을 통해 체득한 방대한 컬렉션 콘텐츠가 장기 라이브 게임의 유저 잔존(Retention)에 미치는 심리적 완급 조절 기획 고찰.</p>
             </div>
           </div>
         </div>
@@ -1100,9 +2497,10 @@
     </div>
   </main>
 
-  <!-- Interactive Tab Switching Script -->
+  <!-- Interactive Tab & Accordion Script -->
   <script>
     (() => {
+      // 1. Tab Switching Logic
       const tabButtons = document.querySelectorAll('.tab-switch-btn');
       const tabPanels = document.querySelectorAll('.tab-content-panel');
 
@@ -1110,19 +2508,16 @@
         btn.addEventListener('click', () => {
           const targetId = btn.getAttribute('aria-controls');
 
-          // Deactivate all buttons
           tabButtons.forEach((b) => {
             b.classList.remove('is-active');
             b.setAttribute('aria-selected', 'false');
           });
 
-          // Hide all panels
           tabPanels.forEach((p) => {
             p.classList.remove('is-active');
             p.hidden = true;
           });
 
-          // Activate clicked button & panel
           btn.classList.add('is-active');
           btn.setAttribute('aria-selected', 'true');
 
@@ -1133,6 +2528,50 @@
           }
         });
       });
+
+      // 2. Accordion Filter Logic (All / Completed / Pending)
+      const filterButtons = document.querySelectorAll('.accordion-filter-btn');
+      const accordionItems = document.querySelectorAll('.rank-accordion-item');
+
+      filterButtons.forEach((fBtn) => {
+        fBtn.addEventListener('click', () => {
+          const filter = fBtn.getAttribute('data-filter');
+
+          filterButtons.forEach((b) => b.classList.remove('is-active'));
+          fBtn.classList.add('is-active');
+
+          accordionItems.forEach((item) => {
+            const status = item.getAttribute('data-status');
+            if (filter === 'all' || status === filter) {
+              item.style.display = '';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // 3. Accordion Expand All / Collapse All
+      const btnExpandAll = document.getElementById('btn-expand-all');
+      const btnCollapseAll = document.getElementById('btn-collapse-all');
+
+      if (btnExpandAll) {
+        btnExpandAll.addEventListener('click', () => {
+          accordionItems.forEach((item) => {
+            if (item.style.display !== 'none') {
+              item.open = true;
+            }
+          });
+        });
+      }
+
+      if (btnCollapseAll) {
+        btnCollapseAll.addEventListener('click', () => {
+          accordionItems.forEach((item) => {
+            item.open = false;
+          });
+        });
+      }
     })();
   </script>
 </body>
