@@ -1325,14 +1325,18 @@
       padding-block: 68px 90px;
     }
 
+    #contact .section-header {
+      margin-bottom: 22px;
+    }
+
     .contact-card {
       position: relative;
       overflow: hidden;
       display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+      grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
       align-items: center;
       gap: clamp(24px, 4vw, 44px);
-      padding: clamp(28px, 4vw, 40px) clamp(28px, 4.5vw, 48px);
+      padding: clamp(28px, 4vw, 42px) clamp(28px, 4.5vw, 48px);
       border: 1px solid var(--line-strong);
       border-radius: var(--radius-lg);
       background:
@@ -1350,10 +1354,20 @@
     .contact-card .section-title {
       max-width: none;
       margin-bottom: 0;
-      font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+      color: #ffffff;
+      font-size: clamp(1.6rem, 2.9vw, 2.35rem);
       line-height: 1.24;
       letter-spacing: -0.04em;
       word-break: keep-all;
+    }
+
+    .contact-desc {
+      margin: 0;
+      color: #9cb2c4;
+      font-size: 0.94rem;
+      line-height: 1.65;
+      word-break: keep-all;
+      max-width: 580px;
     }
 
     .contact-channels {
@@ -2278,10 +2292,16 @@
     <!-- 06. Contact Section -->
     <section id="contact" data-nav-section>
       <div class="container">
+        <header class="section-header reveal">
+          <p class="section-label" data-section-label data-en="CONTACT">연락처</p>
+        </header>
+
         <div class="contact-card reveal">
           <div class="contact-card-main">
-            <p class="section-label" data-section-label data-en="CONTACT">연락처</p>
             <h2 class="section-title">함께 플레이할 다음 프로젝트를 찾습니다.</h2>
+            <p class="contact-desc">
+              새로운 플레이 경험을 함께 만들어갈 팀과 프로젝트를 기다립니다. 채용 제안 및 협업 문의는 언제든 편하게 연락해 주세요.
+            </p>
           </div>
 
           <div class="contact-channels">
