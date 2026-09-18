@@ -72,30 +72,137 @@ AI 에이전트는 일반 메서드와 람다 함수를 모두 생성한다. 중
 
 ## 4. 14일 학습 기록표
 
-| 일차 | 목차 기반 학습 범위 | 이론 날짜 | 실습 날짜 | 응용 내용 | 관련 YouTube 링크 | 시간 | 완료 |
-|---:|---|---|---|---|---|---|:---:|
-| 1 | 1장: 모던 자바로의 길 | ____ | ____ | Java 버전과 람다 도입 배경을 5문장으로 정리 | [Java 8 람다 소개 검색](https://www.youtube.com/results?search_query=Java+8+lambda+introduction) | __분 | [ ] |
-| 2 | 1장: 모던 자바의 기능들 | ____ | ____ | 람다·인터페이스·스트림의 관계를 그림으로 정리 | [Modern Java features 검색](https://www.youtube.com/results?search_query=modern+Java+features+lambda+functional+interface) | __분 | [ ] |
-| 3 | 2장: 함수형 프로그래밍, 람다 대수, 리스프 | ____ | ____ | 명령형 코드와 함수형 코드를 같은 문제로 비교 | [Lambda calculus for programmers 검색](https://www.youtube.com/results?search_query=lambda+calculus+for+programmers) | __분 | [ ] |
-| 4 | 2장: 람다란 무엇인가, 함수와 클래스 | ____ | ____ | 익명 클래스와 람다를 같은 동작으로 작성 | [Java anonymous class vs lambda 검색](https://www.youtube.com/results?search_query=Java+anonymous+class+vs+lambda) | __분 | [ ] |
-| 5 | 2장: 람다 기본 문법 | ____ | ____ | 매개변수 0·1·2개, 블록식·표현식 람다 작성 | [Java lambda syntax 검색](https://www.youtube.com/results?search_query=Java+lambda+expression+syntax) | __분 | [ ] |
-| 6 | 3장: 함수형 인터페이스 | ____ | ____ | `Runnable`, `Supplier`, `Consumer`, `Function`, `Predicate` 예제 작성 | [Java functional interfaces 검색](https://www.youtube.com/results?search_query=Java+functional+interfaces+Runnable+Supplier+Consumer+Function+Predicate) | __분 | [ ] |
-| 7 | 3장: `@FunctionalInterface`와 상속 | ____ | ____ | 사용자 정의 함수형 인터페이스와 컴파일 실패 사례 만들기 | [Java FunctionalInterface annotation 검색](https://www.youtube.com/results?search_query=Java+FunctionalInterface+annotation) | __분 | [ ] |
-| 8 | 3장: 타입 추론과 대상 타이핑 | ____ | ____ | 명시적 타입과 추론 타입을 바꾸며 컴파일 오류 기록 | [Java lambda target typing type inference 검색](https://www.youtube.com/results?search_query=Java+lambda+target+typing+type+inference) | __분 | [ ] |
-| 9 | 3장: 메서드 참조 | ____ | ____ | 람다를 정적·인스턴스·생성자 참조로 리팩터링 | [Java method reference 검색](https://www.youtube.com/results?search_query=Java+method+reference+constructor+static+instance) | __분 | [ ] |
-| 10 | 3장: 변수 범위와 유사 파이널 | ____ | ____ | 캡처 가능한 변수와 변경 가능한 변수의 차이 실험 | [Java effectively final lambda 검색](https://www.youtube.com/results?search_query=Java+effectively+final+lambda) | __분 | [ ] |
-| 11 | 3장: 예외 처리와 콜백 | ____ | ____ | 체크 예외를 람다·호출자에서 처리하는 두 방식 비교 | [Java lambda checked exception callback 검색](https://www.youtube.com/results?search_query=Java+lambda+checked+exception+callback) | __분 | [ ] |
-| 12 | 3장: 람다와 클로저 | ____ | ____ | Java 람다의 캡처와 다른 언어의 클로저를 비교표로 작성 | [Java lambda closure 검색](https://www.youtube.com/results?search_query=Java+lambda+closure+captured+variables) | __분 | [ ] |
-| 13 | 3장: 바이트코드·기술자·시그니처 변환 | ____ | ____ | `javap`로 일반 메서드와 람다 생성 결과 관찰 | [Java lambda bytecode invokedynamic javap 검색](https://www.youtube.com/results?search_query=Java+lambda+bytecode+invokedynamic+javap) | __분 | [ ] |
-| 14 | 1~3장 1회독 통합·회고 | ____ | ____ | 작은 필터·정렬 프로그램을 일반 메서드와 람다 두 방식으로 작성하고 AI 코드 선택 기준 기록 | [Java lambda practical example 검색](https://www.youtube.com/results?search_query=Java+lambda+practical+example+filter+sort) | __분 | [ ] |
+|  일차 | 목차 기반 학습 범위                    | 이론 날짜 | 실습 날짜 | 응용 내용                                                             | 관련 YouTube 링크                                                                                                                                          | 시간      | 완료  |
+| --: | ------------------------------ | ----- | ----- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------- | :-: |
+|   1 | 1장: 모던 자바로의 길                  | 0911  | ____  | ____                                                              | [Java 8 람다 소개 검색](https://www.youtube.com/results?search_query=Java+8+lambda+introduction)                                                             | 5분      | [x] |
+|   2 | 1장: 모던 자바의 기능들                 | 0912  | ____  | ____                                                              | [Modern Java features 검색](https://www.youtube.com/results?search_query=modern+Java+features+lambda+functional+interface)                               | 5분      | [x] |
+|   3 | 2장: 함수형 프로그래밍, 람다 대수, 리스프      | 0913  | ____  | ____                                                              | [Lambda calculus for programmers 검색](https://www.youtube.com/results?search_query=lambda+calculus+for+programmers)                                     | 5분      | [x] |
+|   4 | 2장: 람다란 무엇인가, 함수와 클래스          | 0914  | ____  | ____                                                              | [Java anonymous class vs lambda 검색](https://www.youtube.com/results?search_query=Java+anonymous+class+vs+lambda)                                       | 40분     | [x] |
+|   5 | 2장: 람다 기본 문법                   | 0915  | 0915  | 일반 문법을 람다 식으로 변환하는 방법                                             | [Java lambda syntax 검색](https://www.youtube.com/results?search_query=Java+lambda+expression+syntax)                                                    | 2시간     | [x] |
+|   6 | 3장: 함수형 인터페이스                  | 0916  | 0916  | `Runnable`, `Supplier`, `Consumer`, `Function`, `Predicate` 예제 작성 | [Java functional interfaces 검색](https://www.youtube.com/results?search_query=Java+functional+interfaces+Runnable+Supplier+Consumer+Function+Predicate) | 20분     | [x] |
+|   7 | 3장: `@FunctionalInterface`와 상속 | 0917  | 0917  | 사용자 정의 함수형 인터페이스와 컴파일 실패 사례 만들기                                   | [Java FunctionalInterface annotation 검색](https://www.youtube.com/results?search_query=Java+FunctionalInterface+annotation)                             | 15분     | [x] |
+|   8 | 3장: 타입 추론과 대상 타이핑              | 0918  | 0918  | 명시적 타입과 추론 타입을 바꾸며 컴파일 오류 기록                                      | [Java lambda target typing type inference 검색](https://www.youtube.com/results?search_query=Java+lambda+target+typing+type+inference)                   | 1시간 30분 | [x] |
+|   9 | 3장: 메서드 참조                     | 0919  | ____  | 람다를 정적·인스턴스·생성자 참조로 리팩터링                                          | [Java method reference 검색](https://www.youtube.com/results?search_query=Java+method+reference+constructor+static+instance)                             | __분     | [ ] |
+|  10 | 3장: 변수 범위와 유사 파이널              | 0920  | ____  | 캡처 가능한 변수와 변경 가능한 변수의 차이 실험                                       | [Java effectively final lambda 검색](https://www.youtube.com/results?search_query=Java+effectively+final+lambda)                                         | __분     | [ ] |
+|  11 | 3장: 예외 처리와 콜백                  | 0921  | ____  | 체크 예외를 람다·호출자에서 처리하는 두 방식 비교                                      | [Java lambda checked exception callback 검색](https://www.youtube.com/results?search_query=Java+lambda+checked+exception+callback)                       | __분     | [ ] |
+|  12 | 3장: 람다와 클로저                    | 0922  | ____  | Java 람다의 캡처와 다른 언어의 클로저를 비교표로 작성                                  | [Java lambda closure 검색](https://www.youtube.com/results?search_query=Java+lambda+closure+captured+variables)                                          | __분     | [ ] |
+|  13 | 3장: 바이트코드·기술자·시그니처 변환          | 0923  | ____  | `javap`로 일반 메서드와 람다 생성 결과 관찰                                      | [Java lambda bytecode invokedynamic javap 검색](https://www.youtube.com/results?search_query=Java+lambda+bytecode+invokedynamic+javap)                   | __분     | [ ] |
+|  14 | 1~3장 1회독 통합·회고                 | 0924  | ____  | 작은 필터·정렬 프로그램을 일반 메서드와 람다 두 방식으로 작성하고 AI 코드 선택 기준 기록              | [Java lambda practical example 검색](https://www.youtube.com/results?search_query=Java+lambda+practical+example+filter+sort)                             | __분     | [ ] |
 
-## 5. 매일 남길 기록
+## 5. 일차별 상세 학습 기록
 
+### 1일차 (0911) : 1장 - 모던 자바로의 길
+- 책에서의 1장이 굉장히 짧다. 간단하게 자바 8의 차이점만 보여준다.
+
+### 2일차 (0912) : 1장 - 모던 자바의 기능들
+- 1일차와 동일하다.
+
+### 3일차 (0913) : 2장 - 함수형 프로그래밍, 람다 대수, 리스프
+- 람다의 시작이 대수와 관련된 것에서 오는지 신기했다.
+
+### 4일차 (0914) : 2장 - 람다란 무엇인가, 함수와 클래스
+> *"자바 코드들이 나오기 시작했다. 난 자바 잘 모르는데. 그냥 람다 형식이 보고 싶었던건데, 모르는게 꽤 된다. AI 에게 물어보니, 러프한 개념으로 학습해도 무관하다고 한다. 레거시 코드들이 많이 있기도 하고, 람다 개념만 익히는데에 시간 투자하라고 한다."*
+
+- **오늘 배운 핵심 개념 (C#과 비교하며 이해한 원리)**:
+  - **익명 클래스 vs 람다**: 과거 자바는 함수를 넘기려면 일회용 클래스(익명 클래스, `new Function<T, R>() { ... }`)를 매번 인스턴스화해야 했으나, 자바 8 람다(`->`)는 불필요한 클래스 껍데기를 날리고 핵심 로직만 간결하게 전달함.
+  - **`this`와 스코프의 비밀 (`Foo.this.x` vs `this.x`)**:
+    - 익명 클래스는 독립된 별도 클래스(`Foo$1`)로 생성되어 `this`가 익명 클래스 자신을 가리킴. 따라서 바깥 클래스의 속성을 가져오려면 `Foo.this.x`라는 기괴한 문법이 필요했음.
+    - 람다는 컴파일러가 원본 클래스(`Foo`)의 `private` 비밀(합성) 메서드로 코드를 변환(어휘적 스코프)하기 때문에, 람다 안의 `this`가 곧 원본 클래스(`Foo`) 자신을 가리킴 (`Foo.this == this`).
+  - **`final`과 변수 캡처의 원리**:
+    - C#은 람다가 바깥 지역 변수를 쓸 때 힙(클로저 객체)으로 변수를 승격시켜 값 변경이 자유로움.
+    - Java는 스택 변수 값을 복사해 오므로, 람다 내부와 외부의 값 불일치를 방지하기 위해 캡처 대상 변수가 반드시 `final`(또는 값이 안 바뀌는 유사 파이널)이어야만 함.
+  - **인스턴스화와 최적화**: 익명 클래스는 호출 시마다 `new`로 힙에 인스턴스를 만들어 GC 부담이 크지만, 람다는 JVM 차원(`invokedynamic`)에서 가볍게 처리하고 캐싱함.
+- **비교 코드 실습 (`Function<String, String> addSurname`)**:
+  - *익명 클래스 (람다 X)*: `new Function<String, String>() { @Override public String apply(String name) { return name + " Kim"; } };`
+  - *람다 (람다 O)*: `name -> name + " Kim"`
+- **AI와 대화하며 깨달은 점**:
+  - 원본 클래스 내부에 가상의 비밀 메서드를 만들고 호출하는 방식이라 외부로 나가지 않고 스코프 충돌 없이 깔끔하게 동작한다는 원리가 매우 흥미로웠음.
+  - 개발자가 작성하는 건 화살표(`->`) 하나지만, 그 뒤에서 컴파일러가 엄청난 양의 추상화와 최적화를 대신 수행해주고 있음을 느낌 (리스펙트!).
+- **대처 전략**:
+  - 이 책(150쪽)은 람다의 내부 밑바닥/바이트코드를 파고드는 심화서이므로, 자바의 구형 시스템 API나 복잡한 바이트코드는 가볍게 넘기며 람다 핵심 개념 중심으로 빠르게 1회독 완주하기로 함.
+
+---
+
+### 5일차 (0915) : 2장 - 람다 기본 문법
+- **궁금했던 점 & 질문 (Questions)**:
+  - 자바 람다 기본 문법과 `Arrays.sort`가 대체 어떻게 돌아가는지 C#과 비교하며 이해하고 싶었음.
+  - 람다는 두 개(`a, b`)만 비교하는데 왜 배열 전체가 정렬되는지? `sort`가 끝나면 `main`에게 콜백해 주는 것인지?
+  - C# 타이머나 이벤트에서 왜 `=`가 아니라 `+=`로 함수를 누적 등록하는지?
+  - 내 프로젝트(『내 약국에는 정상이 없다』)의 `GameManager` 오케스트레이션도 이 람다 콜백 큐 구조였는지?
+- **오늘 배운 핵심 개념 & 깨달음 (Takeaways)**:
+  - **람다의 다이어트 공식**: 구형 익명 클래스에서 생성 문법, 어노테이션, 메서드 상세 정보를 싹 다 가위질하고 `(인자 목록) -> { 실행 몸통 }`만 남긴 결과물임.
+  - **콜백(Callback)의 진짜 주체와 흐름**:
+    - `sort`가 끝나고 메인으로 돌아가는 건 단순한 **'리턴(Return)'**임.
+    - 진짜 콜백은 일하고 있는 **`sort`가 두 요소를 비교해야 할 때마다 우리가 넘겨준 람다(심판)를 역으로 호출(Call-back)**하는 것임 (동기 콜백 / 전략 패턴).
+  - **C# 이벤트 `+=`의 정체 (구독자 수첩)**:
+    - `+=`는 앞사람을 덮어쓰지 않고 '구독자 명단 수첩에 내 함수를 추가(Add)'하는 것 (Java의 `addActionListener`와 100% 동일한 원리).
+  - **내 프로젝트(약국 게임) 아키텍처와의 비교 및 재발견**:
+    - `GameManager`의 오케스트레이션은 람다 콜백 큐와 **동작 목적(완료 시점 대기, 순차 실행, 제어의 역전)이 100% 일치**함.
+    - 더 나아가, 실제 코드는 람다 콜백의 리스크(프리징, 취소 불가, GC 메모리 누수)를 해결하기 위해 **`UniTask (WhenAll/CTS) + 커맨드 패턴 + FSM`이라는 상위 호환 아키텍처**로 진화된 형태였음을 확인.
+- **직접 확인한 코드 (C# vs Java 람다 정렬 비교)**:
+  - *C#*: `Array.Sort(words, (a, b) => a.Length - b.Length);`
+  - *Java*: `Arrays.sort(words, (a, b) -> a.length() - b.length());`
+- **1줄 요약**: 문법 거품을 뺀 게 람다이고, 람다를 쥐어주고 알아서 부르게 하는 게 콜백이다! 2장 완독 완료.
+
+### 6일차 (0916) : 3장 - 함수형 인터페이스
+- **오늘 배운 개념**:
+  - 함수형 인터페이스(Functional Interface)의 본질: 추상 메서드가 0개이거나 2개 이상이면 함수형 인터페이스가 아니며, 람다를 변수에 담기 위한 **"추상 메서드 딱 1개짜리 규격 인터페이스(SAM)"**임.
+  - C#의 `Action`, `Func` 델리게이트 역할을 자바에서는 이 함수형 인터페이스가 대신 수행함.
+  - 책 분량(40~44p)이 짧고 간결하여 빠르게 핵심만 파악 완료.
+- **핵심 요약**: 자바에서 람다를 담기 위한 그릇은 오직 "메서드 1개짜리 인터페이스"뿐이다.
+
+### 7일차 (0917) : 3장 - `@FunctionalInterface`와 상속
+- **오늘 배운 개념**:
+  - **상속 규칙**: 인터페이스를 상속받더라도, 해당 단일 추상 메서드를 제외한 추가적인 추상 메서드는 절대 담을 수 없음 (상속 후에도 최종 추상 메서드는 오직 1개여야 람다 자격 유지).
+  - **`@FunctionalInterface` 어노테이션의 역할**: 개발자가 실수로 메서드를 2개 이상 추가하는 것을 컴파일 타임에 즉시 차단하는 안전장치.
+- **다음 관심사**: 8일차에 이어질 "타입 추론(Type Inference)과 대상 타이핑"이 어떻게 전개될지 탐구 예정.
+
+### 8일차 (0918) : 3장 - 타입 추론과 대상 타이핑
+- **궁금했던 점 & 질문 (Questions)**:
+  - 람다는 원래 타입이 없는지? 책의 사칙연산(`Calculation`, `calculate`, `apply`) 예제가 도대체 왜 그렇게 쓰였는지.
+  - 메서드 호출 시 제네릭 문법(`Collections.<String>emptyList()`)과 연쇄 호출(`List.emptyList().add(...)`)에서 왜 컴파일 에러가 나는지.
+- **오늘 배운 핵심 개념 & 깨달음 (Takeaways)**:
+  - **대상 타입(Target Type)**: 람다는 형태 없는 액체 같아서, 대입되는 좌변의 변수나 메서드 인자라는 "그릇(대상 타입)"을 보고 컴파일러가 역으로 타입을 알아맞힘.
+  - **자바 람다의 정체 (인터페이스 객체)**: C#과 달리 자바는 함수를 직접 호출(`add(2, 2)`)할 수 없어서, 인터페이스의 메서드 이름(`apply`)을 실행 방아쇠(접근자)로 사용하여 `add.apply(2, 2)` 형태로 호출함.
+  - **연쇄 메서드 호출(Chaining)의 한계와 자바의 패배**:
+    - 기차놀이 체이닝(`List.emptyList().add(...)`) 시 타입 정보가 맨 앞칸까지 역방향으로 전달되지 못해 `List<Object>`로 평가되어 컴파일 실패함.
+    - 자바 8에서도 이 굴욕을 완전히 해결하지 못해 타입 증인(`.<String>`)을 써야 했으나, 최신 자바(Java 9~21)에서는 `List.of()`, `var`, `.toList()` 등의 현대적 API 도입으로 이를 말끔히 해결함.
+- **1줄 요약**: 람다는 그릇(Target Type)을 보고 타입을 유추하며, 자바 8 체이닝의 한계는 현대 자바의 신규 컬렉션/스트림 API로 극복되었다.
+
+### 9일차 (0919) : 3장 - 메서드 참조
 - 오늘 배운 개념:
 - 직접 작성한 코드와 실행 결과:
 - 일반 메서드와 람다 중 선택한 이유:
-- AI가 만든 코드에서 수정하거나 되물은 부분:
 - 막힌 점과 다음 날 첫 행동:
+
+### 10일차 (0920) : 3장 - 변수 범위와 유사 파이널
+- 오늘 배운 개념:
+- 직접 작성한 코드와 실행 결과:
+- 일반 메서드와 람다 중 선택한 이유:
+- 막힌 점과 다음 날 첫 행동:
+
+### 11일차 (0921) : 3장 - 예외 처리와 콜백
+- 오늘 배운 개념:
+- 직접 작성한 코드와 실행 결과:
+- 일반 메서드와 람다 중 선택한 이유:
+- 막힌 점과 다음 날 첫 행동:
+
+### 12일차 (0922) : 3장 - 람다와 클로저
+- 오늘 배운 개념:
+- 직접 작성한 코드와 실행 결과:
+- 일반 메서드와 람다 중 선택한 이유:
+- 막힌 점과 다음 날 첫 행동:
+
+### 13일차 (0923) : 3장 - 바이트코드·기술자·시그니처 변환
+- 오늘 배운 개념:
+- 직접 작성한 코드와 실행 결과:
+- 일반 메서드와 람다 중 선택한 이유:
+- 막힌 점과 다음 날 첫 행동:
+
+### 14일차 (0924) : 1~3장 1회독 통합·회고
+- 오늘 배운 개념:
+- 직접 작성한 코드와 실행 결과:
+- 1회독 완주 총평 및 회고:
 
 ## 6. 완료 기준
 
