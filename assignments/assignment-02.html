@@ -318,17 +318,133 @@
       border-color: var(--line-strong);
     }
 
-    /* 2 Columns on Desktop, 1 Column on Mobile */
+    /* Single Column Accordion List: Eliminates asymmetric row distortion when opened */
     .rank-accordion-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      display: flex;
+      flex-direction: column;
       gap: 12px;
-      margin: 16px 0 28px;
+      margin: 16px 0 20px;
+      width: 100%;
     }
 
-    @media (max-width: 820px) {
-      .rank-accordion-grid {
-        grid-template-columns: 1fr;
+    /* Left-Right Pagination Toolbar */
+    .rank-pagination-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 18px;
+      background: rgba(13, 26, 41, 0.82);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      margin: 16px 0 20px;
+      backdrop-filter: blur(8px);
+    }
+
+    .rank-pagination-bar.is-bottom {
+      margin: 20px 0 32px;
+      background: rgba(16, 29, 45, 0.75);
+    }
+
+    .rank-page-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .rank-page-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 7px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: rgba(20, 38, 58, 0.65);
+      color: var(--muted);
+      font-size: 0.84rem;
+      font-weight: 750;
+      cursor: pointer;
+      transition: all 180ms ease;
+      user-select: none;
+    }
+
+    .rank-page-btn:hover:not(:disabled) {
+      color: #fff;
+      border-color: var(--blue-bright);
+      background: rgba(102, 192, 244, 0.16);
+      transform: translateY(-1px);
+    }
+
+    .rank-page-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      border-color: var(--line);
+      transform: none;
+    }
+
+    .rank-page-pills-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .rank-page-pill {
+      padding: 6px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: rgba(16, 29, 45, 0.7);
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 750;
+      cursor: pointer;
+      transition: all 180ms ease;
+      user-select: none;
+    }
+
+    .rank-page-pill:hover {
+      color: #fff;
+      border-color: var(--line-strong);
+      background: rgba(102, 192, 244, 0.12);
+    }
+
+    .rank-page-pill.is-active {
+      background: rgba(102, 192, 244, 0.24);
+      border-color: var(--blue-bright);
+      color: #fff;
+      font-weight: 850;
+      box-shadow: 0 0 12px rgba(102, 192, 244, 0.22);
+    }
+
+    .rank-page-info {
+      font-size: 0.84rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .rank-page-info strong {
+      color: var(--blue-bright);
+      font-weight: 800;
+    }
+
+    @media (max-width: 768px) {
+      .rank-pagination-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        padding: 12px;
+      }
+      .rank-page-nav {
+        justify-content: center;
+      }
+      .rank-page-info {
+        justify-content: center;
+        text-align: center;
       }
     }
 
@@ -778,7 +894,7 @@
 
       <p class="detail-lead">
         과제 규정에 맞추어 두 가지 관점의 게임 플레이를 하나의 페이지에 통합 구성했습니다. 
-        <strong>첫 번째 탭</strong>에서는 50일간 모바일인덱스 실시간 인기/매출 50위권 게임을 직접 플레이하며 분석하기 위해, 화면 공간을 효율적으로 활용하는 <strong>반응형 2열 드롭다운(아코디언)</strong> 구조로 상위 50위 게임의 랭크와 게임명, 세부 분석 및 대기 템플릿을 제공합니다. 
+        <strong>첫 번째 탭</strong>에서는 50일간 모바일인덱스 실시간 인기/매출 50위권 게임을 직접 플레이하며 분석하기 위해, 화면 길이를 최소화하고 펼침 시 왜곡이 없도록 <strong>10개 단위 페이징 드롭다운(아코디언) &amp; 좌우 탐색</strong> 구조로 상위 50위 게임의 랭크와 게임명, 세부 분석 및 대기 템플릿을 제공합니다. 
         <strong>두 번째 탭</strong>에서는 몬스터헌터 월드(282.9h), ESCAPE FROM TARKOV(254.3h), 엘든 링(95.2h) 등 하드코어 장르부터 다양한 플랫폼과 장르를 직접 플레이하며 체득한 30종 이상의 플레이 아카이브와 코어 루프 분석을 제공합니다.
       </p>
     </section>
@@ -806,8 +922,8 @@
         <h2>50일 모바일 게임 플레이 분석 (TOP 50 드롭다운 아카이브)</h2>
         <p style="color: #b9cddc;">
           50일간 매일 순위권 모바일 게임을 플레이하고 분석하기 위해 공간을 최적화했습니다. 
-          <strong>데스크톱 2열 (모바일 1열)</strong> 드롭다운 형식으로 기본 상태에서는 랭크와 게임명만 깔끔하게 노출되며, 
-          항목을 클릭하면 플레이 타임, 레벨, 핵심 시스템 평가, 장단점 분석이 상세하게 펼쳐집니다.
+          세로 스크롤 부담과 좌우 불균형 왜곡을 해소하기 위해 <strong>한 화면에 10개씩 1열 드롭다운</strong>으로 구성하였으며, 
+          <strong>좌우 넘김 버튼(이전/다음 10개)</strong> 및 순위 구간 탭을 통해 1~50위를 쾌적하게 넘나들며 탐색할 수 있습니다.
         </p>
 
         <!-- Accordion Filter & Action Toolbar -->
@@ -818,12 +934,34 @@
             <button class="accordion-filter-btn" data-filter="pending" type="button">⏳ 대기 중 (48)</button>
           </div>
           <div class="accordion-action-group">
-            <button class="accordion-toggle-all-btn" id="btn-expand-all" type="button">전체 펼치기</button>
+            <button class="accordion-toggle-all-btn" id="btn-expand-all" type="button">현재 페이지 전체 펼치기</button>
             <button class="accordion-toggle-all-btn" id="btn-collapse-all" type="button">전체 접기</button>
           </div>
         </div>
 
-        <!-- 2-Column Responsive Dropdown Grid -->
+        <!-- Top Pagination Bar (Left/Right Navigation & Rank Range Selector) -->
+        <div class="rank-pagination-bar" id="rank-pagination-top">
+          <div class="rank-page-nav">
+            <button class="rank-page-btn btn-page-prev" type="button" aria-label="이전 10개 게임">
+              <span aria-hidden="true">◀</span> 이전 10개
+            </button>
+            <div class="rank-page-pills-group" role="tablist" aria-label="순위 구간 선택">
+              <button class="rank-page-pill is-active" data-page="0" type="button">1 ~ 10위</button>
+              <button class="rank-page-pill" data-page="1" type="button">11 ~ 20위</button>
+              <button class="rank-page-pill" data-page="2" type="button">21 ~ 30위</button>
+              <button class="rank-page-pill" data-page="3" type="button">31 ~ 40위</button>
+              <button class="rank-page-pill" data-page="4" type="button">41 ~ 50위</button>
+            </div>
+            <button class="rank-page-btn btn-page-next" type="button" aria-label="다음 10개 게임">
+              다음 10개 <span aria-hidden="true">▶</span>
+            </button>
+          </div>
+          <div class="rank-page-info">
+            <span class="rank-page-info-text"><strong>1~10위</strong> 표시 중 (페이지 1 / 5)</span>
+          </div>
+        </div>
+
+        <!-- 1-Column Paginated Dropdown List -->
         <div class="rank-accordion-grid" id="rank-accordion-container">
           
           <!-- Rank 01 -->
@@ -2018,6 +2156,28 @@
           </details>
 
         </div>
+
+        <!-- Bottom Pagination Bar (Left/Right Navigation & Rank Range Selector) -->
+        <div class="rank-pagination-bar is-bottom" id="rank-pagination-bottom">
+          <div class="rank-page-nav">
+            <button class="rank-page-btn btn-page-prev" type="button" aria-label="이전 10개 게임">
+              <span aria-hidden="true">◀</span> 이전 10개
+            </button>
+            <div class="rank-page-pills-group" role="tablist" aria-label="순위 구간 선택">
+              <button class="rank-page-pill is-active" data-page="0" type="button">1 ~ 10위</button>
+              <button class="rank-page-pill" data-page="1" type="button">11 ~ 20위</button>
+              <button class="rank-page-pill" data-page="2" type="button">21 ~ 30위</button>
+              <button class="rank-page-pill" data-page="3" type="button">31 ~ 40위</button>
+              <button class="rank-page-pill" data-page="4" type="button">41 ~ 50위</button>
+            </div>
+            <button class="rank-page-btn btn-page-next" type="button" aria-label="다음 10개 게임">
+              다음 10개 <span aria-hidden="true">▶</span>
+            </button>
+          </div>
+          <div class="rank-page-info">
+            <span class="rank-page-info-text"><strong>1~10위</strong> 표시 중 (페이지 1 / 5)</span>
+          </div>
+        </div>
       </section>
 
       <!-- 1-2. 모바일인덱스 실시간 순위 데이터베이스 (TOP 45) -->
@@ -2529,25 +2689,131 @@
         });
       });
 
-      // 2. Accordion Filter Logic (All / Completed / Pending)
-      const filterButtons = document.querySelectorAll('.accordion-filter-btn');
-      const accordionItems = document.querySelectorAll('.rank-accordion-item');
+      // 2. Pagination & Filter State (10 Items per page, Left/Right Navigation)
+      const PAGE_SIZE = 10;
+      let currentPage = 0;
+      let currentFilter = 'all';
 
-      filterButtons.forEach((fBtn) => {
+      const filterButtons = document.querySelectorAll('.accordion-filter-btn');
+      const accordionItems = Array.from(document.querySelectorAll('.rank-accordion-item'));
+      const prevButtons = document.querySelectorAll('.btn-page-prev');
+      const nextButtons = document.querySelectorAll('.btn-page-next');
+      const pagePills = document.querySelectorAll('.rank-page-pill');
+      const infoTexts = document.querySelectorAll('.rank-page-info-text');
+
+      function getFilteredItems() {
+        if (currentFilter === 'all') return accordionItems;
+        return accordionItems.filter(item => item.getAttribute('data-status') === currentFilter);
+      }
+
+      function updatePagination(shouldScroll = false) {
+        const filtered = getFilteredItems();
+        const totalItems = filtered.length;
+        const totalPages = Math.ceil(totalItems / PAGE_SIZE) || 1;
+
+        if (currentPage >= totalPages) currentPage = totalPages - 1;
+        if (currentPage < 0) currentPage = 0;
+
+        const startIdx = currentPage * PAGE_SIZE;
+        const endIdx = startIdx + PAGE_SIZE;
+
+        // Hide all items, show only the items belonging to current page
+        accordionItems.forEach(item => {
+          item.style.display = 'none';
+        });
+
+        filtered.slice(startIdx, endIdx).forEach(item => {
+          item.style.display = '';
+        });
+
+        // Prev & Next Buttons state
+        prevButtons.forEach(btn => {
+          btn.disabled = (currentPage === 0);
+        });
+        nextButtons.forEach(btn => {
+          btn.disabled = (currentPage >= totalPages - 1);
+        });
+
+        // Page info text
+        const displayStart = totalItems === 0 ? 0 : startIdx + 1;
+        const displayEnd = Math.min(endIdx, totalItems);
+
+        infoTexts.forEach(el => {
+          if (currentFilter === 'all') {
+            el.innerHTML = `<strong>${displayStart}~${displayEnd}위</strong> 표시 중 (페이지 ${currentPage + 1} / ${totalPages})`;
+          } else {
+            const filterLabel = currentFilter === 'completed' ? '플레이 완료' : '대기 중';
+            el.innerHTML = `[${filterLabel}] <strong>${displayStart}~${displayEnd}</strong> / 총 ${totalItems}개 (페이지 ${currentPage + 1} / ${totalPages})`;
+          }
+        });
+
+        // Update pills
+        pagePills.forEach(pill => {
+          const pageVal = parseInt(pill.getAttribute('data-page'), 10);
+          if (pageVal === currentPage) {
+            pill.classList.add('is-active');
+          } else {
+            pill.classList.remove('is-active');
+          }
+          if (pageVal >= totalPages) {
+            pill.style.display = 'none';
+          } else {
+            pill.style.display = '';
+          }
+        });
+
+        // Scroll smoothly to top of list if triggered by pagination interaction
+        if (shouldScroll) {
+          const topAnchor = document.getElementById('rank-pagination-top');
+          if (topAnchor) {
+            const yOffset = -85;
+            const y = topAnchor.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }
+        }
+      }
+
+      // Prev & Next clicks
+      prevButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (currentPage > 0) {
+            currentPage--;
+            updatePagination(true);
+          }
+        });
+      });
+
+      nextButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filtered = getFilteredItems();
+          const totalPages = Math.ceil(filtered.length / PAGE_SIZE) || 1;
+          if (currentPage < totalPages - 1) {
+            currentPage++;
+            updatePagination(true);
+          }
+        });
+      });
+
+      // Page Pill clicks
+      pagePills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          const pageVal = parseInt(pill.getAttribute('data-page'), 10);
+          if (pageVal !== currentPage) {
+            currentPage = pageVal;
+            updatePagination(true);
+          }
+        });
+      });
+
+      // Filter Clicks
+      filterButtons.forEach(fBtn => {
         fBtn.addEventListener('click', () => {
           const filter = fBtn.getAttribute('data-filter');
-
-          filterButtons.forEach((b) => b.classList.remove('is-active'));
+          filterButtons.forEach(b => b.classList.remove('is-active'));
           fBtn.classList.add('is-active');
-
-          accordionItems.forEach((item) => {
-            const status = item.getAttribute('data-status');
-            if (filter === 'all' || status === filter) {
-              item.style.display = '';
-            } else {
-              item.style.display = 'none';
-            }
-          });
+          currentFilter = filter;
+          currentPage = 0;
+          updatePagination(false);
         });
       });
 
@@ -2572,6 +2838,9 @@
           });
         });
       }
+
+      // Initial Pagination Setup
+      updatePagination(false);
     })();
   </script>
 </body>
