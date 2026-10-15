@@ -64,7 +64,7 @@ class ThemeManager {
   }
 
   updateButtonsUI() {
-    const buttons = document.querySelectorAll("[data-theme-set], .theme-toggle-btn[data-theme]");
+    const buttons = document.querySelectorAll("[data-theme-set], .theme-toggle-btn[data-theme], .theme-fab-sphere");
     buttons.forEach((btn) => {
       const target = btn.getAttribute("data-theme-set") || btn.getAttribute("data-theme");
       if (target === this.currentTheme) {
@@ -75,16 +75,47 @@ class ThemeManager {
         btn.setAttribute("aria-pressed", "false");
       }
     });
+
+    // Update FAB trigger icon based on applied theme
+    const fabTriggerIcon = document.querySelector(".fab-current-icon");
+    if (fabTriggerIcon) {
+      if (this.currentTheme === "light") {
+        fabTriggerIcon.textContent = "☀️";
+      } else if (this.currentTheme === "dark") {
+        fabTriggerIcon.textContent = "🌙";
+      } else {
+        fabTriggerIcon.textContent = "💻";
+      }
+    }
   }
 
   bindButtons() {
     document.addEventListener("click", (e) => {
-      const btn = e.target.closest("[data-theme-set], .theme-toggle-btn[data-theme]");
+      // 1. FAB Trigger Toggle
+      const trigger = e.target.closest(".theme-fab-trigger");
+      const fabContainer = document.querySelector(".floating-theme-fab");
+      if (trigger && fabContainer) {
+        e.stopPropagation();
+        fabContainer.classList.toggle("open");
+        return;
+      }
+
+      // 2. Click on Theme Buttons or Spheres
+      const btn = e.target.closest("[data-theme-set], .theme-toggle-btn[data-theme], .theme-fab-sphere");
       if (btn) {
         const targetTheme = btn.getAttribute("data-theme-set") || btn.getAttribute("data-theme");
         if (targetTheme) {
           this.setTheme(targetTheme);
+          if (fabContainer) {
+            fabContainer.classList.remove("open");
+          }
         }
+        return;
+      }
+
+      // 3. Outside Click Closes FAB
+      if (fabContainer && !fabContainer.contains(e.target)) {
+        fabContainer.classList.remove("open");
       }
     });
     this.updateButtonsUI();
