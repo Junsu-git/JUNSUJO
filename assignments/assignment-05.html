@@ -245,10 +245,16 @@
         <span class="nav-badge">09. TRICKCAL RE:VIVE</span>
       </div>
       <!-- Theme Switcher Controls -->
-      <div class="theme-toggle-group">
-        <button class="theme-toggle-btn active" data-theme="dark" title="다크 모드">🌙 다크</button>
-        <button class="theme-toggle-btn" data-theme="light" title="라이트 모드">☀️ 라이트</button>
-        <button class="theme-toggle-btn" data-theme="system" title="시스템 설정">💻 시스템</button>
+      <div class="theme-switch-group">
+        <button class="theme-btn" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+        <button class="theme-btn" data-theme-set="dark" title="다크 모드" aria-label="다크 모드">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="theme-btn" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+        </button>
       </div>
     </div>
   </header>
@@ -335,7 +341,7 @@
         <!-- MD File Link Callout -->
         <div style="margin-top:20px;padding:14px 18px;background:rgba(255,148,194,0.08);border:1px solid rgba(255,148,194,0.3);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
           <div style="font-size:0.88rem;">
-            📄 <strong>마크다운 과제 원본 문서:</strong> <code>assignment-05_트릭컬_리바이브_재미요소_분석.md</code>
+            <strong>마크다운 과제 원본 문서:</strong> <code>assignment-05_트릭컬_리바이브_재미요소_분석.md</code>
           </div>
           <a class="nav-btn" href="../assignment-05_트릭컬_리바이브_재미요소_분석.md" target="_blank" style="padding:6px 14px;font-size:0.8rem;background:var(--trickcal-pink);color:#06111d;border:none;">
             MD 원본 보기 ↗
@@ -347,7 +353,7 @@
            02. LEARNING GROWTH & EVALUATION (최우선 배치: 학습 성과 및 핵심 역량)
            ========================================================================= -->
       <section class="learning-growth-card" id="growth">
-        <h3><span class="icon">🚀</span> 경험 전후의 학습 성과 및 핵심 역량 평가 (Growth &amp; Competency)</h3>
+        <h3>경험 전후의 학습 성과 및 핵심 역량 평가 (Growth &amp; Competency)</h3>
         <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 20px;">
           단순한 '게임을 해본 소감'을 넘어, 1년 이상의 실제 라이브 서비스 플레이 데이터를 기반으로 모바일 수집형 RPG의 <strong>장기 리텐션 수학 공식(복리 성장)</strong>을 역설계하고,
           서브컬처 코미디의 <strong>캐릭터 결함 보존 내러티브 법칙</strong>을 기획 이론으로 정립했습니다.
@@ -378,7 +384,7 @@
 
         <!-- Before vs After Comparison Card -->
         <div class="growth-detail-card">
-          <h4>📊 분석 역량의 도약 (Before vs After)</h4>
+          <h4>분석 역량의 도약 (Before vs After)</h4>
           <div class="before-after-grid">
             <div class="ba-col before">
               <div class="ba-tag">분석 수행 전 (Before)</div>
@@ -403,9 +409,9 @@
       <!-- 4-TAB NAVIGATION BAR -->
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin:24px 0 20px;">
         <button class="tab-btn active" data-tab="tab-summary">✨ 03. 핵심 재미 요약</button>
-        <button class="tab-btn" data-tab="tab-journey">🗺️ 04. 1년+ 플레이 저니</button>
-        <button class="tab-btn" data-tab="tab-system">⚙️ 05. 시스템 역설계 &amp; 서사의 역설</button>
-        <button class="tab-btn" data-tab="tab-community">🌐 06. 커뮤니티 리서치 &amp; 황금률</button>
+        <button class="tab-btn" data-tab="tab-journey">04. 1년+ 플레이 저니</button>
+        <button class="tab-btn" data-tab="tab-system">05. 시스템 역설계 &amp; 서사의 역설</button>
+        <button class="tab-btn" data-tab="tab-community">06. 커뮤니티 리서치 &amp; 황금률</button>
       </div>
 
       <!-- =========================================================================
@@ -413,7 +419,7 @@
            ========================================================================= -->
       <section class="tab-pane active" id="tab-summary">
         <div class="content-card" id="summary">
-          <h3 class="card-title"><span class="icon">✨</span> 핵심 요약: "1년 차 플레이어가 체감한 진짜 재미의 본질"</h3>
+          <h3 class="card-title">핵심 요약: "1년 차 플레이어가 체감한 진짜 재미의 본질"</h3>
           
           <div style="background:var(--panel-strong);border-left:4px solid var(--trickcal-pink);padding:18px 22px;border-radius:var(--radius-sm);margin-bottom:24px;">
             <p style="margin:0;font-size:0.94rem;color:var(--text);line-height:1.7;">
@@ -428,7 +434,7 @@
             <!-- 나의 재미 -->
             <div class="fun-box personal">
               <div class="fun-box-header">
-                <h3><span>🎮</span> [나의 재미] 1년+ 플레이어 체감</h3>
+                <h3>[나의 재미] 1년+ 플레이어 체감</h3>
                 <span class="fun-box-tag">1-YEAR VETERAN</span>
               </div>
               <div class="fun-item">
@@ -452,7 +458,7 @@
             <!-- 커뮤니티가 말하는 재미 -->
             <div class="fun-box community">
               <div class="fun-box-header">
-                <h3><span>🔍</span> [서치한 재미] 커뮤니티·일반 유저</h3>
+                <h3>[서치한 재미] 커뮤니티·일반 유저</h3>
                 <span class="fun-box-tag">COMMUNITY &amp; MEDIA</span>
               </div>
               <div class="fun-item">
@@ -481,7 +487,7 @@
            ========================================================================= -->
       <section class="tab-pane" id="tab-journey">
         <div class="content-card" id="journey">
-          <h3 class="card-title"><span class="icon">🗺️</span> 1년+ 교주의 단계별 플레이 저니 (과금 세팅 ➔ 천만 돌파 ➔ A2 완성)</h3>
+          <h3 class="card-title">1년+ 교주의 단계별 플레이 저니 (과금 세팅 ➔ 천만 돌파 ➔ A2 완성)</h3>
           
           <div class="timeline-wrapper">
             <!-- Phase 1 -->
@@ -546,7 +552,7 @@
            ========================================================================= -->
       <section class="tab-pane" id="tab-system">
         <div class="content-card" id="system">
-          <h3 class="card-title"><span class="icon">⚙️</span> 코어 시스템 역설계: 왜 보드판과 어사이드는 중독적인가?</h3>
+          <h3 class="card-title">코어 시스템 역설계: 왜 보드판과 어사이드는 중독적인가?</h3>
           
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-bottom: 24px;">
             <div style="background: var(--panel-strong); padding: 20px; border-radius: var(--radius-sm); border: 1px solid var(--line);">
@@ -587,7 +593,7 @@
               그 캐릭터가 사랑받았던 본래의 엉뚱함과 밈(Meme) 파괴력은 사라지고 <strong>평범한 서브컬처 미소녀 클리셰</strong>로 퇴색해 버립니다.
             </p>
             <div style="font-size: 0.85rem; color: #ffb8b1; border-top: 1px solid rgba(255,123,114,0.3); padding-top: 10px;">
-              📌 <strong>기획적 시사점</strong>: 서브컬처 코미디에서 캐릭터의 결함은 치유해야 할 병이 아니라, 끝까지 보존해야 할 가장 소중한 매력 자산이다.
+              <strong>기획적 시사점</strong>: 서브컬처 코미디에서 캐릭터의 결함은 치유해야 할 병이 아니라, 끝까지 보존해야 할 가장 소중한 매력 자산이다.
             </div>
           </div>
         </div>
@@ -598,7 +604,7 @@
            ========================================================================= -->
       <section class="tab-pane" id="tab-community">
         <div class="content-card" id="community">
-          <h3 class="card-title"><span class="icon">🌐</span> 디시인사이드 · 아카라이브 커뮤니티 교차 분석 결과</h3>
+          <h3 class="card-title">디시인사이드 · 아카라이브 커뮤니티 교차 분석 결과</h3>
           
           <div style="background: var(--panel-strong); padding: 22px; border-radius: var(--radius-sm); border: 1px solid var(--line); margin-bottom: 26px;">
             <h5 style="color: var(--blue-bright); margin: 0 0 10px; font-size: 1.05rem;">실제 커뮤니티 유저들의 생생한 목소리 대조</h5>
@@ -610,7 +616,7 @@
             </ul>
           </div>
 
-          <h4 class="card-title"><span class="icon">💡</span> 게임 기획자/개발자를 위한 4대 황금률 (Takeaways)</h4>
+          <h4 class="card-title">게임 기획자/개발자를 위한 4대 황금률 (Takeaways)</h4>
           <div class="rule-grid">
             <div class="rule-card">
               <span class="rule-num">RULE 01</span>
@@ -643,9 +649,9 @@
            SECTION: KEY TAKEAWAYS & FINAL CONCLUSION
            ========================================================================= -->
       <section class="content-card" id="takeaways">
-        <h3 class="card-title"><span class="icon">🏁</span> 핵심 분석 결과 및 기획자적 시사점 (Key Takeaways)</h3>
+        <h3 class="card-title">핵심 분석 결과 및 기획자적 시사점 (Key Takeaways)</h3>
         <div class="key-takeaway-box">
-          <h4>💡 트릭컬 리바이브 플레이 &amp; 역기획 분석 최종 결론</h4>
+          <h4>트릭컬 리바이브 플레이 &amp; 역기획 분석 최종 결론</h4>
           <ul>
             <li><strong>확정 성장의 마법:</strong> 확률형 강화 실패 스트레스 대신, 황금 크레파스로 보드를 칠해가는 100% 확정 누적 스탯 시스템이 무과금/소과금 유저의 장기 리텐션을 보장하는 핵심 동력임.</li>
             <li><strong>명함과 어사이드(Aside)의 역할 분담:</strong> 명함은 '보드판 확장'이라는 진입 티켓으로 허들을 낮추고, A2는 '스킬 매커니즘 혁신'이라는 명확한 파밍 목표를 부여하여 수집과 육성의 재미를 완벽히 분리함.</li>
@@ -663,10 +669,33 @@
           <span aria-hidden="true">☰</span> 전체 프로젝트 목록으로
         </a>
         <a class="nav-btn" href="../assignment-05_트릭컬_리바이브_재미요소_분석.md" target="_blank">
-          <span aria-hidden="true">📄</span> MD 원본 보고서 열기 <span aria-hidden="true">↗</span>
+          MD 원본 보고서 열기 <span aria-hidden="true">↗</span>
         </a>
       </div>
     </main>
+  </div>
+
+  <!-- FLOATING THEME FAB (Image 1 Requirement · Always Visible Bottom Right) -->
+  <div class="floating-theme-fab" id="floatingThemeFab" aria-label="테마 설정">
+    <div class="theme-fab-spheres" aria-hidden="true">
+      <button class="theme-fab-sphere" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+        <span class="sphere-tooltip">라이트 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="dark" title="다크 모드" aria-label="다크 모드">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+        <span class="sphere-tooltip">다크 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span>
+        <span class="sphere-tooltip">시스템 설정</span>
+      </button>
+    </div>
+    <button class="theme-fab-trigger" id="themeFabTrigger" title="테마 변경" aria-label="테마 변경">
+      <span class="fab-current-icon mono-icon mono-icon-stroke">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 2v20a10 10 0 0 0 0-20z"></path><circle cx="12" cy="12" r="10"></circle></svg>
+      </span>
+    </button>
   </div>
 
   <!-- 통합 인터랙션 스크립트 (ThemeManager, TocTracker 등) -->

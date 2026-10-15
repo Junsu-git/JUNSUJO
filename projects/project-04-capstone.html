@@ -111,9 +111,15 @@
     <div style="display:flex;align-items:center;gap:14px;">
       <span style="font-size:0.8rem;color:var(--muted);font-weight:750;">PROJECT #04 · CAPSTONE DESIGN 2026</span>
       <div class="theme-switch-group">
-        <button class="theme-btn" data-theme-set="light" title="라이트 모드">☀️</button>
-        <button class="theme-btn" data-theme-set="dark" title="다크 모드">🌙</button>
-        <button class="theme-btn" data-theme-set="system" title="시스템 설정">💻</button>
+        <button class="theme-btn" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+        <button class="theme-btn" data-theme-set="dark" title="다크 모드" aria-label="다크 모드">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="theme-btn" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+        </button>
       </div>
     </div>
   </header>
@@ -130,7 +136,7 @@
       </div>
       <nav class="toc-track-line" aria-label="섹션 바로가기">
         <a class="toc-item-link active" href="#overview">01. 개요 &amp; 캡스톤 스펙</a>
-        <a class="toc-item-link" href="#growth">02. 학습 성과 &amp; 평가 ★</a>
+        <a class="toc-item-link" href="#growth">02. 학습 성과 &amp; 평가</a>
         <a class="toc-item-link" href="#mechanics">03. 전투 루프 &amp; 기획 의도</a>
         <a class="toc-item-link" href="#showcase">04. 3D 액션 시연 쇼케이스</a>
         <a class="toc-item-link" href="#architecture">05. FSM 상태 전이 아키텍처</a>
@@ -148,7 +154,7 @@
       <section class="detail-hero-box" id="overview">
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
           <span class="badge-tag">대표 프로젝트 #04</span>
-          <span class="badge-tag" style="color:var(--purple);">🎓 2026 캡스톤 디자인 (졸업작품)</span>
+          <span class="badge-tag" style="color:var(--purple);">2026 캡스톤 디자인 (졸업작품)</span>
           <span class="badge-tag" style="color:var(--blue-bright);">메인 시스템 개발자</span>
           <span class="badge-tag">2026.09 — 2026.12 (진행 중)</span>
         </div>
@@ -211,7 +217,7 @@
 
         <!-- Conflict & Teamwork Case: Git-Flow & Scene Conflict Solution -->
         <div class="conflict-resolution-box">
-          <h4>🤝 협업 및 갈등 해결 사례: Unity 씬 병합 충돌 방지를 위한 '프리팹 기반 분업 체계'</h4>
+          <h4>[협업 및 갈등 해결 사례]</h4>
           <p>
             <strong>씬 파일 덮어쓰기로 인한 팀원 간 감정적 마찰:</strong> 프로젝트 초기 레벨 디자이너와 프로그래머가 동일한 전투 씬을 동시에 수정하다가 대규모 머지 충돌이 발생해 반나절 분량의 작업이 소실되는 위기를 겪었습니다. 
             이에 시스템 개발자로서 즉시 <strong>Git-Flow 전략을 공식 수립</strong>하고, 씬 파일 자체를 직접 건드리지 않고 <strong>각 기능(플레이어, UI, 에너미 스포너)을 독립 프리팹(Prefab Stage)으로 격리 분업</strong>하는 규칙을 제안했습니다. 규칙 도입 이후 씬 충돌 0건을 달성하며 협업 신뢰도를 회복했습니다.
@@ -231,15 +237,15 @@
 
           <div class="points-grid">
             <div class="point-box">
-              <h4>⚔️ 반응형 액션 전투 루프</h4>
+              <h4>반응형 액션 전투 루프</h4>
               <p>공격 선딜레이, 히트스탑(Hitstop), 넉백, 그리고 정확한 패링 타이밍 판정을 프레임 단위로 제어.</p>
             </div>
             <div class="point-box">
-              <h4>🧠 계층적 적 AI FSM</h4>
+              <h4>계층적 적 AI FSM</h4>
               <p>순찰(Patrol) → 의심(Suspicious) → 추적(Chase) → 스킬 콤보(Combo Attack) → 그로기(Groggy) 상태 전이 구조화.</p>
             </div>
             <div class="point-box">
-              <h4>📦 데이터 주도 설계 (Data-Driven)</h4>
+              <h4>데이터 주도 설계 (Data-Driven)</h4>
               <p>모든 공격 판정 반경, 데미지 계수, 쿨다운 수치를 ScriptableObject 에셋으로 분리하여 기획적 밸런싱 편의 제공.</p>
             </div>
           </div>
@@ -259,7 +265,11 @@
               <span style="color:var(--purple);font-weight:800;">UNITY SCENE VIEW &amp; WEBGL PROTOTYPE</span>
             </div>
             <div class="media-stage-body">
-              <div style="font-size:3.5rem;filter:drop-shadow(0 4px 14px rgba(184,166,255,0.3));">⚡</div>
+              <div style="display:flex;justify-content:center;margin-bottom:8px;">
+                <span class="mono-icon mono-icon-stroke" style="width:48px;height:48px;">
+                  <svg viewBox="0 0 24 24" width="48" height="48"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                </span>
+              </div>
               <strong style="font-size:1.15rem;color:var(--text);">캡스톤 디자인 인게임 전투 및 AI 기즈모 시연 슬롯</strong>
               <p style="font-size:0.88rem;color:var(--text-sub);max-width:540px;">
                 3D 환경에서 적 AI가 플레이어를 감지하고 스킬 콤보를 전개하는 인게임 액션 녹화 GIF/스크린샷 및 WebGL 빌드 화면 배치 영역입니다.
@@ -269,11 +279,11 @@
 
           <div class="points-grid">
             <div class="point-box">
-              <h4>🎯 시야각(FOV) 기즈모 시각화</h4>
+              <h4>시야각(FOV) 기즈모 시각화</h4>
               <p>에디터 상에서 적의 시야각 원뿔(Frustum)과 탐지 반경을 실시간으로 시각화하여 레벨 디자인 직관성 확보.</p>
             </div>
             <div class="point-box">
-              <h4>💥 타격 피드백 쉐이크 연출</h4>
+              <h4>타격 피드백 쉐이크 연출</h4>
               <p>Cinemachine 임펄스 소스를 활용해 공격 적중 시 묵직한 카메라 쉐이크 및 파티클 이펙트 동기화.</p>
             </div>
           </div>
@@ -346,7 +356,7 @@
 
       <!-- 07. 최종 분석 결과 & 결론 (Peer Feedback Requirement) -->
       <section class="key-takeaway-box" id="takeaways">
-        <h3>🎯 최종 분석 결과 및 핵심 결론 (Key Takeaways)</h3>
+        <h3>최종 분석 결과 및 핵심 결론 (Key Takeaways)</h3>
         <p>
           『2026 캡스톤 디자인』은 대학 3년간 갈고닦은 <strong>C# 아키텍처 설계와 Git-Flow 협업 역량을 총집결한 마스터피스</strong>입니다. 
           IState 인터페이스로 분리된 FSM 패턴을 통해 복잡한 액션 콤보를 안전하게 확장 가능하도록 구조화했으며, 체계적인 프리팹 분업으로 팀의 협업 안정성과 개발 속도를 극대화했습니다.
@@ -367,6 +377,29 @@
       </footer>
 
     </main>
+  </div>
+
+  <!-- FLOATING THEME FAB (Image 1 Requirement · Always Visible Bottom Right) -->
+  <div class="floating-theme-fab" id="floatingThemeFab" aria-label="테마 설정">
+    <div class="theme-fab-spheres" aria-hidden="true">
+      <button class="theme-fab-sphere" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+        <span class="sphere-tooltip">라이트 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="dark" title="다크 모드" aria-label="다크 모드">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+        <span class="sphere-tooltip">다크 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span>
+        <span class="sphere-tooltip">시스템 설정</span>
+      </button>
+    </div>
+    <button class="theme-fab-trigger" id="themeFabTrigger" title="테마 변경" aria-label="테마 변경">
+      <span class="fab-current-icon mono-icon mono-icon-stroke">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 2v20a10 10 0 0 0 0-20z"></path><circle cx="12" cy="12" r="10"></circle></svg>
+      </span>
+    </button>
   </div>
 
   <!-- Object-Oriented JS Architecture Bundle -->

@@ -26,26 +26,7 @@
 
   <style>
     :root {
-      color-scheme: dark;
-      --bg: #08111e;
-      --bg-deep: #050b13;
-      --panel: #101d2d;
-      --panel-strong: #14263a;
-      --panel-soft: rgba(21, 39, 59, 0.74);
-      --line: rgba(147, 184, 214, 0.17);
-      --line-strong: rgba(102, 192, 244, 0.42);
-      --text: #f4f8fb;
-      --muted: #91a8bb;
-      --blue: #66c0f4;
-      --blue-bright: #8fd8ff;
-      --green: #a4d007;
-      --gold: #f2c96d;
-      --purple: #b8a6ff;
-      --radius-lg: 24px;
-      --radius-md: 16px;
-      --radius-sm: 10px;
-      --header-h: 72px;
-      font-family: Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --header-h: 70px;
     }
 
     * {
@@ -54,17 +35,13 @@
 
     html {
       scroll-behavior: smooth;
-      background: var(--bg-deep);
     }
 
     body {
       margin: 0;
       min-width: 320px;
       color: var(--text);
-      background:
-        linear-gradient(180deg, rgba(6, 13, 23, 0.02), var(--bg-deep) 78%),
-        radial-gradient(circle at 86% 9%, rgba(56, 116, 165, 0.18), transparent 29%),
-        var(--bg);
+      background: var(--bg-page);
       overflow-x: hidden;
       line-height: 1.7;
     }
@@ -550,9 +527,15 @@
     <div style="display:flex;align-items:center;gap:14px;">
       <span style="font-size:0.8rem;color:var(--muted);font-weight:750;">PROJECT #07 · SYSTEM PLANNING</span>
       <div class="theme-switch-group">
-        <button class="theme-btn" data-theme-set="light" title="라이트 모드">☀️</button>
-        <button class="theme-btn" data-theme-set="dark" title="다크 모드">🌙</button>
-        <button class="theme-btn" data-theme-set="system" title="시스템 설정">💻</button>
+        <button class="theme-btn" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+        <button class="theme-btn" data-theme-set="dark" title="다크 모드" aria-label="다크 모드">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="theme-btn" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+        </button>
       </div>
     </div>
   </header>
@@ -569,7 +552,7 @@
       </div>
       <nav class="toc-track-line" aria-label="섹션 바로가기">
         <a class="toc-item-link active" href="#overview">01. 개요 &amp; 기획 스펙</a>
-        <a class="toc-item-link" href="#growth">02. 학습 성과 &amp; 평가 ★</a>
+        <a class="toc-item-link" href="#growth">02. 학습 성과 &amp; 평가</a>
         <a class="toc-item-link" href="#one-pager">03. 원페이저 (One-Pager)</a>
         <a class="toc-item-link" href="#sec-1">04. 픽셀라이프 트렌드 분석</a>
         <a class="toc-item-link" href="#sec-6">05. 12개 에피소드 &amp; 규칙</a>
@@ -649,7 +632,7 @@
 
         <!-- Conflict & Problem Solving Case -->
         <div class="conflict-resolution-box">
-          <h4>🤝 기획 밸런싱 충돌 해결: '보상 인플레이션'과 '참여 동기'의 균형</h4>
+          <h4>기획 밸런싱 충돌 해결: '보상 인플레이션'과 '참여 동기'의 균형</h4>
           <p>
             <strong>보상 규모를 둘러싼 딜레마:</strong> 유저 참여를 높이기 위해 최고급 재화를 퍼주자는 의견과, 라이브 경제 시스템이 무너진다는 우려가 충돌했습니다. 
             이를 해결하기 위해 <strong>'계정당 1회 한정 외형 코스튬(성취감)'</strong>과 <strong>'일일 소모성 재화(성장 보조)'</strong>의 이중 보상 티어링을 설계하여 경제 인플레이션 없이 100% 참여 동기를 확보했습니다.
@@ -669,7 +652,7 @@
       </figure>
 
       <div class="callout callout-green">
-        <strong>💡 한 문장 기획</strong>
+        <strong>한 문장 기획</strong>
         <p>탐색·이야기·놀이로 나뉜 <strong>12개 짧은 에피소드 중 원하는 활동을 골라</strong>, 나만의 에린 기록을 모으는 선택형 이벤트.</p>
       </div>
 
@@ -1413,7 +1396,7 @@
 
     <!-- 07. 최종 분석 결과 & 결론 (Peer Feedback Requirement) -->
     <section class="key-takeaway-box" id="takeaways">
-      <h3>🎯 최종 분석 결과 및 핵심 결론 (Key Takeaways)</h3>
+      <h3>최종 분석 결과 및 핵심 결론 (Key Takeaways)</h3>
       <p>
         『에린의 조각들』 기획서는 <strong>"유저에게 피로를 주는 숙제형 이벤트에서 벗어나, 유저의 시간 주권을 존중하는 트렌드형 시스템 기획"</strong>의 가능성을 입증한 프로젝트입니다. 
         『트렌드 코리아 2026』의 픽셀라이프 키워드를 12개 선택형 에피소드로 번역하고, 8대 정량 지표와 11개 운영 예외 대응 시나리오를 완비함으로써 실제 상용 라이브 서비스에 즉시 투입 가능한 수준의 완성도 높은 시스템 스펙북을 완성했습니다.
@@ -1433,10 +1416,33 @@
       </a>
     </footer>
 
-  </main>
-</div>
+    </main>
+  </div>
 
-<!-- Object-Oriented JS Architecture Bundle -->
-<script src="../assets/js/portfolio-system.js"></script>
+  <!-- FLOATING THEME FAB (Image 1 Requirement · Always Visible Bottom Right) -->
+  <div class="floating-theme-fab" id="floatingThemeFab" aria-label="테마 설정">
+    <div class="theme-fab-spheres" aria-hidden="true">
+      <button class="theme-fab-sphere" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+        <span class="sphere-tooltip">라이트 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="dark" title="다크 모드" aria-label="다크 모드">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+        <span class="sphere-tooltip">다크 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span>
+        <span class="sphere-tooltip">시스템 설정</span>
+      </button>
+    </div>
+    <button class="theme-fab-trigger" id="themeFabTrigger" title="테마 변경" aria-label="테마 변경">
+      <span class="fab-current-icon mono-icon mono-icon-stroke">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 2v20a10 10 0 0 0 0-20z"></path><circle cx="12" cy="12" r="10"></circle></svg>
+      </span>
+    </button>
+  </div>
+
+  <!-- Object-Oriented JS Architecture Bundle -->
+  <script src="../assets/js/portfolio-system.js"></script>
 </body>
 </html>

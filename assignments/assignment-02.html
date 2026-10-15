@@ -26,38 +26,16 @@
 
   <style>
     :root {
-      color-scheme: dark;
-      --bg: #08111e;
-      --bg-deep: #050b13;
-      --panel: #101d2d;
-      --panel-strong: #14263a;
-      --panel-soft: rgba(21, 39, 59, 0.74);
-      --line: rgba(147, 184, 214, 0.17);
-      --line-strong: rgba(102, 192, 244, 0.42);
-      --text: #f4f8fb;
-      --muted: #91a8bb;
-      --blue: #66c0f4;
-      --blue-bright: #8fd8ff;
-      --green: #a4d007;
-      --gold: #f2c96d;
-      --purple: #b8a6ff;
-      --radius-lg: 24px;
-      --radius-md: 16px;
-      --radius-sm: 10px;
-      --header-h: 72px;
-      font-family: Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --header-h: 70px;
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; background: var(--bg-deep); }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       min-width: 320px;
       color: var(--text);
-      background:
-        linear-gradient(180deg, rgba(6, 13, 23, 0.02), var(--bg-deep) 78%),
-        radial-gradient(circle at 86% 9%, rgba(56, 116, 165, 0.18), transparent 29%),
-        var(--bg);
+      background: var(--bg-page);
       overflow-x: hidden;
       line-height: 1.7;
     }
@@ -887,7 +865,6 @@
 
 <body>
   <!-- Header -->
-  <!-- Header -->
   <header class="mobile-header" style="display:flex;position:sticky;top:0;height:var(--header-h);background:var(--panel-soft);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);padding:0 24px;justify-content:space-between;align-items:center;z-index:100;">
     <a class="back-link-btn" href="../index.html#projects">
       <span aria-hidden="true">←</span> 전체 프로젝트 목록으로
@@ -895,9 +872,15 @@
     <div style="display:flex;align-items:center;gap:14px;">
       <span style="font-size:0.8rem;color:var(--muted);font-weight:750;">PROJECT #06 · GAMEPLAY ANALYSIS</span>
       <div class="theme-switch-group">
-        <button class="theme-btn" data-theme-set="light" title="라이트 모드">☀️</button>
-        <button class="theme-btn" data-theme-set="dark" title="다크 모드">🌙</button>
-        <button class="theme-btn" data-theme-set="system" title="시스템 설정">💻</button>
+        <button class="theme-btn" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+        <button class="theme-btn" data-theme-set="dark" title="다크 모드" aria-label="다크 모드">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="theme-btn" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+        </button>
       </div>
     </div>
   </header>
@@ -914,7 +897,7 @@
       </div>
       <nav class="toc-track-line" aria-label="섹션 바로가기">
         <a class="toc-item-link active" href="#overview">01. 개요 &amp; 분석 스펙</a>
-        <a class="toc-item-link" href="#growth">02. 학습 성과 &amp; 평가 ★</a>
+        <a class="toc-item-link" href="#growth">02. 학습 성과 &amp; 평가</a>
         <a class="toc-item-link" href="#view-rank">03. 50위 게임 실기 분석</a>
         <a class="toc-item-link" href="#view-history">04. 보유 게임 플레이 이력</a>
         <a class="toc-item-link" href="#takeaways">05. 최종 분석 결과 &amp; 결론</a>
@@ -993,7 +976,7 @@
 
         <!-- Conflict & Problem Solving Case: Data Layout -->
         <div class="conflict-resolution-box">
-          <h4>🤝 방대한 분석 데이터의 UI 레이아웃 최적화 사례</h4>
+          <h4>방대한 분석 데이터의 UI 레이아웃 최적화 사례</h4>
           <p>
             <strong>50개 게임 분석 카드로 인한 끝없는 세로 스크롤 이슈 극복:</strong> 초기 기획에서 50개 게임 카드를 한 페이지에 세로로 길게 나열하여 모바일 및 데스크톱에서 심각한 스크롤 피로도를 유발했습니다. 
             이를 해결하기 위해 <strong>'10개 단위 페이징 드롭다운 + 좌우 넘김 인터랙션'</strong>을 도입하여 한눈에 들어오는 콤팩트한 뷰를 완성하고 정보 탐색 속도를 3배 이상 단축시켰습니다.
@@ -1005,10 +988,10 @@
     <div class="tab-switcher-wrapper">
       <div class="tab-switcher" role="tablist" aria-label="과제 2 세부 뷰 선택">
         <button class="tab-switch-btn is-active" id="tab-btn-rank" role="tab" aria-selected="true" aria-controls="view-rank" type="button">
-          <span class="tab-icon">📊</span> 1. 모바일 인기순위 50위 게임 플레이 분석 (50일 챌린지)
+          1. 모바일 인기순위 50위 게임 플레이 분석 (50일 챌린지)
         </button>
         <button class="tab-switch-btn" id="tab-btn-history" role="tab" aria-selected="false" aria-controls="view-history" type="button">
-          <span class="tab-icon">🎮</span> 2. 보유 게임 플레이 이력 (플레이 아카이브)
+          2. 보유 게임 플레이 이력 (플레이 아카이브)
         </button>
       </div>
     </div>
@@ -1149,7 +1132,7 @@
                 <span>일정: <strong>50일 챌린지 3일차 플레이 예정</strong></span>
               </div>
               <div class="pending-template-box">
-                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div><strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
                 <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
                 <ul class="pending-guide-list">
                   <li>온보딩/튜토리얼: 초반 진입 유도 및 시스템 안내 친절도 평가</li>
@@ -1180,7 +1163,7 @@
                 <span>일정: <strong>50일 챌린지 4일차 예정</strong></span>
               </div>
               <div class="pending-template-box">
-                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div><strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
                 <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
                 <ul class="pending-guide-list">
                   <li>기지 건설 코어 루프와 난로 온도 유지 시스템의 생존 몰입감 점검</li>
@@ -1209,7 +1192,7 @@
                 <span>일정: <strong>50일 챌린지 5일차 예정</strong></span>
               </div>
               <div class="pending-template-box">
-                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div><strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
                 <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
                 <ul class="pending-guide-list">
                   <li>원터치 슈팅 감각과 탄도 궤적 피드백의 타격감 점검</li>
@@ -1238,7 +1221,7 @@
                 <span>일정: <strong>50일 챌린지 6일차 예정</strong></span>
               </div>
               <div class="pending-template-box">
-                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div><strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
                 <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
                 <ul class="pending-guide-list">
                   <li>언리얼 엔진 기반 북유럽 신화 오픈월드 그래픽 연출 분석</li>
@@ -1267,7 +1250,7 @@
                 <span>일정: <strong>50일 챌린지 7일차 예정</strong></span>
               </div>
               <div class="pending-template-box">
-                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div><strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
                 <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
                 <ul class="pending-guide-list">
                   <li>원작 메이플스토리 도트 감성과 방치형 쾌속 성장 루프의 결합도 평가</li>
@@ -1296,7 +1279,7 @@
                 <span>일정: <strong>50일 챌린지 8일차 예정</strong></span>
               </div>
               <div class="pending-template-box">
-                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div><strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
                 <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
                 <ul class="pending-guide-list">
                   <li>인기 상위 UGC 월드 탐방 및 크리에이터 이코노미 구조 분석</li>
@@ -1325,7 +1308,7 @@
                 <span>일정: <strong>50일 챌린지 9일차 예정</strong></span>
               </div>
               <div class="pending-template-box">
-                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div><strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
                 <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
                 <ul class="pending-guide-list">
                   <li>광고 없는 매치3 쾌속 플레이 경험과 왕의 성 꾸미기 동기 분석</li>
@@ -1354,7 +1337,7 @@
                 <span>일정: <strong>50일 챌린지 10일차 예정</strong></span>
               </div>
               <div class="pending-template-box">
-                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div><strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
                 <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
                 <ul class="pending-guide-list">
                   <li>합성 피로도를 상쇄하는 막장 드라마 서사의 훅(Hook) 설계 분석</li>
@@ -1383,7 +1366,7 @@
                 <span>일정: <strong>50일 챌린지 11일차 예정</strong></span>
               </div>
               <div class="pending-template-box">
-                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div><strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
                 <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
                 <ul class="pending-guide-list">
                   <li>PC-모바일 간 크로스플레이 환경과 게임머니 규제 준수 UI 분석</li>
@@ -1412,7 +1395,7 @@
                 <span>일정: <strong>50일 챌린지 12일차 예정</strong></span>
               </div>
               <div class="pending-template-box">
-                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div><strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
                 <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
                 <ul class="pending-guide-list">
                   <li>쿠키런 IP 시각적 매력의 방치형 장르 계승 여부 분석</li>
@@ -1441,7 +1424,7 @@
                 <span>일정: <strong>50일 챌린지 13일차 예정</strong></span>
               </div>
               <div class="pending-template-box">
-                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div><strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
                 <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
                 <ul class="pending-guide-list">
                   <li>원작 무협 만화 IP의 시나리오 컷씬 구현도 분석</li>
@@ -1470,7 +1453,7 @@
                 <span>일정: <strong>50일 챌린지 14일차 예정</strong></span>
               </div>
               <div class="pending-template-box">
-                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div><strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
                 <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
                 <ul class="pending-guide-list">
                   <li>미끼 광고(게이트 증식 러너)에서 코어 SLG로 전환되는 온보딩 괴리 분석</li>
@@ -1499,7 +1482,7 @@
                 <span>일정: <strong>50일 챌린지 15일차 예정</strong></span>
               </div>
               <div class="pending-template-box">
-                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div><strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
                 <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
                 <ul class="pending-guide-list">
                   <li>극단적인 RNG(확률) 소환과 2인 협동 시너지의 긴장감 분석</li>
@@ -1528,7 +1511,7 @@
                 <span>일정: <strong>50일 챌린지 16일차 예정</strong></span>
               </div>
               <div class="pending-template-box">
-                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div><strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
                 <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
                 <ul class="pending-guide-list">
                   <li>후방 시점 라이브 2D 애니메이션 연출과 사격 반동 피드백 분석</li>
@@ -1557,7 +1540,7 @@
                 <span>연계: <strong>과제 03 『에린의 조각들』 기획서 분석 대상</strong></span>
               </div>
               <div class="pending-template-box">
-                <div>📝 <strong>기획서 연계 분석 완료 항목</strong></div>
+                <div><strong>기획서 연계 분석 완료 항목</strong></div>
                 <div style="margin-top: 4px;">• 본인 누적 플레이: <strong>56시간 52분</strong></div>
                 <ul class="pending-guide-list">
                   <li>세로/가로 모드 지원에 따른 캠프파이어 및 연주 UI 분석</li>
@@ -1586,7 +1569,7 @@
                 <span>일정: <strong>50일 챌린지 18일차 예정</strong></span>
               </div>
               <div class="pending-template-box">
-                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div><strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
                 <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
                 <ul class="pending-guide-list">
                   <li>모바일 가상 패드 조작감과 제스처 패스/슈팅 반응성 점검</li>
@@ -1615,7 +1598,7 @@
                 <span>일정: <strong>50일 챌린지 19일차 예정</strong></span>
               </div>
               <div class="pending-template-box">
-                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div><strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
                 <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
                 <ul class="pending-guide-list">
                   <li>타일 합성 아이템 체인(Generator)의 쿨다운 설계 분석</li>
@@ -1644,7 +1627,7 @@
                 <span>일정: <strong>50일 챌린지 20일차 예정</strong></span>
               </div>
               <div class="pending-template-box">
-                <div>📝 <strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
+                <div><strong>플레이 분석 기록 템플릿 (작성 대기)</strong></div>
                 <div style="margin-top: 4px;">• 플레이 일시: <code>2026.09.__</code> | 플레이타임: <code>__분</code> | 달성 레벨: <code>Lv.__</code></div>
                 <ul class="pending-guide-list">
                   <li>장수 병과 상성 및 진형 배치 전략성 분석</li>
@@ -2427,15 +2410,15 @@
         <div class="content-card">
           <div class="points-grid">
             <div class="point-box">
-              <h4>🔥 양대 스토어 매출 1~2위 독점</h4>
+              <h4>양대 스토어 매출 1~2위 독점</h4>
               <p>『제우스: 오만의 신』과 『리니지M』이 양대 스토어 1~2위를 양분하며, 전통적 MMORPG와 신규 하드코어 RPG의 매출 집중 현상이 여전히 지배적임을 확인.</p>
             </div>
             <div class="point-box">
-              <h4>🧩 합성(Merge) &amp; 방치형 장르의 급부상</h4>
+              <h4>합성(Merge) &amp; 방치형 장르의 급부상</h4>
               <p>『가십하버』, 『씨사이드 익스케이프』 등 숏폼 소비 트렌드에 맞춘 머지 스토리 게임들과 『메이플 키우기』 등 방치형 타이틀이 TOP 10에 대거 포진.</p>
             </div>
             <div class="point-box">
-              <h4>🏢 주요 게임사 라인업 분포</h4>
+              <h4>주요 게임사 라인업 분포</h4>
               <p>넥슨(메이플 키우기, FC Online M, FC 모바일, 마비노기 모바일 등 5종), 센추리게임즈(WOS, 킹샷)가 다수의 장르에서 차트를 점유 중.</p>
             </div>
           </div>
@@ -2517,7 +2500,7 @@
         </div>
 
         <!-- 전체 게임 플레이 이력 테이블 -->
-        <h3 style="font-size: 1.15rem; margin: 32px 0 14px; color: var(--text);">📋 전체 누적 플레이 게임 데이터베이스</h3>
+        <h3 style="font-size: 1.15rem; margin: 32px 0 14px; color: var(--text);">전체 누적 플레이 게임 데이터베이스</h3>
         <div class="table-container">
           <table>
             <thead>
@@ -2697,13 +2680,13 @@
           <div class="loop-grid">
             <div class="loop-card">
               <span class="loop-card-step">STEP 01</span>
-              <h4>🍲 거점 정비 &amp; 식사 버프</h4>
+              <h4>거점 정비 &amp; 식사 버프</h4>
               <p>아날로그 기계 장치와 식생이 어우러진 조사 거점에서 장비를 점검하고, 모든 식재료를 해금한 주방 식사 버프로 체력/스태미나 및 특수 스킬을 장착합니다.</p>
             </div>
 
             <div class="loop-card">
               <span class="loop-card-step">STEP 02</span>
-              <h4>🐾 흔적 조사 &amp; 영역 다툼</h4>
+              <h4>흔적 조사 &amp; 영역 다툼</h4>
               <p>안내벌레를 활용해 발자국과 점액 흔적을 추적하며 생태계를 탐색하고, 대형 몬스터 간의 세력 다툼(Turf War)을 전략적으로 유도합니다.</p>
             </div>
 
@@ -2715,7 +2698,7 @@
 
             <div class="loop-card">
               <span class="loop-card-step">STEP 04</span>
-              <h4>🔨 소재 갈무리 &amp; 빌드 완성</h4>
+              <h4>소재 갈무리 &amp; 빌드 완성</h4>
               <p>토벌 및 포획 후 수급한 레어 소재(물옥, 보옥 등)로 방어구 세트를 제작하고, 장식주 슬롯 세팅을 통해 나만의 헌팅 빌드를 지속 확장합니다.</p>
             </div>
           </div>
@@ -2729,15 +2712,15 @@
         <div class="content-card">
           <div class="points-grid">
             <div class="point-box">
-              <h4>🎒 타르코프(254h)의 하이리스크-하이리턴 경제 루프</h4>
+              <h4>타르코프(254h)의 하이리스크-하이리턴 경제 루프</h4>
               <p>‘사망 시 전리품 완전 유실’이라는 극단적 긴장감과, 파산 시 스캐브(Scav) 모드로 밑천을 재수급할 수 있는 안전장치가 맞물려 끊어지지 않는 플레이 중독성을 생성함을 분석.</p>
             </div>
             <div class="point-box">
-              <h4>🗺️ 엘든 링(95h)의 소울라이크 호기심 기반 레벨 디자인</h4>
+              <h4>엘든 링(95h)의 소울라이크 호기심 기반 레벨 디자인</h4>
               <p>보스 조우의 심리적 부담감을 오픈월드의 다채로운 탐험 루트와 인물 서사로 완화하고, 막히면 다른 지역을 탐색해 강해져 돌아오는 유연한 난이도 극복 메커니즘 체득.</p>
             </div>
             <div class="point-box">
-              <h4>💎 로아(1641Lv) &amp; 메이플(282Lv)의 내실 수집과 리텐션</h4>
+              <h4>로아(1641Lv) &amp; 메이플(282Lv)의 내실 수집과 리텐션</h4>
               <p>단순 레벨업 외에 모코코 1,101개 완수 및 유니온 9039 달성을 통해 체득한 방대한 컬렉션 콘텐츠가 장기 라이브 게임의 유저 잔존(Retention)에 미치는 심리적 완급 조절 기획 고찰.</p>
             </div>
           </div>
@@ -2747,7 +2730,7 @@
 
     <!-- 05. 최종 분석 결과 & 결론 (Peer Feedback Requirement) -->
     <section class="key-takeaway-box" id="takeaways">
-      <h3>🎯 최종 분석 결과 및 핵심 결론 (Key Takeaways)</h3>
+      <h3>최종 분석 결과 및 핵심 결론 (Key Takeaways)</h3>
       <p>
         본 프로젝트는 <strong>"플레이어의 경험을 객관적인 게임 루프와 데이터 아키텍처로 분해·역설계할 수 있는가?"</strong>에 대한 해답입니다. 
         모바일 매출 50위권 분석을 통해 입증한 리텐션 장치 분석력과, PC·콘솔 하드코어 장르 30종 이상의 플레이 이력을 통해 체득한 손맛과 피드백 감각은 향후 클라이언트 개발 시 기획자와 가장 원활하게 호흡하며 유저를 몰입시키는 플레이 시스템을 구현하는 핵심 밑거름이 됩니다.
@@ -2959,5 +2942,31 @@
       updatePagination(false);
     })();
   </script>
+
+  <!-- FLOATING THEME FAB (Image 1 Requirement · Always Visible Bottom Right) -->
+  <div class="floating-theme-fab" id="floatingThemeFab" aria-label="테마 설정">
+    <div class="theme-fab-spheres" aria-hidden="true">
+      <button class="theme-fab-sphere" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+        <span class="sphere-tooltip">라이트 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="dark" title="다크 모드" aria-label="다크 모드">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+        <span class="sphere-tooltip">다크 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span>
+        <span class="sphere-tooltip">시스템 설정</span>
+      </button>
+    </div>
+    <button class="theme-fab-trigger" id="themeFabTrigger" title="테마 변경" aria-label="테마 변경">
+      <span class="fab-current-icon mono-icon mono-icon-stroke">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 2v20a10 10 0 0 0 0-20z"></path><circle cx="12" cy="12" r="10"></circle></svg>
+      </span>
+    </button>
+  </div>
+
+  <!-- Object-Oriented JS Architecture Bundle -->
+  <script src="../assets/js/portfolio-system.js"></script>
 </body>
 </html>

@@ -26,39 +26,16 @@
 
   <style>
     :root {
-      color-scheme: dark;
-      --bg: #08111e;
-      --bg-deep: #050b13;
-      --panel: #101d2d;
-      --panel-strong: #14263a;
-      --panel-soft: rgba(21, 39, 59, 0.74);
-      --line: rgba(147, 184, 214, 0.17);
-      --line-strong: rgba(102, 192, 244, 0.42);
-      --text: #f4f8fb;
-      --muted: #91a8bb;
-      --blue: #66c0f4;
-      --blue-bright: #8fd8ff;
-      --green: #a4d007;
-      --gold: #f2c96d;
-      --purple: #b8a6ff;
-      --coral: #ff7b72;
-      --radius-lg: 24px;
-      --radius-md: 16px;
-      --radius-sm: 10px;
-      --header-h: 72px;
-      font-family: Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --header-h: 70px;
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; background: var(--bg-deep); }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       min-width: 320px;
       color: var(--text);
-      background:
-        linear-gradient(180deg, rgba(6, 13, 23, 0.02), var(--bg-deep) 78%),
-        radial-gradient(circle at 86% 9%, rgba(56, 116, 165, 0.18), transparent 29%),
-        var(--bg);
+      background: var(--bg-page);
       overflow-x: hidden;
       line-height: 1.7;
     }
@@ -677,9 +654,15 @@
     <div style="display:flex;align-items:center;gap:14px;">
       <span style="font-size:0.8rem;color:var(--muted);font-weight:750;">PROJECT #08 · MARKET DATA ANALYSIS</span>
       <div class="theme-switch-group">
-        <button class="theme-btn" data-theme-set="light" title="라이트 모드">☀️</button>
-        <button class="theme-btn" data-theme-set="dark" title="다크 모드">🌙</button>
-        <button class="theme-btn" data-theme-set="system" title="시스템 설정">💻</button>
+        <button class="theme-btn" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+        <button class="theme-btn" data-theme-set="dark" title="다크 모드" aria-label="다크 모드">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="theme-btn" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+        </button>
       </div>
     </div>
   </header>
@@ -696,7 +679,7 @@
       </div>
       <nav class="toc-track-line" aria-label="섹션 바로가기">
         <a class="toc-item-link active" href="#overview">01. 개요 &amp; 데이터 스펙</a>
-        <a class="toc-item-link" href="#growth">02. 학습 성과 &amp; 평가 ★</a>
+        <a class="toc-item-link" href="#growth">02. 학습 성과 &amp; 평가</a>
         <a class="toc-item-link" href="#tab-play">03. 플레이 추천 가이드</a>
         <a class="toc-item-link" href="#tab-compare">04. 2주간 순위 변동 테이블</a>
         <a class="toc-item-link" href="#tab-platform">05. 플랫폼별 양극화 분석</a>
@@ -737,7 +720,7 @@
           </div>
           <div class="meta-spec-item">
             <span>최우선 추천 1픽</span>
-            <strong style="color:var(--gold);">👑 명조: 워더링 웨이브 (KURO)</strong>
+            <strong style="color:var(--gold);">명조: 워더링 웨이브 (KURO)</strong>
           </div>
           <div class="meta-spec-item">
             <span>문서화 파일</span>
@@ -775,7 +758,7 @@
 
         <!-- Conflict & Problem Solving Case -->
         <div class="conflict-resolution-box">
-          <h4>🤝 분석 관점 충돌 해결: "매출 절대액" vs "장르 혁신성"의 가중치 조율</h4>
+          <h4>분석 관점 충돌 해결: "매출 절대액" vs "장르 혁신성"의 가중치 조율</h4>
           <p>
             <strong>단순 매출 순위와 개발적 학습 가치 간의 괴리:</strong> 매출 최상위권을 장악한 리니지 라이크 게임들만 분석하면 클라이언트 개발자로서 배울 수 있는 조작감과 3D 연출 학습에 한계가 있었습니다. 
             이를 극복하기 위해 <strong>'매출 파급력(40%)'과 '인게임 액션 메커니즘 혁신도(60%)'의 가중치 모델</strong>을 수립하여, 액션성과 BM 버스트를 동시에 갖춘 『명조』와 『트릭컬』을 핵심 분석 대상으로 재선정하는 정량적 합의를 이끌어냈습니다.
@@ -786,7 +769,7 @@
     <!-- Markdown Link Callout -->
     <div class="md-callout">
       <div>
-        <strong>📄 마크다운 과제 원본 보고서</strong>가 디렉토리에 생성되어 있습니다: 
+        <strong>마크다운 과제 원본 보고서</strong>가 디렉토리에 생성되어 있습니다: 
         <code>모바일인덱스_실시간순위/assignment_04_모바일인덱스_순위분석.md</code>
       </div>
       <a class="btn-md" href="../모바일인덱스_실시간순위/assignment_04_모바일인덱스_순위분석.md" target="_blank">MD 원본 보기</a>
@@ -795,16 +778,16 @@
     <!-- Navigation Tabs -->
     <nav class="nav-tabs-wrapper" role="tablist">
       <button class="tab-btn active" data-tab="tab-play" role="tab">
-        <span>🎯</span> 어떤 게임을 플레이해야 하는가?
+        어떤 게임을 플레이해야 하는가?
       </button>
       <button class="tab-btn" data-tab="tab-compare" role="tab">
-        <span>📈</span> 2주간 순위 변동 &amp; 데이터 테이블
+        2주간 순위 변동 &amp; 데이터 테이블
       </button>
       <button class="tab-btn" data-tab="tab-platform" role="tab">
         <span>⚖️</span> 플랫폼별 양극화 (Google vs Apple)
       </button>
       <button class="tab-btn" data-tab="tab-genre" role="tab">
-        <span>🧩</span> 장르 메타 &amp; 퍼블리셔 지형도
+        장르 메타 &amp; 퍼블리셔 지형도
       </button>
     </nav>
 
@@ -813,7 +796,7 @@
          ========================================================================= -->
     <section class="tab-pane active" id="tab-play">
       <div class="highlight-box">
-        <h4>💡 핵심 도출 결론: 왜 『명조: 워더링 웨이브』인가?</h4>
+        <h4>핵심 도출 결론: 왜 『명조: 워더링 웨이브』인가?</h4>
         <p>
           2026년 10월 1일 기준, <strong>앱스토어 매출 1위</strong>로 수직 급등한 <strong>『명조: 워더링 웨이브』</strong>는 
           단순한 순위 변동을 넘어 <strong>"버스트(Burst)형 라이브 BM"</strong>과 <strong>"모바일 한계를 돌파한 3D 액션 메커니즘"</strong>이 결합된 현대 모바일 게임의 정점입니다.
@@ -821,7 +804,7 @@
         </p>
       </div>
 
-      <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 16px;">🏆 기획자/개발자를 위한 필수 플레이 추천 5선</h3>
+      <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 16px;">기획자/개발자를 위한 필수 플레이 추천 5선</h3>
       
       <div class="recommend-grid">
         <!-- 1. 명조 -->
@@ -842,7 +825,7 @@
             </ul>
           </div>
           <div style="font-size: 0.8rem; color: var(--gold); border-top: 1px solid rgba(242, 201, 109, 0.2); padding-top: 10px;">
-            📌 <strong>플레이 목표</strong>: 픽업 상점 UI 열람, 첫 에코 파밍 완료, 보스전 패링 타이밍 체감
+            <strong>플레이 목표</strong>: 픽업 상점 UI 열람, 첫 에코 파밍 완료, 보스전 패링 타이밍 체감
           </div>
         </article>
 
@@ -863,7 +846,7 @@
             </ul>
           </div>
           <div style="font-size: 0.8rem; color: var(--blue-bright); border-top: 1px solid var(--line); padding-top: 10px;">
-            📌 <strong>플레이 목표</strong>: 협동 모드 20웨이브 달성, 유료 배틀패스 보상 구간 구조 분석
+            <strong>플레이 목표</strong>: 협동 모드 20웨이브 달성, 유료 배틀패스 보상 구간 구조 분석
           </div>
         </article>
 
@@ -884,7 +867,7 @@
             </ul>
           </div>
           <div style="font-size: 0.8rem; color: var(--green); border-top: 1px solid var(--line); padding-top: 10px;">
-            📌 <strong>플레이 목표</strong>: 1일 방치 후 접속 시 오프라인 보상 설계 및 장비 뽑기 티켓 소모 루프 관찰
+            <strong>플레이 목표</strong>: 1일 방치 후 접속 시 오프라인 보상 설계 및 장비 뽑기 티켓 소모 루프 관찰
           </div>
         </article>
 
@@ -904,7 +887,7 @@
             </ul>
           </div>
           <div style="font-size: 0.8rem; color: var(--blue-bright); border-top: 1px solid var(--line); padding-top: 10px;">
-            📌 <strong>플레이 목표</strong>: 가십하버 레스토랑 3단계 복원 및 에너지 소진 시 노출되는 과금 패키지 확인
+            <strong>플레이 목표</strong>: 가십하버 레스토랑 3단계 복원 및 에너지 소진 시 노출되는 과금 패키지 확인
           </div>
         </article>
 
@@ -924,14 +907,14 @@
             </ul>
           </div>
           <div style="font-size: 0.8rem; color: var(--gold); border-top: 1px solid var(--line); padding-top: 10px;">
-            📌 <strong>플레이 목표</strong>: 600뽑기 수령 후 신규/복귀 전용 스페셜 패키지 팝업 배치 방식 연구
+            <strong>플레이 목표</strong>: 600뽑기 수령 후 신규/복귀 전용 스페셜 패키지 팝업 배치 방식 연구
           </div>
         </article>
       </div>
 
       <!-- 기획자 플레이 체크리스트 -->
       <div class="content-card" style="margin-top: 30px;">
-        <h4 class="card-title"><span class="icon">📋</span> 게임 기획자/개발자를 위한 실전 플레이 분석 체크리스트</h4>
+        <h4 class="card-title">게임 기획자/개발자를 위한 실전 플레이 분석 체크리스트</h4>
         <div class="table-container">
           <table>
             <thead>
@@ -1030,11 +1013,11 @@
          ========================================================================= -->
     <section class="tab-pane" id="tab-platform">
       <div class="content-card">
-        <h4 class="card-title"><span class="icon">⚖️</span> 안드로이드 vs iOS 유저 결제 생태계 비교</h4>
+        <h4 class="card-title">안드로이드 vs iOS 유저 결제 생태계 비교</h4>
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 24px;">
           <div style="background: rgba(8, 17, 30, 0.6); padding: 22px; border-radius: var(--radius-sm); border: 1px solid var(--line);">
-            <h5 style="color: var(--blue-bright); margin: 0 0 12px; font-size: 1.1rem;">🤖 Google Play 생태계 특성</h5>
+            <h5 style="color: var(--blue-bright); margin: 0 0 12px; font-size: 1.1rem;">Google Play 생태계 특성</h5>
             <ul style="padding-left: 20px; margin: 0; font-size: 0.9rem; color: #c0d3e2; display: flex; flex-direction: column; gap: 8px;">
               <li><strong>MMORPG 독식 (12종, 26.1%)</strong>: 제우스(1위), 이클립스(2위), 리니지M(5위), 오딘(13위) 등 고연령 헤비 과금러 포진</li>
               <li><strong>하드코어 SLG의 롱런</strong>: WOS(4위), 킹샷(7위), 라스트 워(14위) 등 과금 기반 영지전 선호</li>
@@ -1043,7 +1026,7 @@
           </div>
 
           <div style="background: rgba(8, 17, 30, 0.6); padding: 22px; border-radius: var(--radius-sm); border: 1px solid var(--line);">
-            <h5 style="color: var(--gold); margin: 0 0 12px; font-size: 1.1rem;">🍎 Apple App Store 생태계 특성</h5>
+            <h5 style="color: var(--gold); margin: 0 0 12px; font-size: 1.1rem;">Apple App Store 생태계 특성</h5>
             <ul style="padding-left: 20px; margin: 0; font-size: 0.9rem; color: #c0d3e2; display: flex; flex-direction: column; gap: 8px;">
               <li><strong>서브컬처 &amp; 고사양 액션 1위</strong>: 명조(1위), 붕괴 스타레일(23위), 이환(29위), 젠레스 존 제로(39위)</li>
               <li><strong>스포츠 &amp; 캐주얼 강세</strong>: 컴프야V26(3위), FC 온라인 M(6위), 포켓몬 카드 Pocket(41위)</li>
@@ -1052,7 +1035,7 @@
           </div>
         </div>
 
-        <h5 style="font-size: 1.05rem; margin: 24px 0 12px; color: var(--text);">📊 플랫폼 간 극단적 순위 격차 TOP 6 분석</h5>
+        <h5 style="font-size: 1.05rem; margin: 24px 0 12px; color: var(--text);">플랫폼 간 극단적 순위 격차 TOP 6 분석</h5>
         <div class="table-container">
           <table>
             <thead>
@@ -1118,7 +1101,7 @@
          ========================================================================= -->
     <section class="tab-pane" id="tab-genre">
       <div class="content-card">
-        <h4 class="card-title"><span class="icon">🧩</span> 2026년 모바일 게임 시장 5대 장르 메타 분석</h4>
+        <h4 class="card-title">2026년 모바일 게임 시장 5대 장르 메타 분석</h4>
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 30px;">
           <div style="background: var(--panel-strong); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 18px;">
@@ -1154,7 +1137,7 @@
           </div>
         </div>
 
-        <h4 class="card-title"><span class="icon">🏢</span> 최다 진입 퍼블리셔 지형도 (10/01 기준)</h4>
+        <h4 class="card-title">최다 진입 퍼블리셔 지형도 (10/01 기준)</h4>
         <div class="table-container">
           <table>
             <thead>
@@ -1212,9 +1195,9 @@
          SECTION: KEY TAKEAWAYS & FINAL CONCLUSION
          ========================================================================= -->
     <section class="content-card" id="takeaways">
-      <h3 class="card-title"><span class="icon">🏁</span> 핵심 분석 결과 및 기획자적 시사점 (Key Takeaways)</h3>
+      <h3 class="card-title">핵심 분석 결과 및 기획자적 시사점 (Key Takeaways)</h3>
       <div class="key-takeaway-box">
-        <h4>💡 모바일인덱스 184개 데이터 포인트 크로스 분석 최종 결론</h4>
+        <h4>모바일인덱스 184개 데이터 포인트 크로스 분석 최종 결론</h4>
         <ul>
           <li><strong>서브컬처 BM의 압도적 버스트 파워 입증:</strong> '명조'의 앱스토어 1위 급상승(21계단↑)은 충성도 높은 코어 팬덤을 보유한 서브컬처 장르가 업데이트 시점에 전체 마켓 매출을 장악하는 파괴력을 데이터로 증명함.</li>
           <li><strong>플레이 피로도 축소와 '스낵형 세션'의 주류화:</strong> '방치형 키우기(메이플/쿠키런)'와 '미니멀 협동 디펜스(운빨존많겜)'가 양대 마켓 최상위권에 복수 안착하며, 하드코어 조작 피로도를 줄이고 숏폼 세대의 빠른 도파민을 채워주는 미니멀 루프가 2026년 모바일 게임의 핵심 설계 기조임을 확인.</li>
@@ -1345,5 +1328,31 @@
       });
     });
   </script>
+
+  <!-- FLOATING THEME FAB (Image 1 Requirement · Always Visible Bottom Right) -->
+  <div class="floating-theme-fab" id="floatingThemeFab" aria-label="테마 설정">
+    <div class="theme-fab-spheres" aria-hidden="true">
+      <button class="theme-fab-sphere" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+        <span class="sphere-tooltip">라이트 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="dark" title="다크 모드" aria-label="다크 모드">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+        <span class="sphere-tooltip">다크 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span>
+        <span class="sphere-tooltip">시스템 설정</span>
+      </button>
+    </div>
+    <button class="theme-fab-trigger" id="themeFabTrigger" title="테마 변경" aria-label="테마 변경">
+      <span class="fab-current-icon mono-icon mono-icon-stroke">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 2v20a10 10 0 0 0 0-20z"></path><circle cx="12" cy="12" r="10"></circle></svg>
+      </span>
+    </button>
+  </div>
+
+  <!-- Object-Oriented JS Architecture Bundle -->
+  <script src="../assets/js/portfolio-system.js"></script>
 </body>
 </html>

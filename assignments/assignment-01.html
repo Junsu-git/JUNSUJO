@@ -26,38 +26,16 @@
 
   <style>
     :root {
-      color-scheme: dark;
-      --bg: #08111e;
-      --bg-deep: #050b13;
-      --panel: #101d2d;
-      --panel-strong: #14263a;
-      --panel-soft: rgba(21, 39, 59, 0.74);
-      --line: rgba(147, 184, 214, 0.17);
-      --line-strong: rgba(102, 192, 244, 0.42);
-      --text: #f4f8fb;
-      --muted: #91a8bb;
-      --blue: #66c0f4;
-      --blue-bright: #8fd8ff;
-      --green: #a4d007;
-      --gold: #f2c96d;
-      --purple: #b8a6ff;
-      --radius-lg: 24px;
-      --radius-md: 16px;
-      --radius-sm: 10px;
-      --header-h: 72px;
-      font-family: Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --header-h: 70px;
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; background: var(--bg-deep); }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       min-width: 320px;
       color: var(--text);
-      background:
-        linear-gradient(180deg, rgba(6, 13, 23, 0.02), var(--bg-deep) 78%),
-        radial-gradient(circle at 86% 9%, rgba(56, 116, 165, 0.18), transparent 29%),
-        var(--bg);
+      background: var(--bg-page);
       overflow-x: hidden;
       line-height: 1.7;
     }
@@ -785,9 +763,15 @@
     <div style="display:flex;align-items:center;gap:14px;">
       <span style="font-size:0.8rem;color:var(--muted);font-weight:750;">PROJECT #05 · LANGUAGE ARCHITECTURE</span>
       <div class="theme-switch-group">
-        <button class="theme-btn" data-theme-set="light" title="라이트 모드">☀️</button>
-        <button class="theme-btn" data-theme-set="dark" title="다크 모드">🌙</button>
-        <button class="theme-btn" data-theme-set="system" title="시스템 설정">💻</button>
+        <button class="theme-btn" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+        <button class="theme-btn" data-theme-set="dark" title="다크 모드" aria-label="다크 모드">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="theme-btn" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+        </button>
       </div>
     </div>
   </header>
@@ -804,7 +788,7 @@
       </div>
       <nav class="toc-track-line" aria-label="섹션 바로가기">
         <a class="toc-item-link active" href="#overview">01. 개요 &amp; 스터디 스펙</a>
-        <a class="toc-item-link" href="#growth">02. 학습 성과 &amp; 평가 ★</a>
+        <a class="toc-item-link" href="#growth">02. 학습 성과 &amp; 평가</a>
         <a class="toc-item-link" href="#reasons">03. 책 선정 이유 &amp; 기준</a>
         <a class="toc-item-link" href="#plan-table">04. 14일 학습 계획표</a>
         <a class="toc-item-link" href="#logs">05. 일차별 상세 실기록</a>
@@ -910,7 +894,7 @@
 
         <!-- Conflict & Problem Solving Case: AI Code Judgment -->
         <div class="conflict-resolution-box">
-          <h4>🤝 AI 생성 코드 맹점 해결 및 코드 품질 기준 수립</h4>
+          <h4>[문제 해결 사례] AI 생성 코드 맹점 해결 및 코드 품질 기준 수립</h4>
           <p>
             <strong>AI가 제안한 불필요한 중첩 람다로 인한 가독성 저하 극복:</strong> 타이쿤 게임의 이벤트 디스패처 작성 중, AI가 3중 중첩 람다를 작성하여 런타임 에러 추적(스택 트레이스)이 불가능해지는 문제를 겪었습니다. 
             본 스터디에서 정립한 '명확한 메서드 명명' 원칙에 따라 중첩 람다를 독립적인 핸들러 메서드로 분리 추출하여 디버깅 용이성과 코드 가독성을 획기적으로 개선했습니다.
@@ -931,15 +915,15 @@
 
         <div class="points-grid">
           <div class="point-box">
-            <h4>📖 가독성과 유지보수성</h4>
+            <h4>가독성과 유지보수성</h4>
             <p>이 코드는 이름이 명시된 일반 메서드가 더 읽기 쉬운가, 아니면 짧은 일회성 람다가 더 적절한가?</p>
           </div>
           <div class="point-box">
-            <h4>🔍 명확한 문법적 근거</h4>
+            <h4>명확한 문법적 근거</h4>
             <p>함수형 인터페이스, 메서드 참조, 타입 추론이 코드를 더 간결하고 명확하게 만들고 있는가?</p>
           </div>
           <div class="point-box">
-            <h4>🧪 디버깅과 테스트</h4>
+            <h4>디버깅과 테스트</h4>
             <p>람다의 스코프·예외·클로저 특성이 런타임 디버깅과 단위 테스트에 어떤 영향을 주는가?</p>
           </div>
         </div>
@@ -1152,8 +1136,8 @@
         </div>
         <div class="progress-stats-row">
           <span>⏱️ 누적 공부 시간: <strong>300분 (5시간)</strong></span>
-          <span>📚 학습 진도: <strong>1장 도입 &amp; 2장 람다 완독 (3장 심화 진행 중)</strong></span>
-          <span>💻 C# 비교 실습: <strong>완료</strong></span>
+          <span>학습 진도: <strong>1장 도입 &amp; 2장 람다 완독 (3장 심화 진행 중)</strong></span>
+          <span>C# 비교 실습: <strong>완료</strong></span>
         </div>
       </div>
 
@@ -1167,14 +1151,14 @@
               <h3 class="day-card-title">1장 도입 &amp; 2장 람다의 기원</h3>
             </div>
             <div class="day-card-meta">
-              <span>📅 <strong>2026.09.11 — 09.13</strong></span>
+              <span><strong>2026.09.11 — 09.13</strong></span>
               <span>⏱️ <strong>누적 15분</strong></span>
               <span class="status-badge is-done">완독</span>
             </div>
           </div>
           <div class="day-card-body">
             <div class="day-section-block">
-              <h4 class="day-section-title">💡 핵심 요약 &amp; 개념</h4>
+              <h4 class="day-section-title">핵심 요약 &amp; 개념</h4>
               <ul class="day-points-list">
                 <li><strong>1일차 (0911):</strong> 자바 8에서 함수형 프로그래밍 요소를 대대적으로 도입하게 된 시대적 배경과 기존 자바 문법의 한계점을 개괄적으로 파악.</li>
                 <li><strong>2일차 (0912):</strong> 모던 자바의 3대 핵심 축(람다 표현식, 함수형 인터페이스, 스트림 API) 간의 유기적 상호작용 개념 정리.</li>
@@ -1192,7 +1176,7 @@
               <h3 class="day-card-title">2장 람다란 무엇인가, 함수와 클래스 (익명 클래스와의 결별)</h3>
             </div>
             <div class="day-card-meta">
-              <span>📅 <strong>2026.09.14</strong></span>
+              <span><strong>2026.09.14</strong></span>
               <span>⏱️ <strong>40분 소요 (이론)</strong></span>
               <span class="status-badge is-done">완독</span>
             </div>
@@ -1213,7 +1197,7 @@
             </div>
 
             <div class="day-section-block">
-              <h4 class="day-section-title">🔍 비교 코드 실습 (Function&lt;String, String&gt; addSurname)</h4>
+              <h4 class="day-section-title">비교 코드 실습 (Function&lt;String, String&gt; addSurname)</h4>
               <div class="code-compare-grid">
                 <div class="code-card">
                   <div class="code-card-header java">Java · 익명 클래스 (람다 X)</div>
@@ -1232,7 +1216,7 @@
             </div>
 
             <div class="day-summary-box">
-              <strong>💡 깨달음:</strong> 개발자가 작성하는 건 화살표(<code>-&gt;</code>) 하나지만, 그 뒤에서 컴파일러가 엄청난 양의 추상화와 JVM <code>invokedynamic</code> 최적화를 대신 수행해주고 있음을 확인!
+              <strong>깨달음:</strong> 개발자가 작성하는 건 화살표(<code>-&gt;</code>) 하나지만, 그 뒤에서 컴파일러가 엄청난 양의 추상화와 JVM <code>invokedynamic</code> 최적화를 대신 수행해주고 있음을 확인!
             </div>
           </div>
         </article>
@@ -1245,7 +1229,7 @@
               <h3 class="day-card-title">2장 람다 기본 문법, 콜백의 진짜 주체 &amp; 게임 프로젝트 아키텍처 재발견</h3>
             </div>
             <div class="day-card-meta">
-              <span>📅 <strong>2026.09.15</strong></span>
+              <span><strong>2026.09.15</strong></span>
               <span>⏱️ <strong>2시간 소요 (이론 + 실습)</strong></span>
               <span class="status-badge is-done">완독</span>
             </div>
@@ -1277,7 +1261,7 @@
 
             <!-- 게임 프로젝트 아키텍처 연계 분석 -->
             <div class="project-connection-box">
-              <h5>🎮 내 프로젝트(『내 약국에는 정상이 없다』) 아키텍처와의 비교 및 재발견</h5>
+              <h5>내 프로젝트(『내 약국에는 정상이 없다』) 아키텍처와의 비교 및 재발견</h5>
               <p>
                 『내 약국에는 정상이 없다』의 <code>GameManager</code> 오케스트레이션은 람다 콜백 큐와 <strong>동작 목적(완료 시점 대기, 순차 실행, 제어의 역전)이 100% 일치</strong>함을 확인했습니다.<br>
                 더 나아가 실제 구현 코드는 단순 람다 콜백의 리스크(메인 스레드 프리징, 취소 불가, GC 메모리 누수)를 해결하기 위해 
@@ -1286,7 +1270,7 @@
             </div>
 
             <div class="day-section-block">
-              <h4 class="day-section-title">🔍 C# vs Java 람다 정렬 비교 코드</h4>
+              <h4 class="day-section-title">C# vs Java 람다 정렬 비교 코드</h4>
               <div class="code-compare-grid">
                 <div class="code-card">
                   <div class="code-card-header csharp">C# Array.Sort</div>
@@ -1300,7 +1284,7 @@
             </div>
 
             <div class="day-summary-box">
-              <strong>💡 1줄 요약:</strong> 문법 거품을 뺀 게 람다이고, 람다를 쥐어주고 알아서 부르게 하는 게 콜백이다! 2장 완독 완료.
+              <strong>1줄 요약:</strong> 문법 거품을 뺀 게 람다이고, 람다를 쥐어주고 알아서 부르게 하는 게 콜백이다! 2장 완독 완료.
             </div>
           </div>
         </article>
@@ -1313,7 +1297,7 @@
               <h3 class="day-card-title">3장 함수형 인터페이스 (SAM 인터페이스)</h3>
             </div>
             <div class="day-card-meta">
-              <span>📅 <strong>2026.09.16</strong></span>
+              <span><strong>2026.09.16</strong></span>
               <span>⏱️ <strong>20분 소요 (이론 + 실습)</strong></span>
               <span class="status-badge is-done">완독</span>
             </div>
@@ -1327,7 +1311,7 @@
               </ul>
             </div>
             <div class="day-summary-box">
-              <strong>💡 1줄 요약:</strong> 자바에서 람다를 담기 위한 그릇은 오직 "추상 메서드 1개짜리 인터페이스"뿐이다.
+              <strong>1줄 요약:</strong> 자바에서 람다를 담기 위한 그릇은 오직 "추상 메서드 1개짜리 인터페이스"뿐이다.
             </div>
           </div>
         </article>
@@ -1340,7 +1324,7 @@
               <h3 class="day-card-title">3장 @FunctionalInterface와 상속 규칙</h3>
             </div>
             <div class="day-card-meta">
-              <span>📅 <strong>2026.09.17</strong></span>
+              <span><strong>2026.09.17</strong></span>
               <span>⏱️ <strong>15분 소요 (이론 + 실습)</strong></span>
               <span class="status-badge is-done">완독</span>
             </div>
@@ -1354,7 +1338,7 @@
               </ul>
             </div>
             <div class="day-summary-box">
-              <strong>💡 다음 관심사:</strong> 8일차에 이어질 "타입 추론(Type Inference)과 대상 타이핑"이 어떻게 전개될지 탐구 예정.
+              <strong>다음 관심사:</strong> 8일차에 이어질 "타입 추론(Type Inference)과 대상 타이핑"이 어떻게 전개될지 탐구 예정.
             </div>
           </div>
         </article>
@@ -1367,7 +1351,7 @@
               <h3 class="day-card-title">3장 타입 추론과 대상 타이핑(Target Typing), 연쇄 체이닝 극복</h3>
             </div>
             <div class="day-card-meta">
-              <span>📅 <strong>2026.09.18</strong></span>
+              <span><strong>2026.09.18</strong></span>
               <span>⏱️ <strong>1시간 30분 소요 (이론 + 실습)</strong></span>
               <span class="status-badge is-done">완독</span>
             </div>
@@ -1396,7 +1380,7 @@
             </div>
 
             <div class="day-summary-box">
-              <strong>💡 1줄 요약:</strong> 람다는 그릇(Target Type)을 보고 타입을 유추하며, 자바 8 체이닝의 한계는 현대 자바의 신규 컬렉션/스트림 API로 극복되었다!
+              <strong>1줄 요약:</strong> 람다는 그릇(Target Type)을 보고 타입을 유추하며, 자바 8 체이닝의 한계는 현대 자바의 신규 컬렉션/스트림 API로 극복되었다!
             </div>
           </div>
         </article>
@@ -1409,7 +1393,7 @@
               <h3 class="day-card-title" style="color: var(--muted);">후반부 심화 학습 계획 (09.19 — 09.24)</h3>
             </div>
             <div class="day-card-meta">
-              <span>📅 <strong>예정</strong></span>
+              <span><strong>예정</strong></span>
               <span class="status-badge is-pending">진행 대기</span>
             </div>
           </div>
@@ -1447,14 +1431,14 @@
 
         <div class="points-grid" style="margin-top: 24px;">
           <div class="point-box">
-            <h4 style="color: var(--gold);">🎯 최종 완료 기준</h4>
+            <h4 style="color: var(--gold);">최종 완료 기준</h4>
             <p>
               문법을 단순 암기한 것이 아니라, 람다를 일반 메서드로 풀어 설명할 수 있으며, 
               C#의 delegate/lambda와 혼동하지 않고 Java 고유의 바이트코드 및 함수형 인터페이스 스펙을 정확히 구분할 수 있다.
             </p>
           </div>
           <div class="point-box">
-            <h4 style="color: var(--green-bright);">💡 Unity C# 개발과의 연계</h4>
+            <h4 style="color: var(--green-bright);">Unity C# 개발과의 연계</h4>
             <p>
               Java 람다의 타겟 타이핑과 유사 파이널 변수 캡처 메커니즘을 학습함으로써, 
               Unity C#에서 익명 함수 및 람다 식 사용 시 발생할 수 있는 가비지 컬렉션(GC Alloc)과 클로저 할당 문제를 깊이 있게 이해하는 밑거름으로 삼는다.
@@ -1466,7 +1450,7 @@
 
     <!-- 07. 최종 분석 결과 & 결론 (Peer Feedback Requirement) -->
     <section class="key-takeaway-box" id="takeaways">
-      <h3>🎯 최종 분석 결과 및 핵심 결론 (Key Takeaways)</h3>
+      <h3>최종 분석 결과 및 핵심 결론 (Key Takeaways)</h3>
       <p>
         본 도서 스터디의 핵심은 <strong>"AI 시대 개발자의 진짜 경쟁력은 문법의 기계적 암기가 아닌, 바이트코드와 메모리 할당 원리에 기반한 코드 품질 판단력"</strong>임을 입증한 것입니다. 
         Java 람다의 함수형 인터페이스와 C# 델리게이트 아키텍처를 교차 분석함으로써, Unity 클라이언트 환경에서 가비지 컬렉션(GC Alloc)을 사전에 차단하고 고성능 게임 루프를 유지하는 깊이 있는 통찰을 확보했습니다.
@@ -1486,10 +1470,33 @@
       </a>
     </footer>
 
-  </main>
-</div>
+    </main>
+  </div>
 
-<!-- Object-Oriented JS Architecture Bundle -->
-<script src="../assets/js/portfolio-system.js"></script>
+  <!-- FLOATING THEME FAB (Image 1 Requirement · Always Visible Bottom Right) -->
+  <div class="floating-theme-fab" id="floatingThemeFab" aria-label="테마 설정">
+    <div class="theme-fab-spheres" aria-hidden="true">
+      <button class="theme-fab-sphere" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+        <span class="sphere-tooltip">라이트 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="dark" title="다크 모드" aria-label="다크 모드">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+        <span class="sphere-tooltip">다크 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span>
+        <span class="sphere-tooltip">시스템 설정</span>
+      </button>
+    </div>
+    <button class="theme-fab-trigger" id="themeFabTrigger" title="테마 변경" aria-label="테마 변경">
+      <span class="fab-current-icon mono-icon mono-icon-stroke">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 2v20a10 10 0 0 0 0-20z"></path><circle cx="12" cy="12" r="10"></circle></svg>
+      </span>
+    </button>
+  </div>
+
+  <!-- Object-Oriented JS Architecture Bundle -->
+  <script src="../assets/js/portfolio-system.js"></script>
 </body>
 </html>

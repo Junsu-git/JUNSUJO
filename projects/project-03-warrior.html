@@ -94,9 +94,15 @@
     <div style="display:flex;align-items:center;gap:14px;">
       <span style="font-size:0.8rem;color:var(--muted);font-weight:750;">PROJECT #03 · BOARDGAME PM &amp; RULEBOOK</span>
       <div class="theme-switch-group">
-        <button class="theme-btn" data-theme-set="light" title="라이트 모드">☀️</button>
-        <button class="theme-btn" data-theme-set="dark" title="다크 모드">🌙</button>
-        <button class="theme-btn" data-theme-set="system" title="시스템 설정">💻</button>
+        <button class="theme-btn" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+        <button class="theme-btn" data-theme-set="dark" title="다크 모드" aria-label="다크 모드">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="theme-btn" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+        </button>
       </div>
     </div>
   </header>
@@ -113,7 +119,7 @@
       </div>
       <nav class="toc-track-line" aria-label="섹션 바로가기">
         <a class="toc-item-link active" href="#overview">01. 개요 &amp; PM 스펙</a>
-        <a class="toc-item-link" href="#growth">02. 학습 성과 &amp; 평가 ★</a>
+        <a class="toc-item-link" href="#growth">02. 학습 성과 &amp; 평가</a>
         <a class="toc-item-link" href="#mechanics">03. 기획 의도 &amp; 룰 구조</a>
         <a class="toc-item-link" href="#showcase">04. 실물 사진 &amp; Figma 쇼케이스</a>
         <a class="toc-item-link" href="#playtest">05. 5회 플레이테스트 기록</a>
@@ -194,7 +200,7 @@
 
         <!-- Conflict & Teamwork Case: Matrix-based Decision -->
         <div class="conflict-resolution-box">
-          <h4>🤝 협업 및 갈등 해결 사례: '객관적 평가 매트릭스'를 통한 룰 충돌 합의</h4>
+          <h4>[협업 및 갈등 해결 사례]</h4>
           <p>
             <strong>원거리 vs 근접 밸런스에 관한 팀원 간 격렬한 대립:</strong> 원거리 캐릭터의 사거리가 압도적인 상황에서 "사거리를 줄이자"는 의견과 "체력을 깎자"는 의견이 감정적으로 충돌했습니다. 
             PM으로서 감정 싸움을 중단시키고 <strong>'핵심 재미, 턴 템포 영향, 구현 명확도, 팀원 관심도'</strong> 4개 지표를 매트릭스 표로 구조화했습니다. 
@@ -215,15 +221,15 @@
 
           <div class="points-grid">
             <div class="point-box">
-              <h4>⚔️ 긴장감 넘치는 생존 메커니즘</h4>
+              <h4>긴장감 넘치는 생존 메커니즘</h4>
               <p>매 라운드 축소되는 맵 타일과 한정된 식량 자원을 둘러싸고 벌어지는 플레이어 간의 심리전과 전략적 조우.</p>
             </div>
             <div class="point-box">
-              <h4>📐 체계적인 PM 문서화 프로세스</h4>
+              <h4>체계적인 PM 문서화 프로세스</h4>
               <p>Google Docs로 매주 회의록을 아카이빙하고, Notion 보드로 이슈 트래킹을 수행하여 일정 지연 없이 룰북 인쇄 완료.</p>
             </div>
             <div class="point-box">
-              <h4>🎨 정밀한 Figma 에셋 컴포넌트</h4>
+              <h4>정밀한 Figma 에셋 컴포넌트</h4>
               <p>실제 인쇄 규격(63x88mm)에 맞춘 카드 템플릿, 시인성 높은 아이콘, 모듈형 타일 맵을 Figma 오토레이아웃으로 제작.</p>
             </div>
           </div>
@@ -245,7 +251,11 @@
               <span style="color:var(--gold);font-weight:800;">DELIVERABLES: 12P 룰북 &amp; 실물 덱</span>
             </div>
             <div class="media-stage-body">
-              <div style="font-size:3.5rem;filter:drop-shadow(0 4px 14px rgba(242,201,109,0.3));">🎲</div>
+              <div style="display:flex;justify-content:center;margin-bottom:8px;">
+                <span class="mono-icon mono-icon-stroke" style="width:48px;height:48px;">
+                  <svg viewBox="0 0 24 24" width="48" height="48"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                </span>
+              </div>
               <strong style="font-size:1.15rem;color:var(--text);">실물 보드게임 구성물 &amp; 오프라인 5회 테스트 사진 슬롯</strong>
               <p style="font-size:0.88rem;color:var(--text-sub);max-width:540px;">
                 실제 테이블 위에 세팅된 육각 타일 맵, 주사위, 캐릭터 카드 40종 및 제3자 참가자들이 룰북을 보며 플레이하는 생생한 현장 사진 배치 영역입니다.
@@ -255,11 +265,11 @@
 
           <div class="points-grid">
             <div class="point-box">
-              <h4>📜 12페이지 공식 룰북 (Rulebook)</h4>
+              <h4>12페이지 공식 룰북 (Rulebook)</h4>
               <p>세팅 가이드부터 턴 흐름, 예외 룰, Q&amp;A까지 초보자도 5분 안에 이해할 수 있도록 구조화된 공식 인쇄본.</p>
             </div>
             <div class="point-box">
-              <h4>🃏 캐릭터 &amp; 환경 이벤트 카드 40종</h4>
+              <h4>캐릭터 &amp; 환경 이벤트 카드 40종</h4>
               <p>전사, 암살자, 궁수 고유 스킬 카드와 매 턴 돌발 변수를 제공하는 재난/보급 이벤트 카드 덱.</p>
             </div>
           </div>
@@ -306,12 +316,12 @@
         <h2>PM으로서의 문제 해결과 회고</h2>
         <div class="detail-card">
           <div class="point-box" style="margin-bottom: 16px;">
-            <h4 style="color: var(--gold);">⚠️ 직면 문제: 조기 탈락(Early Elimination) 플레이어의 소외감 극복</h4>
+            <h4 style="color: var(--gold);">[Issue] 조기 탈락(Early Elimination) 플레이어의 소외감 극복</h4>
             <p>
               배틀로얄 룰의 특성상 초반에 사망한 유저가 남은 30분 동안 아무것도 하지 못하고 대기해야 하는 치명적인 유저 경험 결함 발생.
             </p>
             <p style="color: var(--green-bright); margin-top: 8px;">
-              <strong>💡 해결책:</strong> 탈락한 플레이어가 '망령(Ghost)' 상태로 전환되어 맵의 환경 함정과 몬스터를 조종하여 생존자들을 방해할 수 있는 서브 롤(Sub-Role) 룰을 신설, 끝까지 테이블의 몰입도를 유지시킴.
+              <strong>[Solution]</strong> 탈락한 플레이어가 '망령(Ghost)' 상태로 전환되어 맵의 환경 함정과 몬스터를 조종하여 생존자들을 방해할 수 있는 서브 롤(Sub-Role) 룰을 신설, 끝까지 테이블의 몰입도를 유지시킴.
             </p>
           </div>
         </div>
@@ -319,7 +329,7 @@
 
       <!-- 07. 최종 분석 결과 & 결론 (Peer Feedback Requirement) -->
       <section class="key-takeaway-box" id="takeaways">
-        <h3>🎯 최종 분석 결과 및 핵심 결론 (Key Takeaways)</h3>
+        <h3>최종 분석 결과 및 핵심 결론 (Key Takeaways)</h3>
         <p>
           『최후의 전사』는 <strong>"게임의 본질은 컴퓨터의 화려한 그래픽 이전, 플레이어 간의 상호작용과 납득 가능한 규칙에 있다"</strong>는 진리를 PM으로서 실증한 프로젝트입니다. 
           5회에 걸친 오프라인 플레이테스트 데이터와 망령 시스템 신설, 정량적 평가 매트릭스를 통해 플레이 타임을 45분으로 최적화하고 완성도 높은 12페이지 공식 룰북 인쇄본을 제작했습니다.
@@ -340,6 +350,29 @@
       </footer>
 
     </main>
+  </div>
+
+  <!-- FLOATING THEME FAB (Image 1 Requirement · Always Visible Bottom Right) -->
+  <div class="floating-theme-fab" id="floatingThemeFab" aria-label="테마 설정">
+    <div class="theme-fab-spheres" aria-hidden="true">
+      <button class="theme-fab-sphere" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+        <span class="sphere-tooltip">라이트 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="dark" title="다크 모드" aria-label="다크 모드">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+        <span class="sphere-tooltip">다크 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span>
+        <span class="sphere-tooltip">시스템 설정</span>
+      </button>
+    </div>
+    <button class="theme-fab-trigger" id="themeFabTrigger" title="테마 변경" aria-label="테마 변경">
+      <span class="fab-current-icon mono-icon mono-icon-stroke">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 2v20a10 10 0 0 0 0-20z"></path><circle cx="12" cy="12" r="10"></circle></svg>
+      </span>
+    </button>
   </div>
 
   <!-- Object-Oriented JS Architecture Bundle -->
