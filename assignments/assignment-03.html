@@ -1,11 +1,28 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="조준수 포트폴리오 - 전공 과제 #03: 마비노기 모바일 이벤트 기획서 『에린의 조각들』">
-  <meta name="theme-color" content="#0b1524">
-  <title>과제 03: 마비노기 모바일 이벤트 기획서 — 에린의 조각들 | 조준수 포트폴리오</title>
+  <meta name="description" content="조준수 포트폴리오 - 프로젝트 #07: 마비노기 모바일 이벤트 기획서 『에린의 조각들』">
+  <meta name="theme-color" content="#08111e">
+  <title>프로젝트 07: 마비노기 모바일 이벤트 기획서 — 에린의 조각들 | 조준수 포트폴리오</title>
+
+  <!-- Prevent Theme Flicker (FOUC) Script -->
+  <script>
+    (function() {
+      try {
+        var saved = localStorage.getItem('junsu_portfolio_theme') || 'system';
+        var isDark = saved === 'dark' || (saved === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Google / Pretendard Fonts -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+  <!-- Core Design System & Components -->
+  <link rel="stylesheet" href="../assets/css/portfolio-system.css">
 
   <style>
     :root {
@@ -526,69 +543,119 @@
 
 <body>
   <!-- Header -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="back-button" href="../index.html#assignments">
-        <span aria-hidden="true">←</span> 메인 포트폴리오로 돌아가기
-      </a>
-      <span class="page-indicator">전공 과제 아카이브 #03 · 게임 이벤트 기획서</span>
+  <header class="mobile-header" style="display:flex;position:sticky;top:0;height:var(--header-h);background:var(--panel-soft);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);padding:0 24px;justify-content:space-between;align-items:center;z-index:100;">
+    <a class="back-link-btn" href="../index.html#projects">
+      <span aria-hidden="true">←</span> 전체 프로젝트 목록으로
+    </a>
+    <div style="display:flex;align-items:center;gap:14px;">
+      <span style="font-size:0.8rem;color:var(--muted);font-weight:750;">PROJECT #07 · SYSTEM PLANNING</span>
+      <div class="theme-switch-group">
+        <button class="theme-btn" data-theme-set="light" title="라이트 모드">☀️</button>
+        <button class="theme-btn" data-theme-set="dark" title="다크 모드">🌙</button>
+        <button class="theme-btn" data-theme-set="system" title="시스템 설정">💻</button>
+      </div>
     </div>
   </header>
 
-  <main class="container">
-    <!-- Hero / Title -->
-    <section class="detail-hero">
-      <div class="badge-row">
-        <span class="badge badge-primary">전공 과목 포트폴리오 과제 #3</span>
-        <span class="badge badge-success">기획서 작성 완료</span>
-        <span class="badge" style="background: rgba(255,255,255,0.06); color: var(--muted);">2026.09.17</span>
+  <!-- 2-Column Detail Layout: TOC Rail (Left, Image 3) + Content (Right) -->
+  <div class="detail-layout-container">
+
+    <!-- ====================================================================
+         LEFT: TOC ON-THIS-PAGE TRACKER RAIL (Image 3 Style)
+         ==================================================================== -->
+    <aside class="toc-rail-container" aria-label="프로젝트 목차 내비게이션">
+      <div class="toc-rail-title">
+        <span>ON THIS PROJECT</span>
       </div>
-
-      <h1 class="detail-title">마비노기 모바일 이벤트 기획서 — 『에린의 조각들』</h1>
-      <div class="detail-sub-title">『트렌드 코리아 2026』 픽셀라이프 기반 · 오늘은 어떤 이야기를 고를까요?</div>
-      
-      <p class="detail-lead">
-        탐색·이야기·놀이로 나뉜 <strong>12개 짧은 에피소드 중 원하는 활동을 골라</strong>, 나만의 에린 기록을 모으는 선택형 이벤트 기획서입니다.
-        단순한 출석이나 숙제형 반복을 지양하고, 짧은 접속 시간 안에서도 선택권과 완결감을 제공하도록 설계되었습니다.
-      </p>
-
-      <!-- Meta Grid -->
-      <div class="meta-card-grid">
-        <div class="meta-item">
-          <span>과목명 / 프로젝트</span>
-          <strong>전공 포트폴리오 · 게임 이벤트 기획</strong>
-        </div>
-        <div class="meta-item">
-          <span>분석 대상 게임</span>
-          <strong>마비노기 모바일 (넥슨 / 데브캣)</strong>
-        </div>
-        <div class="meta-item">
-          <span>핵심 트렌드 키워드</span>
-          <strong>트렌드 코리아 2026 『픽셀라이프』</strong>
-        </div>
-        <div class="meta-item">
-          <span>기획 산출물</span>
-          <strong>원페이저 &amp; 9개 챕터 상세 기획서</strong>
-        </div>
-      </div>
-
-      <!-- Quick TOC -->
-      <nav class="toc-box" aria-label="기획서 목차">
-        <div class="toc-title">DOCUMENT NAVIGATION (목차)</div>
-        <ul class="toc-list">
-          <li><a href="#one-pager">0. 이벤트 기획서 원페이저</a></li>
-          <li><a href="#sec-1">1. 트렌드 분석 (픽셀라이프)</a></li>
-          <li><a href="#sec-2">2. 관련 현황 및 기존 공식 이벤트 분석</a></li>
-          <li><a href="#sec-3">3. 게임 선정 및 선정 이유</a></li>
-          <li><a href="#sec-4">4. 기획 배경 및 목적</a></li>
-          <li><a href="#sec-5">5. 이벤트 콘셉트 &amp; 메인 배너</a></li>
-          <li><a href="#sec-6">6. 이벤트 상세 기획 (12개 에피소드·규칙·보상)</a></li>
-          <li><a href="#sec-7">7. 운영 방안 및 예상 문제 대응 (11개)</a></li>
-          <li><a href="#sec-8">8. 기대 효과 및 평가 지표 (8대 지표)</a></li>
-          <li><a href="#sec-9">9. 참고 자료 및 출처 (S1~S8)</a></li>
-        </ul>
+      <nav class="toc-track-line" aria-label="섹션 바로가기">
+        <a class="toc-item-link active" href="#overview">01. 개요 &amp; 기획 스펙</a>
+        <a class="toc-item-link" href="#growth">02. 학습 성과 &amp; 평가 ★</a>
+        <a class="toc-item-link" href="#one-pager">03. 원페이저 (One-Pager)</a>
+        <a class="toc-item-link" href="#sec-1">04. 픽셀라이프 트렌드 분석</a>
+        <a class="toc-item-link" href="#sec-6">05. 12개 에피소드 &amp; 규칙</a>
+        <a class="toc-item-link" href="#sec-7">06. 11개 예외 대응 방안</a>
+        <a class="toc-item-link" href="#takeaways">07. 최종 분석 결과 &amp; 결론</a>
       </nav>
-    </section>
+    </aside>
+
+    <!-- ====================================================================
+         RIGHT: MAIN CONTENT AREA
+         ==================================================================== -->
+    <main class="detail-main-content">
+
+      <!-- 01. HERO & META GRID -->
+      <section class="detail-hero-box" id="overview">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
+          <span class="badge-tag">통합 프로젝트 #07</span>
+          <span class="badge-tag" style="color:var(--gold);">게임 이벤트 시스템 기획</span>
+          <span class="badge-tag" style="color:var(--green-bright);">상세 스펙북 완료</span>
+          <span class="badge-tag">2026.09.17</span>
+        </div>
+
+        <h1 class="detail-main-title">03. [기획서] 마비노기 모바일 — 『에린의 조각들』</h1>
+        <div class="detail-sub-title">『트렌드 코리아 2026』 픽셀라이프 기반 · 오늘은 어떤 이야기를 고를까요?</div>
+        
+        <p class="detail-lead-summary">
+          탐색·이야기·놀이로 나뉜 <strong>12개 짧은 에피소드 중 원하는 활동을 골라</strong>, 나만의 에린 기록을 모으는 선택형 이벤트 기획서입니다.
+          단순한 출석이나 숙제형 반복을 지양하고, 짧은 접속 시간 안에서도 선택권과 완결감을 제공하도록 설계되었습니다.
+        </p>
+
+        <div class="meta-spec-grid">
+          <div class="meta-spec-item">
+            <span>과목명 / 프로젝트</span>
+            <strong>전공 포트폴리오 · 게임 이벤트 기획</strong>
+          </div>
+          <div class="meta-spec-item">
+            <span>분석 대상 게임</span>
+            <strong>마비노기 모바일 (넥슨 / 데브캣)</strong>
+          </div>
+          <div class="meta-spec-item">
+            <span>핵심 트렌드 키워드</span>
+            <strong>트렌드 코리아 2026 『픽셀라이프』</strong>
+          </div>
+          <div class="meta-spec-item">
+            <span>기획 산출물</span>
+            <strong>원페이저 &amp; 9개 챕터 상세 스펙북</strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02. CORE LEARNING OUTCOMES & GROWTH ASSESSMENT (Prioritized at Top) -->
+      <section class="learning-growth-card" id="growth">
+        <span class="growth-header-label">SECTION 02 · GROWTH &amp; COMPETENCY</span>
+        <h2 class="growth-title">경험 전후의 학습 성과 및 핵심 역량 평가</h2>
+        
+        <div class="before-after-grid">
+          <!-- Before Box -->
+          <div class="before-box">
+            <span class="ba-label">수행 전 (BEFORE: 직면한 한계)</span>
+            <ul class="ba-list">
+              <li>게임 이벤트를 단순한 "출석 보상과 숙제형 퀘스트 나열"로만 접근하여 유저의 조기 이탈을 방어하지 못함</li>
+              <li>사회적 소비 트렌드(픽셀라이프)와 인게임 시스템 간의 이론적 연결고리가 빈약하여 설득력 부족</li>
+              <li>라이브 서비스 도중 발생할 수 있는 어뷰징과 네트워크 단절 예외 대응 시나리오 미비</li>
+            </ul>
+          </div>
+
+          <!-- After Box -->
+          <div class="after-box">
+            <span class="ba-label">수행 후 (AFTER: 달성한 학습 성과 &amp; 역량 성장)</span>
+            <ul class="ba-list">
+              <li><strong>트렌드 키워드 기반 시스템 역설계:</strong> '픽셀라이프'를 5분 단위 12개 선택형 에피소드 루프로 번역하여 완결감 제공</li>
+              <li><strong>8대 정량적 평가 지표(KPI) 수립:</strong> 이벤트 참여율, 조기 완주율, 보상 만족도를 측정 가능한 수치로 체계화</li>
+              <li><strong>11개 운영 예외 대응 매뉴얼 완비:</strong> 중도 이탈, 보상 중복 수령 방지 등 클라이언트-서버 간 정합성 예외 처리 완비</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Conflict & Problem Solving Case -->
+        <div class="conflict-resolution-box">
+          <h4>🤝 기획 밸런싱 충돌 해결: '보상 인플레이션'과 '참여 동기'의 균형</h4>
+          <p>
+            <strong>보상 규모를 둘러싼 딜레마:</strong> 유저 참여를 높이기 위해 최고급 재화를 퍼주자는 의견과, 라이브 경제 시스템이 무너진다는 우려가 충돌했습니다. 
+            이를 해결하기 위해 <strong>'계정당 1회 한정 외형 코스튬(성취감)'</strong>과 <strong>'일일 소모성 재화(성장 보조)'</strong>의 이중 보상 티어링을 설계하여 경제 인플레이션 없이 100% 참여 동기를 확보했습니다.
+          </p>
+        </div>
+      </section>
 
     <!-- SECTION 0: ONE PAGER -->
     <section class="content-section" id="one-pager">
@@ -1344,18 +1411,32 @@
       </div>
     </section>
 
-    <!-- Footer Navigation -->
-    <div class="detail-footer-nav">
-      <a class="nav-btn" href="assignment-02.html">
-        <span aria-hidden="true">←</span> 이전 과제 (02. 인기순위 분석 &amp; 플레이 이력)
+    <!-- 07. 최종 분석 결과 & 결론 (Peer Feedback Requirement) -->
+    <section class="key-takeaway-box" id="takeaways">
+      <h3>🎯 최종 분석 결과 및 핵심 결론 (Key Takeaways)</h3>
+      <p>
+        『에린의 조각들』 기획서는 <strong>"유저에게 피로를 주는 숙제형 이벤트에서 벗어나, 유저의 시간 주권을 존중하는 트렌드형 시스템 기획"</strong>의 가능성을 입증한 프로젝트입니다. 
+        『트렌드 코리아 2026』의 픽셀라이프 키워드를 12개 선택형 에피소드로 번역하고, 8대 정량 지표와 11개 운영 예외 대응 시나리오를 완비함으로써 실제 상용 라이브 서비스에 즉시 투입 가능한 수준의 완성도 높은 시스템 스펙북을 완성했습니다.
+      </p>
+    </section>
+
+    <!-- Footer Navigation Bar -->
+    <footer class="detail-footer-nav">
+      <a class="detail-nav-btn" href="assignment-02.html">
+        <span aria-hidden="true">←</span> 이전: 06. [GamePlay] 인기순위 &amp; 플레이 이력
       </a>
-      <a class="nav-btn" href="../index.html#assignments">
-        <span aria-hidden="true">☰</span> 전체 과제 목록으로
+      <a class="detail-nav-btn" href="../index.html#projects">
+        <span aria-hidden="true">☰</span> 전체 프로젝트 목록으로
       </a>
-      <a class="nav-btn" href="assignment-04.html">
-        다음 과제 (04. 모바일인덱스 순위 심층 분석) <span aria-hidden="true">→</span>
+      <a class="detail-nav-btn" href="assignment-04.html">
+        다음: 08. [데이터 분석] 모바일인덱스 순위 심층 분석 <span aria-hidden="true">→</span>
       </a>
-    </div>
+    </footer>
+
   </main>
+</div>
+
+<!-- Object-Oriented JS Architecture Bundle -->
+<script src="../assets/js/portfolio-system.js"></script>
 </body>
 </html>

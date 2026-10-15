@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JAVA_LAMBDA_14_DAY_PLAN.md",
+                "file": "mock_interview_prep.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "JAVA_LAMBDA_14_DAY_PLAN"
+              "title": "mock_interview_prep"
             }
           }
         ]
@@ -189,5 +189,9 @@
     }
   },
   "active": "1c216100d9479c76",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "게임 플레이 이력.md",
+    "assignment-05_트릭컬_리바이브_재미요소_분석.md",
+    "JAVA_LAMBDA_14_DAY_PLAN.md"
+  ]
 }

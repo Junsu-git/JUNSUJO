@@ -1,507 +1,295 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="조준수 포트폴리오 - 프로젝트 #04: 2026 캡스톤 디자인 Unity 3D 액션 시스템 프로젝트">
-  <meta name="theme-color" content="#0b1524">
-  <title>프로젝트 04: 2026 캡스톤 디자인 프로젝트 | 조준수 포트폴리오</title>
+  <meta name="description" content="조준수 포트폴리오 - 프로젝트 #04: 2026 캡스톤 디자인 (Unity 3D 액션 시스템 개발)">
+  <meta name="theme-color" content="#08111e">
+  <title>프로젝트 04: 2026 캡스톤 디자인 | 조준수 포트폴리오</title>
+
+  <!-- Prevent Theme Flicker (FOUC) Script -->
+  <script>
+    (function() {
+      try {
+        var saved = localStorage.getItem('junsu_portfolio_theme') || 'system';
+        var isDark = saved === 'dark' || (saved === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Google / Pretendard Fonts -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+  <!-- Core Design System & Components -->
+  <link rel="stylesheet" href="../assets/css/portfolio-system.css">
 
   <style>
-    :root {
-      color-scheme: dark;
-      --bg: #08111e;
-      --bg-deep: #050b13;
-      --panel: #101d2d;
-      --panel-strong: #14263a;
-      --panel-soft: rgba(21, 39, 59, 0.74);
-      --line: rgba(147, 184, 214, 0.17);
-      --line-strong: rgba(102, 192, 244, 0.42);
-      --text: #f4f8fb;
-      --muted: #91a8bb;
-      --blue: #66c0f4;
-      --blue-bright: #8fd8ff;
-      --green: #a4d007;
-      --gold: #f2c96d;
-      --purple: #b8a6ff;
-      --radius-lg: 24px;
-      --radius-md: 16px;
-      --radius-sm: 10px;
-      --header-h: 72px;
-      font-family: Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; background: var(--bg-deep); }
-    body {
-      margin: 0;
-      min-width: 320px;
-      color: var(--text);
-      background:
-        linear-gradient(180deg, rgba(6, 13, 23, 0.02), var(--bg-deep) 78%),
-        radial-gradient(circle at 86% 9%, rgba(56, 116, 165, 0.18), transparent 29%),
-        var(--bg);
-      overflow-x: hidden;
-      line-height: 1.7;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      pointer-events: none;
-      opacity: 0.2;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, 0.023) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.023) 1px, transparent 1px);
-      background-size: 48px 48px;
-      mask-image: linear-gradient(to bottom, black, transparent 76%);
-    }
-
-    a { color: var(--blue-bright); text-decoration: none; transition: color 180ms ease; }
-    a:hover { color: #fff; text-decoration: underline; }
-
-    .container { width: min(1040px, calc(100% - 40px)); margin-inline: auto; }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      height: var(--header-h);
-      border-bottom: 1px solid var(--line);
-      background: rgba(6, 14, 24, 0.88);
-      backdrop-filter: blur(18px);
-    }
-
-    .header-inner {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .back-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 16px;
-      border: 1px solid var(--line-strong);
-      border-radius: 999px;
-      color: var(--blue-bright);
-      background: rgba(102, 192, 244, 0.08);
-      font-size: 0.86rem;
-      font-weight: 750;
-      transition: all 180ms ease;
-      text-decoration: none;
-    }
-
-    .back-button:hover {
-      background: rgba(102, 192, 244, 0.18);
-      transform: translateX(-3px);
-      color: #fff;
-      text-decoration: none;
-    }
-
-    .page-indicator {
-      font-size: 0.78rem;
-      color: var(--muted);
-      font-weight: 700;
-      letter-spacing: 0.05em;
-    }
-
-    .detail-hero {
-      padding: 60px 0 40px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .badge-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-
-    .badge {
-      padding: 5px 11px;
-      border-radius: 6px;
-      font-size: 0.74rem;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-    }
-
-    .badge-primary {
-      color: var(--blue-bright);
-      background: rgba(102, 192, 244, 0.12);
-      border: 1px solid rgba(102, 192, 244, 0.28);
-    }
-
-    .badge-capstone {
-      color: #dfd6ff;
-      background: rgba(184, 166, 255, 0.16);
-      border: 1px solid rgba(184, 166, 255, 0.4);
-      box-shadow: 0 0 16px rgba(184, 166, 255, 0.2);
-    }
-
-    .badge-role {
-      color: #ffde8a;
-      background: rgba(242, 201, 109, 0.15);
-      border: 1px solid rgba(242, 201, 109, 0.35);
-    }
-
-    .detail-title {
-      font-size: clamp(2.2rem, 4.8vw, 3.4rem);
-      line-height: 1.15;
-      letter-spacing: -0.04em;
-      margin: 0 0 16px;
-      word-break: keep-all;
-    }
-
-    .detail-sub-title {
-      font-size: clamp(1.05rem, 2vw, 1.35rem);
-      color: var(--gold);
-      font-weight: 700;
-      margin: 0 0 20px;
-    }
-
-    .detail-lead {
-      color: #c0d3e2;
-      font-size: clamp(1.02rem, 1.8vw, 1.18rem);
-      line-height: 1.7;
-      margin: 0 0 32px;
-      word-break: keep-all;
-    }
-
-    .meta-card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      background: var(--panel);
+    .code-block {
+      background: var(--bg-deep);
       border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      padding: 24px;
-      margin-bottom: 40px;
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: #dbe7f2;
+      line-height: 1.65;
+      margin-top: 16px;
     }
+    .code-block .keyword { color: #e57eb3; }
+    .code-block .type { color: var(--blue-bright); }
+    .code-block .method { color: var(--gold); }
+    .code-block .comment { color: var(--muted); font-style: italic; }
 
-    .meta-item {
+    .roadmap-list {
       display: flex;
       flex-direction: column;
-      gap: 6px;
-    }
-
-    .meta-item span {
-      font-size: 0.72rem;
-      font-weight: 750;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .meta-item strong {
-      font-size: 0.95rem;
-      color: var(--text);
-    }
-
-    .content-section {
-      padding: 44px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .section-num-label {
-      font-size: 0.75rem;
-      font-weight: 850;
-      color: var(--blue-bright);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .content-section h2 {
-      font-size: clamp(1.5rem, 3vw, 2.1rem);
-      letter-spacing: -0.03em;
-      margin: 0 0 20px;
-    }
-
-    .content-card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      padding: 28px;
-      margin-top: 20px;
-    }
-
-    .content-card p {
-      margin: 0 0 16px;
-      color: #b9cddc;
-    }
-    .content-card p:last-child { margin-bottom: 0; }
-
-    /* Media Showcase */
-    .media-stage-box {
-      background: linear-gradient(135deg, rgba(30, 20, 50, 0.7), rgba(15, 10, 25, 0.9));
-      border: 1px solid rgba(184, 166, 255, 0.4);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      margin: 28px 0;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-    }
-
-    .media-stage-header {
-      padding: 14px 20px;
-      background: rgba(22, 14, 38, 0.9);
-      border-bottom: 1px solid var(--line);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.8rem;
-      color: #dfd6ff;
-    }
-
-    .media-stage-body {
-      min-height: 320px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 40px 24px;
-      background:
-        radial-gradient(circle at 50% 50%, rgba(184, 166, 255, 0.12), transparent 60%),
-        #0e0717;
       gap: 14px;
+      margin-top: 18px;
     }
 
-    .media-icon { font-size: 3.2rem; filter: drop-shadow(0 4px 14px rgba(184, 166, 255, 0.35)); }
-    .media-stage-body strong { font-size: 1.15rem; color: var(--text); }
-    .media-stage-body p { font-size: 0.88rem; color: #9ab4c7; max-width: 500px; margin: 0; }
+    .roadmap-item {
+      background: var(--panel-strong);
+      border-left: 3px solid var(--purple);
+      padding: 14px 18px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+
+    .roadmap-item strong {
+      font-size: 0.94rem;
+      color: var(--text);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .roadmap-item p {
+      font-size: 0.86rem;
+      color: var(--text-sub);
+      line-height: 1.55;
+      margin: 0;
+    }
 
     .points-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin-top: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
     }
 
     .point-box {
-      background: rgba(20, 38, 58, 0.5);
+      background: var(--panel-strong);
       border: 1px solid var(--line);
       border-radius: var(--radius-sm);
-      padding: 22px;
+      padding: 20px;
     }
 
     .point-box h4 {
       display: flex;
       align-items: center;
       gap: 8px;
-      margin: 0 0 12px;
-      font-size: 1.05rem;
+      margin-bottom: 8px;
+      font-size: 1rem;
       color: var(--blue-bright);
     }
 
     .point-box p {
-      font-size: 0.9rem;
-      color: #a7bccd;
+      font-size: 0.88rem;
+      color: var(--text-sub);
+      line-height: 1.6;
       margin: 0;
-      line-height: 1.65;
-    }
-
-    .code-block {
-      background: #050b13;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-sm);
-      padding: 20px;
-      overflow-x: auto;
-      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
-      font-size: 0.85rem;
-      color: #dbe7f2;
-      line-height: 1.65;
-      margin-top: 16px;
-    }
-
-    .code-block .keyword { color: #e57eb3; }
-    .code-block .type { color: #66c0f4; }
-    .code-block .method { color: #f2c96d; }
-    .code-block .comment { color: #627b91; font-style: italic; }
-
-    .roadmap-list {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin-top: 20px;
-    }
-
-    .roadmap-item {
-      padding: 16px 20px;
-      border-radius: var(--radius-sm);
-      background: rgba(14, 26, 40, 0.6);
-      border-left: 3px solid var(--purple);
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .roadmap-item strong {
-      color: var(--purple);
-      font-size: 0.95rem;
-    }
-
-    .roadmap-item p {
-      margin: 0;
-      font-size: 0.86rem;
-      color: #b0c4d4;
-    }
-
-    .detail-footer-nav {
-      padding: 50px 0 80px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .nav-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 750;
-      color: var(--muted);
-      font-size: 0.9rem;
-      transition: color 180ms ease;
-      text-decoration: none;
-    }
-
-    .nav-btn:hover:not(:disabled) {
-      color: var(--blue-bright);
-      text-decoration: none;
-    }
-
-    .nav-btn:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
     }
   </style>
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="back-button" href="../index.html#projects">
-        <span aria-hidden="true">←</span> 메인 포트폴리오로 돌아가기
-      </a>
-      <span class="page-indicator">프로젝트 쇼케이스 #04 · CAPSTONE DESIGN 2026</span>
+  <!-- Header Bar -->
+  <header class="mobile-header" style="display:flex;position:sticky;top:0;height:var(--header-h);background:var(--panel-soft);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);padding:0 24px;justify-content:space-between;align-items:center;z-index:100;">
+    <a class="back-link-btn" href="../index.html#projects">
+      <span aria-hidden="true">←</span> 전체 프로젝트 목록으로
+    </a>
+    <div style="display:flex;align-items:center;gap:14px;">
+      <span style="font-size:0.8rem;color:var(--muted);font-weight:750;">PROJECT #04 · CAPSTONE DESIGN 2026</span>
+      <div class="theme-switch-group">
+        <button class="theme-btn" data-theme-set="light" title="라이트 모드">☀️</button>
+        <button class="theme-btn" data-theme-set="dark" title="다크 모드">🌙</button>
+        <button class="theme-btn" data-theme-set="system" title="시스템 설정">💻</button>
+      </div>
     </div>
   </header>
 
-  <main class="container">
-    <section class="detail-hero">
-      <div class="badge-row">
-        <span class="badge badge-primary">대표 프로젝트 #04</span>
-        <span class="badge badge-capstone">🎓 2026 캡스톤 디자인 (졸업작품)</span>
-        <span class="badge badge-role">메인 시스템 개발자</span>
-        <span class="badge" style="background: rgba(255,255,255,0.06); color: var(--muted);">2026.09 — 2026.12 (진행 중)</span>
+  <!-- 2-Column Detail Layout: TOC Rail (Left, Image 3) + Content (Right) -->
+  <div class="detail-layout-container">
+
+    <!-- ====================================================================
+         LEFT: TOC ON-THIS-PAGE TRACKER RAIL (Image 3 Style)
+         ==================================================================== -->
+    <aside class="toc-rail-container" aria-label="프로젝트 목차 내비게이션">
+      <div class="toc-rail-title">
+        <span>ON THIS PROJECT</span>
       </div>
+      <nav class="toc-track-line" aria-label="섹션 바로가기">
+        <a class="toc-item-link active" href="#overview">01. 개요 &amp; 캡스톤 스펙</a>
+        <a class="toc-item-link" href="#growth">02. 학습 성과 &amp; 평가 ★</a>
+        <a class="toc-item-link" href="#mechanics">03. 전투 루프 &amp; 기획 의도</a>
+        <a class="toc-item-link" href="#showcase">04. 3D 액션 시연 쇼케이스</a>
+        <a class="toc-item-link" href="#architecture">05. FSM 상태 전이 아키텍처</a>
+        <a class="toc-item-link" href="#troubleshooting">06. Git-Flow &amp; 협업 극복</a>
+        <a class="toc-item-link" href="#takeaways">07. 최종 분석 결과 &amp; 결론</a>
+      </nav>
+    </aside>
 
-      <h1 class="detail-title">2026 캡스톤 디자인 Unity 프로젝트</h1>
-      <div class="detail-sub-title">모듈형 FSM 아키텍처와 반응형 액션 시스템을 적용한 3D 전투 프로젝트</div>
+    <!-- ====================================================================
+         RIGHT: MAIN CONTENT AREA
+         ==================================================================== -->
+    <main class="detail-main-content">
 
-      <p class="detail-lead">
-        유한대학교 컴퓨터소프트웨어학과 게임콘텐츠전공 졸업 작품으로 진행되는 캡스톤 디자인 프로젝트입니다. 
-        단순 프로토타입 수준을 넘어, 확장 가능한 C# 상태 머신(FSM) 아키텍처, 히트박스 판정 알고리즘, 
-        그리고 기획자가 손쉽게 수치를 조정할 수 있는 ScriptableObject 기반 데이터 파이프라인을 구축하고 있습니다.
-      </p>
+      <!-- 01. HERO & META GRID -->
+      <section class="detail-hero-box" id="overview">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
+          <span class="badge-tag">대표 프로젝트 #04</span>
+          <span class="badge-tag" style="color:var(--purple);">🎓 2026 캡스톤 디자인 (졸업작품)</span>
+          <span class="badge-tag" style="color:var(--blue-bright);">메인 시스템 개발자</span>
+          <span class="badge-tag">2026.09 — 2026.12 (진행 중)</span>
+        </div>
 
-      <div class="meta-card-grid">
-        <div class="meta-item">
-          <span>개발 기간</span>
-          <strong>2026.09 — 2026.12 (진행 중)</strong>
-        </div>
-        <div class="meta-item">
-          <span>수행 역할</span>
-          <strong>메인 시스템 프로그래머 &amp; 테크니컬 기획</strong>
-        </div>
-        <div class="meta-item">
-          <span>사용 기술</span>
-          <strong>Unity 2022.3 LTS · C# · FSM Pattern · Git-Flow</strong>
-        </div>
-        <div class="meta-item">
-          <span>최종 목표</span>
-          <strong>WebGL 데모 빌드 &amp; 포트폴리오 메인 쇼케이스</strong>
-        </div>
-      </div>
-    </section>
+        <h1 class="detail-main-title">2026 캡스톤 디자인 Unity 프로젝트</h1>
+        <div class="detail-sub-title">모듈형 FSM 아키텍처와 반응형 액션 시스템을 적용한 3D 전투 프로젝트</div>
 
-    <!-- 1. 프로젝트 개요 -->
-    <section class="content-section">
-      <div class="section-num-label">SECTION 01</div>
-      <h2>프로젝트 개요 및 기획 의도</h2>
-      <div class="content-card">
-        <p>
-          본 캡스톤 프로젝트는 <strong>"명확한 피격 판정과 반응성 높은 전투 루프"</strong>를 목표로 기획되었습니다. 
-          스파게티 코드가 되기 쉬운 적 AI와 플레이어 전투 로직을 인터페이스 기반으로 철저히 분리하여 유지보수성을 극대화했습니다.
+        <p class="detail-lead-summary">
+          유한대학교 컴퓨터소프트웨어학과 게임콘텐츠전공 졸업 작품으로 진행되는 캡스톤 디자인 프로젝트입니다. 
+          단순 프로토타입 수준을 넘어, 확장 가능한 C# 유한 상태 머신(FSM) 아키텍처, 정밀 히트박스 판정 알고리즘, 
+          그리고 기획자가 손쉽게 수치를 조정할 수 있는 ScriptableObject 기반 데이터 파이프라인과 Git-Flow 브랜치 협업 체계를 총괄하고 있습니다.
         </p>
 
-        <div class="points-grid">
-          <div class="point-box">
-            <h4>⚔️ 반응형 액션 전투 루프</h4>
-            <p>공격 선딜레이, 히트스탑(Hitstop), 넉백, 그리고 정확한 패링 타이밍 판정을 프레임 단위로 제어.</p>
+        <div class="meta-spec-grid">
+          <div class="meta-spec-item">
+            <span>개발 기간</span>
+            <strong>2026.09 — 2026.12 (진행 중)</strong>
           </div>
-          <div class="point-box">
-            <h4>🧠 계층적 적 AI FSM</h4>
-            <p>순찰(Patrol) → 의심(Suspicious) → 추적(Chase) → 스킬 콤보(Combo Attack) → 그로기(Groggy) 상태 전이 구조화.</p>
+          <div class="meta-spec-item">
+            <span>수행 역할</span>
+            <strong>메인 시스템 프로그래머 &amp; 테크니컬 기획 (FSM/전투 판정 전담)</strong>
           </div>
-          <div class="point-box">
-            <h4>📦 데이터 주도 설계 (Data-Driven)</h4>
-            <p>모든 공격 판정 반경, 데미지 계수, 쿨다운 수치를 ScriptableObject 에셋으로 분리하여 기획적 밸런싱 편의 제공.</p>
+          <div class="meta-spec-item">
+            <span>사용 기술</span>
+            <strong>Unity 2022.3 LTS · C# · FSM Pattern · Git-Flow · LFS</strong>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 2. 비주얼 갤러리 & 미디어 쇼케이스 -->
-    <section class="content-section">
-      <div class="section-num-label">SECTION 02</div>
-      <h2>프로젝트 비주얼 리뷰 &amp; 시연 쇼케이스</h2>
-      <div class="content-card">
-        <p>인게임 3D 씬 와이어프레임 및 전투 프로토타입 시연 슬롯입니다.</p>
-
-        <div class="media-stage-box">
-          <div class="media-stage-header">
-            <span>3D ACTION SYSTEM · FSM AI 시야각 및 타격 판정 기즈모 뷰</span>
-            <span>UNITY SCENE VIEW &amp; WEBGL PROTOTYPE</span>
-          </div>
-          <div class="media-stage-body">
-            <div class="media-icon">⚡</div>
-            <strong>캡스톤 디자인 인게임 전투 및 AI 기즈모 시연 슬롯</strong>
-            <p>3D 환경에서 적 AI가 플레이어를 감지하고 스킬 콤보를 전개하는 인게임 액션 녹화 GIF/스크린샷 및 WebGL 빌드 화면 배치 영역입니다.</p>
+          <div class="meta-spec-item">
+            <span>최종 산출물</span>
+            <strong>WebGL 플레이 데모 빌드 &amp; 졸업 심사 최종 패키지</strong>
           </div>
         </div>
+      </section>
 
-        <div class="points-grid">
-          <div class="point-box">
-            <h4>🎯 시야각(FOV) 기즈모 시각화</h4>
-            <p>에디터 상에서 적의 시야각 원뿔(Frustum)과 탐지 반경을 실시간으로 시각화하여 레벨 디자인 직관성 확보.</p>
+      <!-- 02. CORE LEARNING OUTCOMES & GROWTH ASSESSMENT (User Specific Requirement: Prioritized at Top) -->
+      <section class="learning-growth-card" id="growth">
+        <span class="growth-header-label">SECTION 02 · GROWTH &amp; COMPETENCY</span>
+        <h2 class="growth-title">경험 전후의 학습 성과 및 핵심 역량 평가</h2>
+        
+        <div class="before-after-grid">
+          <!-- Before Box -->
+          <div class="before-box">
+            <span class="ba-label">수행 전 (BEFORE: 직면한 한계)</span>
+            <ul class="ba-list">
+              <li>플레이어 공격, 방어, 패링, 피격 상태가 하나의 거대한 if-else 스위치 문으로 얽혀 신규 애니메이션 추가 시 버그 폭증</li>
+              <li>팀원들이 main 브랜치에 직접 푸시하면서 Unity 씬 파일(.unity) 충돌로 작업물이 유실되는 협업 리스크 발생</li>
+              <li>공격 판정 타이밍이 프레임레이트에 종속되어 저사양 기기에서 판정 누락(히트스킵) 문제 발생</li>
+            </ul>
           </div>
-          <div class="point-box">
-            <h4>💥 타격 피드백 쉐이크 연출</h4>
-            <p>Cinemachine 임펄스 소스를 활용해 공격 적중 시 묵직한 카메라 쉐이크 및 파티클 이펙트 동기화.</p>
+
+          <!-- After Box -->
+          <div class="after-box">
+            <span class="ba-label">수행 후 (AFTER: 달성한 학습 성과 &amp; 역량 성장)</span>
+            <ul class="ba-list">
+              <li><strong>IState 인터페이스 기반 모듈형 FSM 아키텍처 구축:</strong> 모든 행동을 독립된 클래스로 격리하여 사이드 이펙트 제로화</li>
+              <li><strong>Git-Flow 및 LFS 브랜치 전략 도입:</strong> 씬 충돌을 예방하고 프리팹 단위 협업 워크플로를 확립하여 팀 생산성 2배 향상</li>
+              <li><strong>프레임 비종속적 히트박스 판정:</strong> FixedUpdate 및 물리 오버랩 연산과 히트스탑(Hitstop) 쉐이크 기법으로 타격감 완성</li>
+            </ul>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- 3. 핵심 아키텍처 및 C# 코드 -->
-    <section class="content-section">
-      <div class="section-num-label">SECTION 03</div>
-      <h2>확장 가능한 FSM 상태 전이 아키텍처</h2>
-      <div class="content-card">
-        <p>
-          모든 몬스터와 보스 객체가 공유하는 <code>IState</code> 인터페이스 및 상태 전이 제어기 코드입니다.
-        </p>
+        <!-- Conflict & Teamwork Case: Git-Flow & Scene Conflict Solution -->
+        <div class="conflict-resolution-box">
+          <h4>🤝 협업 및 갈등 해결 사례: Unity 씬 병합 충돌 방지를 위한 '프리팹 기반 분업 체계'</h4>
+          <p>
+            <strong>씬 파일 덮어쓰기로 인한 팀원 간 감정적 마찰:</strong> 프로젝트 초기 레벨 디자이너와 프로그래머가 동일한 전투 씬을 동시에 수정하다가 대규모 머지 충돌이 발생해 반나절 분량의 작업이 소실되는 위기를 겪었습니다. 
+            이에 시스템 개발자로서 즉시 <strong>Git-Flow 전략을 공식 수립</strong>하고, 씬 파일 자체를 직접 건드리지 않고 <strong>각 기능(플레이어, UI, 에너미 스포너)을 독립 프리팹(Prefab Stage)으로 격리 분업</strong>하는 규칙을 제안했습니다. 규칙 도입 이후 씬 충돌 0건을 달성하며 협업 신뢰도를 회복했습니다.
+          </p>
+        </div>
+      </section>
 
-        <div class="code-block">
+      <!-- 03. 기획 의도 및 코어 메커니즘 -->
+      <section class="detail-content-section" id="mechanics">
+        <span class="section-order-label">SECTION 03</span>
+        <h2>프로젝트 개요 및 기획 의도</h2>
+        <div class="detail-card">
+          <p>
+            본 캡스톤 프로젝트는 <strong>"명확한 피격 판정과 반응성 높은 3D 액션 전투 루프"</strong>를 목표로 기획되었습니다. 
+            스파게티 코드가 되기 쉬운 적 AI와 플레이어 전투 로직을 인터페이스 기반으로 철저히 분리하여 유지보수성을 극대화했습니다.
+          </p>
+
+          <div class="points-grid">
+            <div class="point-box">
+              <h4>⚔️ 반응형 액션 전투 루프</h4>
+              <p>공격 선딜레이, 히트스탑(Hitstop), 넉백, 그리고 정확한 패링 타이밍 판정을 프레임 단위로 제어.</p>
+            </div>
+            <div class="point-box">
+              <h4>🧠 계층적 적 AI FSM</h4>
+              <p>순찰(Patrol) → 의심(Suspicious) → 추적(Chase) → 스킬 콤보(Combo Attack) → 그로기(Groggy) 상태 전이 구조화.</p>
+            </div>
+            <div class="point-box">
+              <h4>📦 데이터 주도 설계 (Data-Driven)</h4>
+              <p>모든 공격 판정 반경, 데미지 계수, 쿨다운 수치를 ScriptableObject 에셋으로 분리하여 기획적 밸런싱 편의 제공.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04. 비주얼 갤러리 & 미디어 쇼케이스 -->
+      <section class="detail-content-section" id="showcase">
+        <span class="section-order-label">SECTION 04</span>
+        <h2>프로젝트 비주얼 리뷰 &amp; 시연 쇼케이스</h2>
+        <div class="detail-card">
+          <p>인게임 3D 씬 와이어프레임 및 전투 프로토타입 시연 슬롯입니다.</p>
+
+          <div class="media-stage-box">
+            <div class="media-stage-header">
+              <span>3D ACTION SYSTEM · FSM AI 시야각 및 타격 판정 기즈모 뷰</span>
+              <span style="color:var(--purple);font-weight:800;">UNITY SCENE VIEW &amp; WEBGL PROTOTYPE</span>
+            </div>
+            <div class="media-stage-body">
+              <div style="font-size:3.5rem;filter:drop-shadow(0 4px 14px rgba(184,166,255,0.3));">⚡</div>
+              <strong style="font-size:1.15rem;color:var(--text);">캡스톤 디자인 인게임 전투 및 AI 기즈모 시연 슬롯</strong>
+              <p style="font-size:0.88rem;color:var(--text-sub);max-width:540px;">
+                3D 환경에서 적 AI가 플레이어를 감지하고 스킬 콤보를 전개하는 인게임 액션 녹화 GIF/스크린샷 및 WebGL 빌드 화면 배치 영역입니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="points-grid">
+            <div class="point-box">
+              <h4>🎯 시야각(FOV) 기즈모 시각화</h4>
+              <p>에디터 상에서 적의 시야각 원뿔(Frustum)과 탐지 반경을 실시간으로 시각화하여 레벨 디자인 직관성 확보.</p>
+            </div>
+            <div class="point-box">
+              <h4>💥 타격 피드백 쉐이크 연출</h4>
+              <p>Cinemachine 임펄스 소스를 활용해 공격 적중 시 묵직한 카메라 쉐이크 및 파티클 이펙트 동기화.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 05. FSM 상태 전이 C# 아키텍처 -->
+      <section class="detail-content-section" id="architecture">
+        <span class="section-order-label">SECTION 05</span>
+        <h2>확장 가능한 FSM 상태 전이 아키텍처</h2>
+        <div class="detail-card">
+          <p>
+            모든 몬스터와 보스 객체가 공유하는 <code>IState</code> 인터페이스 및 상태 전이 제어기 코드입니다.
+          </p>
+
+          <div class="code-block">
 <span class="comment">// 공통 유한 상태 머신 인터페이스</span>
 <span class="keyword">public interface</span> <span class="type">IState</span>
 {
@@ -526,48 +314,62 @@
         CurrentState.<span class="method">OnEnter</span>();
     }
 }
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. 마일스톤 및 로드맵 -->
-    <section class="content-section">
-      <div class="section-num-label">SECTION 04</div>
-      <h2>개발 마일스톤 및 추진 계획</h2>
-      <div class="content-card">
-        <div class="roadmap-list">
-          <div class="roadmap-item">
-            <strong>1단계: 플레이 루프 및 기본 FSM 완성 (9월 완료)</strong>
-            <p>플레이어 이동, 기본 3타 공격 콤보, 적 AI 순찰/추적 상태 머신 베이스라인 구축 완료.</p>
-          </div>
-          <div class="roadmap-item">
-            <strong>2단계: 패링 및 히트 판정 시스템 고도화 (10월 중순)</strong>
-            <p>정밀 충돌 감지 콜라이더, 저스트 패링 시 슬로우 모션(Bullet Time) 효과 및 특수 반격기 연동.</p>
-          </div>
-          <div class="roadmap-item">
-            <strong>3단계: 보스전 페이즈 및 기믹 구현 (11월 초)</strong>
-            <p>체력 구간별 2페이즈 변신 연출, 광역 바닥 장판 공격 패턴 및 그로기 딜타임 메커니즘 개발.</p>
-          </div>
-          <div class="roadmap-item">
-            <strong>4단계: 사운드 연출, WebGL 최적화 및 최종 배포 (11월 말 ~ 12월)</strong>
-            <p>UI 폴리싱, 웹 브라우저 플레이 최적화 및 졸업작품 최종 심사 패키지 완성.</p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Footer Navigation -->
-    <div class="detail-footer-nav">
-      <a class="nav-btn" href="project-03-warrior.html">
-        <span aria-hidden="true">←</span> 이전 프로젝트 (03. 최후의 전사)
-      </a>
-      <a class="nav-btn" href="../index.html#projects">
-        <span aria-hidden="true">☰</span> 전체 프로젝트 목록으로
-      </a>
-      <button class="nav-btn" type="button" disabled>
-        마지막 프로젝트 <span aria-hidden="true">→</span>
-      </button>
-    </div>
-  </main>
+      <!-- 06. 트러블슈팅 및 마일스톤 -->
+      <section class="detail-content-section" id="troubleshooting">
+        <span class="section-order-label">SECTION 06</span>
+        <h2>개발 마일스톤 및 기술적 추진 계획</h2>
+        <div class="detail-card">
+          <div class="roadmap-list">
+            <div class="roadmap-item">
+              <strong>1단계: 플레이 루프 및 기본 FSM 완성 (9월 완료)</strong>
+              <p>플레이어 이동, 기본 3타 공격 콤보, 적 AI 순찰/추적 상태 머신 베이스라인 구축 완료.</p>
+            </div>
+            <div class="roadmap-item">
+              <strong>2단계: 패링 및 히트 판정 시스템 고도화 (10월 중순)</strong>
+              <p>정밀 충돌 감지 콜라이더, 저스트 패링 시 슬로우 모션(Bullet Time) 효과 및 특수 반격기 연동.</p>
+            </div>
+            <div class="roadmap-item">
+              <strong>3단계: 보스전 페이즈 및 기믹 구현 (11월 초)</strong>
+              <p>체력 구간별 2페이즈 변신 연출, 광역 바닥 장판 공격 패턴 및 그로기 딜타임 메커니즘 개발.</p>
+            </div>
+            <div class="roadmap-item">
+              <strong>4단계: 사운드 연출, WebGL 최적화 및 최종 배포 (11월 말 ~ 12월)</strong>
+              <p>UI 폴리싱, 웹 브라우저 플레이 최적화 및 졸업작품 최종 심사 패키지 완성.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 07. 최종 분석 결과 & 결론 (Peer Feedback Requirement) -->
+      <section class="key-takeaway-box" id="takeaways">
+        <h3>🎯 최종 분석 결과 및 핵심 결론 (Key Takeaways)</h3>
+        <p>
+          『2026 캡스톤 디자인』은 대학 3년간 갈고닦은 <strong>C# 아키텍처 설계와 Git-Flow 협업 역량을 총집결한 마스터피스</strong>입니다. 
+          IState 인터페이스로 분리된 FSM 패턴을 통해 복잡한 액션 콤보를 안전하게 확장 가능하도록 구조화했으며, 체계적인 프리팹 분업으로 팀의 협업 안정성과 개발 속도를 극대화했습니다.
+        </p>
+      </section>
+
+      <!-- Footer Navigation Bar -->
+      <footer class="detail-footer-nav">
+        <a class="detail-nav-btn" href="project-03-warrior.html">
+          <span aria-hidden="true">←</span> 이전: 03. 최후의 전사
+        </a>
+        <a class="detail-nav-btn" href="../index.html#projects">
+          <span aria-hidden="true">☰</span> 전체 프로젝트 목록으로
+        </a>
+        <a class="detail-nav-btn" href="../assignments/assignment-01.html">
+          다음: 05. [Study] 자바 람다 14일 계획 <span aria-hidden="true">→</span>
+        </a>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- Object-Oriented JS Architecture Bundle -->
+  <script src="../assets/js/portfolio-system.js"></script>
 </body>
 </html>

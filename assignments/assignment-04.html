@@ -1,11 +1,28 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="조준수 포트폴리오 - 전공 과제 #04: 모바일인덱스 실시간 순위 심층 분석 (2026.09.17 vs 2026.10.01) 및 게임 플레이 추천 보고서">
-  <meta name="theme-color" content="#0b1524">
-  <title>과제 04: 모바일인덱스 순위 심층 분석 &amp; 플레이 추천 보고서 | 조준수 포트폴리오</title>
+  <meta name="description" content="조준수 포트폴리오 - 프로젝트 #08: 모바일인덱스 실시간 순위 심층 분석 (2026.09.17 vs 2026.10.01) 및 게임 플레이 추천 보고서">
+  <meta name="theme-color" content="#08111e">
+  <title>프로젝트 08: 모바일인덱스 순위 심층 분석 &amp; 플레이 추천 보고서 | 조준수 포트폴리오</title>
+
+  <!-- Prevent Theme Flicker (FOUC) Script -->
+  <script>
+    (function() {
+      try {
+        var saved = localStorage.getItem('junsu_portfolio_theme') || 'system';
+        var isDark = saved === 'dark' || (saved === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Google / Pretendard Fonts -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+  <!-- Core Design System & Components -->
+  <link rel="stylesheet" href="../assets/css/portfolio-system.css">
 
   <style>
     :root {
@@ -652,53 +669,119 @@
 </head>
 <body>
 
-  <!-- Site Header -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="back-button" href="../index.html#assignments">
-        <span aria-hidden="true">←</span> 메인 포트폴리오로 복귀
-      </a>
-      <div class="brand-title">
-        <span>조준수 포트폴리오</span>
-        <span class="brand-badge">ASSIGNMENT 04</span>
+  <!-- Header -->
+  <header class="mobile-header" style="display:flex;position:sticky;top:0;height:var(--header-h);background:var(--panel-soft);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);padding:0 24px;justify-content:space-between;align-items:center;z-index:100;">
+    <a class="back-link-btn" href="../index.html#projects">
+      <span aria-hidden="true">←</span> 전체 프로젝트 목록으로
+    </a>
+    <div style="display:flex;align-items:center;gap:14px;">
+      <span style="font-size:0.8rem;color:var(--muted);font-weight:750;">PROJECT #08 · MARKET DATA ANALYSIS</span>
+      <div class="theme-switch-group">
+        <button class="theme-btn" data-theme-set="light" title="라이트 모드">☀️</button>
+        <button class="theme-btn" data-theme-set="dark" title="다크 모드">🌙</button>
+        <button class="theme-btn" data-theme-set="system" title="시스템 설정">💻</button>
       </div>
     </div>
   </header>
 
-  <main class="container">
-    <!-- Hero Banner -->
-    <header class="hero-banner">
-      <div class="badge-row">
-        <span class="badge badge-primary">과제 #04</span>
-        <span class="badge badge-success">데이터 분석 보고서</span>
-        <span class="badge badge-gold">2026.09.17 vs 2026.10.01 시계열 비교</span>
-      </div>
-      <h1 class="detail-title">모바일인덱스 실시간 순위 심층 분석 보고서</h1>
-      <p class="detail-sub-title">"어떤 게임을 플레이해야 하는가?" — 데이터 기반 시장 메타 진단 및 개발자 추천 가이드</p>
-      <p class="detail-lead">
-        모바일인덱스(MobileIndex) 2개 시점(2026.09.17 vs 2026.10.01)의 184개 실시간 매출 순위 데이터를 크로스 분석하여,
-        현대 모바일 게임 시장의 양극화, 플랫폼별 유저 생태계, 장르 메타 시프트를 진단하고 게임 개발자/기획자로서 필수 플레이해야 할 타이틀을 제시합니다.
-      </p>
+  <!-- 2-Column Detail Layout: TOC Rail (Left, Image 3) + Content (Right) -->
+  <div class="detail-layout-container">
 
-      <div class="meta-card-grid">
-        <div class="meta-item">
-          <span>분석 데이터 규모</span>
-          <strong>184개 데이터 포인트 (TOP 46 × 2)</strong>
-        </div>
-        <div class="meta-item">
-          <span>비교 시점 간격</span>
-          <strong>14일 (9월 17일 vs 10월 1일)</strong>
-        </div>
-        <div class="meta-item">
-          <span>최우선 추천 1픽</span>
-          <strong style="color: var(--gold);">👑 명조: 워더링 웨이브 (KURO)</strong>
-        </div>
-        <div class="meta-item">
-          <span>문서화 파일</span>
-          <strong>assignment_04_모바일인덱스_순위분석.md</strong>
-        </div>
+    <!-- ====================================================================
+         LEFT: TOC ON-THIS-PAGE TRACKER RAIL (Image 3 Style)
+         ==================================================================== -->
+    <aside class="toc-rail-container" aria-label="프로젝트 목차 내비게이션">
+      <div class="toc-rail-title">
+        <span>ON THIS PROJECT</span>
       </div>
-    </header>
+      <nav class="toc-track-line" aria-label="섹션 바로가기">
+        <a class="toc-item-link active" href="#overview">01. 개요 &amp; 데이터 스펙</a>
+        <a class="toc-item-link" href="#growth">02. 학습 성과 &amp; 평가 ★</a>
+        <a class="toc-item-link" href="#tab-play">03. 플레이 추천 가이드</a>
+        <a class="toc-item-link" href="#tab-compare">04. 2주간 순위 변동 테이블</a>
+        <a class="toc-item-link" href="#tab-platform">05. 플랫폼별 양극화 분석</a>
+        <a class="toc-item-link" href="#takeaways">06. 최종 분석 결과 &amp; 결론</a>
+      </nav>
+    </aside>
+
+    <!-- ====================================================================
+         RIGHT: MAIN CONTENT AREA
+         ==================================================================== -->
+    <main class="detail-main-content">
+
+      <!-- 01. HERO & META GRID -->
+      <section class="detail-hero-box" id="overview">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
+          <span class="badge-tag">통합 프로젝트 #08</span>
+          <span class="badge-tag" style="color:var(--green-bright);">시장 데이터 분석 보고서</span>
+          <span class="badge-tag" style="color:var(--gold);">184개 데이터 포인트 비교</span>
+          <span class="badge-tag">2026.10.01</span>
+        </div>
+
+        <h1 class="detail-main-title">04. [시장 데이터 분석] 모바일인덱스 순위 심층 분석 &amp; 플레이 추천 보고서</h1>
+        <div class="detail-sub-title">"어떤 게임을 플레이해야 하는가?" — 데이터 기반 시장 메타 진단 및 개발자 추천 가이드</div>
+
+        <p class="detail-lead-summary">
+          모바일인덱스(MobileIndex) 2개 시점(2026.09.17 vs 2026.10.01)의 184개 실시간 매출 순위 데이터를 크로스 분석하여,
+          현대 모바일 게임 시장의 양극화, 플랫폼별 유저 생태계, 장르 메타 시프트를 진단하고 게임 개발자/기획자로서 필수 플레이해야 할 타이틀을 제시합니다.
+        </p>
+
+        <div class="meta-spec-grid">
+          <div class="meta-spec-item">
+            <span>분석 데이터 규모</span>
+            <strong>184개 데이터 포인트 (TOP 46 × 2)</strong>
+          </div>
+          <div class="meta-spec-item">
+            <span>비교 시점 간격</span>
+            <strong>14일간 시계열 크로스 분석</strong>
+          </div>
+          <div class="meta-spec-item">
+            <span>최우선 추천 1픽</span>
+            <strong style="color:var(--gold);">👑 명조: 워더링 웨이브 (KURO)</strong>
+          </div>
+          <div class="meta-spec-item">
+            <span>문서화 파일</span>
+            <strong>assignment_04_모바일인덱스_순위분석.md</strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02. CORE LEARNING OUTCOMES & GROWTH ASSESSMENT (Prioritized at Top) -->
+      <section class="learning-growth-card" id="growth">
+        <span class="growth-header-label">SECTION 02 · GROWTH &amp; COMPETENCY</span>
+        <h2 class="growth-title">경험 전후의 학습 성과 및 핵심 역량 평가</h2>
+        
+        <div class="before-after-grid">
+          <!-- Before Box -->
+          <div class="before-box">
+            <span class="ba-label">수행 전 (BEFORE: 직면한 한계)</span>
+            <ul class="ba-list">
+              <li>모바일 마켓 순위를 단편적인 1회성 스냅샷으로만 바라보아 일시적 이벤트 효과와 지속적 리텐션을 구분하지 못함</li>
+              <li>Google Play와 Apple App Store 간의 결제 성향 및 유저 층위 차이를 단순 동일 시장으로 오판</li>
+              <li>"무엇을 플레이해야 하는가?"라는 질문에 주관적 선호도 외에 객관적 데이터 근거를 제시하기 어려움</li>
+            </ul>
+          </div>
+
+          <!-- After Box -->
+          <div class="after-box">
+            <span class="ba-label">수행 후 (AFTER: 달성한 학습 성과 &amp; 역량 성장)</span>
+            <ul class="ba-list">
+              <li><strong>14일 간격 시계열 크로스 분석 모델 정립:</strong> 184개 데이터를 통합하여 급상승/유지/하락 변동률 매트릭스 도출</li>
+              <li><strong>플랫폼별 유저 세그먼트 규명:</strong> 구글(MMORPG 린저씨 헤비 과금) vs 애플(서브컬처/캐주얼 버스트 과금) 양극화 입증</li>
+              <li><strong>데이터 기반 5대 추천 타이틀 엄선:</strong> 매출 1위로 수직 급등한 『명조』를 필두로 개발자 필수 학습 타이틀 체계화</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Conflict & Problem Solving Case -->
+        <div class="conflict-resolution-box">
+          <h4>🤝 분석 관점 충돌 해결: "매출 절대액" vs "장르 혁신성"의 가중치 조율</h4>
+          <p>
+            <strong>단순 매출 순위와 개발적 학습 가치 간의 괴리:</strong> 매출 최상위권을 장악한 리니지 라이크 게임들만 분석하면 클라이언트 개발자로서 배울 수 있는 조작감과 3D 연출 학습에 한계가 있었습니다. 
+            이를 극복하기 위해 <strong>'매출 파급력(40%)'과 '인게임 액션 메커니즘 혁신도(60%)'의 가중치 모델</strong>을 수립하여, 액션성과 BM 버스트를 동시에 갖춘 『명조』와 『트릭컬』을 핵심 분석 대상으로 재선정하는 정량적 합의를 이끌어냈습니다.
+          </p>
+        </div>
+      </section>
 
     <!-- Markdown Link Callout -->
     <div class="md-callout">
@@ -1125,19 +1208,37 @@
       </div>
     </section>
 
+    <!-- =========================================================================
+         SECTION: KEY TAKEAWAYS & FINAL CONCLUSION
+         ========================================================================= -->
+    <section class="content-card" id="takeaways">
+      <h3 class="card-title"><span class="icon">🏁</span> 핵심 분석 결과 및 기획자적 시사점 (Key Takeaways)</h3>
+      <div class="key-takeaway-box">
+        <h4>💡 모바일인덱스 184개 데이터 포인트 크로스 분석 최종 결론</h4>
+        <ul>
+          <li><strong>서브컬처 BM의 압도적 버스트 파워 입증:</strong> '명조'의 앱스토어 1위 급상승(21계단↑)은 충성도 높은 코어 팬덤을 보유한 서브컬처 장르가 업데이트 시점에 전체 마켓 매출을 장악하는 파괴력을 데이터로 증명함.</li>
+          <li><strong>플레이 피로도 축소와 '스낵형 세션'의 주류화:</strong> '방치형 키우기(메이플/쿠키런)'와 '미니멀 협동 디펜스(운빨존많겜)'가 양대 마켓 최상위권에 복수 안착하며, 하드코어 조작 피로도를 줄이고 숏폼 세대의 빠른 도파민을 채워주는 미니멀 루프가 2026년 모바일 게임의 핵심 설계 기조임을 확인.</li>
+          <li><strong>양대 마켓 유저 생태계 분리 대응:</strong> iOS(2030·고사양·서브컬처/웹보드)와 AOS(3050·장시간 자동사냥·정통 MMORPG)의 소비 성향 차이를 철저히 인지하고, 타깃 유저층에 맞춘 크로스 플랫폼 최적화 및 빌드 튜닝 전략이 필수적임.</li>
+        </ul>
+      </div>
+    </section>
+
     <!-- Footer Navigation -->
     <div class="detail-footer-nav">
       <a class="nav-btn" href="assignment-03.html">
-        <span aria-hidden="true">←</span> 이전 과제 (03. 마비노기 모바일 기획서)
+        <span aria-hidden="true">←</span> 이전 프로젝트 (07. 마비노기 모바일)
       </a>
-      <a class="nav-btn" href="../index.html#assignments">
-        <span aria-hidden="true">☰</span> 전체 과제 목록으로
+      <a class="nav-btn" href="../index.html#projects">
+        <span aria-hidden="true">☰</span> 전체 프로젝트 목록으로
       </a>
       <a class="nav-btn" href="assignment-05.html">
-        다음 과제 (05. 트릭컬 리바이브 재미요소 분석) <span aria-hidden="true">→</span>
+        다음 프로젝트 (09. 트릭컬 리바이브) <span aria-hidden="true">→</span>
       </a>
     </div>
   </main>
+</div>
+
+<script src="../assets/js/portfolio-system.js"></script>
 
   <script>
     // Tab switching logic
