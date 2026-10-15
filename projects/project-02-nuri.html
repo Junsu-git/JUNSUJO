@@ -1,100 +1,26 @@
 <!doctype html>
-<html lang="ko" data-theme="dark">
-<head>
+<html lang="ko" data-theme="light"><head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="조준수 포트폴리오 - 프로젝트 #02: 누리살이 (GameAify AI 기술상 수상작)">
-  <meta name="theme-color" content="#08111e">
+  <meta name="theme-color" content="#fafaf8">
   <title>프로젝트 02: 누리살이 | 조준수 포트폴리오</title>
 
   <!-- Prevent Theme Flicker (FOUC) Script -->
-  <script>
-    (function() {
-      try {
-        var saved = localStorage.getItem('junsu_portfolio_theme') || 'system';
-        var isDark = saved === 'dark' || (saved === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-        document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-      } catch (e) {}
-    })();
-  </script>
+
 
   <!-- Google / Pretendard Fonts -->
-  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <script src="../assets/js/theme-init.js"></script><link rel="stylesheet" as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 
   <!-- Core Design System & Components -->
   <link rel="stylesheet" href="../assets/css/portfolio-system.css">
 
-  <style>
-    .code-block {
-      background: var(--bg-deep);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-sm);
-      padding: 20px;
-      overflow-x: auto;
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      color: #dbe7f2;
-      line-height: 1.65;
-      margin-top: 16px;
-    }
-    .code-block .keyword { color: #e57eb3; }
-    .code-block .type { color: var(--blue-bright); }
-    .code-block .method { color: var(--gold); }
-    .code-block .comment { color: var(--muted); font-style: italic; }
 
-    .points-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-      margin-top: 20px;
-    }
+<link rel="stylesheet" href="../assets/css/pages/project-02-nuri.css"></head>
 
-    .point-box {
-      background: var(--panel-strong);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-sm);
-      padding: 20px;
-    }
-
-    .point-box h4 {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
-      font-size: 1rem;
-      color: var(--blue-bright);
-    }
-
-    .point-box p {
-      font-size: 0.88rem;
-      color: var(--text-sub);
-      line-height: 1.6;
-      margin: 0;
-    }
-  </style>
-</head>
-
-<body>
+<body><a class="skip-link" href="#main-content">본문 바로가기</a>
   <!-- Header Bar -->
-  <header class="mobile-header" style="display:flex;position:sticky;top:0;height:var(--header-h);background:var(--panel-soft);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);padding:0 24px;justify-content:space-between;align-items:center;z-index:100;">
-    <a class="back-link-btn" href="../index.html#projects">
-      <span aria-hidden="true">←</span> 전체 프로젝트 목록으로
-    </a>
-    <div style="display:flex;align-items:center;gap:14px;">
-      <span style="font-size:0.8rem;color:var(--muted);font-weight:750;">PROJECT #02 · AWARD WINNER</span>
-      <div class="theme-switch-group">
-        <button class="theme-btn" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-        </button>
-        <button class="theme-btn" data-theme-set="dark" title="다크 모드" aria-label="다크 모드">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-        </button>
-        <button class="theme-btn" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-        </button>
-      </div>
-    </div>
-  </header>
+  <header class="mobile-header"><a class="back-link-btn" href="../index.html#projects">← 프로젝트 목록</a><span class="header-caption">JUNSU JO / PORTFOLIO</span></header>
 
   <!-- 2-Column Detail Layout: TOC Rail (Left, Image 3) + Content (Right) -->
   <div class="detail-layout-container">
@@ -102,69 +28,15 @@
     <!-- ====================================================================
          LEFT: TOC ON-THIS-PAGE TRACKER RAIL (Image 3 Style)
          ==================================================================== -->
-    <aside class="toc-rail-container" aria-label="프로젝트 목차 내비게이션">
-      <div class="toc-rail-title">
-        <span>ON THIS PROJECT</span>
-      </div>
-      <nav class="toc-track-line" aria-label="섹션 바로가기">
-        <a class="toc-item-link active" href="#overview">01. 개요 &amp; 수상 스펙</a>
-        <a class="toc-item-link" href="#growth">02. 학습 성과 &amp; 평가</a>
-        <a class="toc-item-link" href="#mechanics">03. 기획 의도 &amp; 게임 루프</a>
-        <a class="toc-item-link" href="#showcase">04. 비주얼 &amp; 시연 쇼케이스</a>
-        <a class="toc-item-link" href="#architecture">05. C# AI 통신 아키텍처</a>
-        <a class="toc-item-link" href="#troubleshooting">06. 트러블슈팅 &amp; 레이턴시</a>
-        <a class="toc-item-link" href="#takeaways">07. 최종 분석 결과 &amp; 결론</a>
-      </nav>
-    </aside>
+    <aside class="toc-rail-container" aria-label="페이지 목차"><div class="toc-rail-title">ON THIS PAGE</div><nav class="toc-track-line" aria-label="상세 목차"><a class="toc-item-link" href="#growth">경험 평가와 배운 점</a><a class="toc-item-link" href="#overview">개요와 담당 역할</a><a class="toc-item-link" href="#mechanics">기획과 핵심 규칙</a><a class="toc-item-link" href="#showcase">시연과 자료</a><a class="toc-item-link" href="#architecture">구현 구조</a><a class="toc-item-link" href="#troubleshooting">문제 해결</a><a class="toc-item-link" href="#collaboration">협업과 갈등 해결</a><a class="toc-item-link" href="#takeaways">회고와 결론</a></nav></aside>
 
     <!-- ====================================================================
          RIGHT: MAIN CONTENT AREA
          ==================================================================== -->
-    <main class="detail-main-content">
+    <main class="detail-main-content" id="main-content"><div class="detail-page-heading"><span class="eyebrow">PROJECT / DEVELOPMENT RECORD</span><h1 class="">누리살이</h1><div class="detail-sub-title">GameAify AI 기술상 수상작 · 플레이 루프와 생성형 AI 기술의 유기적 융합</div></div><section class="learning-growth-card" id="growth">
+        <span class="growth-header-label">BEFORE / AFTER</span>
+        <h2 class="growth-title">경험 평가와 배운 점</h2>
 
-      <!-- 01. HERO & META GRID -->
-      <section class="detail-hero-box" id="overview">
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
-          <span class="badge-tag">대표 프로젝트 #02</span>
-          <span class="badge-award">GameAify AI 기술상 수상작</span>
-          <span class="badge-tag" style="color:var(--green-bright);">3D 어드벤처</span>
-          <span class="badge-tag">2025.06 — 2025.09</span>
-        </div>
-
-        <h1 class="detail-main-title">누리살이</h1>
-        <div class="detail-sub-title">GameAify AI 기술상 수상작 · 플레이 루프와 생성형 AI 기술의 유기적 융합</div>
-
-        <p class="detail-lead-summary">
-          전통적인 생활형 라이프 심(Life-Sim) 게임 루프와 생성형 AI 인터랙션을 결합하여 새로운 형태의 어드벤처를 선보인 프로젝트입니다. 
-          플레이어의 선택과 날씨, 호감도 맥락에 따라 동적으로 반응하는 세계관을 설계하고, 이를 Unity 환경에서 구현하여 
-          <strong>GameAify 게임 제작 공모전 AI 기술상</strong>을 수상했습니다.
-        </p>
-
-        <div class="meta-spec-grid">
-          <div class="meta-spec-item">
-            <span>개발 기간</span>
-            <strong>2025.06 — 2025.09 (4개월)</strong>
-          </div>
-          <div class="meta-spec-item">
-            <span>수상 내역</span>
-            <strong style="color:var(--gold);">GameAify 게임 제작 공모전 AI 기술상</strong>
-          </div>
-          <div class="meta-spec-item">
-            <span>사용 기술</span>
-            <strong>Unity · GameAify API · C# UniTask · Clip Studio · GitHub</strong>
-          </div>
-          <div class="meta-spec-item">
-            <span>수행 형태</span>
-            <strong>팀 프로젝트 (기획 &amp; 클라이언트 리드 프로그래밍)</strong>
-          </div>
-        </div>
-      </section>
-
-      <!-- 02. CORE LEARNING OUTCOMES & GROWTH ASSESSMENT (User Specific Requirement: Prioritized at Top) -->
-      <section class="learning-growth-card" id="growth">
-        <span class="growth-header-label">SECTION 02 · GROWTH &amp; COMPETENCY</span>
-        <h2 class="growth-title">경험 전후의 학습 성과 및 핵심 역량 평가</h2>
-        
         <div class="before-after-grid">
           <!-- Before Box -->
           <div class="before-box">
@@ -188,14 +60,49 @@
         </div>
 
         <!-- Conflict & Teamwork Case -->
-        <div class="conflict-resolution-box">
-          <h4>[협업 및 갈등 해결 사례]</h4>
-          <p>
-            <strong>제출 마감 3일을 앞둔 기획 추가 욕심 갈등:</strong> 팀원 중 한 명이 "시간대별 마을 조명 셰이더와 미니게임 3종을 반드시 더 넣어야 완성작 같다"고 강력히 주장하며 빌드 일정이 위기에 봉착했습니다. 
-            이에 리드 개발자로서 <strong>"이번 공모전의 심사 기준은 AI 기술 융합의 완성도"</strong>임을 상기시키고, AI 대화 안정성 및 코어 루프를 <strong>MVP 필수 과제</strong>로 확정하고 그래픽 디테일은 차기 버전으로 분리했습니다. 결과적으로 무결점 빌드를 제출하여 AI 기술상 수상을 달성했습니다.
-          </p>
+
+      </section>
+
+      <!-- 01. HERO & META GRID -->
+      <section class="detail-hero-box" id="overview"><h2>프로젝트 개요</h2>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
+          <span class="badge-tag">대표 프로젝트 #02</span>
+          <span class="badge-award">GameAify AI 기술상 수상작</span>
+          <span class="badge-tag">3D 어드벤처</span>
+          <span class="badge-tag">2025.06 — 2025.09</span>
+        </div>
+
+
+
+
+        <p class="detail-lead-summary">
+          전통적인 생활형 라이프 심(Life-Sim) 게임 루프와 생성형 AI 인터랙션을 결합하여 새로운 형태의 어드벤처를 선보인 프로젝트입니다.
+          플레이어의 선택과 날씨, 호감도 맥락에 따라 동적으로 반응하는 세계관을 설계하고, 이를 Unity 환경에서 구현하여
+          <strong>GameAify 게임 제작 공모전 AI 기술상</strong>을 수상했습니다.
+        </p>
+
+        <div class="meta-spec-grid">
+          <div class="meta-spec-item">
+            <span>개발 기간</span>
+            <strong>2025.06 — 2025.09 (4개월)</strong>
+          </div>
+          <div class="meta-spec-item">
+            <span>수상 내역</span>
+            <strong>GameAify 게임 제작 공모전 AI 기술상</strong>
+          </div>
+          <div class="meta-spec-item">
+            <span>사용 기술</span>
+            <strong>Unity · GameAify API · C# UniTask · Clip Studio · GitHub</strong>
+          </div>
+          <div class="meta-spec-item">
+            <span>수행 형태</span>
+            <strong>팀 프로젝트 (기획 &amp; 클라이언트 리드 프로그래밍)</strong>
+          </div>
         </div>
       </section>
+
+      <!-- 02. CORE LEARNING OUTCOMES & GROWTH ASSESSMENT (User Specific Requirement: Prioritized at Top) -->
+
 
       <!-- 03. 기획 의도 및 코어 메커니즘 -->
       <section class="detail-content-section" id="mechanics">
@@ -233,16 +140,16 @@
           <div class="media-stage-box">
             <div class="media-stage-header">
               <span>SHOWCASE · GameAify 출품작 인게임 플레이 및 시상 결과</span>
-              <span style="color:var(--gold);font-weight:800;">AWARD: AI 기술상</span>
+              <span>AWARD: AI 기술상</span>
             </div>
             <div class="media-stage-body">
               <div style="display:flex;justify-content:center;margin-bottom:8px;">
                 <span class="mono-icon mono-icon-stroke" style="width:48px;height:48px;">
-                  <svg viewBox="0 0 24 24" width="48" height="48"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                  <svg viewBox="0 0 24 24" width="48" height="48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
                 </span>
               </div>
-              <strong style="font-size:1.15rem;color:var(--text);">공모전 수상 데모 영상 및 인게임 시연 스크린샷 슬롯</strong>
-              <p style="font-size:0.88rem;color:var(--text-sub);max-width:520px;">
+              <strong>공모전 수상 데모 영상 및 인게임 시연 스크린샷 슬롯</strong>
+              <p style="max-width: 520px;">
                 AI NPC와 실시간으로 대화를 나누며 마을 퀘스트를 해결하는 인게임 플레이 영상, 수상 상장 및 인증 사진을 배치하는 영역입니다.
               </p>
             </div>
@@ -286,7 +193,7 @@
 
         <span class="keyword">string</span> json = <span class="type">JsonUtility</span>.<span class="method">ToJson</span>(payload);
         <span class="keyword">var</span> response = <span class="keyword">await</span> <span class="type">ApiClient</span>.<span class="method">PostAsync</span>(<span class="string">"/api/gameaify/dialogue"</span>, json);
-        
+
         <span class="keyword">return</span> response.ParsedSpeech;
     }
 }
@@ -300,21 +207,21 @@
         <h2>트러블슈팅 및 네트워크 레이턴시 극복</h2>
         <div class="detail-card">
           <div class="point-box" style="margin-bottom: 16px;">
-            <h4 style="color: var(--gold);">[Issue] 외부 AI API 호출 시 1~2초간의 반응 레이턴시 체감</h4>
+            <h4>[Issue] 외부 AI API 호출 시 1~2초간의 반응 레이턴시 체감</h4>
             <p>
               네트워크 환경에 따라 응답 대기 시간 동안 게임이 멈춘 것처럼 느껴져 플레이 흐름이 끊기는 문제 발생.
             </p>
-            <p style="color: var(--green-bright); margin-top: 8px;">
+            <p style="margin-top: 8px;">
               <strong>[Solution]</strong> NPC가 ‘고민하는 모션(Thinking Animation)’과 말풍선 타이핑 인디케이터(⋯)를 즉시 표출하고, 지연 시 사전 정의된 감탄사 오디오를 먼저 재생하여 심리적 대기 시간을 제로화.
             </p>
           </div>
 
           <div class="point-box">
-            <h4 style="color: var(--gold);">[Issue] AI 반환값 파싱 에러에 따른 씬 크래시 위험</h4>
+            <h4>[Issue] AI 반환값 파싱 에러에 따른 씬 크래시 위험</h4>
             <p>
               LLM 모델이 지정된 JSON 규격을 벗어난 이상한 특수문자나 빈 문자열을 반환했을 때의 예외 처리 미비.
             </p>
-            <p style="color: var(--green-bright); margin-top: 8px;">
+            <p style="margin-top: 8px;">
               <strong>[Solution]</strong> Regex 기반 JSON 무결성 검증 레이어를 두고, 파싱 실패 시 NPC의 사전 정의 기본 대사로 부드럽게 Fallback 처리하는 안전장치 구축.
             </p>
           </div>
@@ -322,10 +229,10 @@
       </section>
 
       <!-- 07. 최종 분석 결과 & 결론 (Peer Feedback Requirement) -->
-      <section class="key-takeaway-box" id="takeaways">
+      <section class="detail-content-section" id="collaboration"><span class="section-order-label">COLLABORATION</span><h2>협업과 갈등 해결</h2><p class="detail-lead-summary">추후 수정</p></section><section class="key-takeaway-box" id="takeaways">
         <h3>최종 분석 결과 및 핵심 결론 (Key Takeaways)</h3>
         <p>
-          『누리살이』는 신기술(AI)을 도입할 때 <strong>"기술 자체가 목적이 아니라, 플레이어에게 어떤 몰입과 선택의 즐거움을 주는가"</strong>를 증명한 프로젝트입니다. 
+          『누리살이』는 신기술(AI)을 도입할 때 <strong>"기술 자체가 목적이 아니라, 플레이어에게 어떤 몰입과 선택의 즐거움을 주는가"</strong>를 증명한 프로젝트입니다.
           단순 API 호출을 넘어 인게임 데이터와 AI 응답을 유기적으로 결합하는 구조화된 프롬프트 파이프라인을 구축하여 GameAify AI 공모전 기술상이라는 공인된 평가 성과를 도출했습니다.
         </p>
       </section>
@@ -336,7 +243,7 @@
           <span aria-hidden="true">←</span> 이전: 01. 내 약국에는 정상이 없다
         </a>
         <a class="detail-nav-btn" href="../index.html#projects">
-          <span aria-hidden="true">☰</span> 전체 프로젝트 목록으로
+          <span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"></path></svg></span> 전체 프로젝트 목록으로
         </a>
         <a class="detail-nav-btn" href="project-03-warrior.html">
           다음: 03. 최후의 전사 <span aria-hidden="true">→</span>
@@ -347,29 +254,31 @@
   </div>
 
   <!-- FLOATING THEME FAB (Image 1 Requirement · Always Visible Bottom Right) -->
-  <div class="floating-theme-fab" id="floatingThemeFab" aria-label="테마 설정">
-    <div class="theme-fab-spheres" aria-hidden="true">
-      <button class="theme-fab-sphere" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드">
-        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+
+
+  <!-- Object-Oriented JS Architecture Bundle -->
+
+
+
+<div class="floating-theme-fab" id="floatingThemeFab" aria-label="테마 설정">
+    <div class="theme-fab-spheres" aria-hidden="true" id="theme-options" inert="">
+      <button class="theme-fab-sphere" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드" type="button" tabindex="-1">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
         <span class="sphere-tooltip">라이트 모드</span>
       </button>
-      <button class="theme-fab-sphere" data-theme-set="dark" title="다크 모드" aria-label="다크 모드">
-        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+      <button class="theme-fab-sphere" data-theme-set="dark" title="다크 모드" aria-label="다크 모드" type="button" tabindex="-1">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
         <span class="sphere-tooltip">다크 모드</span>
       </button>
-      <button class="theme-fab-sphere" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정">
-        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span>
+      <button class="theme-fab-sphere" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정" type="button" tabindex="-1">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span>
         <span class="sphere-tooltip">시스템 설정</span>
       </button>
     </div>
-    <button class="theme-fab-trigger" id="themeFabTrigger" title="테마 변경" aria-label="테마 변경">
+    <button class="theme-fab-trigger" id="themeFabTrigger" title="테마 변경" aria-label="테마 변경" aria-controls="theme-options" aria-expanded="false" type="button">
       <span class="fab-current-icon mono-icon mono-icon-stroke">
-        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 2v20a10 10 0 0 0 0-20z"></path><circle cx="12" cy="12" r="10"></circle></svg>
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20a10 10 0 0 0 0-20z"></path><circle cx="12" cy="12" r="10"></circle></svg>
       </span>
     </button>
-  </div>
-
-  <!-- Object-Oriented JS Architecture Bundle -->
-  <script src="../assets/js/portfolio-system.js"></script>
-</body>
-</html>
+  </div><script src="../assets/js/portfolio-system.js"></script>
+</body></html>

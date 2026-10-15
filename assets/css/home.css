@@ -1,0 +1,90 @@
+/* Main-page refinements. Detail pages continue to use the shared system. */
+.home-document {scroll-padding-top:24px}
+.home-page [id] {scroll-margin-top:24px}
+.home-page {
+  --home-blue:#0842a0;
+  --home-blue-mark:#0b57d0;
+  --home-blue-soft:#edf3fc;
+  --home-blue-border:#aac1e5;
+}
+[data-theme="dark"] .home-page {
+  --home-blue:#b7d7ff;
+  --home-blue-mark:#438eea;
+  --home-blue-soft:#153251;
+  --home-blue-border:#365e88;
+}
+.home-page .sticky-profile-sidebar {padding-top:56px}
+.home-page .sidebar-name {font-size:2rem}
+.home-page .sidebar-role {color:var(--home-blue);margin:14px 0 8px;font-weight:600}
+.home-page .sidebar-bio {font-family:var(--font-mono);font-size:.75rem}
+.home-page .sidebar-nav {margin-top:36px;gap:5px}
+.home-page .home-nav-link {display:flex;align-items:center;justify-content:space-between;font-size:.8rem;color:var(--muted);padding:10px 12px;border-left:2px solid transparent;border-radius:0 5px 5px 0;gap:12px}
+.home-page .home-nav-link:hover {color:var(--home-blue);text-decoration:none;background:var(--panel-strong)}
+.home-page .home-nav-link.active {color:var(--home-blue);background:var(--home-blue-soft);border-left-color:var(--home-blue-mark)}
+.sidebar-nav-group {margin:14px 0}
+.sidebar-nav-group-title {display:block;font-size:.7rem;color:var(--muted);padding:0 12px 8px}
+.sidebar-nav-group .home-nav-link {padding-left:22px}
+.home-page .sidebar-social-links {margin-bottom:0}
+.home-page .sidebar-social-links a:hover {color:var(--home-blue)}
+.home-page .hero-section {padding-top:64px;padding-bottom:48px}
+.home-page .hero-section h2 {font-size:clamp(2rem,3.7vw,3.3rem);max-width:20ch;line-height:1.35}
+.home-accent {color:var(--home-blue)}
+.home-page .section-eyebrow {color:var(--home-blue)}
+.home-page .hero-section .section-lead-copy {margin-top:24px;max-width:58ch}
+.background-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:32px}
+.background-card {min-width:0;padding:22px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-md)}
+.background-label {display:block;font-size:.7rem;color:var(--home-blue);font-weight:600;letter-spacing:.06em;margin-bottom:12px}
+.background-card h3 {font-size:1rem;margin-bottom:8px}
+.background-card p {font-size:.8rem;color:var(--text-sub);line-height:1.85}
+.background-card .background-period {font:400 .72rem/1.8 var(--font-mono);margin-top:8px;color:var(--muted)}
+.background-card .background-status {margin-top:8px;color:var(--home-blue);font-size:.75rem}
+.home-page .skill-evidence-card {background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-md);padding:24px;min-width:0}
+.home-page .skills-evidence-grid {gap:16px}
+.home-page .skill-evidence-card h3 {color:var(--home-blue);font-size:1.05rem}
+.home-page .skill-evidence-card a {color:var(--home-blue);font-size:.78rem}
+.home-page .skill-evidence-card .tag-list {margin:12px 0 16px}
+.project-group+.project-group {margin-top:44px;padding-top:36px;border-top:1px solid var(--line)}
+.project-group-header {display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:18px}
+.project-group-header h3 {font-size:1.1rem;font-weight:650}
+.project-group-intro {font-size:.83rem;color:var(--text-sub);margin:-4px 0 22px}
+.home-page .horizontal-project-slot {border-left:3px solid var(--home-blue-border)}
+.home-page .horizontal-project-slot:hover {border-color:var(--home-blue-mark);background:var(--panel)}
+.home-page .slot-index {color:var(--home-blue)}
+.home-page .slot-link:hover {color:var(--home-blue);text-decoration:none}
+.home-page .slot-link:focus-visible {outline-color:var(--home-blue-mark)}
+.home-page .tech-chip {color:var(--home-blue);background:var(--home-blue-soft);border-color:var(--home-blue-border)}
+.home-page .slot-arrow {color:var(--home-blue)}
+.contact-card-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
+.contact-card {display:grid;grid-template-columns:42px minmax(0,1fr) 18px;align-items:center;gap:16px;padding:24px;border:1px solid var(--line);border-radius:var(--radius-md);background:var(--panel);min-width:0;transition:border-color .18s,background .18s}
+.contact-card:hover {border-color:var(--home-blue-mark);background:var(--home-blue-soft);text-decoration:none}
+.contact-card-icon {display:grid;place-items:center;width:42px;height:42px;border:1px solid var(--line);border-radius:var(--radius-sm);color:var(--text);background:var(--panel-strong)}
+.contact-card-icon svg {width:22px;height:22px}
+.contact-card-label {display:block;font:500 .7rem/1.5 var(--font-mono);letter-spacing:.08em;color:var(--home-blue);margin-bottom:7px}
+.contact-card-title {display:block;font-size:.9rem;font-weight:600;overflow-wrap:anywhere;line-height:1.7}
+.contact-card-action {display:block;font-size:.75rem;color:var(--muted);margin-top:5px}
+.contact-card-arrow {color:var(--home-blue)}
+@media(max-width:1100px) {
+  .contact-card {padding:20px;grid-template-columns:34px minmax(0,1fr) 16px;gap:12px}
+  .contact-card-icon {width:34px;height:34px}
+}
+@media(max-width:800px) {
+  .home-page .sticky-profile-sidebar {padding-top:28px}
+  .home-page .sidebar-profile {align-items:center;gap:0}
+  .home-page .sidebar-name {font-size:1.6rem}
+  .home-page .sidebar-role {display:block;font-size:.8rem;margin:8px 0 0}
+  .home-page .sidebar-nav {margin-top:20px;gap:8px;align-items:center}
+  .sidebar-nav-group {display:contents}
+  .sidebar-nav-group-title {display:none}
+  .home-page .home-nav-link,.sidebar-nav-group .home-nav-link {white-space:nowrap;font-size:.75rem;padding:8px 10px;border-left:0;border-bottom:2px solid transparent;border-radius:4px 4px 0 0}
+  .home-page .home-nav-link.active {border-bottom-color:var(--home-blue-mark)}
+  .home-page .hero-section {padding-top:36px}
+  .home-page .hero-section h2 {font-size:2.2rem}
+}
+@media(max-width:600px) {
+  .background-grid,.contact-card-grid {grid-template-columns:1fr}
+  .background-card {padding:20px}
+  .contact-card {grid-template-columns:40px minmax(0,1fr) 18px;gap:14px;padding:22px 18px}
+  .contact-card-icon {width:40px;height:40px}
+  .home-page .skill-evidence-card {padding:20px}
+  .project-group+.project-group {margin-top:32px;padding-top:28px}
+}

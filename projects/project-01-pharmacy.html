@@ -1,100 +1,26 @@
 <!doctype html>
-<html lang="ko" data-theme="dark">
-<head>
+<html lang="ko" data-theme="light"><head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="조준수 포트폴리오 - 프로젝트 #01: 내 약국에는 정상이 없다 (Unity 기능 개발)">
-  <meta name="theme-color" content="#08111e">
+  <meta name="theme-color" content="#fafaf8">
   <title>프로젝트 01: 내 약국에는 정상이 없다 | 조준수 포트폴리오</title>
 
   <!-- Prevent Theme Flicker (FOUC) Script -->
-  <script>
-    (function() {
-      try {
-        var saved = localStorage.getItem('junsu_portfolio_theme') || 'system';
-        var isDark = saved === 'dark' || (saved === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-        document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-      } catch (e) {}
-    })();
-  </script>
+
 
   <!-- Google / Pretendard Fonts -->
-  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <script src="../assets/js/theme-init.js"></script><link rel="stylesheet" as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 
   <!-- Core Design System & Components -->
   <link rel="stylesheet" href="../assets/css/portfolio-system.css">
 
-  <style>
-    .code-block {
-      background: var(--bg-deep);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-sm);
-      padding: 20px;
-      overflow-x: auto;
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      color: #dbe7f2;
-      line-height: 1.65;
-      margin-top: 16px;
-    }
-    .code-block .keyword { color: #e57eb3; }
-    .code-block .type { color: var(--blue-bright); }
-    .code-block .method { color: var(--gold); }
-    .code-block .comment { color: var(--muted); font-style: italic; }
 
-    .points-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-      margin-top: 20px;
-    }
+<link rel="stylesheet" href="../assets/css/pages/project-01-pharmacy.css"></head>
 
-    .point-box {
-      background: var(--panel-strong);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-sm);
-      padding: 20px;
-    }
-
-    .point-box h4 {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
-      font-size: 1rem;
-      color: var(--blue-bright);
-    }
-
-    .point-box p {
-      font-size: 0.88rem;
-      color: var(--text-sub);
-      line-height: 1.6;
-      margin: 0;
-    }
-  </style>
-</head>
-
-<body>
+<body><a class="skip-link" href="#main-content">본문 바로가기</a>
   <!-- Header Bar -->
-  <header class="mobile-header" style="display:flex;position:sticky;top:0;height:var(--header-h);background:var(--panel-soft);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);padding:0 24px;justify-content:space-between;align-items:center;z-index:100;">
-    <a class="back-link-btn" href="../index.html#projects">
-      <span aria-hidden="true">←</span> 전체 프로젝트 목록으로
-    </a>
-    <div style="display:flex;align-items:center;gap:14px;">
-      <span style="font-size:0.8rem;color:var(--muted);font-weight:750;">PROJECT #01 · UNITY TYCOON</span>
-      <div class="theme-switch-group">
-        <button class="theme-btn" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-        </button>
-        <button class="theme-btn" data-theme-set="dark" title="다크 모드" aria-label="다크 모드">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-        </button>
-        <button class="theme-btn" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-        </button>
-      </div>
-    </div>
-  </header>
+  <header class="mobile-header"><a class="back-link-btn" href="../index.html#projects">← 프로젝트 목록</a><span class="header-caption">JUNSU JO / PORTFOLIO</span></header>
 
   <!-- 2-Column Detail Layout: TOC Rail (Left, Image 3) + Content (Right) -->
   <div class="detail-layout-container">
@@ -102,68 +28,15 @@
     <!-- ====================================================================
          LEFT: TOC ON-THIS-PAGE TRACKER RAIL (Image 3 Style)
          ==================================================================== -->
-    <aside class="toc-rail-container" aria-label="프로젝트 목차 내비게이션">
-      <div class="toc-rail-title">
-        <span>ON THIS PROJECT</span>
-      </div>
-      <nav class="toc-track-line" aria-label="섹션 바로가기">
-        <a class="toc-item-link active" href="#overview">01. 개요 &amp; 스펙</a>
-        <a class="toc-item-link" href="#growth">02. 학습 성과 &amp; 평가</a>
-        <a class="toc-item-link" href="#mechanics">03. 기획 의도 &amp; 메커니즘</a>
-        <a class="toc-item-link" href="#showcase">04. 비주얼 &amp; 시연 쇼케이스</a>
-        <a class="toc-item-link" href="#architecture">05. C# 코드 &amp; 아키텍처</a>
-        <a class="toc-item-link" href="#troubleshooting">06. 트러블슈팅 &amp; 갈등 해결</a>
-        <a class="toc-item-link" href="#takeaways">07. 최종 분석 결과 &amp; 결론</a>
-      </nav>
-    </aside>
+    <aside class="toc-rail-container" aria-label="페이지 목차"><div class="toc-rail-title">ON THIS PAGE</div><nav class="toc-track-line" aria-label="상세 목차"><a class="toc-item-link" href="#growth">경험 평가와 배운 점</a><a class="toc-item-link" href="#overview">개요와 담당 역할</a><a class="toc-item-link" href="#mechanics">기획과 핵심 규칙</a><a class="toc-item-link" href="#showcase">시연과 자료</a><a class="toc-item-link" href="#architecture">구현 구조</a><a class="toc-item-link" href="#troubleshooting">문제 해결</a><a class="toc-item-link" href="#collaboration">협업과 갈등 해결</a><a class="toc-item-link" href="#takeaways">회고와 결론</a></nav></aside>
 
     <!-- ====================================================================
          RIGHT: MAIN CONTENT AREA
          ==================================================================== -->
-    <main class="detail-main-content">
+    <main class="detail-main-content" id="main-content"><div class="detail-page-heading"><span class="eyebrow">PROJECT / DEVELOPMENT RECORD</span><h1 class="">내 약국에는 정상이 없다.</h1><div class="detail-sub-title">Unity C# 기반 타이쿤 시뮬레이션 · 처방 및 조제 시스템 아키텍처</div></div><section class="learning-growth-card" id="growth">
+        <span class="growth-header-label">BEFORE / AFTER</span>
+        <h2 class="growth-title">경험 평가와 배운 점</h2>
 
-      <!-- 01. HERO & META GRID -->
-      <section class="detail-hero-box" id="overview">
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
-          <span class="badge-tag">대표 프로젝트 #01</span>
-          <span class="badge-tag" style="color:var(--blue-bright);">Unity C# 기능 개발</span>
-          <span class="badge-tag" style="color:var(--green-bright);">기능 빌드 완료</span>
-          <span class="badge-tag">2026.03 — 2026.07</span>
-        </div>
-
-        <h1 class="detail-main-title">내 약국에는 정상이 없다.</h1>
-        <div class="detail-sub-title">Unity C# 기반 타이쿤 시뮬레이션 · 처방 및 조제 시스템 아키텍처</div>
-
-        <p class="detail-lead-summary">
-          괴상하고 비정상적인 증상을 호소하는 손님들의 요구를 파악하여 기상천외한 약물을 조합·조제하고 약국을 번창시키는 블랙코미디 타이쿤 게임입니다. 
-          핵심 플레이 루프부터 데이터 구조, 약물 배합 알고리즘, 반응형 UGUI 연출까지 전 과정을 주도하여 구현했습니다.
-        </p>
-
-        <div class="meta-spec-grid">
-          <div class="meta-spec-item">
-            <span>개발 기간</span>
-            <strong>2026.03 — 2026.07 (5개월)</strong>
-          </div>
-          <div class="meta-spec-item">
-            <span>담당 역할</span>
-            <strong>리드 프로그래머 (1인 기능 개발 전담)</strong>
-          </div>
-          <div class="meta-spec-item">
-            <span>사용 기술</span>
-            <strong>Unity 2022.3 LTS · C# · FSM · ScriptableObject</strong>
-          </div>
-          <div class="meta-spec-item">
-            <span>프로젝트 형태</span>
-            <strong>인디 게임 프로토타입 및 기능 빌드</strong>
-          </div>
-        </div>
-      </section>
-
-      <!-- 02. CORE LEARNING OUTCOMES & GROWTH ASSESSMENT (User Specific Requirement: Prioritized at Top) -->
-      <section class="learning-growth-card" id="growth">
-        <span class="growth-header-label">SECTION 02 · GROWTH &amp; COMPETENCY</span>
-        <h2 class="growth-title">경험 전후의 학습 성과 및 핵심 역량 평가</h2>
-        
         <div class="before-after-grid">
           <!-- Before Box -->
           <div class="before-box">
@@ -179,7 +52,7 @@
           <div class="after-box">
             <span class="ba-label">수행 후 (AFTER: 달성한 학습 성과 &amp; 역량 성장)</span>
             <ul class="ba-list">
-              <li><strong>O(1) 비트마스크 해시 룩업 알고리즘 구축:</strong> 16종 시약 조합을 딕셔너리 키로 즉각 매칭하여 연산 소요 시간 94% 단축</li>
+              <li><strong>O(1) 비트마스크 해시 룩업 알고리즘 구축:</strong> 16종 시약 조합을 딕셔너리 키로 즉각 매칭하여 조합 조회 로직을 정리</li>
               <li><strong>이벤트 기반 느슨한 결합(Decoupling) 체득:</strong> Action/Delegate 옵저버 패턴을 통해 GameManager를 오케스트레이터로 경량화</li>
               <li><strong>ScriptableObject 데이터 파이프라인 완성:</strong> 기획자가 인스펙터에서 즉시 시약 상성과 텍스트를 편집할 수 있는 확장 구조 확립</li>
             </ul>
@@ -187,14 +60,48 @@
         </div>
 
         <!-- Conflict & Teamwork Case -->
-        <div class="conflict-resolution-box">
-          <h4>[협업 및 갈등 해결 사례]</h4>
-          <p>
-            <strong>조제 난이도와 연출 분량에 대한 기획 충돌:</strong> 초기 기획에서 "더 복잡한 미니게임(원심분리기, 가열 단계)"을 추가하자는 의견이 제시되었으나, 조작 피로도가 급상승하고 마감 기한이 위태로워졌습니다. 
-            이에 "핵심 재미(손님의 대사 추론과 비커 믹싱)에 집중하자"는 MVP 기준을 데이터로 제시하고, 부가 기기는 2차 업데이트 마일스톤으로 분리 조율하여 일정 내 완성도 높은 코어 빌드를 성공적으로 마감했습니다.
-          </p>
+
+      </section>
+
+      <!-- 01. HERO & META GRID -->
+      <section class="detail-hero-box" id="overview"><h2>프로젝트 개요</h2>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
+          <span class="badge-tag">대표 프로젝트 #01</span>
+          <span class="badge-tag">Unity C# 기능 개발</span>
+          <span class="badge-tag">기능 빌드 완료</span>
+          <span class="badge-tag">2026.03 — 2026.07</span>
+        </div>
+
+
+
+
+        <p class="detail-lead-summary">
+          괴상하고 비정상적인 증상을 호소하는 손님들의 요구를 파악하여 기상천외한 약물을 조합·조제하고 약국을 번창시키는 블랙코미디 타이쿤 게임입니다.
+          핵심 플레이 루프부터 데이터 구조, 약물 배합 알고리즘, 반응형 UGUI 연출까지 전 과정을 주도하여 구현했습니다.
+        </p>
+
+        <div class="meta-spec-grid">
+          <div class="meta-spec-item">
+            <span>개발 기간</span>
+            <strong>2026.03 — 2026.07 (5개월)</strong>
+          </div>
+          <div class="meta-spec-item">
+            <span>담당 역할</span>
+            <strong>클라이언트 개발</strong>
+          </div>
+          <div class="meta-spec-item">
+            <span>사용 기술</span>
+            <strong>Unity 2022.3 LTS · C# · FSM · ScriptableObject</strong>
+          </div>
+          <div class="meta-spec-item">
+            <span>프로젝트 형태</span>
+            <strong>인디 게임 프로토타입 및 기능 빌드</strong>
+          </div>
         </div>
       </section>
+
+      <!-- 02. CORE LEARNING OUTCOMES & GROWTH ASSESSMENT (User Specific Requirement: Prioritized at Top) -->
+
 
       <!-- 03. 기획 의도 및 코어 메커니즘 -->
       <section class="detail-content-section" id="mechanics">
@@ -202,7 +109,7 @@
         <h2>프로젝트 개요 및 기획 의도</h2>
         <div class="detail-card">
           <p>
-            『내 약국에는 정상이 없다』는 단순 반복형 클릭커 타이쿤에서 벗어나, <strong>"손님의 기괴한 대사 속 숨겨진 증상 유추"</strong>와 
+            『내 약국에는 정상이 없다』는 단순 반복형 클릭커 타이쿤에서 벗어나, <strong>"손님의 기괴한 대사 속 숨겨진 증상 유추"</strong>와
             <strong>"물리적 재료 배합 인터랙션"</strong>을 결합하여 플레이어에게 퍼즐 해결의 쾌감과 코믹한 내러티브 경험을 제공하고자 기획되었습니다.
           </p>
 
@@ -238,11 +145,11 @@
             <div class="media-stage-body">
               <div style="display:flex;justify-content:center;margin-bottom:8px;">
                 <span class="mono-icon mono-icon-stroke" style="width:48px;height:48px;">
-                  <svg viewBox="0 0 24 24" width="48" height="48"><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"></path><line x1="8.5" y1="2" x2="15.5" y2="2"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
+                  <svg viewBox="0 0 24 24" width="48" height="48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"></path><line x1="8.5" y1="2" x2="15.5" y2="2"></line><line x1="7" y1="16" x2="17" y2="16"></line></svg>
                 </span>
               </div>
-              <strong style="font-size:1.15rem;color:var(--text);">인게임 대표 플레이 화면 및 조제 시연 슬롯</strong>
-              <p style="font-size:0.88rem;color:var(--text-sub);max-width:520px;">
+              <strong>인게임 대표 플레이 화면 및 조제 시연 슬롯</strong>
+              <p style="max-width: 520px;">
                 약국 카운터에서 손님의 대화를 분석하고 약품 진열대에서 재료를 계량하여 비커에 믹싱하는 인게임 플레이 GIF/스크린샷 배치 영역입니다.
               </p>
             </div>
@@ -304,21 +211,21 @@
         <h2>트러블슈팅 및 기술적 문제 해결</h2>
         <div class="detail-card">
           <div class="point-box" style="margin-bottom: 16px;">
-            <h4 style="color: var(--gold);">[Issue] 복합 재료 조합 시 순환 참조 및 성능 저하</h4>
+            <h4>[Issue] 복합 재료 조합 시 순환 참조 및 성능 저하</h4>
             <p>
               재료가 3개 이상 섞일 때마다 매 프레임 리스트 전체를 탐색하는 무차별 대입 방식(Brute Force)으로 인해 모바일 환경에서 프레임 드랍 발생.
             </p>
-            <p style="color: var(--green-bright); margin-top: 8px;">
-              <strong>[Solution]</strong> 재료 조합별 고유 비트마스크(Bitmask Hash) 키를 생성하여 O(1) 딕셔너리 룩업 방식으로 구조를 전면 리팩토링. 룩업 소요 시간을 94% 단축.
+            <p style="margin-top: 8px;">
+              <strong>[Solution]</strong> 재료 조합별 고유 비트마스크(Bitmask Hash) 키를 생성하여 O(1) 딕셔너리 룩업 방식으로 구조를 전면 리팩토링. 성능 측정 결과는 추후 수정.
             </p>
           </div>
 
           <div class="point-box">
-            <h4 style="color: var(--gold);">[Issue] 씬 전환 시 조제 데이터 유실</h4>
+            <h4>[Issue] 씬 전환 시 조제 데이터 유실</h4>
             <p>
               약국 로비 씬과 지하실 조제실 씬 간 이동 시 진행 중이던 비커 상태가 리셋되는 현상.
             </p>
-            <p style="color: var(--green-bright); margin-top: 8px;">
+            <p style="margin-top: 8px;">
               <strong>[Solution]</strong> 싱글톤 기반의 <code>GameSessionContext</code>를 도입하여 씬 언로드 시에도 상태를 직렬화(JSON)하여 유지하도록 처리.
             </p>
           </div>
@@ -326,21 +233,21 @@
       </section>
 
       <!-- 07. 최종 분석 결과 & 결론 (Peer Feedback: Explicit Takeaway at Bottom) -->
-      <section class="key-takeaway-box" id="takeaways">
+      <section class="detail-content-section" id="collaboration"><span class="section-order-label">COLLABORATION</span><h2>협업과 갈등 해결</h2><p class="detail-lead-summary">추후 수정</p></section><section class="key-takeaway-box" id="takeaways">
         <h3>최종 분석 결과 및 핵심 결론 (Key Takeaways)</h3>
         <p>
-          『내 약국에는 정상이 없다』는 단순 타이쿤 규칙에 머무르지 않고, <strong>"대사 추론 기반의 심리 퍼즐"과 "O(1) 비트마스크 해시 조제 아키텍처"</strong>를 결합하여 모바일 환경에서도 안정적인 60fps와 높은 플레이 몰입감을 입증한 프로젝트입니다. 
-          ScriptableObject를 통한 기획 데이터 분리와 이벤트 위임 패턴을 통해 유지보수성과 확장성을 두루 갖춘 상용화 수준의 코어 루프를 완성했습니다.
+          『내 약국에는 정상이 없다』는 단순 타이쿤 규칙에 머무르지 않고, <strong>"대사 추론 기반의 심리 퍼즐"과 "O(1) 비트마스크 해시 조제 아키텍처"</strong>를 결합하여 모바일 환경에서도 안정적인 60fps와 높은 플레이 몰입감을 입증한 프로젝트입니다.
+          ScriptableObject를 통한 기획 데이터 분리와 이벤트 위임 패턴을 통해 유지보수성과 확장성을 두루 갖춘  코어 루프를 완성했습니다.
         </p>
       </section>
 
       <!-- Footer Navigation Bar -->
       <footer class="detail-footer-nav">
-        <button class="detail-nav-btn" type="button" disabled>
+        <button class="detail-nav-btn" type="button" disabled="">
           <span aria-hidden="true">←</span> 첫 번째 프로젝트
         </button>
         <a class="detail-nav-btn" href="../index.html#projects">
-          <span aria-hidden="true">☰</span> 전체 프로젝트 목록으로
+          <span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"></path></svg></span> 전체 프로젝트 목록으로
         </a>
         <a class="detail-nav-btn" href="project-02-nuri.html">
           다음: 02. 누리살이 <span aria-hidden="true">→</span>
@@ -351,29 +258,31 @@
   </div>
 
   <!-- FLOATING THEME FAB (Image 1 Requirement · Always Visible Bottom Right) -->
-  <div class="floating-theme-fab" id="floatingThemeFab" aria-label="테마 설정">
-    <div class="theme-fab-spheres" aria-hidden="true">
-      <button class="theme-fab-sphere" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드">
-        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+
+
+  <!-- Object-Oriented JS Architecture Bundle -->
+
+
+
+<div class="floating-theme-fab" id="floatingThemeFab" aria-label="테마 설정">
+    <div class="theme-fab-spheres" aria-hidden="true" id="theme-options" inert="">
+      <button class="theme-fab-sphere" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드" type="button" tabindex="-1">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
         <span class="sphere-tooltip">라이트 모드</span>
       </button>
-      <button class="theme-fab-sphere" data-theme-set="dark" title="다크 모드" aria-label="다크 모드">
-        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+      <button class="theme-fab-sphere" data-theme-set="dark" title="다크 모드" aria-label="다크 모드" type="button" tabindex="-1">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
         <span class="sphere-tooltip">다크 모드</span>
       </button>
-      <button class="theme-fab-sphere" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정">
-        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span>
+      <button class="theme-fab-sphere" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정" type="button" tabindex="-1">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span>
         <span class="sphere-tooltip">시스템 설정</span>
       </button>
     </div>
-    <button class="theme-fab-trigger" id="themeFabTrigger" title="테마 변경" aria-label="테마 변경">
+    <button class="theme-fab-trigger" id="themeFabTrigger" title="테마 변경" aria-label="테마 변경" aria-controls="theme-options" aria-expanded="false" type="button">
       <span class="fab-current-icon mono-icon mono-icon-stroke">
-        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 2v20a10 10 0 0 0 0-20z"></path><circle cx="12" cy="12" r="10"></circle></svg>
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20a10 10 0 0 0 0-20z"></path><circle cx="12" cy="12" r="10"></circle></svg>
       </span>
     </button>
-  </div>
-
-  <!-- Object-Oriented JS Architecture Bundle -->
-  <script src="../assets/js/portfolio-system.js"></script>
-</body>
-</html>
+  </div><script src="../assets/js/portfolio-system.js"></script>
+</body></html>

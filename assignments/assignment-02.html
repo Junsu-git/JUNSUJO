@@ -1,889 +1,26 @@
 <!doctype html>
-<html lang="ko" data-theme="dark">
-<head>
+<html lang="ko" data-theme="light"><head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="조준수 포트폴리오 - 프로젝트 #06: [GamePlay] 인기순위 50위 게임 플레이 분석 & 내 게임 플레이 이력">
-  <meta name="theme-color" content="#08111e">
+  <meta name="description" content="조준수 포트폴리오 - 프로젝트 #06: [GamePlay] 인기순위 50위 게임 플레이 분석 &amp; 내 게임 플레이 이력">
+  <meta name="theme-color" content="#fafaf8">
   <title>프로젝트 06: [GamePlay] 인기순위 분석 &amp; 플레이 이력 | 조준수 포트폴리오</title>
 
   <!-- Prevent Theme Flicker (FOUC) Script -->
-  <script>
-    (function() {
-      try {
-        var saved = localStorage.getItem('junsu_portfolio_theme') || 'system';
-        var isDark = saved === 'dark' || (saved === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-        document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-      } catch (e) {}
-    })();
-  </script>
+
 
   <!-- Google / Pretendard Fonts -->
-  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <script src="../assets/js/theme-init.js"></script><link rel="stylesheet" as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 
   <!-- Core Design System & Components -->
   <link rel="stylesheet" href="../assets/css/portfolio-system.css">
 
-  <style>
-    :root {
-      --header-h: 70px;
-    }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      min-width: 320px;
-      color: var(--text);
-      background: var(--bg-page);
-      overflow-x: hidden;
-      line-height: 1.7;
-    }
+<link rel="stylesheet" href="../assets/css/pages/assignment-02.css"></head>
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      pointer-events: none;
-      opacity: 0.2;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, 0.023) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.023) 1px, transparent 1px);
-      background-size: 48px 48px;
-      mask-image: linear-gradient(to bottom, black, transparent 76%);
-    }
-
-    a { color: var(--blue-bright); text-decoration: none; transition: color 180ms ease; }
-    a:hover { color: #fff; text-decoration: underline; }
-
-    .container { width: min(1060px, calc(100% - 40px)); margin-inline: auto; }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      height: var(--header-h);
-      border-bottom: 1px solid var(--line);
-      background: rgba(6, 14, 24, 0.88);
-      backdrop-filter: blur(18px);
-    }
-
-    .header-inner {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .back-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 16px;
-      border: 1px solid var(--line-strong);
-      border-radius: 999px;
-      color: var(--blue-bright);
-      background: rgba(102, 192, 244, 0.08);
-      font-size: 0.86rem;
-      font-weight: 750;
-      transition: all 180ms ease;
-      text-decoration: none;
-    }
-
-    .back-button:hover {
-      background: rgba(102, 192, 244, 0.18);
-      transform: translateX(-3px);
-      color: #fff;
-      text-decoration: none;
-    }
-
-    .page-indicator {
-      font-size: 0.78rem;
-      color: var(--muted);
-      font-weight: 700;
-      letter-spacing: 0.05em;
-    }
-
-    .detail-hero {
-      padding: 60px 0 32px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .badge-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-
-    .badge {
-      padding: 5px 11px;
-      border-radius: 6px;
-      font-size: 0.74rem;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-    }
-
-    .badge-primary {
-      color: var(--blue-bright);
-      background: rgba(102, 192, 244, 0.12);
-      border: 1px solid rgba(102, 192, 244, 0.28);
-    }
-
-    .badge-gold {
-      color: #ffea9f;
-      background: rgba(242, 201, 109, 0.15);
-      border: 1px solid rgba(242, 201, 109, 0.35);
-    }
-
-    .badge-success {
-      color: #eaff9f;
-      background: rgba(164, 208, 7, 0.12);
-      border: 1px solid rgba(164, 208, 7, 0.3);
-    }
-
-    .detail-title {
-      font-size: clamp(2rem, 4.2vw, 3.1rem);
-      line-height: 1.18;
-      letter-spacing: -0.04em;
-      margin: 0 0 16px;
-      word-break: keep-all;
-    }
-
-    .detail-sub-title {
-      font-size: clamp(1.05rem, 2vw, 1.35rem);
-      color: var(--gold);
-      font-weight: 700;
-      margin: 0 0 20px;
-    }
-
-    .detail-lead {
-      color: #c0d3e2;
-      font-size: clamp(1.02rem, 1.8vw, 1.15rem);
-      line-height: 1.7;
-      margin: 0 0 28px;
-      word-break: keep-all;
-    }
-
-    /* Tab Switcher Bar */
-    .tab-switcher-wrapper {
-      position: sticky;
-      top: var(--header-h);
-      z-index: 90;
-      padding: 16px 0;
-      background: rgba(8, 17, 30, 0.94);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--line-strong);
-      margin-bottom: 36px;
-    }
-
-    .tab-switcher {
-      display: flex;
-      gap: 12px;
-      background: #060e19;
-      padding: 6px;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--line);
-      width: fit-content;
-      max-width: 100%;
-      flex-wrap: wrap;
-    }
-
-    .tab-switch-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 11px 22px;
-      border: 1px solid transparent;
-      border-radius: 8px;
-      background: transparent;
-      color: var(--muted);
-      font-size: 0.92rem;
-      font-weight: 800;
-      cursor: pointer;
-      transition: all 180ms ease;
-    }
-
-    .tab-switch-btn:hover {
-      color: var(--text);
-      background: rgba(102, 192, 244, 0.08);
-    }
-
-    .tab-switch-btn.is-active {
-      color: #06111d;
-      background: linear-gradient(135deg, var(--blue-bright), var(--blue));
-      border-color: transparent;
-      box-shadow: 0 4px 18px rgba(102, 192, 244, 0.35);
-    }
-
-    .tab-content-panel[hidden] {
-      display: none !important;
-    }
-
-    /* Content Section */
-    .content-section {
-      padding: 32px 0 44px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .section-num-label {
-      font-size: 0.75rem;
-      font-weight: 850;
-      color: var(--blue-bright);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .content-section h2 {
-      font-size: clamp(1.5rem, 3vw, 2.1rem);
-      letter-spacing: -0.03em;
-      margin: 0 0 20px;
-    }
-
-    .content-card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      padding: 28px;
-      margin-top: 20px;
-    }
-
-    /* 2-Column Responsive Dropdown (Accordion) for Tab 1 */
-    .rank-accordion-toolbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin: 20px 0 16px;
-      flex-wrap: wrap;
-    }
-
-    .accordion-filter-group {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .accordion-filter-btn {
-      padding: 6px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(20, 38, 58, 0.4);
-      color: var(--muted);
-      font-size: 0.82rem;
-      font-weight: 750;
-      cursor: pointer;
-      transition: all 180ms ease;
-    }
-
-    .accordion-filter-btn:hover {
-      color: var(--text);
-      background: rgba(102, 192, 244, 0.12);
-    }
-
-    .accordion-filter-btn.is-active {
-      background: rgba(102, 192, 244, 0.2);
-      border-color: var(--blue-bright);
-      color: #fff;
-    }
-
-    .accordion-action-group {
-      display: flex;
-      gap: 8px;
-    }
-
-    .accordion-toggle-all-btn {
-      padding: 6px 12px;
-      border-radius: 6px;
-      border: 1px solid var(--line);
-      background: #0d1a29;
-      color: var(--muted);
-      font-size: 0.8rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 180ms ease;
-    }
-
-    .accordion-toggle-all-btn:hover {
-      color: var(--blue-bright);
-      border-color: var(--line-strong);
-    }
-
-    /* Single Column Accordion List: Eliminates asymmetric row distortion when opened */
-    .rank-accordion-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin: 16px 0 20px;
-      width: 100%;
-    }
-
-    /* Left-Right Pagination Toolbar */
-    .rank-pagination-bar {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 12px 18px;
-      background: rgba(13, 26, 41, 0.82);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-sm);
-      margin: 16px 0 20px;
-      backdrop-filter: blur(8px);
-    }
-
-    .rank-pagination-bar.is-bottom {
-      margin: 20px 0 32px;
-      background: rgba(16, 29, 45, 0.75);
-    }
-
-    .rank-page-nav {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .rank-page-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 7px 16px;
-      border-radius: 8px;
-      border: 1px solid var(--line);
-      background: rgba(20, 38, 58, 0.65);
-      color: var(--muted);
-      font-size: 0.84rem;
-      font-weight: 750;
-      cursor: pointer;
-      transition: all 180ms ease;
-      user-select: none;
-    }
-
-    .rank-page-btn:hover:not(:disabled) {
-      color: #fff;
-      border-color: var(--blue-bright);
-      background: rgba(102, 192, 244, 0.16);
-      transform: translateY(-1px);
-    }
-
-    .rank-page-btn:disabled {
-      opacity: 0.35;
-      cursor: not-allowed;
-      border-color: var(--line);
-      transform: none;
-    }
-
-    .rank-page-pills-group {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-
-    .rank-page-pill {
-      padding: 6px 14px;
-      border-radius: 8px;
-      border: 1px solid var(--line);
-      background: rgba(16, 29, 45, 0.7);
-      color: var(--muted);
-      font-size: 0.82rem;
-      font-weight: 750;
-      cursor: pointer;
-      transition: all 180ms ease;
-      user-select: none;
-    }
-
-    .rank-page-pill:hover {
-      color: #fff;
-      border-color: var(--line-strong);
-      background: rgba(102, 192, 244, 0.12);
-    }
-
-    .rank-page-pill.is-active {
-      background: rgba(102, 192, 244, 0.24);
-      border-color: var(--blue-bright);
-      color: #fff;
-      font-weight: 850;
-      box-shadow: 0 0 12px rgba(102, 192, 244, 0.22);
-    }
-
-    .rank-page-info {
-      font-size: 0.84rem;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .rank-page-info strong {
-      color: var(--blue-bright);
-      font-weight: 800;
-    }
-
-    @media (max-width: 768px) {
-      .rank-pagination-bar {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 10px;
-        padding: 12px;
-      }
-      .rank-page-nav {
-        justify-content: center;
-      }
-      .rank-page-info {
-        justify-content: center;
-        text-align: center;
-      }
-    }
-
-    details.rank-accordion-item {
-      background: rgba(16, 29, 45, 0.85);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-sm);
-      transition: all 200ms ease;
-      overflow: hidden;
-    }
-
-    details.rank-accordion-item[open] {
-      border-color: var(--line-strong);
-      background: rgba(20, 38, 58, 0.95);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-    }
-
-    details.rank-accordion-item.is-completed {
-      border-left: 3px solid var(--gold);
-    }
-
-    summary.rank-accordion-summary {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 13px 16px;
-      cursor: pointer;
-      list-style: none;
-      user-select: none;
-      font-weight: 750;
-      font-size: 0.93rem;
-      transition: background 180ms ease;
-      gap: 10px;
-    }
-
-    summary.rank-accordion-summary::-webkit-details-marker {
-      display: none;
-    }
-
-    summary.rank-accordion-summary:hover {
-      background: rgba(102, 192, 244, 0.06);
-    }
-
-    .rank-title-wrap {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      min-width: 0;
-      overflow: hidden;
-    }
-
-    .rank-badge-pill {
-      flex-shrink: 0;
-      font-size: 0.75rem;
-      font-weight: 900;
-      color: #06111d;
-      background: var(--gold);
-      padding: 3px 9px;
-      border-radius: 5px;
-      letter-spacing: 0.04em;
-    }
-
-    .rank-badge-pill.pending {
-      background: rgba(145, 168, 187, 0.22);
-      color: var(--muted);
-    }
-
-    .rank-game-name {
-      font-weight: 750;
-      color: var(--text);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .rank-status-wrap {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-shrink: 0;
-    }
-
-    .rank-status-tag {
-      font-size: 0.72rem;
-      font-weight: 800;
-      padding: 2px 7px;
-      border-radius: 4px;
-    }
-
-    .rank-status-tag.completed {
-      background: rgba(164, 208, 7, 0.18);
-      color: #d8ff6b;
-      border: 1px solid rgba(164, 208, 7, 0.35);
-    }
-
-    .rank-status-tag.pending {
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--muted);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .accordion-chevron {
-      font-size: 0.78rem;
-      color: var(--muted);
-      transition: transform 200ms ease;
-    }
-
-    details.rank-accordion-item[open] .accordion-chevron {
-      transform: rotate(180deg);
-      color: var(--blue-bright);
-    }
-
-    .rank-detail-body {
-      padding: 16px 18px 20px;
-      border-top: 1px solid rgba(147, 184, 214, 0.12);
-      background: rgba(9, 18, 30, 0.55);
-      font-size: 0.88rem;
-      line-height: 1.68;
-    }
-
-    .rank-detail-meta {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-bottom: 12px;
-      padding-bottom: 10px;
-      border-bottom: 1px dashed rgba(147, 184, 214, 0.15);
-    }
-
-    .rank-detail-meta strong {
-      color: var(--text);
-    }
-
-    .rank-detail-desc {
-      color: #c5d7e5;
-      margin-bottom: 12px;
-    }
-
-    .rank-detail-pros {
-      background: rgba(164, 208, 7, 0.09);
-      border-left: 3px solid var(--green);
-      padding: 8px 12px;
-      border-radius: 4px;
-      margin-top: 8px;
-      font-size: 0.85rem;
-      color: #e2f4aa;
-    }
-
-    .rank-detail-cons {
-      background: rgba(255, 90, 95, 0.09);
-      border-left: 3px solid #ff5a5f;
-      padding: 8px 12px;
-      border-radius: 4px;
-      margin-top: 8px;
-      font-size: 0.85rem;
-      color: #ffc2c4;
-    }
-
-    .pending-template-box {
-      background: rgba(16, 32, 51, 0.4);
-      border: 1px dashed rgba(147, 184, 214, 0.2);
-      border-radius: 6px;
-      padding: 12px 14px;
-      margin-top: 8px;
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .pending-guide-list {
-      margin: 8px 0 0 18px;
-      padding: 0;
-      color: #9eb6c9;
-      font-size: 0.8rem;
-    }
-
-    .pending-guide-list li {
-      margin-bottom: 4px;
-    }
-
-    /* Review Cards */
-    .review-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 20px;
-      margin: 24px 0;
-    }
-
-    .review-card {
-      background: linear-gradient(145deg, rgba(20, 38, 58, 0.8), rgba(11, 21, 36, 0.95));
-      border: 1px solid var(--line-strong);
-      border-radius: var(--radius-md);
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      position: relative;
-    }
-
-    .review-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 12px;
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 14px;
-    }
-
-    .review-rank-badge {
-      font-size: 1.1rem;
-      font-weight: 900;
-      color: #06111d;
-      background: var(--gold);
-      padding: 3px 10px;
-      border-radius: 6px;
-    }
-
-    .review-app-title {
-      margin: 0;
-      font-size: 1.3rem;
-      letter-spacing: -0.02em;
-    }
-
-    .review-meta-row {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-
-    .review-meta-row strong {
-      color: var(--text);
-    }
-
-    .review-body {
-      font-size: 0.9rem;
-      line-height: 1.7;
-      color: #c2d5e3;
-    }
-
-    .review-pros {
-      background: rgba(164, 208, 7, 0.1);
-      border-left: 3px solid var(--green);
-      padding: 10px 14px;
-      border-radius: 4px;
-      margin-top: 8px;
-      font-size: 0.86rem;
-    }
-
-    .review-cons {
-      background: rgba(255, 90, 95, 0.1);
-      border-left: 3px solid #ff5a5f;
-      padding: 10px 14px;
-      border-radius: 4px;
-      margin-top: 8px;
-      font-size: 0.86rem;
-    }
-
-    /* Table Styles */
-    .table-container {
-      overflow-x: auto;
-      margin: 24px 0;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--line);
-      background: #09121e;
-      max-height: 520px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-      font-size: 0.86rem;
-      min-width: 720px;
-    }
-
-    th, td {
-      padding: 12px 16px;
-      border-bottom: 1px solid rgba(147, 184, 214, 0.1);
-      vertical-align: middle;
-    }
-
-    th {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(20, 38, 58, 0.98);
-      color: var(--blue-bright);
-      font-weight: 800;
-      letter-spacing: -0.01em;
-      white-space: nowrap;
-    }
-
-    tr:nth-child(even) td { background: rgba(255, 255, 255, 0.018); }
-    tr:hover td { background: rgba(102, 192, 244, 0.06); }
-
-    .highlight-row td {
-      background: rgba(242, 201, 109, 0.12) !important;
-      border-left: 3px solid var(--gold);
-    }
-
-    .rank-num {
-      font-weight: 900;
-      font-size: 0.95rem;
-      color: var(--blue-bright);
-    }
-
-    .played-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 0.72rem;
-      font-weight: 850;
-      padding: 3px 8px;
-      border-radius: 4px;
-      background: rgba(164, 208, 7, 0.2);
-      color: #eaff9f;
-      border: 1px solid rgba(164, 208, 7, 0.4);
-    }
-
-    /* Loop Cards */
-    .loop-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-      margin: 24px 0;
-    }
-
-    .loop-card {
-      background: rgba(20, 38, 58, 0.45);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-sm);
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .loop-card-step {
-      font-size: 0.72rem;
-      font-weight: 900;
-      color: var(--gold);
-      letter-spacing: 0.1em;
-    }
-
-    .loop-card h4 {
-      margin: 0;
-      font-size: 1.1rem;
-      color: var(--text);
-    }
-
-    .loop-card p {
-      margin: 0;
-      font-size: 0.86rem;
-      color: #a7bccd;
-      line-height: 1.6;
-    }
-
-    .points-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin-top: 24px;
-    }
-
-    .point-box {
-      background: rgba(20, 38, 58, 0.5);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-sm);
-      padding: 22px;
-    }
-
-    .point-box h4 {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin: 0 0 12px;
-      font-size: 1.05rem;
-      color: var(--blue-bright);
-    }
-
-    .point-box p {
-      font-size: 0.9rem;
-      color: #a7bccd;
-      margin: 0;
-      line-height: 1.65;
-    }
-
-    .detail-footer-nav {
-      padding: 50px 0 80px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .nav-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 750;
-      color: var(--muted);
-      font-size: 0.9rem;
-      transition: color 180ms ease;
-      text-decoration: none;
-    }
-
-    .nav-btn:hover:not(:disabled) {
-      color: var(--blue-bright);
-      text-decoration: none;
-    }
-
-    .nav-btn:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-  </style>
-</head>
-
-<body>
+<body><a class="skip-link" href="#main-content">본문 바로가기</a>
   <!-- Header -->
-  <header class="mobile-header" style="display:flex;position:sticky;top:0;height:var(--header-h);background:var(--panel-soft);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);padding:0 24px;justify-content:space-between;align-items:center;z-index:100;">
-    <a class="back-link-btn" href="../index.html#projects">
-      <span aria-hidden="true">←</span> 전체 프로젝트 목록으로
-    </a>
-    <div style="display:flex;align-items:center;gap:14px;">
-      <span style="font-size:0.8rem;color:var(--muted);font-weight:750;">PROJECT #06 · GAMEPLAY ANALYSIS</span>
-      <div class="theme-switch-group">
-        <button class="theme-btn" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-        </button>
-        <button class="theme-btn" data-theme-set="dark" title="다크 모드" aria-label="다크 모드">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-        </button>
-        <button class="theme-btn" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-        </button>
-      </div>
-    </div>
-  </header>
+  <header class="mobile-header"><a class="back-link-btn" href="../index.html#case-studies">← 과제 목록</a><span class="header-caption">JUNSU JO / PORTFOLIO</span></header>
 
   <!-- 2-Column Detail Layout: TOC Rail (Left, Image 3) + Content (Right) -->
   <div class="detail-layout-container">
@@ -891,39 +28,56 @@
     <!-- ====================================================================
          LEFT: TOC ON-THIS-PAGE TRACKER RAIL (Image 3 Style)
          ==================================================================== -->
-    <aside class="toc-rail-container" aria-label="프로젝트 목차 내비게이션">
-      <div class="toc-rail-title">
-        <span>ON THIS PROJECT</span>
-      </div>
-      <nav class="toc-track-line" aria-label="섹션 바로가기">
-        <a class="toc-item-link active" href="#overview">01. 개요 &amp; 분석 스펙</a>
-        <a class="toc-item-link" href="#growth">02. 학습 성과 &amp; 평가</a>
-        <a class="toc-item-link" href="#view-rank">03. 50위 게임 실기 분석</a>
-        <a class="toc-item-link" href="#view-history">04. 보유 게임 플레이 이력</a>
-        <a class="toc-item-link" href="#takeaways">05. 최종 분석 결과 &amp; 결론</a>
-      </nav>
-    </aside>
+    <aside class="toc-rail-container" aria-label="페이지 목차"><div class="toc-rail-title">ON THIS PAGE</div><nav class="toc-track-line" aria-label="상세 목차"><a class="toc-item-link" href="#growth">경험 평가와 배운 점</a><a class="toc-item-link" href="#overview">개요와 담당 역할</a><a class="toc-item-link" href="#chapter-3">50일 모바일 게임 플레이 분석</a><a class="toc-item-link" href="#chapter-4">모바일인덱스 실시간 순위 데이터베이스</a><a class="toc-item-link" href="#chapter-5">모바일 마켓 트렌드 종합 분석</a><a class="toc-item-link" href="#chapter-6">보유 게임 플레이 이력 카드</a><a class="toc-item-link" href="#chapter-7">『몬스터헌터 월드』 280시간 플레이어 관점 코어 루프 &amp; 생태계 상호작용 분석</a><a class="toc-item-link" href="#chapter-8">하드코어 &amp; 대규모 라이브 게임 플레이를 통한 기획적 인사이트</a><a class="toc-item-link" href="#takeaways">회고와 결론</a></nav></aside>
 
     <!-- ====================================================================
          RIGHT: MAIN CONTENT AREA
          ==================================================================== -->
-    <main class="detail-main-content">
+    <main class="detail-main-content" id="main-content"><div class="detail-page-heading"><span class="eyebrow">CASE STUDY / LEARNING RECORD</span><h1 class="">02. [GamePlay] 모바일 인기순위 50위 분석 &amp; 게임 플레이 이력</h1><div class="detail-sub-title">모바일인덱스 실시간 매출 TOP 50 드롭다운 실기 분석 · PC·콘솔·모바일 게임 플레이어 관점 시스템 심층 고찰</div></div><section class="learning-growth-card" id="growth">
+        <span class="growth-header-label">BEFORE / AFTER</span>
+        <h2 class="growth-title">경험 평가와 배운 점</h2>
+
+        <div class="before-after-grid">
+          <!-- Before Box -->
+          <div class="before-box">
+            <span class="ba-label">수행 전 (BEFORE: 직면한 한계)</span>
+            <ul class="ba-list">
+              <li>게임을 단순히 소비자(엔드 유저) 시각에서 "재미있다/없다"라는 주관적 감상으로만 소비하는 경향</li>
+              <li>상위권 모바일 게임들이 유지하는 리텐션 루프와 BM(수익화) 장치의 구조적 상호작용 이해 부족</li>
+              <li>방대한 플레이 데이터를 한 화면에 효과적으로 보여주지 못해 세로 스크롤 피로도 발생</li>
+            </ul>
+          </div>
+
+          <!-- After Box -->
+          <div class="after-box">
+            <span class="ba-label">수행 후 (AFTER: 달성한 학습 성과 &amp; 역량 성장)</span>
+            <ul class="ba-list">
+              <li><strong>게임 시스템 역설계 및 분해 분석 역량 확립:</strong> 하드코어 파밍/전투부터 캐주얼 방치형까지 장르별 코어 루프 메커니즘 도출</li>
+              <li><strong>10개 단위 페이징 아코디언 컴포넌트 구현:</strong> 50개 데이터 항목을 왜곡 없이 열람할 수 있는 효율적 인터랙션 UI 설계</li>
+              <li><strong>개발자 시각의 플레이 철학 정립:</strong> "유저가 다음 행동을 계속 기대하게 만드는 규칙의 유기적 맞물림" 체득</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Conflict & Problem Solving Case: Data Layout -->
+
+      </section>
 
       <!-- 01. HERO & META GRID -->
-      <section class="detail-hero-box" id="overview">
+      <section class="detail-hero-box" id="overview"><h2>과제 개요</h2>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
           <span class="badge-tag">통합 프로젝트 #06</span>
-          <span class="badge-tag" style="color:var(--gold);">플레이 루프 &amp; 마켓 분석</span>
-          <span class="badge-tag" style="color:var(--green-bright);">2개 탭 구성</span>
+          <span class="badge-tag">플레이 루프 &amp; 마켓 분석</span>
+          <span class="badge-tag">2개 탭 구성</span>
           <span class="badge-tag">2026.09 기준</span>
         </div>
 
-        <h1 class="detail-main-title">02. [GamePlay] 모바일 인기순위 50위 분석 &amp; 게임 플레이 이력</h1>
-        <div class="detail-sub-title">모바일인덱스 실시간 매출 TOP 50 드롭다운 실기 분석 · PC·콘솔·모바일 게임 플레이어 관점 시스템 심층 고찰</div>
+
+
 
         <p class="detail-lead-summary">
-          과제 규정에 맞추어 두 가지 관점의 게임 플레이를 하나의 페이지에 통합 구성했습니다. 
-          <strong>첫 번째 탭</strong>에서는 모바일인덱스 실시간 인기/매출 50위권 게임을 직접 플레이하며 분석하기 위해, <strong>10개 단위 페이징 드롭다운(아코디언) &amp; 좌우 탐색</strong> 구조로 상위 50위 게임의 랭크와 게임명, 세부 분석을 제공합니다. 
+          과제 규정에 맞추어 두 가지 관점의 게임 플레이를 하나의 페이지에 통합 구성했습니다.
+          <strong>첫 번째 탭</strong>에서는 모바일인덱스 실시간 인기/매출 50위권 게임을 직접 플레이하며 분석하기 위해, <strong>10개 단위 페이징 드롭다운(아코디언) &amp; 좌우 탐색</strong> 구조로 상위 50위 게임의 랭크와 게임명, 세부 분석을 제공합니다.
           <strong>두 번째 탭</strong>에서는 몬스터헌터 월드(282.9h), ESCAPE FROM TARKOV(254.3h), 엘든 링(95.2h) 등 하드코어 장르부터 30종 이상의 플레이 아카이브와 코어 루프 분석을 제공합니다.
         </p>
 
@@ -948,41 +102,7 @@
       </section>
 
       <!-- 02. CORE LEARNING OUTCOMES & GROWTH ASSESSMENT (Prioritized at Top) -->
-      <section class="learning-growth-card" id="growth">
-        <span class="growth-header-label">SECTION 02 · GROWTH &amp; COMPETENCY</span>
-        <h2 class="growth-title">경험 전후의 학습 성과 및 핵심 역량 평가</h2>
-        
-        <div class="before-after-grid">
-          <!-- Before Box -->
-          <div class="before-box">
-            <span class="ba-label">수행 전 (BEFORE: 직면한 한계)</span>
-            <ul class="ba-list">
-              <li>게임을 단순히 소비자(엔드 유저) 시각에서 "재미있다/없다"라는 주관적 감상으로만 소비하는 경향</li>
-              <li>상위권 모바일 게임들이 유지하는 리텐션 루프와 BM(수익화) 장치의 구조적 상호작용 이해 부족</li>
-              <li>방대한 플레이 데이터를 한 화면에 효과적으로 보여주지 못해 세로 스크롤 피로도 발생</li>
-            </ul>
-          </div>
 
-          <!-- After Box -->
-          <div class="after-box">
-            <span class="ba-label">수행 후 (AFTER: 달성한 학습 성과 &amp; 역량 성장)</span>
-            <ul class="ba-list">
-              <li><strong>게임 시스템 역설계 및 분해 분석 역량 확립:</strong> 하드코어 파밍/전투부터 캐주얼 방치형까지 장르별 코어 루프 메커니즘 도출</li>
-              <li><strong>10개 단위 페이징 아코디언 컴포넌트 구현:</strong> 50개 데이터 항목을 왜곡 없이 열람할 수 있는 효율적 인터랙션 UI 설계</li>
-              <li><strong>개발자 시각의 플레이 철학 정립:</strong> "유저가 다음 행동을 계속 기대하게 만드는 규칙의 유기적 맞물림" 체득</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Conflict & Problem Solving Case: Data Layout -->
-        <div class="conflict-resolution-box">
-          <h4>방대한 분석 데이터의 UI 레이아웃 최적화 사례</h4>
-          <p>
-            <strong>50개 게임 분석 카드로 인한 끝없는 세로 스크롤 이슈 극복:</strong> 초기 기획에서 50개 게임 카드를 한 페이지에 세로로 길게 나열하여 모바일 및 데스크톱에서 심각한 스크롤 피로도를 유발했습니다. 
-            이를 해결하기 위해 <strong>'10개 단위 페이징 드롭다운 + 좌우 넘김 인터랙션'</strong>을 도입하여 한눈에 들어오는 콤팩트한 뷰를 완성하고 정보 탐색 속도를 3배 이상 단축시켰습니다.
-          </p>
-        </div>
-      </section>
 
     <!-- Tab Switcher Bar -->
     <div class="tab-switcher-wrapper">
@@ -1000,14 +120,14 @@
          TAB 1: 모바일 인기순위 50위 게임 플레이 분석
          =================================================================== -->
     <div class="tab-content-panel is-active" id="view-rank" role="tabpanel" aria-labelledby="tab-btn-rank">
-      
+
       <!-- 1-1. 50일 게임 플레이 분석 (TOP 50 드롭다운 아카이브) -->
-      <section class="content-section" style="padding-top: 0;">
+      <section class="content-section" style="padding-top: 0;" id="chapter-3">
         <div class="section-num-label">TAB 01 · PART A</div>
         <h2>50일 모바일 게임 플레이 분석 (TOP 50 드롭다운 아카이브)</h2>
-        <p style="color: #b9cddc;">
-          50일간 매일 순위권 모바일 게임을 플레이하고 분석하기 위해 공간을 최적화했습니다. 
-          세로 스크롤 부담과 좌우 불균형 왜곡을 해소하기 위해 <strong>한 화면에 10개씩 1열 드롭다운</strong>으로 구성하였으며, 
+        <p>
+          50일간 매일 순위권 모바일 게임을 플레이하고 분석하기 위해 공간을 최적화했습니다.
+          세로 스크롤 부담과 좌우 불균형 왜곡을 해소하기 위해 <strong>한 화면에 10개씩 1열 드롭다운</strong>으로 구성하였으며,
           <strong>좌우 넘김 버튼(이전/다음 10개)</strong> 및 순위 구간 탭을 통해 1~50위를 쾌적하게 넘나들며 탐색할 수 있습니다.
         </p>
 
@@ -1016,7 +136,7 @@
           <div class="accordion-filter-group" role="group" aria-label="순위 필터">
             <button class="accordion-filter-btn is-active" data-filter="all" type="button">전체 보기 (50)</button>
             <button class="accordion-filter-btn" data-filter="completed" type="button">✓ 플레이 완료 (2)</button>
-            <button class="accordion-filter-btn" data-filter="pending" type="button">⏳ 대기 중 (48)</button>
+            <button class="accordion-filter-btn" data-filter="pending" type="button"> 대기 중 (48)</button>
           </div>
           <div class="accordion-action-group">
             <button class="accordion-toggle-all-btn" id="btn-expand-all" type="button">현재 페이지 전체 펼치기</button>
@@ -1028,7 +148,7 @@
         <div class="rank-pagination-bar" id="rank-pagination-top">
           <div class="rank-page-nav">
             <button class="rank-page-btn btn-page-prev" type="button" aria-label="이전 10개 게임">
-              <span aria-hidden="true">◀</span> 이전 10개
+              <span aria-hidden="true"></span> 이전 10개
             </button>
             <div class="rank-page-pills-group" role="tablist" aria-label="순위 구간 선택">
               <button class="rank-page-pill is-active" data-page="0" type="button">1 ~ 10위</button>
@@ -1038,7 +158,7 @@
               <button class="rank-page-pill" data-page="4" type="button">41 ~ 50위</button>
             </div>
             <button class="rank-page-btn btn-page-next" type="button" aria-label="다음 10개 게임">
-              다음 10개 <span aria-hidden="true">▶</span>
+              다음 10개 <span aria-hidden="true"></span>
             </button>
           </div>
           <div class="rank-page-info">
@@ -1048,7 +168,7 @@
 
         <!-- 1-Column Paginated Dropdown List -->
         <div class="rank-accordion-grid" id="rank-accordion-container">
-          
+
           <!-- Rank 01 -->
           <details class="rank-accordion-item is-completed" data-status="completed">
             <summary class="rank-accordion-summary">
@@ -1073,10 +193,10 @@
                 자동 퀘스트 진행이 배제되어 있어 수동 조작 중심의 탐험을 유도한다. 그래픽 비주얼과 이펙트의 퀄리티는 준수하나, PC 클라이언트 환경에서 해상도 변경을 지원하지 않는 등 플랫폼 호환성 편의가 매우 미흡하다. 게임의 핵심 재미인 레이드 콘텐츠를 체험하기까지의 초반 진입 장벽이 지나치게 높게 설정되어 있다.
               </div>
               <div class="rank-detail-pros">
-                <strong>✨ 장점:</strong> 고품질 3D 그래픽 모델링과 연출, 자동 일변도에서 벗어난 수동 전투 감각.
+                <strong> 장점:</strong> 고품질 3D 그래픽 모델링과 연출, 자동 일변도에서 벗어난 수동 전투 감각.
               </div>
               <div class="rank-detail-cons">
-                <strong>⚠️ 치명적 단점:</strong> PC 빌드 해상도 조절 불가, 초반 레이드 진입 전까지의 지루한 허들과 불친절한 가이드.
+                <strong> 치명적 단점:</strong> PC 빌드 해상도 조절 불가, 초반 레이드 진입 전까지의 지루한 허들과 불친절한 가이드.
               </div>
             </div>
           </details>
@@ -1105,10 +225,10 @@
                 2시간 동안 진행하며 스킬 습득 시점과 방법을 전혀 안내하지 않아 성장의 갈피를 잡기 어렵다. 스킬 구매에 필요한 명예 상점 코인의 수급처가 툴팁 어디에도 명시되어 있지 않다. 보너스 스탯 획득 시에도 클래스별 주 스탯과 실제 전투 수치 간의 상호작용 설명이 결여되어 있으며, 공격 시 가해지는 데미지 수치 표기도 불분명하다. 특히 메인 퀘스트 목표가 필드에 있음에도 자동 사냥 클릭 시 타겟 몬스터 대신 엉뚱한 주변 잡몹만 우선 타겟팅하는 AI 알고리즘의 심각한 결함을 노출한다.
               </div>
               <div class="rank-detail-pros">
-                <strong>✨ 장점:</strong> 20년 이상 누적된 강력한 IP 파워와 안정적인 서버 및 백엔드 동시 접속 인프라.
+                <strong> 장점:</strong> 20년 이상 누적된 강력한 IP 파워와 안정적인 서버 및 백엔드 동시 접속 인프라.
               </div>
               <div class="rank-detail-cons">
-                <strong>⚠️ 치명적 단점:</strong> 신규 유저를 고려하지 않은 불친절한 UI/툴팁, 스탯 상호작용 설명 부재, 비효율적인 자동 사냥 AI 타겟팅 로직.
+                <strong> 치명적 단점:</strong> 신규 유저를 고려하지 않은 불친절한 UI/툴팁, 스탯 상호작용 설명 부재, 비효율적인 자동 사냥 AI 타겟팅 로직.
               </div>
             </div>
           </details>
@@ -2246,7 +1366,7 @@
         <div class="rank-pagination-bar is-bottom" id="rank-pagination-bottom">
           <div class="rank-page-nav">
             <button class="rank-page-btn btn-page-prev" type="button" aria-label="이전 10개 게임">
-              <span aria-hidden="true">◀</span> 이전 10개
+              <span aria-hidden="true"></span> 이전 10개
             </button>
             <div class="rank-page-pills-group" role="tablist" aria-label="순위 구간 선택">
               <button class="rank-page-pill is-active" data-page="0" type="button">1 ~ 10위</button>
@@ -2256,7 +1376,7 @@
               <button class="rank-page-pill" data-page="4" type="button">41 ~ 50위</button>
             </div>
             <button class="rank-page-btn btn-page-next" type="button" aria-label="다음 10개 게임">
-              다음 10개 <span aria-hidden="true">▶</span>
+              다음 10개 <span aria-hidden="true"></span>
             </button>
           </div>
           <div class="rank-page-info">
@@ -2266,15 +1386,15 @@
       </section>
 
       <!-- 1-2. 모바일인덱스 실시간 순위 데이터베이스 (TOP 45) -->
-      <section class="content-section">
+      <section class="content-section" id="chapter-4">
         <div class="section-num-label">TAB 01 · PART B</div>
         <h2>모바일인덱스 실시간 순위 데이터베이스 (2026-09-03 기준)</h2>
-        <p style="color: #b9cddc;">
+        <p>
           출처: mobileindex.com 실시간 매출 순위 스크린샷 데이터 정리. 플레이 완료한 게임은 하이라이트로 구분되어 있습니다.
         </p>
 
         <div class="table-container">
-          <table>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="표 가로 스크롤"><table>
             <thead>
               <tr>
                 <th style="width: 8%; text-align: center;">순위</th>
@@ -2399,12 +1519,12 @@
                 <td>배틀로얄 슈터</td>
               </tr>
             </tbody>
-          </table>
+          </table></div>
         </div>
       </section>
 
       <!-- 1-3. 시장 분석 메모 -->
-      <section class="content-section">
+      <section class="content-section" id="chapter-5">
         <div class="section-num-label">TAB 01 · PART C</div>
         <h2>모바일 마켓 트렌드 종합 분석</h2>
         <div class="content-card">
@@ -2429,13 +1549,13 @@
     <!-- ===================================================================
          TAB 2: 보유 게임 플레이 이력 (플레이 아카이브)
          =================================================================== -->
-    <div class="tab-content-panel" id="view-history" role="tabpanel" aria-labelledby="tab-btn-history" hidden>
-      
+    <div class="tab-content-panel" id="view-history" role="tabpanel" aria-labelledby="tab-btn-history" hidden="">
+
       <!-- 2-1. 공식 플레이 이력 등록 카드 -->
-      <section class="content-section" style="padding-top: 0;">
+      <section class="content-section" style="padding-top: 0;" id="chapter-6">
         <div class="section-num-label">TAB 02 · PART A</div>
         <h2>보유 게임 플레이 이력 카드</h2>
-        <p style="color: #b9cddc;">
+        <p>
           본인이 오랜 기간 직접 플레이하며 시스템과 BM을 체득한 게임 플레이 이력입니다.
         </p>
 
@@ -2445,10 +1565,10 @@
           <article class="review-card">
             <div class="review-card-header">
               <div>
-                <span style="font-size: 0.72rem; color: var(--green); font-weight: 800; letter-spacing: 0.08em;">PC / CONSOLE · 헌팅 액션 RPG</span>
+                <span>PC / CONSOLE · 헌팅 액션 RPG</span>
                 <h3 class="review-app-title">몬스터헌터 월드</h3>
               </div>
-              <span class="review-rank-badge" style="background: var(--green); color: #06111d;">282.9h</span>
+              <span class="review-rank-badge">282.9h</span>
             </div>
             <div class="review-meta-row">
               <span>플레이타임: <strong>282.9시간</strong></span>
@@ -2464,10 +1584,10 @@
           <article class="review-card">
             <div class="review-card-header">
               <div>
-                <span style="font-size: 0.72rem; color: #ff9b9b; font-weight: 800; letter-spacing: 0.08em;">PC · 하드코어 FPS 루트 슈터</span>
+                <span>PC · 하드코어 FPS 루트 슈터</span>
                 <h3 class="review-app-title">ESCAPE FROM TARKOV</h3>
               </div>
-              <span class="review-rank-badge" style="background: #ff5a5f; color: #fff;">254.3h</span>
+              <span class="review-rank-badge">254.3h</span>
             </div>
             <div class="review-meta-row">
               <span>플레이타임: <strong>254.3시간</strong></span>
@@ -2483,10 +1603,10 @@
           <article class="review-card">
             <div class="review-card-header">
               <div>
-                <span style="font-size: 0.72rem; color: var(--gold); font-weight: 800; letter-spacing: 0.08em;">PC / CONSOLE · 소울라이크 오픈월드</span>
+                <span>PC / CONSOLE · 소울라이크 오픈월드</span>
                 <h3 class="review-app-title">엘든링 (ELDEN RING)</h3>
               </div>
-              <span class="review-rank-badge" style="background: var(--gold); color: #06111d;">95.2h</span>
+              <span class="review-rank-badge">95.2h</span>
             </div>
             <div class="review-meta-row">
               <span>플레이타임: <strong>95.2시간</strong></span>
@@ -2500,9 +1620,9 @@
         </div>
 
         <!-- 전체 게임 플레이 이력 테이블 -->
-        <h3 style="font-size: 1.15rem; margin: 32px 0 14px; color: var(--text);">전체 누적 플레이 게임 데이터베이스</h3>
+        <h3 style="margin: 32px 0px 14px;">전체 누적 플레이 게임 데이터베이스</h3>
         <div class="table-container">
-          <table>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="표 가로 스크롤"><table>
             <thead>
               <tr>
                 <th style="width: 12%;">카테고리 / 플랫폼</th>
@@ -2515,14 +1635,14 @@
             <tbody>
               <!-- 온라인 MMORPG -->
               <tr>
-                <td><span class="badge" style="background: rgba(102,192,244,0.15); color: var(--blue-bright);">온라인 MMORPG</span></td>
+                <td><span class="badge">온라인 MMORPG</span></td>
                 <td><strong>메이플스토리</strong></td>
                 <td>장기 플레이</td>
                 <td><strong>팔라딘 Lv. 282</strong></td>
                 <td>유니온 그랜드 마스터 III (Lv. 9039) 달성</td>
               </tr>
               <tr>
-                <td><span class="badge" style="background: rgba(102,192,244,0.15); color: var(--blue-bright);">온라인 MMORPG</span></td>
+                <td><span class="badge">온라인 MMORPG</span></td>
                 <td><strong>로스트아크</strong></td>
                 <td>장기 플레이</td>
                 <td><strong>아이템 Lv. 1641.66</strong></td>
@@ -2530,49 +1650,49 @@
               </tr>
               <!-- 대전 / 액션 / 생존 -->
               <tr>
-                <td><span class="badge" style="background: rgba(242,201,109,0.15); color: var(--gold);">격투 / 대전</span></td>
+                <td><span class="badge">격투 / 대전</span></td>
                 <td><strong>철권 7 (Tekken 7)</strong></td>
                 <td><strong>786.7시간</strong></td>
                 <td><strong>최고 계급: 19단 (OVERLOAD)</strong></td>
                 <td>프레임 단위 심리전 및 히트 판정 메커니즘 체득</td>
               </tr>
               <tr>
-                <td><span class="badge" style="background: rgba(242,201,109,0.15); color: var(--gold);">MOBA / 배틀로얄</span></td>
+                <td><span class="badge">MOBA / 배틀로얄</span></td>
                 <td><strong>이터널 리턴</strong></td>
                 <td><strong>604.5시간</strong></td>
                 <td><strong>최고 티어: 플래티넘 4</strong></td>
                 <td>루트 파밍 및 실시간 교전 포지셔닝 분석</td>
               </tr>
               <tr>
-                <td><span class="badge" style="background: rgba(242,201,109,0.15); color: var(--gold);">배틀로얄 FPS</span></td>
+                <td><span class="badge">배틀로얄 FPS</span></td>
                 <td><strong>배틀그라운드 (PUBG)</strong></td>
                 <td><strong>239.1시간</strong></td>
                 <td>경쟁전 플레이</td>
                 <td>사운드 플레이 및 자기장 전술적 이동</td>
               </tr>
               <tr>
-                <td><span class="badge" style="background: rgba(242,201,109,0.15); color: var(--gold);">격투 / 대전</span></td>
+                <td><span class="badge">격투 / 대전</span></td>
                 <td><strong>GUILTY GEAR -STRIVE-</strong></td>
                 <td><strong>148.5시간</strong></td>
                 <td><strong>8층 (천상계 도전)</strong></td>
                 <td>주 캐릭터: 램리썰 발렌타인</td>
               </tr>
               <tr>
-                <td><span class="badge" style="background: rgba(184,166,255,0.15); color: var(--purple);">인디 / 액션</span></td>
+                <td><span class="badge">인디 / 액션</span></td>
                 <td><strong>스컬: 더 히어로 슬레이어</strong></td>
                 <td><strong>102.8시간</strong></td>
                 <td>엔드게임 클리어</td>
                 <td>로그라이크 빌드 조합 및 쿨다운 연계</td>
               </tr>
               <tr>
-                <td><span class="badge" style="background: rgba(184,166,255,0.15); color: var(--purple);">인디 / 서바이벌</span></td>
+                <td><span class="badge">인디 / 서바이벌</span></td>
                 <td><strong>발헤임 (Valheim)</strong></td>
                 <td><strong>59.6시간</strong></td>
                 <td>Charred Fortress 클리어</td>
                 <td>Gem 적용 최종 무기 보유, 인디 게임의 깊이감 체득</td>
               </tr>
               <tr>
-                <td><span class="badge" style="background: rgba(184,166,255,0.15); color: var(--purple);">액션 RPG</span></td>
+                <td><span class="badge">액션 RPG</span></td>
                 <td><strong>몬스터헌터 라이즈</strong></td>
                 <td><strong>51.8시간</strong></td>
                 <td>상위 집회소 클리어</td>
@@ -2580,96 +1700,96 @@
               </tr>
               <!-- 서브컬처 & 모바일 -->
               <tr>
-                <td><span class="badge" style="background: rgba(164,208,7,0.15); color: var(--green);">모바일 / 서브컬처</span></td>
+                <td><span class="badge">모바일 / 서브컬처</span></td>
                 <td><strong>원신 (Genshin Impact)</strong></td>
                 <td>장기 플레이</td>
                 <td><strong>계정 Lv. 59 / 월드 Lv. 9</strong></td>
                 <td>나타 이하 전 지역 수집도 최대 100% ~ 최소 85% 달성</td>
               </tr>
               <tr>
-                <td><span class="badge" style="background: rgba(164,208,7,0.15); color: var(--green);">모바일 / 서브컬처</span></td>
+                <td><span class="badge">모바일 / 서브컬처</span></td>
                 <td><strong>블루 아카이브</strong></td>
                 <td>장기 플레이</td>
                 <td><strong>계정 Lv. 90 (만렙)</strong></td>
                 <td>총력전 및 서브컬처 캐릭터 내러티브 연출 분석</td>
               </tr>
               <tr>
-                <td><span class="badge" style="background: rgba(164,208,7,0.15); color: var(--green);">모바일 / 서브컬처</span></td>
+                <td><span class="badge">모바일 / 서브컬처</span></td>
                 <td><strong>페르소나 5 더 팬텀 X</strong></td>
                 <td>지속 플레이</td>
                 <td><strong>계정 Lv. 80 / S-Lv 32</strong></td>
                 <td>마음의 바다 시련 7단계 돌파</td>
               </tr>
               <tr>
-                <td><span class="badge" style="background: rgba(164,208,7,0.15); color: var(--green);">모바일 / 서브컬처</span></td>
+                <td><span class="badge">모바일 / 서브컬처</span></td>
                 <td><strong>트릭컬: REVIVE</strong></td>
                 <td>지속 플레이</td>
                 <td><strong>교주 Lv. 114</strong></td>
                 <td>스쿼드 전투력 8,780,689 달성</td>
               </tr>
               <tr>
-                <td><span class="badge" style="background: rgba(164,208,7,0.15); color: var(--green);">모바일 / 서브컬처</span></td>
+                <td><span class="badge">모바일 / 서브컬처</span></td>
                 <td><strong>림버스 컴퍼니</strong></td>
                 <td>지속 플레이</td>
                 <td><strong>계정 Lv. 100</strong></td>
                 <td>7시즌 패스 레벨 623 달성</td>
               </tr>
               <tr>
-                <td><span class="badge" style="background: rgba(164,208,7,0.15); color: var(--green);">모바일 / 서브컬처</span></td>
+                <td><span class="badge">모바일 / 서브컬처</span></td>
                 <td><strong>듀엣 나이트 어비스</strong></td>
                 <td><strong>213시간</strong></td>
                 <td>주요 장비 4강</td>
                 <td>세이렌의 날개 * 고무 * 결단 4강 보유</td>
               </tr>
               <tr>
-                <td><span class="badge" style="background: rgba(164,208,7,0.15); color: var(--green);">모바일 / 서브컬처</span></td>
+                <td><span class="badge">모바일 / 서브컬처</span></td>
                 <td><strong>몬길: STAR DIVE</strong></td>
                 <td>테스트 플레이</td>
                 <td><strong>모험 Lv. 50 / 야옹이 Lv. 27</strong></td>
                 <td>아몬 13단계 클리어</td>
               </tr>
               <tr>
-                <td><span class="badge" style="background: rgba(164,208,7,0.15); color: var(--green);">모바일 / 서브컬처</span></td>
+                <td><span class="badge">모바일 / 서브컬처</span></td>
                 <td><strong>소녀전선 2: 망명</strong></td>
                 <td>지속 플레이</td>
                 <td><strong>지휘관 Lv. 60</strong></td>
                 <td>잔여 잉여파편 5,624 보유</td>
               </tr>
               <tr>
-                <td><span class="badge" style="background: rgba(164,208,7,0.15); color: var(--green);">모바일 / 서브컬처</span></td>
+                <td><span class="badge">모바일 / 서브컬처</span></td>
                 <td><strong>이환</strong></td>
                 <td>테스트 플레이</td>
                 <td><strong>헌터 Lv. 36 / 도시 Lv. 24</strong></td>
                 <td>어반 오픈월드 시스템 분석</td>
               </tr>
               <tr>
-                <td><span class="badge" style="background: rgba(164,208,7,0.15); color: var(--green);">모바일 / RPG</span></td>
+                <td><span class="badge">모바일 / RPG</span></td>
                 <td><strong>킹스레이드</strong></td>
                 <td><strong>260시간</strong></td>
                 <td>레이드 콘텐츠 공략</td>
                 <td>실시간 스킬 시전 전투 밸런스 체득</td>
               </tr>
               <tr>
-                <td><span class="badge" style="background: rgba(164,208,7,0.15); color: var(--green);">모바일 / 전략</span></td>
+                <td><span class="badge">모바일 / 전략</span></td>
                 <td><strong>아르카나 택틱스</strong></td>
                 <td><strong>170시간 28분</strong></td>
                 <td>조합 덱 완성</td>
                 <td>실시간 랜덤 디펜스 조합 시너지 분석</td>
               </tr>
               <tr>
-                <td><span class="badge" style="background: rgba(164,208,7,0.15); color: var(--green);">모바일 / RPG</span></td>
+                <td><span class="badge">모바일 / RPG</span></td>
                 <td><strong>마비노기 모바일</strong></td>
                 <td><strong>56시간 52분</strong></td>
                 <td>과제 3 연계 플레이</td>
                 <td>일상 콘텐츠 및 픽셀라이프 이벤트 기획 기반 확보</td>
               </tr>
             </tbody>
-          </table>
+          </table></div>
         </div>
       </section>
 
       <!-- 2-2. 몬스터헌터 월드 핵심 플레이 루프 심층 분석 -->
-      <section class="content-section">
+      <section class="content-section" id="chapter-7">
         <div class="section-num-label">TAB 02 · PART B</div>
         <h2>『몬스터헌터 월드』 280시간 플레이어 관점 코어 루프 &amp; 생태계 상호작용 분석</h2>
         <div class="content-card">
@@ -2692,7 +1812,7 @@
 
             <div class="loop-card">
               <span class="loop-card-step">STEP 03</span>
-              <h4>⚔️ 육질 판정 &amp; 헌팅 액션</h4>
+              <h4> 육질 판정 &amp; 헌팅 액션</h4>
               <p>부위별 육질(참격/타격/탄) 판정과 클러치 클로 상처 유발 메커니즘을 고려하여, 몬스터의 약점 부위를 집중 파괴하고 경직을 이끌어냅니다.</p>
             </div>
 
@@ -2706,7 +1826,7 @@
       </section>
 
       <!-- 2-3. 하드코어 장르 & 라이브 서비스 플레이어 관점 시스템 인사이트 -->
-      <section class="content-section">
+      <section class="content-section" id="chapter-8">
         <div class="section-num-label">TAB 02 · PART C</div>
         <h2>하드코어 &amp; 대규모 라이브 게임 플레이를 통한 기획적 인사이트</h2>
         <div class="content-card">
@@ -2732,7 +1852,7 @@
     <section class="key-takeaway-box" id="takeaways">
       <h3>최종 분석 결과 및 핵심 결론 (Key Takeaways)</h3>
       <p>
-        본 프로젝트는 <strong>"플레이어의 경험을 객관적인 게임 루프와 데이터 아키텍처로 분해·역설계할 수 있는가?"</strong>에 대한 해답입니다. 
+        본 프로젝트는 <strong>"플레이어의 경험을 객관적인 게임 루프와 데이터 아키텍처로 분해·역설계할 수 있는가?"</strong>에 대한 해답입니다.
         모바일 매출 50위권 분석을 통해 입증한 리텐션 장치 분석력과, PC·콘솔 하드코어 장르 30종 이상의 플레이 이력을 통해 체득한 손맛과 피드백 감각은 향후 클라이언트 개발 시 기획자와 가장 원활하게 호흡하며 유저를 몰입시키는 플레이 시스템을 구현하는 핵심 밑거름이 됩니다.
       </p>
     </section>
@@ -2743,7 +1863,7 @@
         <span aria-hidden="true">←</span> 이전: 05. [Study] 자바 람다 14일 계획
       </a>
       <a class="detail-nav-btn" href="../index.html#projects">
-        <span aria-hidden="true">☰</span> 전체 프로젝트 목록으로
+        <span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"></path></svg></span> 전체 프로젝트 목록으로
       </a>
       <a class="detail-nav-btn" href="assignment-03.html">
         다음: 07. [기획서] 마비노기 모바일 에린의 조각들 <span aria-hidden="true">→</span>
@@ -2754,7 +1874,7 @@
 </div>
 
 <!-- Object-Oriented JS Architecture Bundle -->
-<script src="../assets/js/portfolio-system.js"></script>
+
 
   <!-- Interactive Tab & Accordion Script -->
   <script>
@@ -2944,29 +2064,31 @@
   </script>
 
   <!-- FLOATING THEME FAB (Image 1 Requirement · Always Visible Bottom Right) -->
-  <div class="floating-theme-fab" id="floatingThemeFab" aria-label="테마 설정">
-    <div class="theme-fab-spheres" aria-hidden="true">
-      <button class="theme-fab-sphere" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드">
-        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+
+
+  <!-- Object-Oriented JS Architecture Bundle -->
+
+
+
+<div class="floating-theme-fab" id="floatingThemeFab" aria-label="테마 설정">
+    <div class="theme-fab-spheres" aria-hidden="true" id="theme-options" inert="">
+      <button class="theme-fab-sphere" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드" type="button" tabindex="-1">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
         <span class="sphere-tooltip">라이트 모드</span>
       </button>
-      <button class="theme-fab-sphere" data-theme-set="dark" title="다크 모드" aria-label="다크 모드">
-        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+      <button class="theme-fab-sphere" data-theme-set="dark" title="다크 모드" aria-label="다크 모드" type="button" tabindex="-1">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
         <span class="sphere-tooltip">다크 모드</span>
       </button>
-      <button class="theme-fab-sphere" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정">
-        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span>
+      <button class="theme-fab-sphere" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정" type="button" tabindex="-1">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span>
         <span class="sphere-tooltip">시스템 설정</span>
       </button>
     </div>
-    <button class="theme-fab-trigger" id="themeFabTrigger" title="테마 변경" aria-label="테마 변경">
+    <button class="theme-fab-trigger" id="themeFabTrigger" title="테마 변경" aria-label="테마 변경" aria-controls="theme-options" aria-expanded="false" type="button">
       <span class="fab-current-icon mono-icon mono-icon-stroke">
-        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 2v20a10 10 0 0 0 0-20z"></path><circle cx="12" cy="12" r="10"></circle></svg>
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20a10 10 0 0 0 0-20z"></path><circle cx="12" cy="12" r="10"></circle></svg>
       </span>
     </button>
-  </div>
-
-  <!-- Object-Oriented JS Architecture Bundle -->
-  <script src="../assets/js/portfolio-system.js"></script>
-</body>
-</html>
+  </div><script src="../assets/js/portfolio-system.js"></script>
+</body></html>

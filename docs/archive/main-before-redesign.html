@@ -1,0 +1,1103 @@
+<!doctype html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="기획서의 상상을 완벽한 손맛으로 빚어내는 게임 클라이언트 개발자 조준수의 포트폴리오">
+  <meta name="theme-color" content="#08111e">
+  <meta property="og:title" content="조준수 | Game Client Developer Portfolio">
+  <meta property="og:description" content="기획을 플레이 가능한 규칙과 견고한 아키텍처로 구현하는 게임 개발자 조준수">
+  <meta property="og:type" content="website">
+  <title>조준수 | Game Client Developer Portfolio</title>
+
+  <!-- Prevent Theme Flicker (FOUC) Script -->
+  <script>
+    (function() {
+      try {
+        var saved = localStorage.getItem('junsu_portfolio_theme') || 'system';
+        var isDark = saved === 'dark' || (saved === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Google / Pretendard Fonts -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+  <!-- Core Design System & Components -->
+  <link rel="stylesheet" href="assets/css/portfolio-system.css">
+
+  <style>
+    /* Page Specific Enhancements & Ambient Lighting */
+    .hero-highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .hero-highlight-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 18px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: all 180ms ease;
+    }
+
+    .hero-highlight-card:hover {
+      border-color: var(--line-strong);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-highlight-icon {
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+
+    .hero-highlight-text strong {
+      display: block;
+      font-size: 0.96rem;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .hero-highlight-text p {
+      font-size: 0.82rem;
+      color: var(--text-sub);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Skills Evidence Cards (Addressing Peer Feedback) */
+    .skills-evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-evidence-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: all 180ms ease;
+    }
+
+    .skill-evidence-card:hover {
+      border-color: var(--line-strong);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .skill-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .skill-card-top h3 {
+      font-size: 1.15rem;
+      font-weight: 850;
+      color: var(--text);
+    }
+
+    .skill-badge-level {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--blue-subtle);
+      color: var(--blue-bright);
+      border: 1px solid var(--line-strong);
+    }
+
+    .skill-evidence-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.86rem;
+      color: var(--text-sub);
+    }
+
+    .skill-evidence-list li {
+      position: relative;
+      padding-left: 18px;
+      line-height: 1.55;
+    }
+
+    .skill-evidence-list li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--blue-bright);
+      font-weight: bold;
+    }
+
+    .skill-project-proof {
+      margin-top: auto;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .skill-project-proof strong {
+      color: var(--blue-bright);
+    }
+
+    /* Timeline & Experience Details */
+    .timeline-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+    }
+
+    .timeline-col {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 28px;
+    }
+
+    .timeline-col-title {
+      font-size: 0.82rem;
+      font-weight: 850;
+      letter-spacing: 0.12em;
+      color: var(--blue-bright);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .timeline-entry {
+      position: relative;
+      padding-left: 20px;
+      padding-bottom: 24px;
+      border-left: 2px solid var(--line-strong);
+    }
+
+    .timeline-entry:last-child {
+      padding-bottom: 0;
+      border-left-color: transparent;
+    }
+
+    .timeline-entry::before {
+      content: "";
+      position: absolute;
+      left: -6px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--blue-bright);
+      box-shadow: 0 0 8px var(--blue);
+    }
+
+    .timeline-period {
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+
+    .timeline-title {
+      font-size: 1.05rem;
+      font-weight: 850;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .timeline-desc {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      line-height: 1.6;
+    }
+
+    .timeline-tag {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: var(--green-subtle);
+      color: var(--green-bright);
+      border: 1px solid rgba(164, 208, 7, 0.3);
+    }
+
+    /* Section Spacing */
+    .portfolio-section {
+      padding: 80px 0 30px;
+      border-bottom: 1px solid var(--line);
+      scroll-margin-top: 40px;
+    }
+
+    .portfolio-section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.76rem;
+      font-weight: 850;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue-bright);
+      margin-bottom: 10px;
+    }
+
+    .section-eyebrow::before {
+      content: "";
+      display: inline-block;
+      width: 16px;
+      height: 2px;
+      background: currentColor;
+    }
+
+    .section-heading-lg {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .section-lead-copy {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text-sub);
+      max-width: 860px;
+      margin-bottom: 32px;
+      word-break: keep-all;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Mobile & Tablet Header Bar -->
+  <header class="mobile-header" aria-label="모바일 상단 헤더">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span style="font-weight:900;font-size:1.1rem;color:var(--text);">조준수</span>
+      <span style="font-size:0.75rem;color:var(--muted);font-weight:700;">GAME DEV</span>
+    </div>
+    <div class="theme-switch-group">
+      <button class="theme-btn" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+      <button class="theme-btn" data-theme-set="dark" title="다크 모드" aria-label="다크 모드">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      <button class="theme-btn" data-theme-set="system" title="시스템 자동" aria-label="시스템 자동">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Multi-Column Layout -->
+  <div class="layout-with-sidebar">
+
+    <!-- ====================================================================
+         01. STICKY FLOATING PROFILE SIDEBAR (Image 2 Style · Always Visible)
+         ==================================================================== -->
+    <aside class="sticky-profile-sidebar" aria-label="개발자 프로필 및 내비게이션">
+      <div>
+        <div class="sidebar-brand-badge">PORTFOLIO</div>
+
+        <div class="sidebar-profile">
+          <h1 class="sidebar-name">조준수</h1>
+          <div class="sidebar-role">Game Client Developer</div>
+          <p class="sidebar-bio">
+            기획서의 규칙을 플레이 가능한 재미로 구현하고, 팀원이 믿고 맡길 수 있는 견고한 코드를 작성하는 게임 클라이언트 프로그래머가 되고 싶습니다.
+          </p>
+        </div>
+
+        <!-- Sidebar Navigation List -->
+        <nav class="sidebar-nav" aria-label="포트폴리오 바로가기 목차">
+          <a class="sidebar-nav-item active" href="#hero">
+            <span>소개 (About)</span>
+            <span class="nav-num">01</span>
+          </a>
+          <a class="sidebar-nav-item" href="#experience">
+            <span>학력 &amp; 경력</span>
+            <span class="nav-num">02</span>
+          </a>
+          <a class="sidebar-nav-item" href="#awards">
+            <span>수상 실적</span>
+            <span class="nav-num">03</span>
+          </a>
+          <a class="sidebar-nav-item" href="#skills">
+            <span>핵심 역량</span>
+            <span class="nav-num">04</span>
+          </a>
+          <a class="sidebar-nav-item" href="#projects">
+            <span>프로젝트</span>
+            <span class="nav-num">05</span>
+          </a>
+          <a class="sidebar-nav-item" href="#contact">
+            <span>연락처 (Contact)</span>
+            <span class="nav-num">06</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-social-links">
+          <a href="https://github.com/Junsu-git" target="_blank" rel="noopener noreferrer">
+            <span class="mono-icon"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></span> GitHub
+          </a>
+          <a href="mailto:wnstn2228@naver.com">
+            <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="16" height="16"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></span> Email
+          </a>
+        </div>
+        <div style="font-size: 0.72rem; color: var(--muted);">
+          © Jo Junsu. All rights reserved.
+        </div>
+      </div>
+    </aside>
+
+    <!-- ====================================================================
+         02. MAIN CONTENT STREAM
+         ==================================================================== -->
+    <main class="main-content-flow" id="main-content">
+
+      <!-- SECTION 01: HERO & ABOUT -->
+      <section class="portfolio-section" id="hero" data-nav-section>
+        <span class="section-eyebrow">ABOUT · GAME CLIENT DEVELOPER</span>
+        <h2 class="section-heading-lg">
+          기획의 규칙을 플레이 가능한 재미로 구현하는 개발자
+        </h2>
+        <p class="section-lead-copy">
+          안녕하세요, 게임 클라이언트 프로그래머 <strong>조준수</strong>입니다.
+          화려한 말보다 동작하는 코드와 체계적인 아키텍처로 증명하고 싶습니다.
+          플레이어가 손끝으로 느끼는 안정적인 조작감과 성능을 최우선으로 여기며, 
+          기획 의도가 시스템 속에서 온전히 구현되도록 데이터와 로직을 정교하게 엮어내는 개발자가 되고 싶습니다.
+        </p>
+
+        <!-- Key Accolades Front and Center -->
+        <div class="hero-highlight-grid">
+          <div class="hero-highlight-card">
+            <span class="mono-icon mono-icon-stroke" style="width:28px;height:28px;color:var(--text);"><svg viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg></span>
+            <div class="hero-highlight-text">
+              <strong>GameAify AI 공모전 기술상</strong>
+              <p>생성형 AI와 게임 루프를 결합한 3D 어드벤처 《누리살이》 출품 및 수상 (2025.08)</p>
+            </div>
+          </div>
+          <div class="hero-highlight-card">
+            <span class="mono-icon mono-icon-stroke" style="width:28px;height:28px;color:var(--text);"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg></span>
+            <div class="hero-highlight-text">
+              <strong>전 학기 평점 4.5 만점</strong>
+              <p>유한대학교 컴퓨터소프트웨어학과 게임콘텐츠전공 수석 성적 및 탄탄한 프로그래밍 기본기</p>
+            </div>
+          </div>
+          <div class="hero-highlight-card">
+            <span class="mono-icon mono-icon-stroke" style="width:28px;height:28px;color:var(--text);"><line x1="6" y1="12" x2="10" y2="12"></line><line x1="8" y1="10" x2="8" y2="14"></line><line x1="15" y1="13" x2="15.01" y2="13"></line><line x1="18" y1="11" x2="18.01" y2="11"></line><rect x="2" y="6" width="20" height="12" rx="2"></rect></svg></span>
+            <div class="hero-highlight-text">
+              <strong>다장르 클라이언트 구현 경험</strong>
+              <p>조제 시뮬레이션, 3D 액션 FSM, AI 연동 생활형 심, 테이블탑 보드게임까지 4대 프로젝트 개발</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 02: EDUCATION & EXPERIENCE (Image 3: Education First, Compact Layout) -->
+      <section class="portfolio-section" id="experience" data-nav-section>
+        <span class="section-eyebrow">EDUCATION &amp; EXPERIENCE</span>
+        <h2 class="section-heading-lg">학력 및 주요 이력</h2>
+        <p class="section-lead-copy">
+          게임 개발을 향한 배움의 과정과 실무·복무 이력을 담백하게 정리했습니다.
+        </p>
+
+        <div class="timeline-container">
+          <!-- Column 1: Education (Left Column as Requested) -->
+          <div class="timeline-col">
+            <h3 class="timeline-col-title">EDUCATION (학력)</h3>
+
+            <div class="timeline-entry">
+              <div class="timeline-period">2024.03 — 2027.02 (졸업예정)</div>
+              <h4 class="timeline-title">유한대학교</h4>
+              <p class="timeline-desc">컴퓨터소프트웨어학과 게임콘텐츠전공</p>
+              <span class="timeline-tag">전 학기 평점 4.5 만점 수석</span>
+            </div>
+
+            <div class="timeline-entry">
+              <div class="timeline-period">2019.06 — 2021.06</div>
+              <h4 class="timeline-title">Christ University (인도)</h4>
+              <p class="timeline-desc">BBA (경영학 학사) 중퇴 · 게임 개발 진로 재도전을 위한 학업 전환</p>
+            </div>
+
+            <div class="timeline-entry">
+              <div class="timeline-period">2016.03 — 2019.02</div>
+              <h4 class="timeline-title">서울디지텍고등학교</h4>
+              <p class="timeline-desc">게임개발학과 · C/C++ 및 게임 프로그래밍 기초 체득</p>
+            </div>
+          </div>
+
+          <!-- Column 2: Experience & Service (Right Column, Compact) -->
+          <div class="timeline-col">
+            <h3 class="timeline-col-title">EXPERIENCE &amp; SERVICE (경력 및 복무)</h3>
+
+            <div class="timeline-entry">
+              <div class="timeline-period">2024.07 — 2026.09</div>
+              <h4 class="timeline-title">유한대학교 교수학습지원센터</h4>
+              <p class="timeline-desc">근로 장학생 · 교수학습 시스템 운영 및 교육 콘텐츠 관리 지원</p>
+            </div>
+
+            <div class="timeline-entry">
+              <div class="timeline-period">2023.05 — 2024.02</div>
+              <h4 class="timeline-title">게임 개발자 진로 확립</h4>
+              <p class="timeline-desc">C# 객체지향 및 Unity 프로그래밍 집중 독학, 게임콘텐츠전공 진학 준비</p>
+            </div>
+
+            <div class="timeline-entry">
+              <div class="timeline-period">2021.08.12 — 2023.05.11</div>
+              <h4 class="timeline-title">사회복무요원 복무 만료</h4>
+              <p class="timeline-desc">공공 행정 및 지원 업무 수행, 만기 소집해제</p>
+            </div>
+
+            <div class="timeline-entry">
+              <div class="timeline-period">2018.12 — 2019.01</div>
+              <h4 class="timeline-title">레이존 (Rayzone)</h4>
+              <p class="timeline-desc">주니어 개발자 · Unreal 엔진 기반 인터랙션 콘텐츠 모바일 포팅 참여</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 03: AWARDS & HIGHLIGHTS -->
+      <section class="portfolio-section" id="awards" data-nav-section>
+        <span class="section-eyebrow">AWARDS &amp; RECOGNITION</span>
+        <h2 class="section-heading-lg">수상 및 검증된 성과</h2>
+        <p class="section-lead-copy">
+          공모전 입상 및 학업 성과, 직무 역량 강화 교육 이수를 통해 검증된 결과물입니다.
+        </p>
+
+        <div class="overview-banner">
+          <div class="overview-banner-title">
+            <h3>주요 수상 및 대외 인증 내역</h3>
+            <span class="badge-award">공식 검증 완료</span>
+          </div>
+
+          <table class="overview-grid-table">
+            <thead>
+              <tr>
+                <th>일자</th>
+                <th>구분 / 대회명</th>
+                <th>수상 내역 / 성과</th>
+                <th>주관 기관 / 프로젝트</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>2025.08</strong></td>
+                <td>GameAify 게임 제작 공모전</td>
+                <td><span class="badge-award">AI 기술상 수상</span></td>
+                <td>GameAify 주관 · 프로젝트 《누리살이》</td>
+              </tr>
+              <tr>
+                <td><strong>2024 ~ 2026</strong></td>
+                <td>유한대학교 학업 우수 장학</td>
+                <td><strong class="text-green">전 학기 성적 최우수 (평점 4.5)</strong></td>
+                <td>유한대학교 컴퓨터소프트웨어학과 게임콘텐츠전공</td>
+              </tr>
+              <tr>
+                <td><strong>2026.09</strong></td>
+                <td>Unity 최적화 및 프로파일링 특강</td>
+                <td><span class="text-blue">직무 역량 교육 이수 (드로우콜/GC 최소화)</span></td>
+                <td>유한대학교 게임콘텐츠전공 실무 세미나</td>
+              </tr>
+              <tr>
+                <td><strong>2026.09</strong></td>
+                <td>개발자를 위한 Git &amp; 협업 워크플로</td>
+                <td><span class="text-blue">Git-Flow 브랜치 전략 및 대용량 LFS 실무 이수</span></td>
+                <td>유한대학교 교수학습지원센터</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION 04: CORE SKILLS & TECHNICAL EVIDENCE (Peer Feedback: Evidence-based) -->
+      <section class="portfolio-section" id="skills" data-nav-section>
+        <span class="section-eyebrow">TECHNICAL COMPETENCY</span>
+        <h2 class="section-heading-lg">핵심 기술 스택 &amp; 검증된 프로젝트 근거</h2>
+        <p class="section-lead-copy">
+          단순한 점수 척도 대신, 실제 프로젝트에서 어떻게 구현하고 검증했는지 명확한 기술 근거를 제시합니다. 
+          클라이언트 프로그래밍을 핵심 축(Core)으로 두고, 기획 이해도는 엔진-기획 간 소통 병목을 없애는 강력한 시너지로 발휘합니다.
+        </p>
+
+        <div class="skills-evidence-grid">
+          <!-- Skill 01 -->
+          <div class="skill-evidence-card">
+            <div class="skill-card-top">
+              <h3>C# 프로그래밍 &amp; 아키텍처</h3>
+              <div class="skill-hashtag-group">
+                <span class="skill-hashtag">#Core</span>
+                <span class="skill-hashtag">#Advanced</span>
+              </div>
+            </div>
+            <ul class="skill-evidence-list">
+              <li>인터페이스 및 FSM 기반 상태 머신 패턴 설계로 캐릭터 행동과 애니메이션 제어</li>
+              <li>이벤트 델리게이트와 옵저버 패턴을 활용한 GameManager와 세부 매니저 간 느슨한 결합(Decoupling)</li>
+              <li>매 프레임 메모리 할당(GC Alloc) 방지를 위한 제네릭 오브젝트 풀링 및 캐싱 구조 구현</li>
+            </ul>
+            <div class="skill-project-proof">
+              <span>적용 근거:</span>
+              <strong>《내 약국에는 정상이 없다》, 《2026 캡스톤》</strong>
+            </div>
+          </div>
+
+          <!-- Skill 02 -->
+          <div class="skill-evidence-card">
+            <div class="skill-card-top">
+              <h3>Unity 엔진 &amp; 클라이언트 구현</h3>
+              <div class="skill-hashtag-group">
+                <span class="skill-hashtag">#Core</span>
+                <span class="skill-hashtag">#Advanced</span>
+              </div>
+            </div>
+            <ul class="skill-evidence-list">
+              <li>UGUI 캔버스 최적화, 반응형 UI 레이아웃 및 마우스/터치 드래그 앤 드롭 물리 피드백 구현</li>
+              <li>Physics 레이캐스트 기반 타깃 판정, 히트박스/피격 콜라이더 제어 및 콤보 타이밍 설계</li>
+              <li>씬 비동기 로딩(Async/Await), 오디오 믹서 제어 및 파티클 이펙트 통합 연출</li>
+            </ul>
+            <div class="skill-project-proof">
+              <span>적용 근거:</span>
+              <strong>4대 대표 게임 프로젝트 전반 구현</strong>
+            </div>
+          </div>
+
+          <!-- Skill 03 -->
+          <div class="skill-evidence-card">
+            <div class="skill-card-top">
+              <h3>데이터 주도 설계 (Data-Driven)</h3>
+              <div class="skill-hashtag-group">
+                <span class="skill-hashtag">#Core</span>
+                <span class="skill-hashtag gold">#Proficient</span>
+              </div>
+            </div>
+            <ul class="skill-evidence-list">
+              <li>ScriptableObject를 활용한 약초, 시약 16종 조합 테이블 및 NPC 대화 데이터 구조화</li>
+              <li>기획자가 코드 수정 없이 인스펙터에서 수치 밸런스를 즉시 수정·테스트할 수 있는 데이터 파이프라인 구축</li>
+              <li>JSON 직렬화/역직렬화를 통한 플레이어 인벤토리 및 세이브/로드 시스템 연동</li>
+            </ul>
+            <div class="skill-project-proof">
+              <span>적용 근거:</span>
+              <strong>《약국 타이쿤》 조합 공식, 《누리살이》 호감도 테이블</strong>
+            </div>
+          </div>
+
+          <!-- Skill 04 -->
+          <div class="skill-evidence-card">
+            <div class="skill-card-top">
+              <h3>AI &amp; 생성형 파이프라인 통합</h3>
+              <div class="skill-hashtag-group">
+                <span class="skill-hashtag green">#Specialty</span>
+                <span class="skill-hashtag gold">#Awarded</span>
+              </div>
+            </div>
+            <ul class="skill-evidence-list">
+              <li>단순 챗봇을 넘어, 인게임 파라미터(날씨, 친밀도, 과거 사건)를 JSON 프롬프트로 래핑하여 AI에 전달</li>
+              <li>AI 생성 텍스처와 NPC 반응을 실시간 셰이더 및 대화 창에 비동기 바인딩</li>
+              <li>불안정한 AI 응답에 대비한 Fallback 로직 및 사전 정의 템플릿 방어 코드 구축</li>
+            </ul>
+            <div class="skill-project-proof">
+              <span>적용 근거:</span>
+              <strong>《누리살이》 (GameAify AI 기술상 수상)</strong>
+            </div>
+          </div>
+
+          <!-- Skill 05 -->
+          <div class="skill-evidence-card">
+            <div class="skill-card-top">
+              <h3>Git-Flow &amp; 협업 워크플로</h3>
+              <div class="skill-hashtag-group">
+                <span class="skill-hashtag purple">#Collaboration</span>
+              </div>
+            </div>
+            <ul class="skill-evidence-list">
+              <li>Git-Flow(main / develop / feature) 브랜치 전략을 수립해 팀원 간 코드 충돌(Merge Conflict) 사전 차단</li>
+              <li>Git LFS(Large File Storage)를 구축하여 대용량 3D 에셋 및 음원 파일 안전 관리</li>
+              <li>Notion 및 이슈 트래커를 활용한 작업 단위 티켓팅 및 Pull Request 코드 리뷰 진행</li>
+            </ul>
+            <div class="skill-project-proof">
+              <span>적용 근거:</span>
+              <strong>《2026 캡스톤》, 《누리살이》 팀 개발</strong>
+            </div>
+          </div>
+
+          <!-- Skill 06 -->
+          <div class="skill-evidence-card">
+            <div class="skill-card-top">
+              <h3>기획 분석 &amp; 테크니컬 소통 (Synergy)</h3>
+              <div class="skill-hashtag-group">
+                <span class="skill-hashtag gold">#Synergy</span>
+              </div>
+            </div>
+            <ul class="skill-evidence-list">
+              <li>모호한 게임 아이디어를 수학적 규칙, 확률 테이블, 턴제 메커니즘으로 명확히 구체화</li>
+              <li>Figma 컴포넌트 시스템을 구축하고 12페이지 분량의 공식 룰북 제작 총괄</li>
+              <li>기획자의 의도를 정확히 파악하여 개발 병목을 선제적으로 해소하는 소통 능력</li>
+            </ul>
+            <div class="skill-project-proof">
+              <span>적용 근거:</span>
+              <strong>《최후의 전사》 PM &amp; 룰북, 《마비노기 모바일》 이벤트 기획서</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 05: FEATURED PROJECTS & CASE STUDIES -->
+      <section class="portfolio-section" id="projects" data-nav-section>
+        <span class="section-eyebrow">FEATURED PROJECTS</span>
+        <h2 class="section-heading-lg">대표 게임 프로젝트 4선</h2>
+        <p class="section-lead-copy">
+          클라이언트 아키텍처 구현부터 생성형 AI 파이프라인 연동, 보드게임 룰북 제작까지 주도적으로 개발한 핵심 프로젝트입니다.
+        </p>
+
+        <!-- 4대 대표 프로젝트 가로형 카드 슬롯 리스트 (Horizontal Slot Cards) -->
+        <div class="horizontal-slot-list">
+
+          <!-- Featured 01: 약국 타이쿤 -->
+          <article class="horizontal-project-slot">
+            <div class="slot-top-bar">
+              <div class="slot-top-left">
+                <span class="badge-tag">PROJECT 01</span>
+                <span class="badge-tag" style="color:var(--blue-bright);">클라이언트 리드</span>
+                <h3 class="slot-project-title">내 약국에는 정상이 없다.</h3>
+              </div>
+              <div class="slot-top-right">
+                <span>조제 시뮬레이션 타이쿤</span>
+                <span>·</span>
+                <span>2026.03 — 2026.07</span>
+              </div>
+            </div>
+            <div class="slot-body">
+              <p class="slot-desc">
+                약초 채집부터 시약 조합, 손님 응대까지 이어지는 타이쿤 코어 루프와 인게임 믹싱 시스템을 구현했습니다. ScriptableObject 기반 조합 데이터 테이블과 FSM 상태 머신으로 안정적인 플레이 흐름을 완성했습니다.
+              </p>
+              <div class="slot-bottom-bar">
+                <div class="slot-chips-group">
+                  <span class="tech-chip">Unity 3D</span>
+                  <span class="tech-chip">C#</span>
+                  <span class="tech-chip">조제 타이쿤</span>
+                  <span class="tech-chip">FSM 상태머신</span>
+                  <span class="tech-chip">ScriptableObject</span>
+                </div>
+                <div class="slot-action-group">
+                  <span class="slot-status-label">인게임 플레이 빌드 완성</span>
+                  <a class="card-view-btn" href="projects/project-01-pharmacy.html">
+                    상세 리뷰 보기 <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Featured 02: 누리살이 (AI 기술상 수상작) -->
+          <article class="horizontal-project-slot">
+            <div class="slot-top-bar">
+              <div class="slot-top-left">
+                <span class="badge-tag">PROJECT 02</span>
+                <span class="badge-award">GameAify AI 기술상</span>
+                <h3 class="slot-project-title">누리살이</h3>
+              </div>
+              <div class="slot-top-right">
+                <span>3D 설화 어드벤처</span>
+                <span>·</span>
+                <span>2025.07 — 2025.08</span>
+              </div>
+            </div>
+            <div class="slot-body">
+              <p class="slot-desc">
+                생성형 AI와 전통 게임 루프를 유기적으로 결합하여, 유저 상호작용에 반응하는 NPC 동적 대화와 텍스처 실시간 생성을 구현한 3D 설화 어드벤처입니다. GameAify 게임 제작 공모전 AI 기술상을 수상했습니다.
+              </p>
+              <div class="slot-bottom-bar">
+                <div class="slot-chips-group">
+                  <span class="tech-chip">Unity 3D</span>
+                  <span class="tech-chip">GameAify AI</span>
+                  <span class="tech-chip">공모전 기술상</span>
+                  <span class="tech-chip">REST API 연동</span>
+                  <span class="tech-chip">C#</span>
+                </div>
+                <div class="slot-action-group">
+                  <span class="slot-status-label text-green">공모전 기술상 수상작</span>
+                  <a class="card-view-btn" href="projects/project-02-nuri.html">
+                    상세 리뷰 보기 <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Featured 03: 최후의 전사 (보드게임) -->
+          <article class="horizontal-project-slot">
+            <div class="slot-top-bar">
+              <div class="slot-top-left">
+                <span class="badge-tag">PROJECT 03</span>
+                <span class="badge-tag" style="color:var(--gold-text);">보드게임 PM</span>
+                <h3 class="slot-project-title">최후의 전사</h3>
+              </div>
+              <div class="slot-top-right">
+                <span>테이블탑 전략 보드게임</span>
+                <span>·</span>
+                <span>2025.09 — 2025.12</span>
+              </div>
+            </div>
+            <div class="slot-body">
+              <p class="slot-desc">
+                실물 턴제 보드게임 메커니즘을 기획하고 확률 주사위 밸런싱을 수학적으로 정립했습니다. Figma 컴포넌트 시스템을 구축하여 총 12페이지 분량의 공식 룰북 제작과 인쇄 감리를 총괄했습니다.
+              </p>
+              <div class="slot-bottom-bar">
+                <div class="slot-chips-group">
+                  <span class="tech-chip">Figma</span>
+                  <span class="tech-chip">보드게임 PM</span>
+                  <span class="tech-chip">12p 공식 룰북</span>
+                  <span class="tech-chip">턴제 밸런싱</span>
+                  <span class="tech-chip">노션 칸반</span>
+                </div>
+                <div class="slot-action-group">
+                  <span class="slot-status-label text-gold">실물 룰북 완성 및 프로토타입</span>
+                  <a class="card-view-btn" href="projects/project-03-warrior.html">
+                    상세 리뷰 보기 <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Featured 04: 2026 캡스톤 디자인 -->
+          <article class="horizontal-project-slot">
+            <div class="slot-top-bar">
+              <div class="slot-top-left">
+                <span class="badge-tag">PROJECT 04</span>
+                <span class="badge-tag" style="color:var(--purple);">졸업작품</span>
+                <h3 class="slot-project-title">2026 캡스톤 디자인</h3>
+              </div>
+              <div class="slot-top-right">
+                <span>2.5D 액션 메트로바니아</span>
+                <span>·</span>
+                <span>2026.03 — 2026.11</span>
+              </div>
+            </div>
+            <div class="slot-body">
+              <p class="slot-desc">
+                모듈형 FSM 기반 콤보 판정과 피격 콜라이더 타이밍 설계, 에너미 AI 공격 패턴 및 Git-Flow 브랜치 전략을 수립하여 대규모 졸업작품의 클라이언트 베이스를 구축하고 있습니다.
+              </p>
+              <div class="slot-bottom-bar">
+                <div class="slot-chips-group">
+                  <span class="tech-chip">Unity 3D</span>
+                  <span class="tech-chip">C#</span>
+                  <span class="tech-chip">모듈형 FSM</span>
+                  <span class="tech-chip">히트박스/피격</span>
+                  <span class="tech-chip">Git-Flow 협업</span>
+                </div>
+                <div class="slot-action-group">
+                  <span class="slot-status-label">진행 중 (클라이언트 빌드 단계)</span>
+                  <a class="card-view-btn" href="projects/project-04-capstone.html">
+                    상세 리뷰 보기 <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- 하위 프로젝트 & 케이스 스터디 (과제 5종 카드 그리드 접근) -->
+        <div style="margin-top: 48px; padding-top: 36px; border-top: 1px solid var(--line);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:12px;flex-wrap:wrap;gap:10px;">
+            <div>
+              <span class="section-eyebrow" style="margin-bottom:6px;">RESEARCH &amp; CASE STUDIES</span>
+              <h3 style="font-size:1.35rem;font-weight:850;margin:0;color:var(--text);">시스템 역설계 및 기획·분석 스터디</h3>
+            </div>
+            <span style="font-size:0.8rem;color:var(--muted);">총 5개 심층 연구 과제</span>
+          </div>
+          <p style="font-size:0.9rem;color:var(--text-sub);margin:0 0 20px;">
+            모바일 수집형 RPG 역설계, 184개 마켓 데이터 크로스 분석, 언어 아키텍처 스터디를 카드 형식으로 열람할 수 있습니다.
+          </p>
+
+          <div class="sub-case-study-list">
+
+            <!-- Case 01: 자바 람다 -->
+            <article class="sub-case-horizontal-item">
+              <div class="sub-case-item-info">
+                <div class="sub-case-item-header">
+                  <span class="badge-tag">STUDY #01</span>
+                  <h4>자바 람다 14일 계획</h4>
+                  <span style="font-size:0.75rem;color:var(--muted);">2026.09.03</span>
+                </div>
+                <p class="sub-case-item-desc">
+                  람다식 원리와 바이트코드, C# 델리게이트와의 비교 분석 스터디 노트입니다.
+                </p>
+              </div>
+              <div style="display:flex;align-items:center;gap:16px;">
+                <span class="badge-tag" style="color:var(--blue-bright);">언어 아키텍처</span>
+                <a class="card-view-btn" href="assignments/assignment-01.html">
+                  열람 <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </article>
+
+            <!-- Case 02: 메이플 유니온 -->
+            <article class="sub-case-horizontal-item">
+              <div class="sub-case-item-info">
+                <div class="sub-case-item-header">
+                  <span class="badge-tag">STUDY #02</span>
+                  <h4>인기 50위 &amp; 플레이 이력</h4>
+                  <span style="font-size:0.75rem;color:var(--muted);">2026.09.10</span>
+                </div>
+                <p class="sub-case-item-desc">
+                  실시간 인기 차트 50위 분석 및 30종 이상의 게임 플레이 이력을 역설계했습니다.
+                </p>
+              </div>
+              <div style="display:flex;align-items:center;gap:16px;">
+                <span class="badge-tag" style="color:var(--green-text);">시장 벤치마킹</span>
+                <a class="card-view-btn" href="assignments/assignment-02.html">
+                  열람 <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </article>
+
+            <!-- Case 03: 마비노기 모바일 -->
+            <article class="sub-case-horizontal-item">
+              <div class="sub-case-item-info">
+                <div class="sub-case-item-header">
+                  <span class="badge-tag">STUDY #03</span>
+                  <h4>마비노기 모바일 기획서</h4>
+                  <span style="font-size:0.75rem;color:var(--muted);">2026.09.17</span>
+                </div>
+                <p class="sub-case-item-desc">
+                  픽셀라이프 트렌드를 반영한 선택형 일상 이벤트 '에린의 조각들' 상세 스펙북입니다.
+                </p>
+              </div>
+              <div style="display:flex;align-items:center;gap:16px;">
+                <span class="badge-tag" style="color:var(--gold-text);">콘텐츠 기획서</span>
+                <a class="card-view-btn" href="assignments/assignment-03.html">
+                  열람 <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </article>
+
+            <!-- Case 04: 모바일인덱스 순위 분석 -->
+            <article class="sub-case-horizontal-item">
+              <div class="sub-case-item-info">
+                <div class="sub-case-item-header">
+                  <span class="badge-tag">STUDY #04</span>
+                  <h4>모바일인덱스 순위 분석</h4>
+                  <span style="font-size:0.75rem;color:var(--muted);">2026.10.01</span>
+                </div>
+                <p class="sub-case-item-desc">
+                  184개 실시간 순위 데이터를 크로스 분석하여 개발자 플레이 추천 가이드를 도출했습니다.
+                </p>
+              </div>
+              <div style="display:flex;align-items:center;gap:16px;">
+                <span class="badge-tag" style="color:var(--green-text);">시장 데이터 분석</span>
+                <a class="card-view-btn" href="assignments/assignment-04.html">
+                  열람 <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </article>
+
+            <!-- Case 05: 트릭컬 리바이브 분석 -->
+            <article class="sub-case-horizontal-item">
+              <div class="sub-case-item-info">
+                <div class="sub-case-item-header">
+                  <span class="badge-tag">STUDY #05</span>
+                  <h4>트릭컬 리바이브 재미 분석</h4>
+                  <span style="font-size:0.75rem;color:var(--muted);">2026.10.01</span>
+                </div>
+                <p class="sub-case-item-desc">
+                  1년 차 플레이를 바탕으로 천만 전투력 돌파와 복리 성장 루프, 서사의 역설을 분석했습니다.
+                </p>
+              </div>
+              <div style="display:flex;align-items:center;gap:16px;">
+                <span class="badge-tag" style="color:var(--purple);">역기획 리포트</span>
+                <a class="card-view-btn" href="assignments/assignment-05.html">
+                  열람 <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- 하단: 9종 일괄 요약 대시보드 (At a Glance Table) -->
+        <div style="margin-top: 40px;">
+          <details style="background:var(--panel-strong);border:1px solid var(--line);border-radius:var(--radius-sm);padding:14px 18px;">
+            <summary style="font-size:0.9rem;font-weight:800;color:var(--text);cursor:pointer;">
+              전체 프로젝트 &amp; 과제 9종 요약 테이블 펼쳐보기 (At a Glance)
+            </summary>
+            <div style="overflow-x: auto; margin-top: 14px;">
+              <table class="overview-grid-table">
+                <thead>
+                  <tr>
+                    <th>NO</th>
+                    <th>프로젝트 / 과제명</th>
+                    <th>분야</th>
+                    <th>핵심 구현 및 분석 한 줄 요약</th>
+                    <th>기술 스택</th>
+                    <th>바로가기</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>01</strong></td>
+                    <td class="col-proj-name"><a href="projects/project-01-pharmacy.html">내 약국에는 정상이 없다</a></td>
+                    <td><span class="badge-tag">대표 클라이언트</span></td>
+                    <td>약물 조제 및 손님 응대 타이쿤 루프, ScriptableObject 배합 공식 구현</td>
+                    <td>Unity · C# · FSM</td>
+                    <td><a href="projects/project-01-pharmacy.html" style="color:var(--blue-bright);font-weight:750;">상세보기 ↗</a></td>
+                  </tr>
+                  <tr>
+                    <td><strong>02</strong></td>
+                    <td class="col-proj-name"><a href="projects/project-02-nuri.html">누리살이</a></td>
+                    <td><span class="badge-award">AI 기술상 수상작</span></td>
+                    <td>생성형 AI와 게임 루프를 결합한 3D 설화 어드벤처 (공모전 수상)</td>
+                    <td>Unity · GameAify AI</td>
+                    <td><a href="projects/project-02-nuri.html" style="color:var(--blue-bright);font-weight:750;">상세보기 ↗</a></td>
+                  </tr>
+                  <tr>
+                    <td><strong>03</strong></td>
+                    <td class="col-proj-name"><a href="projects/project-03-warrior.html">최후의 전사</a></td>
+                    <td><span class="badge-tag">보드게임 PM</span></td>
+                    <td>실물 보드게임 메커니즘 기획, 턴제 밸런싱 및 12p 공식 룰북 제작 총괄</td>
+                    <td>Figma · Notion · PM</td>
+                    <td><a href="projects/project-03-warrior.html" style="color:var(--blue-bright);font-weight:750;">상세보기 ↗</a></td>
+                  </tr>
+                  <tr>
+                    <td><strong>04</strong></td>
+                    <td class="col-proj-name"><a href="projects/project-04-capstone.html">2026 캡스톤 디자인</a></td>
+                    <td><span class="badge-tag">3D 액션 졸업작</span></td>
+                    <td>모듈형 FSM 콤보 공격 판정, 에너미 AI 공격 패턴 및 Git-Flow 협업</td>
+                    <td>Unity · C# · 3D 액션</td>
+                    <td><a href="projects/project-04-capstone.html" style="color:var(--blue-bright);font-weight:750;">상세보기 ↗</a></td>
+                  </tr>
+                  <tr>
+                    <td><strong>05</strong></td>
+                    <td class="col-proj-name"><a href="assignments/assignment-01.html">[Study] 자바 람다 14일 계획</a></td>
+                    <td><span class="badge-tag">언어 아키텍처</span></td>
+                    <td>람다식 원리와 바이트코드, C# 델리게이트와의 비교 분석 스터디 노트</td>
+                    <td>Java · C# Delegate</td>
+                    <td><a href="assignments/assignment-01.html" style="color:var(--blue-bright);font-weight:750;">상세보기 ↗</a></td>
+                  </tr>
+                  <tr>
+                    <td><strong>06</strong></td>
+                    <td class="col-proj-name"><a href="assignments/assignment-02.html">[GamePlay] 인기 50위 &amp; 이력</a></td>
+                    <td><span class="badge-tag">플레이 분석</span></td>
+                    <td>실시간 인기 TOP 50 심층 분석 및 누적 30종 이상 게임 플레이 이력</td>
+                    <td>모바일인덱스 · 분석</td>
+                    <td><a href="assignments/assignment-02.html" style="color:var(--blue-bright);font-weight:750;">상세보기 ↗</a></td>
+                  </tr>
+                  <tr>
+                    <td><strong>07</strong></td>
+                    <td class="col-proj-name"><a href="assignments/assignment-03.html">[기획서] 마비노기 모바일</a></td>
+                    <td><span class="badge-tag">시스템 기획</span></td>
+                    <td>픽셀라이프 트렌드를 반영한 선택형 일상 이벤트 '에린의 조각들' 기획서</td>
+                    <td>시스템 기획 · 스펙북</td>
+                    <td><a href="assignments/assignment-03.html" style="color:var(--blue-bright);font-weight:750;">상세보기 ↗</a></td>
+                  </tr>
+                  <tr>
+                    <td><strong>08</strong></td>
+                    <td class="col-proj-name"><a href="assignments/assignment-04.html">[데이터 분석] 모바일인덱스 순위</a></td>
+                    <td><span class="badge-tag">시장 데이터</span></td>
+                    <td>184개 실시간 순위 데이터 크로스 분석 및 플랫폼별 메타 시프트 진단</td>
+                    <td>데이터 분석 · 시각화</td>
+                    <td><a href="assignments/assignment-04.html" style="color:var(--blue-bright);font-weight:750;">상세보기 ↗</a></td>
+                  </tr>
+                  <tr>
+                    <td><strong>09</strong></td>
+                    <td class="col-proj-name"><a href="assignments/assignment-05.html">[게임 분석] 트릭컬 리바이브</a></td>
+                    <td><span class="badge-tag">역기획 리포트</span></td>
+                    <td>1년 차 교주의 1,000만 전투력 돌파 루프와 복리 성장, 서사적 역설 고찰</td>
+                    <td>역기획 · BM 분석</td>
+                    <td><a href="assignments/assignment-05.html" style="color:var(--blue-bright);font-weight:750;">상세보기 ↗</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- SECTION 06: CONTACT & NEXT STEPS -->
+      <section class="portfolio-section" id="contact" data-nav-section>
+        <span class="section-eyebrow">CONTACT</span>
+        <h2 class="section-heading-lg">연락처 및 채용 문의</h2>
+        <p class="section-lead-copy">
+          게임 개발팀과의 새로운 프로젝트 협업 및 채용 문의는 언제든 편하게 연락해 주세요.
+        </p>
+
+        <div class="overview-banner">
+          <div class="overview-banner-title">
+            <h3>공식 연락 채널</h3>
+            <span class="badge-tag" style="color:var(--blue-bright);">상시 확인 중</span>
+          </div>
+
+          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:16px;margin-top:16px;">
+            <a href="mailto:wnstn2228@naver.com" class="hero-highlight-card" style="text-decoration:none;">
+              <span class="mono-icon mono-icon-stroke" style="width:28px;height:28px;color:var(--text);"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></span>
+              <div class="hero-highlight-text">
+                <span style="font-size:0.74rem;color:var(--muted);font-weight:750;">E-MAIL</span>
+                <strong>wnstn2228@naver.com</strong>
+                <p style="color:var(--blue-bright);margin-top:4px;font-size:0.8rem;">이메일 바로 보내기 ↗</p>
+              </div>
+            </a>
+
+            <a href="https://github.com/Junsu-git" target="_blank" rel="noopener noreferrer" class="hero-highlight-card" style="text-decoration:none;">
+              <span class="mono-icon" style="width:28px;height:28px;color:var(--text);"><svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></span>
+              <div class="hero-highlight-text">
+                <span style="font-size:0.74rem;color:var(--muted);font-weight:750;">GITHUB REPOSITORY</span>
+                <strong>github.com/Junsu-git</strong>
+                <p style="color:var(--blue-bright);margin-top:4px;font-size:0.8rem;">깃허브 코드 저장소 방문 ↗</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FLOATING THEME FAB (Image 1 Requirement · Always Visible Bottom Right) -->
+  <div class="floating-theme-fab" id="floatingThemeFab" aria-label="테마 설정">
+    <div class="theme-fab-spheres" aria-hidden="true">
+      <button class="theme-fab-sphere" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+        <span class="sphere-tooltip">라이트 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="dark" title="다크 모드" aria-label="다크 모드">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+        <span class="sphere-tooltip">다크 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span>
+        <span class="sphere-tooltip">시스템 설정</span>
+      </button>
+    </div>
+    <button class="theme-fab-trigger" id="themeFabTrigger" title="테마 변경" aria-label="테마 변경">
+      <span class="fab-current-icon mono-icon mono-icon-stroke">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 2v20a10 10 0 0 0 0-20z"></path><circle cx="12" cy="12" r="10"></circle></svg>
+      </span>
+    </button>
+  </div>
+
+  <!-- Object-Oriented JS Architecture Bundle -->
+  <script src="assets/js/portfolio-system.js"></script>
+</body>
+</html>
+

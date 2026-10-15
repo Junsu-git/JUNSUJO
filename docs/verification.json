@@ -1,0 +1,64 @@
+{
+  "views": 80,
+  "failures": [],
+  "errors": [],
+  "contrast": [
+    {
+      "theme": "light",
+      "contrast": {
+        "--text/--bg-page": 15.3,
+        "--text/--panel": 15.99,
+        "--text/--panel-strong": 14.38,
+        "--text-sub/--bg-page": 8.73,
+        "--text-sub/--panel": 9.12,
+        "--text-sub/--panel-strong": 8.2,
+        "--muted/--bg-page": 7.84,
+        "--muted/--panel": 8.2,
+        "--muted/--panel-strong": 7.37,
+        "--blue-text/--bg-page": 8.75,
+        "--blue-text/--panel": 9.14,
+        "--blue-text/--panel-strong": 8.22,
+        "--green-text/--bg-page": 10.06,
+        "--green-text/--panel": 10.52,
+        "--green-text/--panel-strong": 9.46,
+        "--gold-text/--bg-page": 8.59,
+        "--gold-text/--panel": 8.98,
+        "--gold-text/--panel-strong": 8.07
+      }
+    },
+    {
+      "theme": "dark",
+      "contrast": {
+        "--text/--bg-page": 16.11,
+        "--text/--panel": 14.83,
+        "--text/--panel-strong": 13.42,
+        "--text-sub/--bg-page": 11.98,
+        "--text-sub/--panel": 11.02,
+        "--text-sub/--panel-strong": 9.98,
+        "--muted/--bg-page": 8.59,
+        "--muted/--panel": 7.91,
+        "--muted/--panel-strong": 7.16,
+        "--blue-text/--bg-page": 11.66,
+        "--blue-text/--panel": 10.73,
+        "--blue-text/--panel-strong": 9.71,
+        "--green-text/--bg-page": 12.67,
+        "--green-text/--panel": 11.66,
+        "--green-text/--panel-strong": 10.55,
+        "--gold-text/--bg-page": 12.51,
+        "--gold-text/--panel": 11.51,
+        "--gold-text/--panel-strong": 10.42
+      }
+    }
+  ],
+  "textContrast": [],
+  "additional": [
+    "hidden-tab TOC",
+    "legacy archive TOC",
+    "selected filter styling",
+    "invalid preference",
+    "system theme change",
+    "explicit mode priority",
+    "blocked storage",
+    "local links"
+  ]
+}
