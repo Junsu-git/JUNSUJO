@@ -319,6 +319,19 @@ summary {cursor:pointer;font-weight:600}
   .before-box,.after-box,.ba-col {padding:14px}
   .floating-theme-fab {right:max(20px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom))}
 }
+.email-copy-button {font:inherit;text-align:left;color:inherit;cursor:pointer}
+.sidebar-social-links .email-copy-button {display:inline-flex;align-items:center;gap:4px;padding:0;border:0;background:none;font-size:inherit}
+.sidebar-social-links .email-copy-button:hover {color:var(--blue-text)}
+.email-copy-helper {position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;pointer-events:none;font-size:16px}
+.copy-toast {
+  position:fixed;left:50%;bottom:calc(max(24px,env(safe-area-inset-bottom)) + 64px);z-index:1100;
+  width:max-content;max-width:min(440px,calc(100vw - 40px));padding:11px 18px;
+  border:1px solid var(--line-strong);border-radius:var(--radius-md);background:var(--text);color:var(--bg-page);
+  font-size:.82rem;line-height:1.6;text-align:center;box-shadow:var(--shadow-md);
+  opacity:0;transform:translate(-50%,8px);pointer-events:none;transition:opacity .18s ease,transform .18s ease;
+}
+.copy-toast.is-visible {opacity:1;transform:translate(-50%,0)}
+@media(max-width:600px) {.copy-toast {bottom:calc(max(20px,env(safe-area-inset-bottom)) + 140px)}}
 @media(prefers-reduced-motion:reduce) {
   html {scroll-behavior:auto}
   *,*::before,*::after {animation:none!important;transition:none!important;scroll-behavior:auto!important}

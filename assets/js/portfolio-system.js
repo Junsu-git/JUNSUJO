@@ -213,10 +213,70 @@
       }
     });
   }
+  function initEmailCopy() {
+    const buttons = [...document.querySelectorAll('[data-copy-email]')];
+    if (!buttons.length) return;
+    const toast = document.createElement('div');
+    toast.className = 'copy-toast';
+    toast.setAttribute('role', 'status');
+    toast.setAttribute('aria-live', 'polite');
+    toast.setAttribute('aria-atomic', 'true');
+    document.body.appendChild(toast);
+    let hideTimer;
+    let clearTimer;
+    let request = 0;
+    function notify(message) {
+      clearTimeout(hideTimer);
+      clearTimeout(clearTimer);
+      toast.textContent = message;
+      toast.classList.add('is-visible');
+      hideTimer = setTimeout(() => {
+        toast.classList.remove('is-visible');
+        clearTimer = setTimeout(() => { toast.textContent = ''; }, 200);
+      }, 2400);
+    }
+    function legacyCopy(email) {
+      const active = document.activeElement;
+      const selection = window.getSelection();
+      const ranges = selection ? Array.from({length:selection.rangeCount}, (_, index) => selection.getRangeAt(index).cloneRange()) : [];
+      const field = document.createElement('textarea');
+      field.dataset.copyHelper = '';
+      field.value = email;
+      field.readOnly = true;
+      field.tabIndex = -1;
+      field.className = 'email-copy-helper';
+      document.body.appendChild(field);
+      try {
+        field.focus({preventScroll:true});
+        field.select();
+        return document.execCommand('copy');
+      } finally {
+        field.remove();
+        active?.focus({preventScroll:true});
+        if (selection) {
+          selection.removeAllRanges();
+          ranges.forEach(range => selection.addRange(range));
+        }
+      }
+    }
+    buttons.forEach(button => button.addEventListener('click', async () => {
+      const current = ++request;
+      const email = button.dataset.copyEmail;
+      let copied = false;
+      try {
+        await navigator.clipboard.writeText(email);
+        copied = true;
+      } catch {
+        try { copied = legacyCopy(email); } catch { /* Report failure instead of a false success. */ }
+      }
+      if (current === request) notify(copied ? '이메일이 복사되었습니다!' : '복사하지 못했습니다. 연락처의 주소를 직접 복사해 주세요.');
+    }));
+  }
   document.addEventListener('DOMContentLoaded', () => {
     window.portfolioTheme = new ThemeManager();
     initTabs();
     initNavigation();
     initBackToTop();
+    initEmailCopy();
   }, {once:true});
 })();
