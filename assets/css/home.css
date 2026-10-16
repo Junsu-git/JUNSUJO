@@ -26,6 +26,23 @@
 .sidebar-nav-group .home-nav-link {padding-left:22px}
 .home-page .sidebar-social-links {margin-bottom:0}
 .home-page .sidebar-social-links a:hover {color:var(--home-blue)}
+.sidebar-play-history {margin-top:20px;border:1px solid var(--line);border-radius:8px;background:var(--panel);min-width:0}
+.sidebar-play-history summary {display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;font-size:.78rem;cursor:pointer;list-style:none;border-radius:8px}
+.sidebar-play-history summary::-webkit-details-marker {display:none}
+.sidebar-play-history summary:hover {background:var(--panel-strong)}
+.sidebar-play-history summary svg {transition:transform .18s ease}
+.sidebar-play-history[open] summary {color:var(--home-blue);border-bottom:1px solid var(--line);border-radius:8px 8px 0 0}
+.sidebar-play-history[open] summary svg {transform:rotate(180deg)}
+.play-history-note {padding:10px 10px 6px;font-size:.65rem;color:var(--muted)}
+.play-history-scroll {max-height:min(260px,35dvh);overflow:auto;overscroll-behavior:contain;scrollbar-gutter:stable}
+.play-history-scroll:focus-visible {outline-offset:-2px}
+.play-history-table {width:100%;table-layout:fixed;border-collapse:collapse;font-size:.7rem;line-height:1.65}
+.play-history-table th,.play-history-table td {padding:9px 8px;text-align:left;vertical-align:top;border:0;border-bottom:1px solid var(--line);background:var(--panel);font-weight:400;overflow-wrap:anywhere}
+.play-history-table thead th {position:sticky;top:0;z-index:1;font-size:.65rem;color:var(--muted);background:var(--panel-strong)}
+.play-history-table th:last-child,.play-history-table td {width:88px;text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+.play-history-table tbody tr:last-child>* {border-bottom:0}
+.play-history-more {display:flex;align-items:center;justify-content:space-between;gap:8px;border-top:1px solid var(--line);padding:10px 12px;color:var(--home-blue);font-size:.7rem}
+@media(prefers-reduced-motion:reduce) {.sidebar-play-history summary svg {transition:none}}
 .home-page .hero-section {padding-top:64px;padding-bottom:48px}
 .home-page .hero-section h2 {font-size:clamp(2rem,3.7vw,3.3rem);max-width:20ch;line-height:1.35}
 .home-accent {color:var(--home-blue)}
