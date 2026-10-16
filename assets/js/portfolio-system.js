@@ -205,8 +205,12 @@
         top: 0,
         behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
       });
-      const topTarget = document.querySelector('.skip-link, #main-content, h1');
-      if (topTarget) topTarget.focus({ preventScroll: true });
+      const topTarget = document.querySelector('#main-content, main');
+      if (topTarget) {
+        // Keep keyboard navigation near the content without revealing the skip link.
+        if (!topTarget.hasAttribute('tabindex')) topTarget.setAttribute('tabindex', '-1');
+        topTarget.focus({ preventScroll: true });
+      }
     });
   }
   document.addEventListener('DOMContentLoaded', () => {

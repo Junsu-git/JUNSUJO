@@ -6,12 +6,16 @@
   --home-blue-mark:#0b57d0;
   --home-blue-soft:#edf3fc;
   --home-blue-border:#aac1e5;
+  --motion-duration:220ms;
+  --motion-ease:cubic-bezier(.2,.75,.25,1);
+  --card-hover-shadow:0 8px 24px #0842a012;
 }
 [data-theme="dark"] .home-page {
   --home-blue:#b7d7ff;
   --home-blue-mark:#438eea;
   --home-blue-soft:#153251;
   --home-blue-border:#365e88;
+  --card-hover-shadow:0 8px 24px #00000030;
 }
 .home-page .sticky-profile-sidebar {padding-top:56px}
 .home-page .sidebar-name {font-size:2rem}
@@ -97,14 +101,12 @@
 /* Sub-projects 3x3 Grid (Image 2 Card Layout) */
 .sub-project-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch}
 .sub-project-card {position:relative;display:flex;flex-direction:column;min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;transition:border-color .18s,box-shadow .18s,transform .18s}
-.sub-project-card:hover {border-color:var(--home-blue-mark);box-shadow:var(--shadow-sm);transform:translateY(-2px)}
 .sub-card-header {display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 14px 10px;border-bottom:1px solid var(--line);background:var(--panel-strong)}
 .sub-card-header .tag-list {display:flex;flex-wrap:wrap;gap:4px}
 .sub-card-header .tech-chip {font-size:.68rem;padding:2px 7px;border-radius:4px;line-height:1.4}
 .sub-card-index {font:700 .7rem/1 var(--font-mono);color:var(--home-blue);background:var(--panel);border:1px solid var(--home-blue-border);border-radius:4px;padding:2px 6px;flex-shrink:0}
 .sub-card-media {position:relative;width:100%;height:136px;background:var(--bg-deep);display:grid;place-items:center;overflow:hidden;border-bottom:1px solid var(--line)}
 .sub-card-media img {width:100%;height:100%;object-fit:cover;transition:transform .25s ease}
-.sub-project-card:hover .sub-card-media img {transform:scale(1.03)}
 .sub-card-stage {display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;text-align:center;width:100%;height:100%;background:linear-gradient(135deg,var(--panel-strong) 0%,var(--panel) 100%)}
 .sub-card-stage-icon {display:grid;place-items:center;width:38px;height:38px;border-radius:8px;background:var(--home-blue-soft);color:var(--home-blue);border:1px solid var(--home-blue-border)}
 .sub-card-stage-icon svg {width:20px;height:20px}
@@ -118,8 +120,7 @@
 .sub-card-desc {font-size:.78rem;line-height:1.55;color:var(--text-sub);margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .sub-card-btn {display:inline-flex;align-items:center;gap:5px;white-space:nowrap;font-size:.73rem;font-weight:600;color:var(--home-blue);background:var(--home-blue-soft);border:1px solid var(--home-blue-border);border-radius:var(--radius-sm);padding:6px 10px;flex-shrink:0;transition:background .18s cubic-bezier(0.16,1,0.3,1),border-color .18s cubic-bezier(0.16,1,0.3,1),color .18s cubic-bezier(0.16,1,0.3,1),transform .18s cubic-bezier(0.16,1,0.3,1)}
 .sub-card-btn span {display:inline-block;transition:transform .18s cubic-bezier(0.16,1,0.3,1)}
-.sub-card-btn:hover {background:var(--home-blue-mark);border-color:var(--home-blue-mark);color:var(--text-contrast);text-decoration:none;transform:translateX(2px)}
-.sub-card-btn:hover span {transform:translateX(3px)}
+.sub-card-btn:hover {background:var(--home-blue-soft);border-color:var(--home-blue-mark);color:var(--home-blue);text-decoration:none}
 .sub-card-btn:active {transform:scale(0.96)}
 .sub-card-btn:focus-visible {outline:2px solid var(--home-blue-mark);outline-offset:2px}
 @media(max-width:1080px){.sub-project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -217,4 +218,53 @@
   .contact-card-icon {width:40px;height:40px}
   .home-page .skill-evidence-card {padding:20px}
   .project-group+.project-group {margin-top:32px;padding-top:28px}
+}
+
+/* Feedback follows the action: cards lift, links point ahead, records stay still. */
+.home-page :is(.featured-project-card,.sub-project-card,.contact-card) {
+  transition:transform var(--motion-duration) var(--motion-ease),border-color var(--motion-duration),background-color var(--motion-duration),box-shadow var(--motion-duration);
+}
+.home-page :is(.background-timeline-card,.background-detail-panel,.skill-evidence-card) {
+  transition:border-color var(--motion-duration),background-color var(--motion-duration);
+}
+.home-page :is(.project-card-link,.sub-card-btn,.home-nav-link,.sidebar-play-history summary,.play-history-more) {
+  transition:background-color var(--motion-duration),border-color var(--motion-duration),color var(--motion-duration),transform var(--motion-duration) var(--motion-ease);
+}
+.home-page :is(.project-card-link svg,.sub-card-btn span,.contact-card-arrow,.sub-card-stage-icon svg,.gallery-empty svg) {
+  transition:transform var(--motion-duration) var(--motion-ease);
+}
+.home-page :is(.gallery-slide img,.sub-card-media img) {transition:transform 280ms var(--motion-ease)}
+.home-page .gallery-dot::before {transition:width var(--motion-duration) var(--motion-ease),background-color var(--motion-duration)}
+.home-page .gallery-arrow {transition:background-color var(--motion-duration),border-color var(--motion-duration),color var(--motion-duration)}
+.home-page .background-event-dot {transition:box-shadow var(--motion-duration)}
+.home-page .background-achievement-list li {border-radius:4px;transition:background-color var(--motion-duration)}
+.home-page :is(.featured-project-card,.sub-project-card,.contact-card):focus-within {
+  border-color:var(--home-blue-mark);box-shadow:var(--card-hover-shadow);
+}
+.home-page .skill-evidence-card:focus-within {border-color:var(--home-blue-border);background:var(--panel-soft)}
+.home-page :is(.project-card-link,.sub-card-btn):focus-visible {background:var(--home-blue-soft)}
+@media(hover:hover) and (pointer:fine) {
+  .home-page :is(.featured-project-card,.sub-project-card,.contact-card):hover {
+    transform:translateY(-3px);border-color:var(--home-blue-mark);box-shadow:var(--card-hover-shadow);
+  }
+  .home-page :is(.background-timeline-card,.background-detail-panel,.skill-evidence-card):hover {
+    border-color:var(--home-blue-border);background:var(--panel-soft);
+  }
+  .home-page :is(.featured-project-card,.sub-project-card):hover :is(.gallery-slide img,.sub-card-media img) {transform:scale(1.025)}
+  .home-page .featured-project-card:hover .gallery-empty svg {transform:translateY(-2px)}
+  .home-page .sub-project-card:hover .sub-card-stage-icon svg {transform:translateY(-2px) rotate(-4deg)}
+  .home-page :is(.project-card-link,.sub-card-btn):hover :is(svg,span) {transform:translateX(3px)}
+  .home-page .contact-card:hover .contact-card-arrow {transform:translate(2px,-2px)}
+  .home-page .home-nav-link:hover {transform:translateX(2px)}
+  .home-page .background-event:hover .background-event-dot {box-shadow:0 0 0 4px var(--home-blue-soft)}
+  .home-page .background-achievement-list li:hover {background:var(--home-blue-soft)}
+  .home-page .play-history-table tbody tr:hover>* {background:var(--home-blue-soft)}
+  .home-page :is(.project-card-link,.sub-card-btn,.contact-card):active {transform:translateY(0) scale(.99)}
+}
+@media(prefers-reduced-motion:reduce) {
+  .home-page :is(.featured-project-card,.sub-project-card,.contact-card,.home-nav-link,.project-card-link,.sub-card-btn):hover,
+  .home-page :is(.featured-project-card,.sub-project-card,.contact-card,.project-card-link,.sub-card-btn):active,
+  .home-page :is(.gallery-slide img,.sub-card-media img,.gallery-empty svg,.sub-card-stage-icon svg,.project-card-link svg,.sub-card-btn span,.contact-card-arrow) {
+    transform:none!important;
+  }
 }
