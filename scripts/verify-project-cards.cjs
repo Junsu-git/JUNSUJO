@@ -15,6 +15,9 @@ const output='C:/Users/wnstn/.codex/visualizations/2026/10/15/01a13e7f-c40c-72f3
     assert.equal(await page.locator('.project-card-link').count(),4,'each card has an explicit detail link');
     const desktop=await page.locator('.featured-project-card').evaluateAll(nodes=>nodes.map(n=>({x:n.getBoundingClientRect().x,y:n.getBoundingClientRect().y})));
     assert.equal(desktop[0].y,desktop[1].y);assert(desktop[1].x>desktop[0].x);assert(desktop[2].y>desktop[0].y);
+    const dimensions=await page.locator('.featured-project-card').evaluateAll(nodes=>nodes.map(node=>({width:node.getBoundingClientRect().width,height:node.getBoundingClientRect().height})));
+    assert(dimensions.every(card=>card.width/card.height>=1.65),'desktop cards are wide and shallow');
+    console.log('Desktop card dimensions:',JSON.stringify(dimensions));
     for(const width of [320,390,850,1440])for(const theme of ['light','dark']){
       await page.setViewportSize({width,height:1000});await page.evaluate(t=>window.portfolioTheme.setTheme(t),theme);
       assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'cards fit viewport');
@@ -36,6 +39,8 @@ const output='C:/Users/wnstn/.codex/visualizations/2026/10/15/01a13e7f-c40c-72f3
       await route.fulfill({response,body:html});
     });
     await fixture.goto(origin+'/index.html');
+    await fixture.setViewportSize({width:1440,height:1000});
+    assert(await fixture.locator('.featured-project-card').first().evaluate(node=>node.getBoundingClientRect().height<=300),'real images do not inflate card height');
     const gallery=fixture.locator('.project-gallery').first();
     assert.equal(await gallery.locator('.gallery-slide:not([hidden]) img').getAttribute('alt'),'검증 이미지 A');
     await gallery.locator('[data-gallery-next]').click();
