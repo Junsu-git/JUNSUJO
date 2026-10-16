@@ -711,7 +711,8 @@
     }
 
     tr:nth-child(even) td { background: var(--panel-strong); }
-    tr:hover td { background: var(--panel-strong); }
+    tr { transition: background-color 0.15s ease; }
+    tr:hover td { background: var(--blue-subtle); }
 
     .highlight-row td {
       background: var(--panel-strong) ;

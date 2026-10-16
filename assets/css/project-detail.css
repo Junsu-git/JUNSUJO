@@ -16,7 +16,8 @@
 .coursework-card h3{margin:12px 0 14px}.coursework-card p{flex:1}.coursework-card .detail-nav-btn{margin-top:10px}
 .game-experience-link{display:flex;justify-content:space-between;gap:10px;border:1px solid var(--line);border-radius:8px;padding:12px;font-size:.78rem;margin:20px 0;color:var(--text)}
 .slot-role{font-size:.75rem;color:var(--muted);margin:8px 0 12px}
+.detail-main-content tbody tr{transition:background .15s ease}
 .detail-main-content tbody tr:nth-child(even){background:var(--panel-strong)}
 .detail-main-content tbody tr:hover,
-.detail-main-content tbody tr:nth-child(even):hover{background:var(--panel-hover)}
+.detail-main-content tbody tr:nth-child(even):hover{background:var(--blue-subtle)}
 @media(max-width:700px){.coursework-grid{grid-template-columns:minmax(0,1fr)}.game-experience-link{margin:12px 0}.editorial-body{font-size:.86rem}}

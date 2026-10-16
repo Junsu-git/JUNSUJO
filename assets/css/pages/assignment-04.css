@@ -451,8 +451,12 @@
       color: var(--text-sub);
     }
 
+    tr {
+      transition: background-color 0.15s ease;
+    }
+
     tr:hover td {
-      background: var(--panel-strong);
+      background: var(--blue-subtle);
     }
 
     .rank-num {

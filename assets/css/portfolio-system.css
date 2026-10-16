@@ -188,6 +188,9 @@ code {font-family:var(--font-mono);font-size:.9em;overflow-wrap:anywhere}
 table {width:100%;border-collapse:collapse;font-size:.8rem;background:var(--panel);color:var(--text-sub)}
 th,td {padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
 th {font-weight:600;background:var(--panel-strong);color:var(--text);white-space:nowrap}
+tbody tr {transition:background-color .15s ease}
+tbody tr:nth-child(even) {background:var(--panel-strong)}
+tbody tr:hover,tbody tr:nth-child(even):hover {background:var(--blue-subtle)}
 .table-scroll {width:100%;max-width:100%;overflow-x:auto;margin:20px 0;border:1px solid var(--line);border-radius:var(--radius-sm)}
 .table-scroll table {margin:0;min-width:540px}
 details {max-width:100%}

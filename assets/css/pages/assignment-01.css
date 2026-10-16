@@ -291,8 +291,12 @@
       background: var(--panel-strong);
     }
 
+    tr {
+      transition: background-color 0.15s ease;
+    }
+
     tr:hover td {
-      background: var(--panel-strong);
+      background: var(--blue-subtle);
     }
 
     .chapter-heading-row td {
