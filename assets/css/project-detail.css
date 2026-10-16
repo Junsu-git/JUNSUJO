@@ -1,0 +1,22 @@
+/* Shared content layout and consistent detail-table interaction. */
+.editorial-body{font-size:.9rem;line-height:1.95;overflow-wrap:anywhere}
+.editorial-body p{margin:0 0 16px;color:var(--text-sub)}
+.editorial-body h3{font-size:1.08rem;margin:30px 0 14px;color:var(--text)}
+.editorial-body h4{font-size:.96rem;margin:24px 0 12px}
+.editorial-body ul,.editorial-body ol{padding-left:22px;margin:14px 0 22px}
+.editorial-body li{margin:7px 0}
+.editorial-body a{color:var(--blue-text);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.editorial-body blockquote,.content-note{border-left:3px solid var(--line-strong);padding:14px 20px;margin:20px 0;background:var(--panel-strong)}
+.editorial-body hr{border:0;border-top:1px solid var(--line);margin:28px 0}
+.editorial-body [id]{scroll-margin-top:90px}
+.project-fact-strip{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 24px;font-size:.75rem;color:var(--muted)}
+.project-fact-strip span{border:1px solid var(--line);border-radius:8px;padding:6px 10px}
+.coursework-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.coursework-card{min-width:0;border:1px solid var(--line);border-radius:var(--radius-md);padding:24px;background:var(--panel);display:flex;flex-direction:column;align-items:flex-start}
+.coursework-card h3{margin:12px 0 14px}.coursework-card p{flex:1}.coursework-card .detail-nav-btn{margin-top:10px}
+.game-experience-link{display:flex;justify-content:space-between;gap:10px;border:1px solid var(--line);border-radius:8px;padding:12px;font-size:.78rem;margin:20px 0;color:var(--text)}
+.slot-role{font-size:.75rem;color:var(--muted);margin:8px 0 12px}
+.detail-main-content tbody tr:nth-child(even){background:var(--panel-strong)}
+.detail-main-content tbody tr:hover,
+.detail-main-content tbody tr:nth-child(even):hover{background:var(--panel-hover)}
+@media(max-width:700px){.coursework-grid{grid-template-columns:minmax(0,1fr)}.game-experience-link{margin:12px 0}.editorial-body{font-size:.86rem}}

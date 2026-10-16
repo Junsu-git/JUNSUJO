@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ko" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>P(Pawn)의 거짓 | 조준수 포트폴리오</title><meta name="description" content="체스 기물의 소환과 폰→퀸 승격을 보스 패턴으로 구현한 Unity 3D 액션 프로젝트입니다."><script src="../assets/js/theme-init.js"></script><link rel="stylesheet" href="../assets/css/portfolio-system.css"><link rel="stylesheet" href="../assets/css/project-detail.css"></head><body><a class="skip-link" href="#main-content">본문 바로가기</a><header class="mobile-header"><a class="back-link-btn" href="../index.html#projects">← 프로젝트 목록</a><span class="header-caption">JUNSU JO / PORTFOLIO</span></header><div class="detail-layout-container"><aside class="toc-rail-container" aria-label="페이지 목차"><div class="toc-rail-title">ON THIS PAGE</div><nav class="toc-track-line" aria-label="상세 목차"><a class="toc-item-link" href="#growth">작업의 목표</a><a class="toc-item-link" href="#overview">개요 및 기획 의도</a><a class="toc-item-link" href="#role">담당 역할 및 핵심 기여</a><a class="toc-item-link" href="#architecture">구현 구조 및 작업 과정</a><a class="toc-item-link" href="#troubleshooting">문제 해결 및 개선 사례</a><a class="toc-item-link" href="#showcase">핵심 결과물 및 시연 자료 목록</a><a class="toc-item-link" href="#takeaways">배운 점과 아쉬운 점 / 회고</a></nav></aside><main class="detail-main-content" id="main-content"><div class="detail-page-heading"><span class="eyebrow">PROJECT / WORK RECORD</span><h1>P(Pawn)의 거짓</h1><p class="detail-sub-title">체스 기물의 소환과 폰→퀸 승격을 보스 패턴으로 구현한 Unity 3D 액션 프로젝트입니다.</p></div><div class="project-fact-strip"><span>SUB-01</span><span>PM · 기획·프로그래밍</span><span>2학년 1학기 (2025.05 ~ 2025.06) </span></div><section class="learning-growth-card editorial-body" id="growth"><h2>작업의 목표</h2><p>체스 기물의 소환과 폰→퀸 승격을 보스 패턴으로 구현한 Unity 3D 액션 프로젝트입니다.</p></section>
+<section class="content-section editorial-body" id="overview"><h2>개요 및 기획 의도</h2><h3>기획 의도</h3>
+<ul>
+<li><strong>초기 기획안(&#39;킹 슬레이어&#39;)의 소울류 액션 발전</strong>: 빼앗긴 체스판의 왕좌를 되찾기 위해 흰색 폰(Pawn)이 나뭇가지를 들고 복수한다는 다크 판타지 스토리(&#39;킹 슬레이어&#39;)를 바탕으로, 소울류 장르 특유의 묵직한 보스전 액션 게임인 <code>P(Pawn)의 거짓</code>을 기획했습니다.</li>
+<li><strong>제한된 리소스의 영리한 극복</strong>: 학기 중 프로젝트에서 복잡한 관절 스켈레탈 애니메이션을 다수 제작하기 어려운 물리적·기술적 한계를 극복하고자, **관절이 없는 &#39;체스 기물&#39;**을 캐릭터와 보스 소환수로 채택했습니다. 대신 조명(Lighting)과 이펙트 연출, 명확한 이동/공격 궤적 패턴에 집중하여 &#39;리틀 나이트메어&#39;와 같은 어둡고 몰입감 있는 분위기를 조성했습니다.</li>
+</ul>
+<h3 id="mechanics">핵심 전투 규칙 및 기물별 구현 메커니즘</h3>
+<p>최종 보스인 **킹(King)**은 직접 피격 시 플레이어를 강하게 밀쳐내며(넉백), 일정 주기(<code>n초</code>)마다 기물 소환 패턴을 수행합니다. 특히 실제 체스의 <strong>&#39;프로모션(Promotion, 승격)&#39; 규칙</strong>을 보스전 핵심 기믹으로 녹여냈습니다.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="자료 비교표"><table>
+<thead>
+<tr>
+<th align="left">기물 / 단계</th>
+<th align="left">구현된 세부 행동 및 공격 로직 (<code>Draw.io</code> 및 발표 PPT 기준)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>1. 폰 (Pawn) &amp; 프로모션 기믹</strong></td>
+<td align="left">• 폰 스포너에서 4방향으로 폰을 소환하며, 각 폰은 자신의 목적지(체스판 맵 끝)를 향해 천천히 전진합니다.<br>• 플레이어가 폰이 맵 끝에 도달하기 전에 처치하지 못하면, **체스 규칙(프로모션)처럼 맵 끝에서 강력한 &#39;퀸(Queen)&#39; 오브젝트로 변신(생성)**합니다.</td>
+</tr>
+<tr>
+<td align="left"><strong>2. 룩 (Rook — 킹 소환)</strong></td>
+<td align="left">• 소환 시 특정 목표 위치를 저장한 뒤, 맵 외곽 경계(<code>&#39;border&#39;</code> 태그)에 닿을 때까지 <strong><code>2000</code>의 속도</strong>로 일직선 고속 돌진을 수행합니다.</td>
+</tr>
+<tr>
+<td align="left"><strong>3. 나이트 (Knight — 킹 소환)</strong></td>
+<td align="left">• 소환 후 <code>[위로 공중 도약 ➔ 플레이어 방향 추적 이동 ➔ 낙하 내려찍기]</code> 시퀀스를 <strong>3회(<code>i &gt; 3</code>) 연속 반복</strong>한 뒤 소멸합니다.</td>
+</tr>
+<tr>
+<td align="left"><strong>4. 비숍 (Bishop — 킹 소환)</strong></td>
+<td align="left">• 플레이어 방향을 천천히 바라보며 에너지를 모은 뒤 <strong><code>LineRenderer</code>를 사용해 조준 레이저를 발사</strong>합니다. (정확한 충돌 판정을 위해 플레이어 전용 <code>Layer</code>를 분리 설정)</td>
+</tr>
+<tr>
+<td align="left"><strong>5. 퀸 (Queen — 폰 승격 보스)</strong></td>
+<td align="left">• 기물을 소환하는 킹과 달리, 프로모션으로 등장한 <strong>퀸은 코루틴(Coroutine) 패턴 사이클 루프를 돌며 직접 3종의 고난도 패턴을 구사</strong>합니다:<br>  ① <strong>퀸-나이트 패턴</strong>: 거대화 후 점프 내려찍기 및 지진 이펙트 발생 (지면에 닿아 있는 플레이어에게 광역 데미지)<br>  ② <strong>퀸-룩 패턴</strong>: 1초 딜레이 간격으로 플레이어 방향을 향해 <strong><code>2000</code> 속도로 3회 연속 돌진</strong><br>  ③ <strong>퀸-비숍 패턴</strong>: 머리 위에서 발밑까지 레이저 각도를 1도씩 빠르게 회전(<code>i &gt; 180</code>)시키며 종단 레이저 발사</td>
+</tr>
+</tbody></table></div>
+<hr>
+</section>
+<section class="content-section editorial-body" id="role"><h2>담당 역할 및 핵심 기여</h2><ul>
+<li><strong>보스 패턴 흐름도 설계 및 소환/승격 AI 구현 (<code>Draw.io</code> &amp; <code>Unity C#</code>)</strong>:<ul>
+<li>코드를 작성하기 전 <code>Draw.io</code>를 활용해 최종 보스(King)의 기물 소환 분기와 폰(Pawn)의 퀸(Queen) 승격 및 퀸 전용 코루틴 패턴 루프(FSM)를 논리적으로 설계했습니다.</li>
+<li>5종 체스 기물(폰, 룩, 나이트, 비숍, 퀸)의 고유 이동 궤적, <code>LineRenderer</code> 레이저 및 레이어 충돌 판정, 지진 판정 기믹을 C# 스크립트로 구현했습니다.</li>
+</ul>
+</li>
+<li><strong>3D 자유 시점(Free-Look) 카메라 및 이동 벡터 연산</strong>:<ul>
+<li>3D 자유 시점 카메라를 구현하고, 월드 고정 축이 아니라 <strong>현재 카메라가 바라보는 정면/측면 방향을 기준으로 플레이어의 이동 벡터를 계산</strong>하는 자연스러운 3인칭 이동 조작을 구현했습니다.</li>
+</ul>
+</li>
+<li><strong>애니메이션 상태 머신 및 피격/사망 판정</strong>:<ul>
+<li>Unity <code>Animator</code> 컨트롤러를 세팅해 플레이어의 상태 전환을 연결하고, 보스 및 체스 기물 패턴과의 충돌 처리(<code>Collision</code> / <code>Trigger</code>)를 통한 데미지 연산 및 사망(<code>Take Damage</code>) 로직을 개발했습니다.</li>
+</ul>
+</li>
+<li><strong>사전 설계 기반 PM 일정 관리</strong>:<ul>
+<li>타 전공 과목과 병행해야 하는 학사 일정을 고려하여, 본격적인 구현 기간에 들어가기 전 보스 패턴 명세와 팀원별 업무 분할을 사전에 정리해 두고 개발 단계에서 지체 없이 구현을 마쳤습니다.</li>
+</ul>
+</li>
+</ul>
+<hr>
+</section>
+<section class="content-section editorial-body" id="architecture"><h2>구현 구조 및 작업 과정</h2><ol>
+<li><strong><code>Draw.io</code> 기반 보스 FSM 사전 설계 (<code>최종 보스 패턴 흐름도.drawio</code>)</strong>:<ul>
+<li><code>킹 대기(피격 시 밀쳐내기)</code> → <code>n초 주기 패턴 분기(폰/나이트/룩/비숍)</code> → <code>폰 맵 끝 도달 여부 검사</code> → <code>퀸(Queen) 생성 및 퀸 전용 코루틴 공격 루프(나이트 지진 / 룩 3연속 돌진 / 비숍 180도 회전 레이저)</code>로 이어지는 전체 순서도를 먼저 정의한 뒤 C# 코드로 옮겨 스파게티 코드 발생을 방지했습니다.</li>
+</ul>
+</li>
+<li><strong>카메라 기준 상대 이동 벡터 계산</strong>:<ul>
+<li>카메라의 Forward/Right 벡터(Y축 성분 제거 및 정규화)에 플레이어의 수평·수직 입력값을 결합해 이동 방향을 산출함으로써, 시점을 자유롭게 회전하더라도 직관적인 회피와 점프(퀸 지진 패턴 파훼 등)가 가능하도록 구성했습니다.</li>
+</ul>
+</li>
+<li><strong><code>LineRenderer</code> 레이저 및 태그/레이어 기반 충돌 처리</strong>:<ul>
+<li>룩의 돌진 종료 지점은 <code>&#39;border&#39;</code> 태그 충돌로 제어하고, 비숍·퀸의 <code>LineRenderer</code> 레이저는 플레이어 전용 <code>Layer</code> 마스크를 통해 정밀하게 피격 판정을 처리했습니다.</li>
+</ul>
+</li>
+</ol>
+<hr>
+</section>
+<section class="content-section editorial-body" id="troubleshooting"><h2>문제 해결 및 개선 사례</h2><h3>사례 1. 3D 캐릭터 애니메이션 리소스 부족 문제를 기획·체스 규칙(프로모션)으로 해결</h3>
+<ul>
+<li><strong>발생 문제</strong>: 5인 학생 팀 여건상 소울류 보스전에 요구되는 정교한 인체 관절 애니메이션을 직접 제작하기 어려웠습니다.</li>
+<li><strong>해결 방법</strong>: 관절 애니메이션이 어색해 보이는 인체형 모델 대신 **&#39;체스 기물&#39;**이라는 컨셉을 채택하여, 기물의 공중 도약·고속 직선 돌진(<code>2000</code> 속도)·<code>LineRenderer</code> 레이저 회전만으로도 공격 전조(Telegraph)와 파훼법(점프로 지진 회피 등)이 명확히 읽히도록 설계했습니다. 나아가 폰을 방치하면 퀸으로 승격되는 체스 고유의 <strong>프로모션 규칙</strong>을 넣어 전투의 긴장감과 우선순위 판단 재미를 극대화했습니다.</li>
+</ul>
+<h3>사례 2. 복합 보스 패턴 구현 시 조건문 복잡도 해결</h3>
+<ul>
+<li><strong>발생 문제</strong>: 킹의 소환 패턴과 승격된 퀸의 직접 공격 패턴을 바로 코드로 작성할 경우 상태 조건이 얽혀 디버깅이 어려워질 위험이 있었습니다.</li>
+<li><strong>해결 방법</strong>: 구현 전 <code>Draw.io</code>로 상태 전이 다이어그램과 루프 종료 조건(<code>i &gt; 3</code>, <code>i &gt; 180</code>, <code>&#39;border&#39;</code> 태그 접촉 등)을 먼저 수치화해 팀원들과 공유하고, 정의된 흐름도에 맞춰 코루틴 모듈을 순차 구현하여 디버깅 시간을 단축했습니다.</li>
+</ul>
+<hr>
+</section>
+<section class="content-section editorial-body" id="showcase"><h2>핵심 결과물 및 시연 자료 목록</h2><ul>
+<li><strong>&#39;P(Pawn)의 거짓&#39; 3D 보스전 플레이 빌드</strong>: 킹(King) 소환 보스전 및 폰→퀸 프로모션 코루틴 보스전, 3D Free-Look 카메라 이동, 피격/사망 시스템이 구현된 실행 빌드</li>
+<li><strong><code>Draw.io</code> 보스 패턴 흐름도 및 기획 문서</strong>: 초기 컨셉 이미지(&#39;킹 슬레이어&#39;), <code>최종 보스 패턴 흐름도.drawio</code>, 발표 자료(<code>PPTX</code>)<ul>
+<li><strong>Google Drive 결과물 폴더</strong>: <a href="https://drive.google.com/drive/folders/1LxvotH4PihZdf-3wZOud4AmL4CHyXiCf?usp=drive_link" target="_blank" rel="noopener noreferrer">원본 자료 보기</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+</section>
+<section class="content-section editorial-body" id="takeaways"><h2>배운 점과 아쉬운 점 / 회고</h2><ul>
+<li><strong>배운 점 (Learned)</strong>:<ul>
+<li><strong>개발 효율을 높이는 기획의 힘</strong>: 화려한 관절 애니메이션 리소스가 없더라도, 컨셉 설정(체스 기물 및 프로모션 규칙)과 명확한 패턴 설계만으로 긴장감 있는 3D 액션 보스전을 만들 수 있음을 체감했습니다.</li>
+<li><strong>사전 설계 문서(<code>Draw.io</code>)의 중요성</strong>: 코드를 바로 짜기 전에 상태 전이와 흐름도를 먼저 시각화해 설계함으로써 복잡한 보스 로직의 스파게티 코드를 예방하고 디버깅 시간을 크게 줄이는 방법을 익혔습니다.</li>
+</ul>
+</li>
+<li><strong>아쉬운 점 (Lacked)</strong>:<ul>
+<li>학사 일정과 병행하며 단일 보스전에 집중하다 보니 일반 몬스터 전투나 레벨 디자인 볼륨을 넓히지 못했습니다.</li>
+<li>소울류 특유의 타격감을 극대화할 수 있는 역경직(<code>Hit Stop</code>)이나 카메라 쉐이크(<code>Camera Shake</code>) 등 후처리 피드백 연출을 충분히 넣지 못한 점이 아쉬움으로 남습니다.</li>
+</ul>
+</li>
+</ul>
+</section><footer class="detail-footer-nav"><a class="detail-nav-btn" href="../index.html#projects">프로젝트 목록</a><a class="detail-nav-btn" href="../docs/portfolio_md/sub-01_Pawn%EC%9D%98_%EA%B1%B0%EC%A7%93.md">작성 근거 문서 · Markdown</a></footer></main></div><div class="floating-theme-fab" id="floatingThemeFab" aria-label="테마 설정">
+    <div class="theme-fab-spheres" aria-hidden="true" id="theme-options" inert="">
+      <button class="theme-fab-sphere" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드" type="button" tabindex="-1">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+        <span class="sphere-tooltip">라이트 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="dark" title="다크 모드" aria-label="다크 모드" type="button" tabindex="-1">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+        <span class="sphere-tooltip">다크 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정" type="button" tabindex="-1">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span>
+        <span class="sphere-tooltip">시스템 설정</span>
+      </button>
+    </div>
+    <button class="theme-fab-trigger" id="themeFabTrigger" title="테마 변경" aria-label="테마 변경" aria-controls="theme-options" aria-expanded="false" type="button">
+      <span class="fab-current-icon mono-icon mono-icon-stroke">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 2v20a10 10 0 0 0 0-20z"></path><circle cx="12" cy="12" r="10"></circle></svg>
+      </span>
+    </button>
+  </div><script src="../assets/js/portfolio-system.js"></script></body></html>

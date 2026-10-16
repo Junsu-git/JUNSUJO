@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ko" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>마비노기 모바일 겨울 이벤트 기획 | 조준수 포트폴리오</title><meta name="description" content="가정 데이터와 3,000만 원 예산 조건 아래 보스 분기·보상 테이블·QA 항목을 설계한 제안입니다."><script src="../assets/js/theme-init.js"></script><link rel="stylesheet" href="../assets/css/portfolio-system.css"><link rel="stylesheet" href="../assets/css/project-detail.css"></head><body><a class="skip-link" href="#main-content">본문 바로가기</a><header class="mobile-header"><a class="back-link-btn" href="../index.html#projects">← 프로젝트 목록</a><span class="header-caption">JUNSU JO / PORTFOLIO</span></header><div class="detail-layout-container"><aside class="toc-rail-container" aria-label="페이지 목차"><div class="toc-rail-title">ON THIS PAGE</div><nav class="toc-track-line" aria-label="상세 목차"><a class="toc-item-link" href="#growth">작업의 목표</a><a class="toc-item-link" href="#overview">개요 및 기획 의도</a><a class="toc-item-link" href="#role">담당 역할 및 핵심 기여</a><a class="toc-item-link" href="#process">기획 프로세스 및 QA 어뷰징 방어 설계</a><a class="toc-item-link" href="#showcase">핵심 결과물 및 시연 자료 목록</a><a class="toc-item-link" href="#takeaways">배운 점과 아쉬운 점 / 회고</a></nav></aside><main class="detail-main-content" id="main-content"><div class="detail-page-heading"><span class="eyebrow">PROJECT / WORK RECORD</span><h1>마비노기 모바일 겨울 이벤트 기획</h1><p class="detail-sub-title">가정 데이터와 3,000만 원 예산 조건 아래 보스 분기·보상 테이블·QA 항목을 설계한 제안입니다.</p></div><div class="project-fact-strip"><span>SUB-06</span><span>팀장 · 기획·문서화</span><span>2학년 2학기 (2025.09 ~ 2025.11)</span></div><section class="learning-growth-card editorial-body" id="growth"><h2>작업의 목표</h2><p>가정 데이터와 3,000만 원 예산 조건 아래 보스 분기·보상 테이블·QA 항목을 설계한 제안입니다.</p></section>
+<section class="content-section editorial-body" id="overview"><h2>개요 및 기획 의도</h2><div class="content-note"><p>기획·프로토타입 과제입니다. 상용 서비스 적용이나 운영 성과를 의미하지 않습니다.</p><p>지표는 수업의 가정 데이터이며, 예산과 KPI는 제안 목표입니다.</p></div><h3>기획 배경 및 PM 제약 조건</h3>
+<ul>
+<li><strong>업데이트 타임라인에 따른 지표 하락 및 여론 악화 진단</strong>:<ul>
+<li><code>9/25 팔라딘(시즌1)</code> → <code>10/1 바리 어비스 던전</code> → <code>10/16 암흑술사</code> → <code>11/13 타바르타스 레이드</code>로 이어지는 강행군 업데이트 속에서 급격한 성장 피로도와 커뮤니티 부정 여론(VOC), DAU·D+7 잔존율·PU 하락이 발생한 상황을 Excel 지표로 시각화해 진단했습니다.</li>
+</ul>
+</li>
+<li><strong>PM 지시사항 (실무형 예산 제약 조건)</strong>:<ul>
+<li><strong>&quot;가용 예산 3,000만 원(3MM, 1MM=1,000만 원 / 1MD=42만 원 기준) 한도 내에서 유저 반응 악화를 늦추고 신뢰도를 회복할 연말 이벤트를 기획하라.&quot;</strong></li>
+<li>대규모 신규 시스템을 처음부터 개발하기에는 부족한 3,000만 원이라는 제한된 예산을 어디에 집중 투자해야 **최대 효율(영구 자산 확보 + 바이럴 마케팅 + 유저 감동)**을 낼 수 있는지 엔지니어링·비즈니스 관점에서 설계했습니다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="mechanics">핵심 시스템 · 예산 배분 및 DB 테이블 명세</h3>
+<h4>) 3,000만 원(3MM) 최적 예산 배분 전략</h4>
+<p>예산대별(100만~1,000만 원) 개발·아트·사운드·마케팅·운영 티어 테이블을 먼저 정의한 뒤, 기존 시스템(미스틱 던전)을 재활용해 개발·아트 비용을 최소화하고 **&#39;영구적인 인게임 자산이자 유저 바이럴 소재가 되는 사운드(유명 아티스트 협업 OST + 편곡 3종)&#39;**에 전략적으로 예산을 집중했습니다.</p>
+<ul>
+<li><strong>총 예산 3,000만 원 배분 내역</strong>:<ul>
+<li><strong>개발 (200만 원)</strong>: 기존 &#39;미스틱 던전&#39; 구조 재활용 및 보스 행동 트리거/분기 스크립트 구현</li>
+<li><strong>아트 (100만 원)</strong>: 기존 골렘 모델링 리텍스처링(&#39;스노우 미스틱 골렘&#39;) 및 산타 모자·이모트 리소스</li>
+<li><strong>사운드 (1,900만 원)</strong>: 유명 음악인 협업 오리지널 연말 테마곡 1곡 + 인게임 악보 연주용 편곡 3종 (인게임 영구 자산 + 음악 자체의 유튜브/커뮤니티 바이럴 효과로 마케팅비 절감)</li>
+<li><strong>마케팅 (100만 원)</strong>: 공식 홈페이지 이벤트 랜딩 페이지 및 커뮤니티 공지 카드뉴스</li>
+<li><strong>운영 (400만 원)</strong>: 연말 감사 라이브 방송 진행 및 유저 소통 세션</li>
+<li><strong>예비비 (300만 원)</strong>: 긴급 핫픽스 및 서버 부하 대응 예비비</li>
+</ul>
+</li>
+</ul>
+<h4>) 이벤트 플로우 <code>&lt;마비노기 모바일: 다시 쓰는 약속&gt;</code> 및 분기 기믹</h4>
+<ol>
+<li><strong>연말 감사 라이브 방송 및 쿠폰 배포</strong>: 디렉터의 사과·소통 방송과 함께 감사 쿠폰(<code>THANKSTOYOU</code> / <code>YEAR_END_THANKS2025</code>)을 배포해 <strong>&#39;연말감사세트&#39;(<code>Item_id: 2025100</code>)</strong> 지급 (내부에 신곡 <strong>악보(<code>2025101</code>)</strong>, <strong>&#39;스파클스파클&#39; 이모트(<code>2025102</code>)</strong>, <strong>산타 모자(<code>ITEM_XMAS_SANTA_HAT</code>)</strong> 포함).</li>
+<li><strong>인게임 미스틱 던전 &#39;선택 분기형&#39; 보스 기믹</strong>:<ul>
+<li>로나(<code>NPC_LONA_2025_XMAS_001</code>)와 판(<code>NPC_PAN_2025_XMAS_002</code>)의 안내로 진입한 크리스마스 미스틱 던전(<code>QUEST_MYSTIC_DUNGEON_2025_XMAS_001</code>)에서 보스 **&#39;스노우 미스틱 골렘&#39;**과 마주합니다.</li>
+<li><strong>분기 A (일반 토벌)</strong>: 골렘을 공격해 처치하면 <strong><code>[나쁜 눈사람]</code></strong> 타이틀 획득.</li>
+<li><strong>분기 B (마비노기다운 평화적 상호작용)</strong>: 골렘을 공격하지 않고 쿠폰으로 받은 <strong>연말 감사 악보(<code>2025101</code>)를 골렘 앞에서 연주</strong>하면 골렘이 반응하며 히든 보상과 <strong><code>[착한 눈사람]</code></strong> 타이틀 획득.</li>
+</ul>
+</li>
+</ol>
+<h4>) 실제 설계한 데이터베이스(DB) 테이블 명세</h4>
+<p>프로그래머가 즉시 구현에 참조할 수 있도록 아이템·NPC·보스 상태 머신 테이블을 키값과 열거형(Enum)으로 정의했습니다.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="자료 비교표"><table>
+<thead>
+<tr>
+<th align="left">테이블 구분</th>
+<th align="left">주요 키(Key) 및 데이터 명세 (<code>PPT</code> 수록 원본)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>아이템 보상 DB</strong></td>
+<td align="left">• <code>2025100</code>: <code>&quot;연말감사세트&quot;</code> (<code>Item_type: 3(소모품/상자)</code>, <code>Item_grade: 7(전설)</code>)<br>• <code>2025101</code>: 신곡 악보 (<code>Item_type: 4</code>, 연주 시 보스 분기 트리거 작동)<br>• <code>2025102</code>: <code>&quot;스파클스파클&quot;</code> 신규 이모트<br>• <code>ITEM_XMAS_SANTA_HAT</code>: <code>&quot;산타 모자&quot;</code> 외형 장비</td>
+</tr>
+<tr>
+<td align="left"><strong>보스 상태 머신 DB</strong></td>
+<td align="left">• <code>Boss_ID</code>: <code>BOSS_SNOW_GOLEM_2025_XMAS_001</code> (<code>&quot;스노우 미스틱 골렘&quot;</code>, 초기 HP <code>1,500,000</code>)<br>• <code>Combat_KEY_by_status</code> 매핑:<br>  - <code>STATE_GREEN</code> / <code>STATE_BLUE</code> / <code>STATE_PURPLE</code> / <code>STATE_PINK</code> ➔ <code>SITTING (1 ~ 4)</code> (비선공 대기 및 악보 연주 감응 상태)<br>  - <code>STATE_ORANGE</code> ➔ <code>SMASH (5)</code> (근접 내려찍기 공격)<br>  - <code>STATE_YELLOW</code> ➔ <code>LAUNCH RAZER (6)</code> (원거리 레이저 발사 패턴)</td>
+</tr>
+</tbody></table></div>
+<hr>
+</section>
+<section class="content-section editorial-body" id="role"><h2>담당 역할 및 핵심 기여</h2><p>팀장으로서 프로젝트 방향 설정부터 <strong>실무 전 과정</strong>을 직접 수행했습니다.</p>
+<ul>
+<li><strong>현황 분석 및 지표 시각화 (<code>Excel</code>)</strong>: 9~11월 업데이트 타임라인에 따른 DAU, 잔존율(<code>D+7</code>), 결제 유저 비율(<code>PU</code>) 변화를 시각화하고 문제 정의</li>
+<li><strong>3,000만 원 예산 티어 테이블 및 ROI 최적화 설계</strong>: 1MM/1MD 단가 기준에 맞춰 개발/아트 리소스는 기존 에셋 재활용으로 절감하고 사운드 자산에 집중하는 예산안 수립</li>
+<li><strong>보스 상태 머신(<code>Combat_KEY_by_status</code>) 및 보상 DB 테이블 설계</strong>: <code>BOSS_SNOW_GOLEM_2025_XMAS_001</code> 및 <code>2025100~2025102</code> 아이템 테이블, 이벤트 시나리오 작성</li>
+<li><strong>QA 어뷰징 방어 설계 및 랜딩 페이지 UX/UI(<code>Figma</code>)</strong>: 쿠폰/이모트/던전 분기 악용 방어 로직 명세화 및 웹 랜딩 페이지 와이어프레임 제작, 목표 KPI(<strong>부정 VOC 40% 감소, 패키지별 PU +0.4, DAU +0.4</strong>) 수립</li>
+</ul>
+<hr>
+</section>
+<section class="content-section editorial-body" id="process"><h2>기획 프로세스 및 QA 어뷰징 방어 설계</h2><h3>전체 기획 프로세스</h3>
+<pre><code class="language-text">[1. 지표 시각화 및 PM 제약 조건 분석]
+  9~11월 업데이트 피로도 및 부정 VOC 진단 + &quot;예산 3,000만 원(3MM) 한도 내 신뢰 회복&quot; 목표 설정
+      ↓
+[2. 예산 티어 매트릭스 설계 및 3,000만 원 최적 배분]
+  개발(200만)·아트(100만)는 미스틱 던전 재활용으로 최소화 + 사운드(1,900만) 오리지널 OST로 바이럴 극대화
+      ↓
+[3. &lt;다시 쓰는 약속&gt; 분기형 던전 &amp; DB 테이블(Boss/Item/Quest) 설계]
+  &#39;스노우 미스틱 골렘&#39; 처치([나쁜 눈사람]) vs 악보 연주([착한 눈사람]) 분기 및 Combat KEY/Value 명세화
+      ↓
+[4. QA 어뷰징 방어 시나리오 · 랜딩 페이지 UX/UI (Figma) · KPI 수립]
+  부정 VOC -40%, PU +0.4, DAU +0.4 목표 설정 및 42슬라이드 제안서 완성
+</code></pre>
+<h3>QA 및 어뷰징(Abusing) 방어 설계 (개발자적 시각 반영)</h3>
+<p>단순 이벤트 기획에 그치지 않고, 라이브 서버 적용 시 발생할 수 있는 3가지 기술적 악용 시나리오와 방어 대책을 제안서에 포함했습니다.</p>
+<ol>
+<li><strong>쿠폰 중복 수령 어뷰징 방어</strong>: <code>THANKSTOYOU</code> 쿠폰 입력 시 계정 단위 수령 플래그 검증 및 패킷 중복 요청 차단.</li>
+<li><strong>신규 이모트(<code>스파클링</code>) 파티클 남발에 따른 서버/클라이언트 부하 방어</strong>: 광장에서 다수 유저가 동시에 파티클 이모트를 연타해 프레임 드랍이나 채널 튕김을 유발하지 않도록 <strong>이모트 재사용 대기시간(쿨타임 30초)</strong> 적용 및 동시 출력 스트레스 테스트 명시.</li>
+<li><strong>미스틱 던전 분기 트리거 악용 방어</strong>: 악보 연주 분기와 보스 처치 분기를 동시에 발동시켜 보상을 이중 획득하거나 신화 아이템이 비정상 드랍되는 현상을 막기 위해 상태 전이 시 상호 배타적 락(Lock) 처리.</li>
+</ol>
+<hr>
+</section>
+<section class="content-section editorial-body" id="showcase"><h2>핵심 결과물 및 시연 자료 목록</h2><ul>
+<li><strong>마비노기 모바일 겨울/연말 이벤트 종합 기획서 (<code>마비노기 모바일 - 겨울 / 연말 이벤트 기획(금액 제한).pptx</code>, 42슬라이드)</strong>:<ul>
+<li><strong>Google Slides 원본 보기</strong>: <a href="https://docs.google.com/presentation/d/1_iMslQYJhMA6BSQT9NR7BjqjSNz646v3/edit?usp=sharing&ouid=103720697008629755831&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer">원본 자료 보기</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+</section>
+<section class="content-section editorial-body" id="takeaways"><h2>배운 점과 아쉬운 점 / 회고</h2><ul>
+<li><strong>배운 점 (Learned)</strong>:<ul>
+<li><strong>&quot;예산 3,000만 원(3MM)&quot;이라는 현실적인 제약 조건</strong> 안에서 기존 시스템(미스틱 던전)을 재활용해 개발 단가를 낮추고, 마비노기 IP의 강점인 &#39;악보 연주 상호작용&#39;과 &#39;오리지널 사운드&#39;로 감동을 극대화하는 실무형 엔지니어링·기획 감각을 익혔습니다.</li>
+<li>보스 상태 머신(<code>STATE_GREEN~YELLOW</code>, <code>SITTING/SMASH/LAUNCH RAZER</code>), 아이템 DB(<code>2025100~2025102</code>), 그리고 이모트 쿨타임(30초) 등 <strong>QA 어뷰징 방어 로직</strong>까지 명세화해보며 기획 데이터가 실제 클라이언트·서버 코드와 어떻게 맞물리는지 깊이 이해했습니다. 이 경험은 이후 3학년 <code>내 약국에는 정상이 없다</code>에서 <code>CSVDataManager</code>를 설계할 때 큰 자산이 되었습니다.</li>
+</ul>
+</li>
+<li><strong>아쉬운 점 (Lacked)</strong>:<ul>
+<li>팀 프로젝트였음에도 완성도에 대한 욕심으로 제가 주요 실무를 직접 떠안아 진행하다 보니, 팀원들의 역량을 이끌어내고 역할을 분배하는 매니징 측면에서 아쉬움이 남았습니다. 이를 반성하여 이후 3학년 팀 프로젝트(<code>Project Pharmacy</code>, <code>RootMarket</code>)에서는 초기부터 팀원별 강점에 맞춘 명확한 작업 분담과 인터페이스 경계 설정에 집중했습니다.</li>
+<li>또한 분석에 활용한 지표가 가상의 추정 데이터를 기반으로 했다는 한계를 보완하고자, 다음 학기 **&#39;메이플 키우기 데이터 분석&#39;**에서는 실제 게임을 14일간 직접 플레이하며 수집한 실측 로깅 데이터를 기반으로 분석을 수행했습니다.</li>
+</ul>
+</li>
+</ul>
+</section><footer class="detail-footer-nav"><a class="detail-nav-btn" href="../index.html#projects">프로젝트 목록</a><a class="detail-nav-btn" href="../docs/portfolio_md/sub-06_%EA%B2%A8%EC%9A%B8_%EC%9D%B4%EB%B2%A4%ED%8A%B8_%EA%B8%B0%ED%9A%8D%EC%84%9C_%EB%A7%88%EB%B9%84%EB%85%B8%EA%B8%B0_%EB%AA%A8%EB%B0%94%EC%9D%BC.md">작성 근거 문서 · Markdown</a></footer></main></div><div class="floating-theme-fab" id="floatingThemeFab" aria-label="테마 설정">
+    <div class="theme-fab-spheres" aria-hidden="true" id="theme-options" inert="">
+      <button class="theme-fab-sphere" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드" type="button" tabindex="-1">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+        <span class="sphere-tooltip">라이트 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="dark" title="다크 모드" aria-label="다크 모드" type="button" tabindex="-1">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+        <span class="sphere-tooltip">다크 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정" type="button" tabindex="-1">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span>
+        <span class="sphere-tooltip">시스템 설정</span>
+      </button>
+    </div>
+    <button class="theme-fab-trigger" id="themeFabTrigger" title="테마 변경" aria-label="테마 변경" aria-controls="theme-options" aria-expanded="false" type="button">
+      <span class="fab-current-icon mono-icon mono-icon-stroke">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 2v20a10 10 0 0 0 0-20z"></path><circle cx="12" cy="12" r="10"></circle></svg>
+      </span>
+    </button>
+  </div><script src="../assets/js/portfolio-system.js"></script></body></html>

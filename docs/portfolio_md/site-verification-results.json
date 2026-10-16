@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-10-16",
+  "structureCheck": "passed",
+  "browser": {
+    "pages": 23,
+    "viewports": [
+      390,
+      1440
+    ],
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "pageChecks": 92,
+    "failures": [],
+    "errors": [],
+    "tableHover": {
+      "odd": "rgb(41, 44, 45)",
+      "even": "rgb(41, 44, 45)"
+    },
+    "themeAndNavigation": true,
+    "assignmentHubReturns": true
+  },
+  "independentReview": "four important findings fixed: split scope/DOM, authorship percentage, assignment hub returns; pre-existing proposal overclaim softened",
+  "runtimeScope": "website only; no game runtime verification"
+}

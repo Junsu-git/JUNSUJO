@@ -1,0 +1,77 @@
+{
+  "generatedAt": "2026-10-16",
+  "pages": [
+    {
+      "route": "projects/project-01-pharmacy.html",
+      "source": "docs/portfolio_md/main-01_내_약국에는_정상이_없다.md"
+    },
+    {
+      "route": "projects/project-02-nuri.html",
+      "source": "docs/portfolio_md/main-02_누리살이.md"
+    },
+    {
+      "route": "projects/project-03-warrior.html",
+      "source": "docs/portfolio_md/main-03_최후의_전사_라스트_워리어_스탠딩.md"
+    },
+    {
+      "route": "projects/project-04-capstone.html",
+      "source": "docs/portfolio_md/main-04_2026_캡스톤_디자인_RootMarket.md"
+    },
+    {
+      "route": "projects/sub-01-pawn.html",
+      "source": "docs/portfolio_md/sub-01_Pawn의_거짓.md"
+    },
+    {
+      "route": "projects/sub-02-otter.html",
+      "source": "docs/portfolio_md/sub-02_아기_해달_뀨아.md"
+    },
+    {
+      "route": "projects/sub-03-damda.html",
+      "source": "docs/portfolio_md/sub-03_앱_기획서_담다_DamDa.md"
+    },
+    {
+      "route": "projects/sub-04-limbus-ui.html",
+      "source": "docs/portfolio_md/sub-04_림버스_컴퍼니_도감_앱_UX_UI_설계.md"
+    },
+    {
+      "route": "projects/sub-05-chuseok.html",
+      "source": "docs/portfolio_md/sub-05_추석_이벤트_기획서_마비노기_모바일.md"
+    },
+    {
+      "route": "projects/sub-06-winter.html",
+      "source": "docs/portfolio_md/sub-06_겨울_이벤트_기획서_마비노기_모바일.md"
+    },
+    {
+      "route": "projects/sub-07-maple.html",
+      "source": "docs/portfolio_md/sub-07_메이플_키우기_데이터_분석.md"
+    },
+    {
+      "route": "projects/sub-08-limbus-analysis.html",
+      "source": "docs/portfolio_md/sub-08_림버스_컴퍼니_거울던전_클리어_타임_분석.md"
+    },
+    {
+      "route": "projects/sub-09-wow.html",
+      "source": "docs/portfolio_md/sub-09_WOW_레벨링_데이터_분석.md"
+    },
+    {
+      "route": "projects/sub-10-emoticons.html",
+      "source": "docs/portfolio_md/sub-10_이모티콘_제작.md"
+    },
+    {
+      "route": "projects/sub-11-coursework.html",
+      "source": "docs/portfolio_md/sub-11_전공_포트폴리오_수업_과제_컬렉션.md"
+    }
+  ],
+  "unconfirmed": [
+    "Contribution percentages omitted",
+    "Gallery screenshots not invented",
+    "RootMarket public repository URL not provided"
+  ],
+  "corrections": [
+    "Three inaccessible Drive IDs replaced",
+    "Maple summary -62% replaced with scoped primary-presentation data",
+    "Fifty planned logs are not fifty completed days",
+    "Winter metrics are assumed exercise data",
+    "Erins Fragments is an event proposal"
+  ]
+}

@@ -14,8 +14,8 @@
 - **핵심 기술 태그**: `#게임규칙설계` `#Figma프로토타이핑` `#플레이테스트5회` `#밸런싱` `#PM` `#룰북설계`
 - **외부 링크 및 증빙 경로**:
   - **Google Drive 결과물 폴더**: [https://drive.google.com/drive/folders/1W3gCVJMAAcFXXPmWWhREGKB_PU-YJWGN?usp=drive_link](https://drive.google.com/drive/folders/1W3gCVJMAAcFXXPmWWhREGKB_PU-YJWGN?usp=drive_link)
-    - **공식 룰북 PDF (`1조_룰북.pdf`)**: [https://drive.google.com/file/d/1i7bZ-sG3cBfAUVdC-4k_E5yM0B-G6I_n/view?usp=drive_link](https://drive.google.com/file/d/1i7bZ-sG3cBfAUVdC-4k_E5yM0B-G6I_n/view?usp=drive_link)
-    - **원페이저 요약본 PDF (`1조_원페이저.pdf`)**: [https://drive.google.com/file/d/1U9_m1h3lM0R5_r3U1l6wG9H7pK2_yB0L/view?usp=drive_link](https://drive.google.com/file/d/1U9_m1h3lM0R5_r3U1l6wG9H7pK2_yB0L/view?usp=drive_link)
+    - **공식 룰북 PDF (`1조_룰북.pdf`)**: [https://drive.google.com/file/d/1LfvZm020wj5FKS_m0Az87gxgWfIqfzLl/view?usp=drive_link](https://drive.google.com/file/d/1LfvZm020wj5FKS_m0Az87gxgWfIqfzLl/view?usp=drive_link)
+    - **원페이저 요약본 PDF (`1조_원페이저.pdf`)**: [https://drive.google.com/file/d/1iXbpy8JSG__b7mQOCNnFsGAqSYqhjiva/view?usp=drive_link](https://drive.google.com/file/d/1iXbpy8JSG__b7mQOCNnFsGAqSYqhjiva/view?usp=drive_link)
   - **Figma 원본 작업 링크 (`Figma 링크.docx`에서 확인 완료)**:
     - **디지털 프로토타입 보드판 (`G1_BoardGame-Prototyping`)**: [https://www.figma.com/design/8CI9f9a8aW8PeohPDVeCgs/G1_BoardGame-Prototyping?node-id=0-1&t=g4LMfk7SkQxNIq4Q-1](https://www.figma.com/design/8CI9f9a8aW8PeohPDVeCgs/G1_BoardGame-Prototyping?node-id=0-1&t=g4LMfk7SkQxNIq4Q-1)
     - **룰북 디자인 (`G1_BoardGame-RuleBook`)**: [https://www.figma.com/design/LNVrx4033vCf62FyP52WTT/G1_BoardGame-RuleBook?node-id=0-1&t=S0mgSU4QQ2hkH1aT-1](https://www.figma.com/design/LNVrx4033vCf62FyP52WTT/G1_BoardGame-RuleBook?node-id=0-1&t=S0mgSU4QQ2hkH1aT-1)

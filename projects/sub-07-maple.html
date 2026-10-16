@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>메이플 키우기 데이터 분석 | 조준수 포트폴리오</title><meta name="description" content="14일간 4개 계층의 지표를 기록하고 표시 전투력과 실제 데미지의 차이를 비교한 QA·밸런스 분석입니다."><script src="../assets/js/theme-init.js"></script><link rel="stylesheet" href="../assets/css/portfolio-system.css"><link rel="stylesheet" href="../assets/css/project-detail.css"></head><body><a class="skip-link" href="#main-content">본문 바로가기</a><header class="mobile-header"><a class="back-link-btn" href="../index.html#projects">← 프로젝트 목록</a><span class="header-caption">JUNSU JO / PORTFOLIO</span></header><div class="detail-layout-container"><aside class="toc-rail-container" aria-label="페이지 목차"><div class="toc-rail-title">ON THIS PAGE</div><nav class="toc-track-line" aria-label="상세 목차"><a class="toc-item-link" href="#growth">관찰과 검증</a><a class="toc-item-link" href="#overview">분석 개요</a><a class="toc-item-link" href="#mechanics">데이터와 비교 기준</a><a class="toc-item-link" href="#role">담당 역할</a><a class="toc-item-link" href="#process">수집 과정</a><a class="toc-item-link" href="#troubleshooting">개선 제안</a><a class="toc-item-link" href="#showcase">원본 결과물</a><a class="toc-item-link" href="#takeaways">분석의 한계</a></nav></aside><main class="detail-main-content" id="main-content"><div class="detail-page-heading"><span class="eyebrow">PROJECT / WORK RECORD</span><h1>메이플 키우기 데이터 분석</h1><p class="detail-sub-title">14일간 4개 계층의 지표를 기록하고 표시 전투력과 실제 데미지의 차이를 비교한 QA·밸런스 분석입니다.</p></div><div class="project-fact-strip"><span>SUB-07</span><span>팀장 · 로깅 모델·분석</span><span>3학년 1학기 (2026.03 ~ 2026.06)</span></div><section class="learning-growth-card editorial-body" id="growth"><h2>관찰과 검증</h2><p>표시 전투력의 상승이 실제 데미지 상승과 같은 비율로 이어지는지 확인했습니다. 관측 결과와 내부 공식에 대한 가설을 구분하고, 재현 가능한 테스트 케이스로 정리했습니다.</p>
+</section>
+<section class="content-section editorial-body" id="overview"><h2>분석 개요</h2><p>3인 팀 <strong>토끼와거북이</strong>의 SWTestQA 과제입니다. 신규·5n·6n·7n 계층의 계정을 대상으로 <strong>14일간</strong> 플레이 지표를 기록했습니다. 저는 팀장으로서 로깅 항목과 비교 기준을 설계하고 분석 및 발표 자료 제작을 담당했습니다.</p>
+</section>
+<section class="content-section editorial-body" id="mechanics"><h2>데이터와 비교 기준</h2><p>아래는 <strong>최종 발표자료에 정리된 값</strong>입니다. 라이브 서비스 전체 이용자의 통계가 아닌 수업의 블랙박스 테스트 결과입니다.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="자료 비교표"><table>
+<thead>
+<tr>
+<th>7n 계정</th>
+<th align="right">1일차</th>
+<th align="right">14일차</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>레벨</td>
+<td align="right">73</td>
+<td align="right">81</td>
+</tr>
+<tr>
+<td>표시 전투력</td>
+<td align="right">1,292,880,000</td>
+<td align="right">6,177,450,000</td>
+</tr>
+<tr>
+<td>데미지</td>
+<td align="right">104,585,202</td>
+<td align="right">302,512,687</td>
+</tr>
+</tbody></table></div>
+<p>전투력 대비 데미지 비율의 변화는 <code>(말기 데미지 / 말기 전투력) / (초기 데미지 / 초기 전투력) - 1</code>로 비교했습니다. 발표자료는 약 <strong>39.5% 감소</strong>로 정리합니다. 이를 게임 내부 공식의 오류나 유저 이탈의 인과 증명으로 확대하지 않습니다.</p>
+</section>
+<section class="content-section editorial-body" id="role"><h2>담당 역할</h2><ul>
+<li>레벨 구간별 로깅 모델과 수집 항목 정의</li>
+<li>전투력·데미지·성장 던전·장착 무기 비교</li>
+<li>챕터 이동과 다중 기기 접속에 대한 QA 테스트 케이스 제안</li>
+<li>분석 스토리보드와 발표 자료 작성</li>
+</ul>
+</section>
+<section class="content-section editorial-body" id="process"><h2>수집 과정</h2><p>실시간 버프로 수치가 달라지는 문제를 발견해 2일차부터 기본 능력치 상세 값을 기록하도록 기준을 통일했습니다. 게임 화면에서 확인한 값을 수동으로 기록했으며, 내부 서버 로그를 직접 수집한 분석은 아닙니다.</p>
+</section>
+<section class="content-section editorial-body" id="troubleshooting"><h2>개선 제안</h2><p>무기 획득에 집중된 성장 체감을 누적형 강화 요소로 분산하고, 공격 기여도와 생존 기여도를 구분한 지표를 제안했습니다. QA에서는 챕터 반복 이동 후 몬스터 수·시간당 보상 비교, 두 번째 기기 로그인 시 기존 세션 만료 여부 등을 테스트 항목으로 정리했습니다. 운영사의 실제 수정 완료를 검증한 결과로 표현하지 않습니다.</p>
+</section>
+<section class="content-section editorial-body" id="showcase"><h2>원본 결과물</h2><ul>
+<li><a href="https://docs.google.com/spreadsheets/d/1Ff3WeqO2ruBr5m-20nEQ-6WLrYr2VgDAm8SkoXOMH-E/edit" target="_blank" rel="noopener noreferrer">메이플 키우기 플레이 데이터 로깅 · Google Sheets</a></li>
+<li><a href="https://docs.google.com/presentation/d/1HgGxMqtK_nP_zwotYE7bWtz7X9pnk63e/edit" target="_blank" rel="noopener noreferrer">팀 토끼와거북이 SWTestQA 발표자료</a></li>
+<li><a href="https://drive.google.com/drive/folders/1Zyuzo-aWOlQqfuJ3kCeqBy9_SynKVcbM" target="_blank" rel="noopener noreferrer">결과물 폴더</a></li>
+</ul>
+</section>
+<section class="content-section editorial-body" id="takeaways"><h2>분석의 한계</h2><p>표시 전투력만으로 실전 성능을 설명하기 어렵다는 점과 수집 조건을 고정하는 중요성을 배웠습니다. 표본과 측정 기간이 제한적이며 버프·장비·길드 등 조건을 완전히 분리하지 못했습니다. 로깅 시트의 반올림된 평균 값과 발표자료의 정리 값은 구분해서 읽어야 합니다.</p>
+</section><footer class="detail-footer-nav"><a class="detail-nav-btn" href="../index.html#projects">프로젝트 목록</a><a class="detail-nav-btn" href="../docs/portfolio_md/sub-07_%EB%A9%94%EC%9D%B4%ED%94%8C_%ED%82%A4%EC%9A%B0%EA%B8%B0_%EB%8D%B0%EC%9D%B4%ED%84%B0_%EB%B6%84%EC%84%9D.md">작성 근거 문서 · Markdown</a></footer></main></div><div class="floating-theme-fab" id="floatingThemeFab" aria-label="테마 설정">
+    <div class="theme-fab-spheres" aria-hidden="true" id="theme-options" inert="">
+      <button class="theme-fab-sphere" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드" type="button" tabindex="-1">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+        <span class="sphere-tooltip">라이트 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="dark" title="다크 모드" aria-label="다크 모드" type="button" tabindex="-1">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+        <span class="sphere-tooltip">다크 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정" type="button" tabindex="-1">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span>
+        <span class="sphere-tooltip">시스템 설정</span>
+      </button>
+    </div>
+    <button class="theme-fab-trigger" id="themeFabTrigger" title="테마 변경" aria-label="테마 변경" aria-controls="theme-options" aria-expanded="false" type="button">
+      <span class="fab-current-icon mono-icon mono-icon-stroke">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 2v20a10 10 0 0 0 0-20z"></path><circle cx="12" cy="12" r="10"></circle></svg>
+      </span>
+    </button>
+  </div><script src="../assets/js/portfolio-system.js"></script></body></html>

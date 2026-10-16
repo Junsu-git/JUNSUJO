@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ko" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>림버스 거울던전 클리어 타임 분석 | 조준수 포트폴리오</title><meta name="description" content="전체 클리어 시간과 순수 전투 시간을 나눠 8종 키워드 덱의 효율을 비교한 분석입니다."><script src="../assets/js/theme-init.js"></script><link rel="stylesheet" href="../assets/css/portfolio-system.css"><link rel="stylesheet" href="../assets/css/project-detail.css"></head><body><a class="skip-link" href="#main-content">본문 바로가기</a><header class="mobile-header"><a class="back-link-btn" href="../index.html#projects">← 프로젝트 목록</a><span class="header-caption">JUNSU JO / PORTFOLIO</span></header><div class="detail-layout-container"><aside class="toc-rail-container" aria-label="페이지 목차"><div class="toc-rail-title">ON THIS PAGE</div><nav class="toc-track-line" aria-label="상세 목차"><a class="toc-item-link" href="#growth">작업의 목표</a><a class="toc-item-link" href="#overview">개요 및 분석 의도</a><a class="toc-item-link" href="#role">담당 역할 및 핵심 기여</a><a class="toc-item-link" href="#process">데이터 수집 및 전투·비전투 시간 교차 분석</a><a class="toc-item-link" href="#showcase">핵심 결과물 및 시연 자료 목록</a><a class="toc-item-link" href="#takeaways">배운 점과 아쉬운 점 / 회고</a></nav></aside><main class="detail-main-content" id="main-content"><div class="detail-page-heading"><span class="eyebrow">PROJECT / WORK RECORD</span><h1>림버스 거울던전 클리어 타임 분석</h1><p class="detail-sub-title">전체 클리어 시간과 순수 전투 시간을 나눠 8종 키워드 덱의 효율을 비교한 분석입니다.</p></div><div class="project-fact-strip"><span>SUB-08</span><span>1인 분석</span><span>1학년 2학기 (2024.08 ~ 2024.11)</span></div><section class="learning-growth-card editorial-body" id="growth"><h2>작업의 목표</h2><p>전체 클리어 시간과 순수 전투 시간을 나눠 8종 키워드 덱의 효율을 비교한 분석입니다.</p></section>
+<section class="content-section editorial-body" id="overview"><h2>개요 및 분석 의도</h2><div class="content-note"><p>분석 결과는 당시 버전·측정 조건에 한정됩니다. 현재 게임의 성능 순위나 보편적 최적 조합을 뜻하지 않습니다.</p></div><h3>분석 의도</h3>
+<ul>
+<li><strong>커뮤니티 통념과 실제 플레이 데이터의 간극 검증</strong>: &#39;림버스 컴퍼니&#39;의 주력 반복 파밍 콘텐츠인 &#39;거울 던전(시뮬레이션 노말 4층)&#39;을 플레이하며, 유저 커뮤니티에서 흔히 평가하는 *&quot;특정 주류 키워드 덱이 가장 빠르고 효율적이다&quot;*라는 통념이 실제 측정된 클리어 타임 수치와 일치하는지 패스 레벨을 330까지 올리며 직접 검증하고자 했습니다.</li>
+<li><strong>듀얼 타이머(Dual Timer)를 통한 전투/비전투 시간 분리</strong>: 단순 체감 속도가 아니라 화면에 타이머 2개를 동시에 띄워 **타이머 1(1층 테마팩 선택부터 보스 클리어까지 총 소요 시간)**과 **타이머 2(순수 전투 시작~종료 시간)**를 분리 기록함으로써, 상점·휴식·이벤트 노드 선택 등 **&#39;비전투 정비 시간&#39;**이 전체 파밍 속도에 미치는 영향을 정량적으로 분리했습니다.</li>
+</ul>
+<h3 id="mechanics">사전 가설 및 8종 키워드 덱 실측 결과 비교</h3>
+<h4>) 사전 가설 순위 vs 실측 전체 클리어 타임 순위 vs 순수 전투 시간 순위</h4>
+<ul>
+<li><strong>실험 전 사전 가설</strong>: <code>화상 = 파열 &gt; 색욕 출혈 &gt; 호흡 &gt; 질투 출혈 &gt; 침잠 &gt;= 진동 &gt; 충전</code></li>
+<li><strong>실험 통제 조건</strong>: 거울 던전 &#39;시뮬레이션(노말, 4층)&#39; 난이도 고정, 일반 유저들의 반복 파밍 패턴과 동일하게 <strong>&#39;승률&#39; 버튼 위주 반자동 플레이</strong>로 통일.</li>
+</ul>
+<div class="table-scroll" tabindex="0" role="region" aria-label="자료 비교표"><table>
+<thead>
+<tr>
+<th align="center">전체 순위</th>
+<th align="left">키워드 덱 (8종)</th>
+<th align="center">실측 전체 클리어 타임</th>
+<th align="center">1회당 <strong>순수 전투 시간</strong> 순위</th>
+<th align="left">실측 데이터 기반 원인 규명 (<code>Limbus Company 분석 보고서.hwpx</code>)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>1위</strong></td>
+<td align="left"><strong>화상 (Burn)</strong></td>
+<td align="center"><strong>최단 기록 (1위)</strong></td>
+<td align="center">2위</td>
+<td align="left">타격 속성 에고 기프트 집중, 간결한 공격 모션과 턴 종료 시 확정 고정 피해로 전투·비전투 모두 최상위 효율 기록</td>
+</tr>
+<tr>
+<td align="center"><strong>2위</strong></td>
+<td align="left"><strong>색욕 출혈 (Lust Bleed)</strong></td>
+<td align="center"><code>28분 36초</code></td>
+<td align="center"><strong>1위 (전투 최단)</strong></td>
+<td align="left">최신 고성능 인격(&#39;약지 이상&#39; 등)의 압도적 화력으로 <strong>순수 전투 시간은 1위</strong>였으나, 긴 스킬 모션과 고점 세팅을 위한 상점/휴식처 정비(비전투 시간)로 인해 전체 시간은 2위 기록</td>
+</tr>
+<tr>
+<td align="center"><strong>3위</strong></td>
+<td align="left"><strong>파열 (Rupture)</strong></td>
+<td align="center"><code>28분 42초</code></td>
+<td align="center">4위</td>
+<td align="left">비전투 정비 시간은 가장 짧았으나, 당시 구형 인격 위주 구성으로 인해 합(Clash) 패배가 간헐적으로 발생하며 전투 시간 지연</td>
+</tr>
+<tr>
+<td align="center"><strong>4위</strong></td>
+<td align="left"><strong>호흡 (Poise)</strong></td>
+<td align="center"><code>28분 54초</code></td>
+<td align="center">7위</td>
+<td align="left">크리티컬 발동 전까지의 예열 시간과 기본 치명타 배율(1.2배)의 구조적 한계로 순수 전투 속도 저하</td>
+</tr>
+<tr>
+<td align="center"><strong>5위</strong></td>
+<td align="left"><strong>질투 출혈 (Envy Bleed)</strong></td>
+<td align="center"><code>29분 04초</code></td>
+<td align="center">5위</td>
+<td align="left">색욕 출혈 대비 광역/다타수 정리 능력과 기프트 시너지에서 미세한 열세</td>
+</tr>
+<tr>
+<td align="center"><strong>6위</strong></td>
+<td align="left"><strong>침잠 (Sinking)</strong></td>
+<td align="center"><code>30분 31초</code></td>
+<td align="center">6위</td>
+<td align="left">정신력이 없는 환상체/보스 대상 딜량은 우수하나, 정신력이 존재하는 일반 잡몹 구간에서의 효율 편차 발생</td>
+</tr>
+<tr>
+<td align="center"><strong>7위</strong></td>
+<td align="left"><strong>충전 (Charge)</strong></td>
+<td align="center"><code>32분 12초</code></td>
+<td align="center">3위</td>
+<td align="left">전투 자체는 3위로 준수했으나, 매 전투마다 충전 횟수 예열이 초기화되고 &#39;승률&#39; 버튼이 충전 소모 고위력기를 비효율적으로 난사하며 기프트 강화에 비전투 시간이 많이 소요됨</td>
+</tr>
+<tr>
+<td align="center"><strong>8위</strong></td>
+<td align="left"><strong>진동 (Tremor)</strong></td>
+<td align="center"><code>33분 00초</code></td>
+<td align="center">8위</td>
+<td align="left">진동 부여 후 &#39;진동 폭발&#39;을 수동으로 터뜨려야 하는 난해한 메커니즘 탓에, &#39;승률&#39; 버튼 위주 반복 파밍에서는 제 성능을 발휘하지 못하고 최하위 기록</td>
+</tr>
+</tbody></table></div>
+<hr>
+</section>
+<section class="content-section editorial-body" id="role"><h2>담당 역할 및 핵심 기여</h2><p>1인 프로젝트로서 <strong>실험 설계부터 반복 플레이 로깅(시즌 패스 330레벨 달성), 통계 산출, 보고서(<code>HWPX</code>) 및 발표 자료(<code>PPTX</code>) 작성까지 단독 수행</strong>했습니다.</p>
+<ul>
+<li><strong>듀얼 타이머 측정 모델 및 통제 변인 설계</strong>: 총 소요 시간(타이머 1)과 순수 전투 시간(타이머 2) 분리 측정 프로토콜 수립</li>
+<li><strong>8종 키워드 덱 실측 로깅 (<code>Limbus Company RAW 데이터 모음.xlsx</code>)</strong>: 각 덱별 층별 진입/종료 시간, 전투 횟수당 평균 전투 시간, 비전투(상점·휴식·이벤트 노드) 소요 시간 분리 기록</li>
+<li><strong>교차 통계 분석 및 인사이트 도출</strong>: 전체 클리어 타임 순위와 순수 전투 시간 순위가 역전되는 구간(<code>색욕 출혈</code>, <code>충전</code>, <code>파열</code>)의 원인을 비전투 시간과 승률 오토 AI의 특성으로 규명</li>
+</ul>
+<hr>
+</section>
+<section class="content-section editorial-body" id="process"><h2>데이터 수집 및 전투·비전투 시간 교차 분석</h2><pre><code class="language-text">[1. 사전 가설 설정]
+  &quot;화상·파열·색욕 출혈 등 고화력 주류 키워드 덱이 전투와 전체 클리어 타임 모두 가장 빠를 것이다&quot;
+      ↓
+[2. 듀얼 타이머(타이머 1: 전체 시간 / 타이머 2: 순수 전투 시간) 분리 로깅 (Excel)]
+  8종 키워드 덱(화상, 색욕 출혈, 파열, 호흡, 질투 출혈, 침잠, 충전, 진동) 시뮬레이션 노말 4층 반복 측정
+      ↓
+[3. &#39;전체 시간 순위&#39; vs &#39;순수 전투 시간 순위&#39; 교차 분석]
+  • 순수 전투 1위는 &#39;색욕 출혈&#39;이나 상점/휴식 비전투 시간으로 인해 전체 1위는 &#39;화상&#39;(색욕 출혈 28:36 2위)
+  • &#39;충전&#39;(32:12)과 &#39;진동&#39;(33:00)은 승률 반자동 플레이와의 메커니즘 불일치 및 예열/강화 시간으로 하위권 기록
+      ↓
+[4. 최종 결론 도출]
+  &quot;단순 덱의 이론상 고점 화력보다 ① 비전투 정비 시간 단축, ② 승률 오토 플레이와의 궁합, ③ 아군 공격 속성(참격/관통/타격)에 맞춘 적 내성 및 층 테마팩 선택이 실제 파밍 속도에 훨씬 결정적이다&quot;
+</code></pre>
+<hr>
+</section>
+<section class="content-section editorial-body" id="showcase"><h2>핵심 결과물 및 시연 자료 목록</h2><ul>
+<li><strong>거울 던전 효율성 통계 데이터 시트 (<code>Limbus Company RAW 데이터 모음.xlsx</code>)</strong>: 8종 키워드 덱별 전체 시간 / 순수 전투 시간 / 비전투 시간 로우 데이터 및 오름차순 통계 비교표</li>
+<li><strong>분석 결과 보고서(<code>Limbus Company 분석 보고서.hwpx</code>) 및 발표 자료(<code>Limbus Company 발표 자료.pptx</code>)</strong>: 가설 검증 과정, 8종 덱별 상세 원인 분석, 층 테마·내성 매칭 중심의 파밍 최적화 결론 수록<ul>
+<li><strong>전체 폴더</strong>: <a href="https://drive.google.com/drive/folders/1fJn1VjWk1H7s7iqmohmELIGY9iguxvQB?usp=drive_link" target="_blank" rel="noopener noreferrer">원본 자료 보기</a></li>
+<li><strong>분석 보고서 (<code>HWPX</code>)</strong>: <a href="https://drive.google.com/file/d/1z8oY_9BaSenRNOSZL7IsM8ag__Qrry44/view?usp=drive_link" target="_blank" rel="noopener noreferrer">원본 자료 보기</a></li>
+<li><strong>RAW 데이터 모음 (<code>XLSX</code>)</strong>: <a href="https://drive.google.com/file/d/16buezz_NSJ-Xd4ahOqlMzXbtRiLtznzy/view?usp=drive_link" target="_blank" rel="noopener noreferrer">원본 자료 보기</a></li>
+<li><strong>발표 자료 (<code>PPTX</code>)</strong>: <a href="https://drive.google.com/file/d/1mlPQ3nrXhCTa4ukE5LSuT2OzS0m8yMiZ/view?usp=drive_link" target="_blank" rel="noopener noreferrer">원본 자료 보기</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+</section>
+<section class="content-section editorial-body" id="takeaways"><h2>배운 점과 아쉬운 점 / 회고</h2><ul>
+<li><strong>배운 점 (Learned)</strong>:<ul>
+<li>대학 입학 후 1학년 2학기에 처음으로 **<code>[가설 설정 ➔ 듀얼 타이머 변인 통제 및 로깅 ➔ 통계 산출 ➔ 통념 반박 및 인사이트 도출]</code>**이라는 데이터 분석의 전체 사이클을 끝까지 완주해 보았습니다.</li>
+<li>흔히 간과하기 쉬운 **&#39;비전투 시간(상점·휴식 정비 시간)&#39;**과 **&#39;승률 반자동 조작 시의 AI 스킬 선택 특성&#39;**을 분리해 측정함으로써, 왜 순수 전투 1위 덱(<code>색욕 출혈</code>)이나 전투 3위 덱(<code>충전</code>)이 전체 클리어 타임에서는 순위가 밀리는지 구조적으로 규명할 수 있었습니다.</li>
+</ul>
+</li>
+<li><strong>아쉬운 점 (Lacked)</strong>:<ul>
+<li>1인 수작업으로 진행한 분석이다 보니 덱별 반복 플레이 표본 수를 아주 방대하게 확보하지 못했고, 로그라이크 던전 특성상 특정 테마팩과 에고 기프트 등장을 100% 고정할 수 없어 확률적 변수를 완벽히 제거하지 못한 한계가 있었습니다.</li>
+<li>이 경험에서 느낀 &#39;변인 통제의 중요성&#39;은 직후 진행한 **&#39;WOW 레벨링 데이터 분석&#39;**에서 이동 거리(Mile) 보조 지표와 단계별 고정 실험으로 변인을 더욱 엄격하게 통제하는 방법으로 발전했습니다.</li>
+</ul>
+</li>
+</ul>
+</section><footer class="detail-footer-nav"><a class="detail-nav-btn" href="../index.html#projects">프로젝트 목록</a><a class="detail-nav-btn" href="../docs/portfolio_md/sub-08_%EB%A6%BC%EB%B2%84%EC%8A%A4_%EC%BB%B4%ED%8D%BC%EB%8B%88_%EA%B1%B0%EC%9A%B8%EB%8D%98%EC%A0%84_%ED%81%B4%EB%A6%AC%EC%96%B4_%ED%83%80%EC%9E%84_%EB%B6%84%EC%84%9D.md">작성 근거 문서 · Markdown</a></footer></main></div><div class="floating-theme-fab" id="floatingThemeFab" aria-label="테마 설정">
+    <div class="theme-fab-spheres" aria-hidden="true" id="theme-options" inert="">
+      <button class="theme-fab-sphere" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드" type="button" tabindex="-1">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+        <span class="sphere-tooltip">라이트 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="dark" title="다크 모드" aria-label="다크 모드" type="button" tabindex="-1">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+        <span class="sphere-tooltip">다크 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정" type="button" tabindex="-1">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span>
+        <span class="sphere-tooltip">시스템 설정</span>
+      </button>
+    </div>
+    <button class="theme-fab-trigger" id="themeFabTrigger" title="테마 변경" aria-label="테마 변경" aria-controls="theme-options" aria-expanded="false" type="button">
+      <span class="fab-current-icon mono-icon mono-icon-stroke">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 2v20a10 10 0 0 0 0-20z"></path><circle cx="12" cy="12" r="10"></circle></svg>
+      </span>
+    </button>
+  </div><script src="../assets/js/portfolio-system.js"></script></body></html>

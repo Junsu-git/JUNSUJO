@@ -1,284 +1,175 @@
 <!doctype html>
-<html lang="ko" data-theme="light"><head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="조준수 포트폴리오 - 프로젝트 #02: 누리살이 (GameAify AI 기술상 수상작)">
-  <meta name="theme-color" content="#fafaf8">
-  <title>프로젝트 02: 누리살이 | 조준수 포트폴리오</title>
-
-  <!-- Prevent Theme Flicker (FOUC) Script -->
-
-
-  <!-- Google / Pretendard Fonts -->
-  <script src="../assets/js/theme-init.js"></script><link rel="stylesheet" as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-
-  <!-- Core Design System & Components -->
-  <link rel="stylesheet" href="../assets/css/portfolio-system.css">
-
-
-<link rel="stylesheet" href="../assets/css/pages/project-02-nuri.css"></head>
-
-<body><a class="skip-link" href="#main-content">본문 바로가기</a>
-  <!-- Header Bar -->
-  <header class="mobile-header"><a class="back-link-btn" href="../index.html#projects">← 프로젝트 목록</a><span class="header-caption">JUNSU JO / PORTFOLIO</span></header>
-
-  <!-- 2-Column Detail Layout: TOC Rail (Left, Image 3) + Content (Right) -->
-  <div class="detail-layout-container">
-
-    <!-- ====================================================================
-         LEFT: TOC ON-THIS-PAGE TRACKER RAIL (Image 3 Style)
-         ==================================================================== -->
-    <aside class="toc-rail-container" aria-label="페이지 목차"><div class="toc-rail-title">ON THIS PAGE</div><nav class="toc-track-line" aria-label="상세 목차"><a class="toc-item-link" href="#growth">경험 평가와 배운 점</a><a class="toc-item-link" href="#overview">개요와 담당 역할</a><a class="toc-item-link" href="#mechanics">기획과 핵심 규칙</a><a class="toc-item-link" href="#showcase">시연과 자료</a><a class="toc-item-link" href="#architecture">구현 구조</a><a class="toc-item-link" href="#troubleshooting">문제 해결</a><a class="toc-item-link" href="#collaboration">협업과 갈등 해결</a><a class="toc-item-link" href="#takeaways">회고와 결론</a></nav></aside>
-
-    <!-- ====================================================================
-         RIGHT: MAIN CONTENT AREA
-         ==================================================================== -->
-    <main class="detail-main-content" id="main-content"><div class="detail-page-heading"><span class="eyebrow">PROJECT / DEVELOPMENT RECORD</span><h1 class="">누리살이</h1><div class="detail-sub-title">GameAify AI 기술상 수상작 · 플레이 루프와 생성형 AI 기술의 유기적 융합</div></div><section class="learning-growth-card" id="growth">
-        <span class="growth-header-label">BEFORE / AFTER</span>
-        <h2 class="growth-title">경험 평가와 배운 점</h2>
-
-        <div class="before-after-grid">
-          <!-- Before Box -->
-          <div class="before-box">
-            <span class="ba-label">수행 전 (BEFORE: 직면한 한계)</span>
-            <ul class="ba-list">
-              <li>단순 챗봇 형태의 LLM 호출만 염두에 두어, 인게임 상태(호감도, 날씨)가 AI 대화에 반영되지 못하는 겉도는 연동 한계</li>
-              <li>외부 API 네트워크 응답 지연(1~2초) 시 클라이언트 프레임 정지 및 플레이 단절 문제 발생</li>
-              <li>AI가 짠 비효율적인 코드(매 프레임 GC 생성)를 검증 없이 수용할 뻔한 기술 부채 위험</li>
-            </ul>
-          </div>
-
-          <!-- After Box -->
-          <div class="after-box">
-            <span class="ba-label">수행 후 (AFTER: 달성한 학습 성과 &amp; 역량 성장)</span>
-            <ul class="ba-list">
-              <li><strong>구조화된 인게임 컨텍스트 JSON 래퍼 구축:</strong> 호감도/날씨/과거 사건을 AI 프롬프트에 자동 직렬화하여 살아있는 NPC 구현</li>
-              <li><strong>UniTask 비동기 파이프라인 &amp; 심리적 지연 은닉:</strong> 딜레이 구간에 NPC 고민 모션/감탄사 선재생으로 대기 불쾌감 제로화</li>
-              <li><strong>AI 코드 검증 및 지식 부채 축소 집요함:</strong> AI 추천 코드를 무비판적으로 쓰지 않고 프로파일링하여 메모리 풀링으로 직접 개선</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Conflict & Teamwork Case -->
-
-      </section>
-
-      <!-- 01. HERO & META GRID -->
-      <section class="detail-hero-box" id="overview"><h2>프로젝트 개요</h2>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
-          <span class="badge-tag">대표 프로젝트 #02</span>
-          <span class="badge-award">GameAify AI 기술상 수상작</span>
-          <span class="badge-tag">3D 어드벤처</span>
-          <span class="badge-tag">2025.06 — 2025.09</span>
-        </div>
-
-
-
-
-        <p class="detail-lead-summary">
-          전통적인 생활형 라이프 심(Life-Sim) 게임 루프와 생성형 AI 인터랙션을 결합하여 새로운 형태의 어드벤처를 선보인 프로젝트입니다.
-          플레이어의 선택과 날씨, 호감도 맥락에 따라 동적으로 반응하는 세계관을 설계하고, 이를 Unity 환경에서 구현하여
-          <strong>GameAify 게임 제작 공모전 AI 기술상</strong>을 수상했습니다.
-        </p>
-
-        <div class="meta-spec-grid">
-          <div class="meta-spec-item">
-            <span>개발 기간</span>
-            <strong>2025.06 — 2025.09 (4개월)</strong>
-          </div>
-          <div class="meta-spec-item">
-            <span>수상 내역</span>
-            <strong>GameAify 게임 제작 공모전 AI 기술상</strong>
-          </div>
-          <div class="meta-spec-item">
-            <span>사용 기술</span>
-            <strong>Unity · GameAify API · C# UniTask · Clip Studio · GitHub</strong>
-          </div>
-          <div class="meta-spec-item">
-            <span>수행 형태</span>
-            <strong>팀 프로젝트 (기획 &amp; 클라이언트 리드 프로그래밍)</strong>
-          </div>
-        </div>
-      </section>
-
-      <!-- 02. CORE LEARNING OUTCOMES & GROWTH ASSESSMENT (User Specific Requirement: Prioritized at Top) -->
-
-
-      <!-- 03. 기획 의도 및 코어 메커니즘 -->
-      <section class="detail-content-section" id="mechanics">
-        <span class="section-order-label">SECTION 03</span>
-        <h2>프로젝트 개요 및 기획 의도</h2>
-        <div class="detail-card">
-          <p>
-            『누리살이』는 단순한 텍스트 챗봇 형태의 AI 연동을 지양하고, <strong>인게임 캐릭터의 행동, 감정, 날씨 및 경제 시스템과 AI 응답이 상호작용</strong>하도록 설계되었습니다.
-          </p>
-
-          <div class="points-grid">
-            <div class="point-box">
-              <h4>살아있는 마을 생태계</h4>
-              <p>마을 주민 NPC들이 각자의 성격과 일과 루틴을 가지며, 플레이어의 평판에 따라 태도와 대사 톤이 유기적으로 변화.</p>
-            </div>
-            <div class="point-box">
-              <h4>AI 기술상 선정 배경</h4>
-              <p>단순 LLM API 호출에 그치지 않고, 인게임 파라미터(친밀도, 소지품, 과거 대화 히스토리)를 구조화된 JSON 프롬프트로 가공해 전달하는 아키텍처로 높은 기술 평가 획득.</p>
-            </div>
-            <div class="point-box">
-              <h4>완결성 높은 게임 루프</h4>
-              <p>채집, 농경, 거래, 대화로 이어지는 클래식 라이프 심(Life-Sim)의 규칙 위에 AI 이벤트를 서포팅 레이어로 안정적 결합.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 04. 비주얼 & 시연 쇼케이스 -->
-      <section class="detail-content-section" id="showcase">
-        <span class="section-order-label">SECTION 04</span>
-        <h2>프로젝트 비주얼 리뷰 &amp; 시연 쇼케이스</h2>
-        <div class="detail-card">
-          <p>공모전 출품 시연 영상 및 주요 플레이 장면 슬롯입니다.</p>
-
-          <div class="media-stage-box">
-            <div class="media-stage-header">
-              <span>SHOWCASE · GameAify 출품작 인게임 플레이 및 시상 결과</span>
-              <span>AWARD: AI 기술상</span>
-            </div>
-            <div class="media-stage-body">
-              <div style="display:flex;justify-content:center;margin-bottom:8px;">
-                <span class="mono-icon mono-icon-stroke" style="width:48px;height:48px;">
-                  <svg viewBox="0 0 24 24" width="48" height="48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
-                </span>
-              </div>
-              <strong>공모전 수상 데모 영상 및 인게임 시연 스크린샷 슬롯</strong>
-              <p style="max-width: 520px;">
-                AI NPC와 실시간으로 대화를 나누며 마을 퀘스트를 해결하는 인게임 플레이 영상, 수상 상장 및 인증 사진을 배치하는 영역입니다.
-              </p>
-            </div>
-          </div>
-
-          <div class="points-grid">
-            <div class="point-box">
-              <h4>동적 다이얼로그 시스템</h4>
-              <p>플레이어의 입력에 맞춰 즉석에서 페르소나를 유지한 채 자연스럽게 대답하는 주민 NPC 인터랙션.</p>
-            </div>
-            <div class="point-box">
-              <h4>수채화풍 한국 설화 비주얼</h4>
-              <p>Clip Studio를 활용해 직접 제작한 친근하고 포근한 2D 비주얼 스타일과 Unity 2D 조명 효과 결합.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 05. C# AI 통신 아키텍처 -->
-      <section class="detail-content-section" id="architecture">
-        <span class="section-order-label">SECTION 05</span>
-        <h2>AI 프롬프트 파이프라인 및 Unity C# 통신</h2>
-        <div class="detail-card">
-          <p>
-            Unity 클라이언트에서 인게임 콘텍스트를 수집하여 비동기 HTTP 요청으로 안전하게 처리하고 인게임 이벤트로 디스패치하는 매니저 구조입니다.
-          </p>
-
-          <div class="code-block">
-<span class="comment">// 인게임 맥락 정보를 포함한 AI 대화 요청 처리기</span>
-<span class="keyword">public class</span> <span class="type">AiDialogueManager</span> : <span class="type">MonoBehaviour</span>
-{
-    <span class="keyword">public async</span> <span class="type">UniTask</span>&lt;<span class="type">string</span>&gt; <span class="method">SendNpcInteractionAsync</span>(<span class="type">NpcEntity</span> npc, <span class="type">string</span> playerSpeech)
-    {
-        <span class="keyword">var</span> payload = <span class="keyword">new</span> <span class="type">AiPromptPayload</span>
-        {
-            NpcPersona = npc.Data.PersonaPrompt,
-            AffectionLevel = npc.Affection,
-            CurrentWeather = <span class="type">WorldManager</span>.Instance.CurrentWeather,
-            PlayerInput = playerSpeech
-        };
-
-        <span class="keyword">string</span> json = <span class="type">JsonUtility</span>.<span class="method">ToJson</span>(payload);
-        <span class="keyword">var</span> response = <span class="keyword">await</span> <span class="type">ApiClient</span>.<span class="method">PostAsync</span>(<span class="string">"/api/gameaify/dialogue"</span>, json);
-
-        <span class="keyword">return</span> response.ParsedSpeech;
-    }
-}
-          </div>
-        </div>
-      </section>
-
-      <!-- 06. 트러블슈팅 및 레이턴시 극복 -->
-      <section class="detail-content-section" id="troubleshooting">
-        <span class="section-order-label">SECTION 06</span>
-        <h2>트러블슈팅 및 네트워크 레이턴시 극복</h2>
-        <div class="detail-card">
-          <div class="point-box" style="margin-bottom: 16px;">
-            <h4>[Issue] 외부 AI API 호출 시 1~2초간의 반응 레이턴시 체감</h4>
-            <p>
-              네트워크 환경에 따라 응답 대기 시간 동안 게임이 멈춘 것처럼 느껴져 플레이 흐름이 끊기는 문제 발생.
-            </p>
-            <p style="margin-top: 8px;">
-              <strong>[Solution]</strong> NPC가 ‘고민하는 모션(Thinking Animation)’과 말풍선 타이핑 인디케이터(⋯)를 즉시 표출하고, 지연 시 사전 정의된 감탄사 오디오를 먼저 재생하여 심리적 대기 시간을 제로화.
-            </p>
-          </div>
-
-          <div class="point-box">
-            <h4>[Issue] AI 반환값 파싱 에러에 따른 씬 크래시 위험</h4>
-            <p>
-              LLM 모델이 지정된 JSON 규격을 벗어난 이상한 특수문자나 빈 문자열을 반환했을 때의 예외 처리 미비.
-            </p>
-            <p style="margin-top: 8px;">
-              <strong>[Solution]</strong> Regex 기반 JSON 무결성 검증 레이어를 두고, 파싱 실패 시 NPC의 사전 정의 기본 대사로 부드럽게 Fallback 처리하는 안전장치 구축.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- 07. 최종 분석 결과 & 결론 (Peer Feedback Requirement) -->
-      <section class="detail-content-section" id="collaboration"><span class="section-order-label">COLLABORATION</span><h2>협업과 갈등 해결</h2><p class="detail-lead-summary">추후 수정</p></section><section class="key-takeaway-box" id="takeaways">
-        <h3>최종 분석 결과 및 핵심 결론 (Key Takeaways)</h3>
-        <p>
-          『누리살이』는 신기술(AI)을 도입할 때 <strong>"기술 자체가 목적이 아니라, 플레이어에게 어떤 몰입과 선택의 즐거움을 주는가"</strong>를 증명한 프로젝트입니다.
-          단순 API 호출을 넘어 인게임 데이터와 AI 응답을 유기적으로 결합하는 구조화된 프롬프트 파이프라인을 구축하여 GameAify AI 공모전 기술상이라는 공인된 평가 성과를 도출했습니다.
-        </p>
-      </section>
-
-      <!-- Footer Navigation Bar -->
-      <footer class="detail-footer-nav">
-        <a class="detail-nav-btn" href="project-01-pharmacy.html">
-          <span aria-hidden="true">←</span> 이전: 01. 내 약국에는 정상이 없다
-        </a>
-        <a class="detail-nav-btn" href="../index.html#projects">
-          <span aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"></path></svg></span> 전체 프로젝트 목록으로
-        </a>
-        <a class="detail-nav-btn" href="project-03-warrior.html">
-          다음: 03. 최후의 전사 <span aria-hidden="true">→</span>
-        </a>
-      </footer>
-
-    </main>
-  </div>
-
-  <!-- FLOATING THEME FAB (Image 1 Requirement · Always Visible Bottom Right) -->
-
-
-  <!-- Object-Oriented JS Architecture Bundle -->
-
-
-
-<div class="floating-theme-fab" id="floatingThemeFab" aria-label="테마 설정">
+<html lang="ko" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>누리살이 | 조준수 포트폴리오</title><meta name="description" content="7단계 곡물 가공과 운반 대기열, 강화·도감 수집을 연결한 2D 방치형 게임입니다. GameAIfy AI 기술상을 수상했습니다."><script src="../assets/js/theme-init.js"></script><link rel="stylesheet" href="../assets/css/portfolio-system.css"><link rel="stylesheet" href="../assets/css/project-detail.css"></head><body><a class="skip-link" href="#main-content">본문 바로가기</a><header class="mobile-header"><a class="back-link-btn" href="../index.html#projects">← 프로젝트 목록</a><span class="header-caption">JUNSU JO / PORTFOLIO</span></header><div class="detail-layout-container"><aside class="toc-rail-container" aria-label="페이지 목차"><div class="toc-rail-title">ON THIS PAGE</div><nav class="toc-track-line" aria-label="상세 목차"><a class="toc-item-link" href="#growth">경험 평가와 배운 점</a><a class="toc-item-link" href="#overview">개요 및 기획 의도</a><a class="toc-item-link" href="#role">담당 역할 및 핵심 기여</a><a class="toc-item-link" href="#architecture">C# 시스템 아키텍처 및 AI 제작 파이프라인</a><a class="toc-item-link" href="#troubleshooting">문제 해결 및 트러블슈팅 사례</a><a class="toc-item-link" href="#showcase">핵심 결과물 및 시연 자료 목록</a><a class="toc-item-link" href="#takeaways">배운 점과 아쉬운 점 / 회고</a></nav></aside><main class="detail-main-content" id="main-content"><div class="detail-page-heading"><span class="eyebrow">PROJECT / WORK RECORD</span><h1>누리살이</h1><p class="detail-sub-title">7단계 곡물 가공과 운반 대기열, 강화·도감 수집을 연결한 2D 방치형 게임입니다. GameAIfy AI 기술상을 수상했습니다.</p></div><div class="project-fact-strip"><span>대표 프로젝트 2</span><span>PM · 메인 프로그래밍</span><span>2학년 하계방학 (2025.06 ~ 2025.08 / 집중 개발 일지 2025.07.15 ~ 2025.08.31, 최종 수상 2025.09.15)</span></div><section class="learning-growth-card editorial-body" id="growth"><h2>경험 평가와 배운 점</h2><h3>수행 전 (BEFORE: 직면한 과제와 한계)</h3>
+<ul>
+<li><strong>2인 소규모 팀의 리소스 한계와 AI 툴의 제약</strong>: 2인 체제로 농사·도정 시설 7단계, 일꾼, 도감, UI, 사운드를 모두 제작해야 했으며, <code>GameAIfy</code>로 생성한 UI는 통짜 이미지로 출력되어 인게임에서 크기 조절·재사용이 불가능했고 <code>Open Pose</code> 기능 부재로 캐릭터 애니메이션 제작이 막히는 문제가 있었습니다.</li>
+<li><strong>데이터 변경과 UI 갱신의 결합 문제</strong>: 재화, 건물/알바 강화 단계, 도감 해금, 미션 진행도가 실시간으로 변하는 방치형 게임 특성상, 초기에는 <code>UniRx</code> 같은 반응형 구독 구조를 도입하지 못해 데이터 변경 시마다 UI의 <code>Load</code> 함수를 수동 호출하는 높은 결합도를 겪었습니다.</li>
+</ul>
+<h3>수행 후 (AFTER: 달성한 성과 및 역량 성장)</h3>
+<ul>
+<li><strong><code>ScriptableObject</code> 분리 설계 및 <code>BuildingQueue</code> 파이프라인 구축</strong>: 정적 템플릿(<code>ScriptableObject</code>)과 런타임 진행 데이터를 분리하고, <code>[드랍 생성 → 운반 알바 픽업 → 다음 건물 대기열(BuildingQueue) 등록 → 정제 후 재드랍]</code>으로 이어지는 7단계 자동화 파이프라인과 오프라인 보상·세이브 무결성을 완성했습니다.</li>
+<li><strong>AI 파이프라인 한계 돌파 및 <code>AI 기술상</code> 수상</strong>: 클립 스튜디오(Clip Studio Paint) 아웃라인 분할로 모듈형 UI를 구축하고, <code>GameAIfy Creative Reference</code>와 <code>Cartoon FX</code>를 결합해 모션 애니메이션을 구현하며 <code>Udio</code> AI로 BGM/효과음까지 통합해 **GameAIfy 공모전 <code>AI 기술상</code>**을 수상했습니다.</li>
+</ul>
+<hr>
+</section>
+<section class="content-section editorial-body" id="overview"><h2>개요 및 기획 의도</h2><h3>기획 의도 및 세계관</h3>
+<ul>
+<li><strong>&#39;마비노기 모바일&#39; 생활 콘텐츠 모티브의 방치형 재해석</strong>: 평소 즐겨 플레이하던 게임의 채집·가공 생활 콘텐츠에서 느낀 성취감을 모티브로, 바쁜 현대인이 짧은 조작과 방치만으로도 생산 라인이 돌아가는 시각적 만족감을 느낄 수 있는 힐링 방치형 시뮬레이션을 기획했습니다.</li>
+<li><strong>세계관 스토리</strong>: 마력 폭주로 황폐해진 대지에서 유일하게 정화의 힘을 지닌 마법의 벼 **&#39;청벼&#39;**를 발견한 주인공이, 정령들과 함께 벼를 수확하고 <strong>7단계의 정제(도정) 과정</strong>을 거쳐 고품질 곡물로 가공하며 오염된 땅과 생태계를 되살려 나가는 이야기입니다.</li>
+</ul>
+<h3 id="mechanics">핵심 게임 규칙 및 7단계 정제·자동화 루프</h3>
+<p>단순 클릭만으로 숫자가 오르는 클리커를 넘어, <strong>건물 간 물류 이동과 7단계 도정 공정</strong>이 맞물려 돌아가는 구조로 설계했습니다.</p>
+<pre><code class="language-text">[1단계: 수확] ➔ [2단계: 건조] ➔ [3단계: 탈곡] ➔ [4단계: 왕겨 제거]
+   ➔ [5단계: 미강 제거] ➔ [6단계: 세척 및 살균] ➔ [7단계: 마법 부여]
+       ↓
+[고품질 곡물 도감(Collection) 등록 &amp; 상위 탐색 생명체/알바 해금 &amp; 재투자]
+</code></pre>
+<ol>
+<li><strong>클리커 &amp; 자동 수확 정령</strong>:<ul>
+<li>플레이어가 논을 직접 클릭해 벼를 수확하거나, 소환된 정령이 일정 주기로 자동 수확을 수행합니다. 클리커 강화 시 1회 수확량과 도감 수집 확률 보정이 증가합니다.</li>
+</ul>
+</li>
+<li><strong>7단계 정제 건물과 전이 확률</strong>:<ul>
+<li>수확된 작물은 건조 → 탈곡 → 왕겨 제거 → 미강 제거 → 세척·살균 → 마법 부여의 7단계 건물을 거치며 가치가 상승합니다.</li>
+<li>각 건물을 강화하면 <strong>가공된 곡물의 가치</strong>, <strong>신규 도감 등장 확률</strong>, 그리고 <strong>다음 단계 건물로 넘어갈 전이(Transfer) 확률</strong>이 증가합니다.</li>
+</ul>
+</li>
+<li><strong>운반 생명체(알바)와 건물 대기열(<code>BuildingQueue</code>)</strong>:<ul>
+<li>각 공정에서 배출된 드랍 아이템을 운반 생명체(알바)가 픽업하여 다음 단계 건물의 대기열(<code>BuildingQueue</code>)로 운반합니다.</li>
+</ul>
+</li>
+<li><strong>강화소(<code>Forge UI</code>)와 선형 미션·대화 체인</strong>:<ul>
+<li>건물 클릭 시 열리는 통합 허브인 <code>Forge UI</code>에서 <strong>클리커 / 건물 / 알바</strong>를 한눈에 강화·해금할 수 있으며, 약 8개 챕터 분량의 선형 미션과 NPC 대화 스토리가 성장을 가이드합니다.</li>
+</ul>
+</li>
+</ol>
+<hr>
+</section>
+<section class="content-section editorial-body" id="role"><h2>담당 역할 및 핵심 기여</h2><h3>인 팀 (<code>현명한 청년들</code>) 역할 분담</h3>
+<ul>
+<li><strong>조준수 (본인 — 프로젝트 매니저(PM) &amp; 메인 프로그래머)</strong>:<ul>
+<li><strong>PM 및 총괄 기획</strong>: 전체 게임 루프 및 7단계 정제 시스템 기획, 개발 일정/마일스톤 관리(<code>2025.07.15 ~ 08.31</code>), 공모전 중간 미션 및 최종 제출 문서(<code>기획서</code>, <code>증빙자료</code>, <code>에셋리스트</code>) 작성, 플레이 영상 촬영 및 발표</li>
+<li><strong>클라이언트 시스템 프로그래밍 (<code>Unity 6.0 / C#</code> 전담)</strong>:<ul>
+<li><strong><code>ScriptableObject</code> 기반 아키텍처</strong>: 건물(<code>Building</code>) 및 일꾼(<code>Worker</code>)의 정적 템플릿 SO와 런타임 세이브 데이터를 분리 설계 (<code>07.15 ~ 07.25</code>)</li>
+<li><strong>드랍·운반·건물 대기열(<code>BuildingQueue</code>) 파이프라인</strong>: 드랍 아이템 생성 → 알바 픽업 → 다음 건물 대기열 등록 → 가공 완료 후 재드랍으로 이어지는 전이 파이프라인 및 큐 만석 시 재시도/자원 환산 예외 처리 구현 (<code>07.26 ~ 08.05</code>)</li>
+<li><strong>강화소(<code>Forge UI</code>) 및 비용 스케일링</strong>: 건물 클릭 연동 강화소 허브 UI 및 단계별 강화 비용/성능 스케일링 로직 구현 (<code>08.06 ~ 08.13</code>)</li>
+<li><strong>도감(<code>Collection</code>) 및 선형 미션·대화 체인</strong>: 곡물 등급별 도감 해금·보상 시스템과 미션↔NPC 대화가 선형으로 이어지는 스토리 체인(중복 수령 방지, CPS 텍스트 출력 속도 조절) 구현 (<code>08.14 ~ 08.25</code>)</li>
+<li><strong>오프라인 방치 보상·사운드·빌드 폴리싱</strong>: 미접속 시간 기반 오프라인 보상 정산, <code>Udio</code> AI 기반 BGM/효과음 매니저 연동, 화면 비율 고정·윈도우 모드·<code>VSync</code>·<code>ESC</code> 종료 패널 등 최종 빌드 안정화 (<code>08.26 ~ 08.31</code>)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>조완우 (팀원 — 아트 &amp; 연출 담당)</strong>:<ul>
+<li>캐릭터/건물 페르소나 기획 및 <code>GameAIfy</code> 기반 2D 에셋 생성·후가공</li>
+<li>환경설정 UI 리소스, 클립 스튜디오 UI 분할 리소스, 캐릭터 스프라이트 애니메이션 및 <code>Cartoon FX</code> 이펙트 연출</li>
+</ul>
+</li>
+</ul>
+<hr>
+</section>
+<section class="content-section editorial-body" id="architecture"><h2>C# 시스템 아키텍처 및 AI 제작 파이프라인</h2><h3>주요 클라이언트 구현 구조</h3>
+<ol>
+<li><strong><code>ScriptableObject</code> 템플릿과 런타임 데이터의 분리</strong>:<ul>
+<li>건물 7종과 일꾼(알바), 도감 아이템의 기본 능력치·해금 조건·아이콘 참조는 불변 <code>ScriptableObject</code> 템플릿으로 관리하고, 플레이 중 변동되는 레벨·해금 여부·보유 수량은 런타임 데이터 클래스로 분리하여 밸런싱 수정과 세이브/로드 무결성을 확보했습니다.</li>
+</ul>
+</li>
+<li><strong><code>BuildingQueue</code> 기반 물류 전이 파이프라인</strong>:<ul>
+<li>이전 건물에서 가공이 끝난 곡물이 드랍되면 유휴 상태의 운반 알바가 이를 탐색해 픽업하고, 다음 단계 건물의 <code>BuildingQueue</code>에 등록합니다.</li>
+<li>만약 다음 건물의 큐가 가득 찬(Full) 상태라면 대기 후 재시도하며, 전이 실패 또는 큐 초과 시에는 즉시 재화(자원)로 환산 처리하여 아이템 증발이나 데드락이 발생하지 않도록 방어했습니다.</li>
+</ul>
+</li>
+<li><strong>선형 미션 ↔ NPC 대화 체인 시스템</strong>:<ul>
+<li>특정 건물 해금, 강화 달성, 오프라인 보상 확인 등의 미션 조건이 충족되면 대응하는 NPC 대화 스크립트가 해금되고, 대화 및 보상 수령이 끝나면 다음 미션으로 자동 전이되는 선형 체인을 구축했습니다.</li>
+</ul>
+</li>
+</ol>
+<h3>AI 제작 파이프라인 (<code>GameAIfy</code> · <code>Udio</code> · <code>Gemini</code>)</h3>
+<ul>
+<li><strong>2D 그래픽 (<code>GameAIfy</code> + <code>Clip Studio Paint</code>)</strong>: 배경, 7단계 도정 건물, 농작물 아이콘, 정령·운반 생명체, UI 프레임을 <code>GameAIfy</code>로 생성하고 클립 스튜디오로 후가공했습니다.</li>
+<li><strong>사운드 (<code>Udio</code> AI)</strong>: 인게임 배경음악(BGM)과 수확·강화·버튼 클릭 등 효과음(SFX)을 음악 생성 AI인 **<code>Udio</code>(<code>http://Udio.com</code>)**로 제작해 AI로 제작한 사운드를 구축했습니다.</li>
+<li><strong>이펙트 및 폰트</strong>: <code>Cartoon FX Remaster Free</code> 파티클과 오픈 폰트 <code>학교안심 둥근미소</code>를 결합해 시각적 완성도를 높였습니다.</li>
+</ul>
+<hr>
+</section>
+<section class="content-section editorial-body" id="troubleshooting"><h2>문제 해결 및 트러블슈팅 사례</h2><h3>사례 1. 잔존 세이브 데이터 충돌 및 운반 알바 방향(<code>flipX</code>)·해상도 버그 수정</h3>
+<ul>
+<li><strong>발생 문제 (<code>증빙자료 개발일지 08.26~08.31</code>)</strong>:<ol>
+<li>게임을 재시작하거나 초기화할 때 이전 세션의 잔존 세이브 데이터가 남아 해금 상태나 미션 진행도가 꼬이는 이슈가 발생했습니다.</li>
+<li>운반 생명체(알바)가 건물 사이를 왕복 이동할 때 이동 방향과 스프라이트 시선 방향이 반대로 뒤집히거나 스케일이 깨지는 현상이 나타났습니다.</li>
+<li>모니터 환경에 따라 화면 비율이 무너지거나 창 모드 전환 시 UI가 잘리는 문제가 있었습니다.</li>
+</ol>
+</li>
+<li><strong>해결 과정</strong>:<ol>
+<li>세이브 데이터 로드/초기화 시점에 잔존 데이터를 검증·정리하는 방어 로직과 미션 보상 중복 수령 방지 플래그를 추가했습니다.</li>
+<li>알바의 이동 목표 벡터에 따라 <code>SpriteRenderer.flipX</code>와 로컬 스케일을 일관되게 보정하도록 이동 컨트롤러를 수정했습니다.</li>
+<li>해상도 비율 유지 로직과 윈도우 모드 전환, <code>VSync</code> 토글 옵션, <code>ESC</code> 종료(<code>Quit</code>) 확인 패널을 추가해 PC 빌드 안정성을 확보했습니다.</li>
+</ol>
+</li>
+</ul>
+<h3>사례 2. <code>GameAIfy</code> 통짜 UI 생성 한계와 <code>Open Pose</code> 부재를 후가공 워크플로우로 해결</h3>
+<ul>
+<li><strong>발생 문제 (<code>증빙자료 AI 한계 극복 사례</code>)</strong>:<ol>
+<li><strong>UI 모듈화 불가</strong>: <code>GameAIfy</code>에 UI를 요청하면 텍스트와 버튼이 하나로 합쳐진 완성형 통짜 이미지로만 생성되어, Unity에서 버튼 크기를 늘리거나 레이아웃을 재구성할 수 없었습니다.</li>
+<li><strong>캐릭터 모션 생성 한계</strong>: 기존에 기대했던 <code>Open Pose</code> 모드가 제공되지 않아, 정지된 캐릭터 일러스트를 자연스러운 인게임 작업 애니메이션으로 만들기 어려웠습니다.</li>
+</ol>
+</li>
+<li><strong>해결 과정</strong>:<ol>
+<li><strong>굵은 외곽선 프롬프트 + 클립 스튜디오 분할</strong>: 프롬프트에 &#39;굵은 선(Bold outline)&#39; 조건을 부여해 형태가 뚜렷한 UI 에셋을 뽑은 뒤, **클립 스튜디오 페인터(Clip Studio Paint)**에서 아웃라인을 추출하고 프레임·배경·버튼 단위로 슬라이스(분할)하여 Unity UGUI에서 재조합 가능한 모듈형 UI로 탈바꿈시켰습니다.</li>
+<li><strong><code>Creative Reference</code> 기반 모션 파생 + 이펙트 결합</strong>: 원본 캐릭터 이미지를 <code>GameAIfy</code>의 **<code>Creative Reference</code>**에 입력한 뒤, &#39;눈을 감은 모습&#39; 프롬프트로 숨쉬기(Idle) 프레임을, &#39;기를 모으거나 쏘는 모습&#39; 프롬프트로 작업(Work) 프레임을 파생 생성하여 스프라이트 애니메이션으로 연결하고, 여기에 <code>Cartoon FX Remaster Free</code> 이펙트를 얹어 생동감 있는 생산 연출을 완성했습니다.</li>
+</ol>
+</li>
+</ul>
+<h3>사례 3. 데이터 변경 시 수동 <code>Load</code> 호출로 인한 UI 결합도 성찰</h3>
+<ul>
+<li><strong>발생 문제 및 회고</strong>: 방치형 게임 특성상 재화, 건물 레벨, 대기열 상태가 매 순간 변했으나, 당시에는 반응형 구독 구조(<code>UniRx</code> 등)를 쓰지 못해 데이터 변경 지점마다 UI 갱신용 <code>Load</code> 함수를 수동으로 호출했습니다.</li>
+<li><strong>후속 프로젝트로의 발전</strong>: 이 경험을 통해 데이터와 UI의 느슨한 결합(Decoupling)이 왜 필수적인지 체감했으며, 이후 3학년 프로젝트(<code>내 약국에는 정상이 없다</code>, <code>RootMarket</code>)에서 C# <code>event</code>/<code>Action</code> 브로드캐스팅과 <code>R3</code> 기반 MVVM 아키텍처를 도입하는 직접적인 밑거름이 되었습니다.</li>
+</ul>
+<hr>
+</section>
+<section class="content-section editorial-body" id="showcase"><h2>핵심 결과물 및 시연 자료 목록</h2><ul>
+<li><strong>완성된 Unity 6.0 기반 2D 방치형 게임 &#39;누리살이&#39; PC 빌드</strong>: 7단계 정제 건물, <code>BuildingQueue</code> 운반 파이프라인, <code>Forge UI</code> 강화소, 도감, 선형 미션/대화, 오프라인 보상이 모두 구현된 실행 빌드</li>
+<li><strong>공모전 수상</strong>: <code>GameAIfy AI 기반 게임제작 공모전 2025</code> <strong>AI 기술상</strong> 수상 (2025.09.15, 앵커노드)</li>
+<li><strong>Google Drive 원본 파일 직링크 목록</strong>:<ul>
+<li><strong>공모전 전체 폴더</strong>: <a href="https://drive.google.com/drive/folders/1rjeZ_7pTQD0LA6gi8YFiXn-aO8zhfR0r?usp=drive_link" target="_blank" rel="noopener noreferrer">원본 자료 보기</a></li>
+<li><strong>기획서 (<code>현명한 청년들_기획서.pdf</code>)</strong>: <a href="https://drive.google.com/file/d/1HTh0tr88M5W5NuMBjVj4bVfie03aJ72s/view?usp=drive_link" target="_blank" rel="noopener noreferrer">원본 자료 보기</a></li>
+<li><strong>개발 일지 &amp; AI 한계 극복 증빙 (<code>현명한 청년들_증빙자료.pdf</code>)</strong>: <a href="https://drive.google.com/file/d/1teIQwFexBMw1RThzQ0LEyH3dkeSaUohz/view?usp=drive_link" target="_blank" rel="noopener noreferrer">원본 자료 보기</a></li>
+<li><strong>에셋 리스트 (<code>현명한 청년들_에셋리스트.pdf</code>)</strong>: <a href="https://drive.google.com/file/d/1hKJnkVEsGxN1v3w64d5fy-Gag632CgYo/view?usp=drive_link" target="_blank" rel="noopener noreferrer">원본 자료 보기</a></li>
+<li><strong>인게임 플레이 영상 (<code>현명한 청년들_플레이 영상.mp4</code>)</strong>: <a href="https://drive.google.com/file/d/1d7AEnCYodCg1QVBBF5FjoElMdFnXo1Tx/view?usp=drive_link" target="_blank" rel="noopener noreferrer">원본 자료 보기</a></li>
+<li><strong>게임 실행 빌드 (<code>현명한 청년들_게임빌드.zip</code>)</strong>: <a href="https://drive.google.com/file/d/1i7GT-XDToGwggMsS2VX0tp0ZpJReJHr-/view?usp=drive_link" target="_blank" rel="noopener noreferrer">원본 자료 보기</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+</section>
+<section class="content-section editorial-body" id="takeaways"><h2>배운 점과 아쉬운 점 / 회고</h2><ul>
+<li><strong>배운 점 (Learned)</strong>:<ul>
+<li><strong>풀 사이클 개발 완주와 수상</strong>: 기획부터 <code>ScriptableObject</code> 데이터 설계, <code>BuildingQueue</code> 물류 자동화 구현, 빌드 폴리싱, 공모전 입상(<code>AI 기술상</code>)까지 전 과정을 PM이자 메인 프로그래머로 완주하며 큰 자신감을 얻었습니다.</li>
+<li><strong>도구의 한계를 엔지니어링·워크플로우로 보완하는 자세</strong>: AI 도구(<code>GameAIfy</code>, <code>Udio</code>)가 만능이 아니라는 점을 직시하고, 프롬프트 제어·클립 스튜디오 슬라이싱·<code>Creative Reference</code> 파생 모션 등 실무에 쓸 수 있는 형태로 가공해 파이프라인에 녹여내는 방법을 체득했습니다.</li>
+</ul>
+</li>
+<li><strong>아쉬운 점 (Lacked)</strong>:<ul>
+<li><strong>반응형 UI 아키텍처의 부재</strong>: 데이터 변경 시마다 수동으로 UI의 <code>Load</code> 함수를 호출했던 강한 결합 구조가 가장 큰 기술적 아쉬움으로 남았으며, 이는 후속 프로젝트에서 이벤트 기반 아키텍처와 MVVM 패턴을 도입하는 결정적 계기가 되었습니다.</li>
+<li><strong>콘텐츠 볼륨 조절</strong>: 방학 일정 내에 7단계 곡물 정제 루프의 완성도를 높이기 위해 초기에 구상했던 &#39;벌목&#39;, &#39;채광&#39; 등 타 생활 콘텐츠까지 확장하지 못한 점이 아쉬움으로 남습니다.</li>
+</ul>
+</li>
+</ul>
+</section><footer class="detail-footer-nav"><a class="detail-nav-btn" href="../index.html#projects">프로젝트 목록</a><a class="detail-nav-btn" href="../docs/portfolio_md/main-02_%EB%88%84%EB%A6%AC%EC%82%B4%EC%9D%B4.md">작성 근거 문서 · Markdown</a></footer></main></div><div class="floating-theme-fab" id="floatingThemeFab" aria-label="테마 설정">
     <div class="theme-fab-spheres" aria-hidden="true" id="theme-options" inert="">
       <button class="theme-fab-sphere" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드" type="button" tabindex="-1">
-        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
         <span class="sphere-tooltip">라이트 모드</span>
       </button>
       <button class="theme-fab-sphere" data-theme-set="dark" title="다크 모드" aria-label="다크 모드" type="button" tabindex="-1">
-        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
         <span class="sphere-tooltip">다크 모드</span>
       </button>
       <button class="theme-fab-sphere" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정" type="button" tabindex="-1">
-        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span>
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span>
         <span class="sphere-tooltip">시스템 설정</span>
       </button>
     </div>
     <button class="theme-fab-trigger" id="themeFabTrigger" title="테마 변경" aria-label="테마 변경" aria-controls="theme-options" aria-expanded="false" type="button">
       <span class="fab-current-icon mono-icon mono-icon-stroke">
-        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20a10 10 0 0 0 0-20z"></path><circle cx="12" cy="12" r="10"></circle></svg>
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 2v20a10 10 0 0 0 0-20z"></path><circle cx="12" cy="12" r="10"></circle></svg>
       </span>
     </button>
-  </div><script src="../assets/js/portfolio-system.js"></script>
-</body></html>
+  </div><script src="../assets/js/portfolio-system.js"></script></body></html>
