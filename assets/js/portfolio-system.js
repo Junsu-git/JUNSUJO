@@ -74,6 +74,12 @@
     setOpen(open, restoreFocus = false) {
       if (!this.fab || !this.options) return;
       this.fab.classList.toggle('open', open);
+      document.body.classList.toggle('theme-fab-expanded', open);
+      const backToTop = document.querySelector('.floating-back-to-top');
+      if (backToTop) {
+        const shift = open ? (this.options.offsetHeight + 12) : 0;
+        backToTop.style.setProperty('--fab-shift', shift + 'px');
+      }
       this.trigger.setAttribute('aria-expanded', String(open));
       this.options.setAttribute('aria-hidden', String(!open));
       this.options.inert = !open;
@@ -163,9 +169,50 @@
       });
     });
   }
+  function initBackToTop() {
+    let btn = document.querySelector('.floating-back-to-top');
+    if (!btn) {
+      btn = document.createElement('button');
+      btn.className = 'floating-back-to-top';
+      btn.id = 'floatingBackToTop';
+      btn.type = 'button';
+      btn.setAttribute('aria-label', '페이지 최상단으로 이동');
+      btn.setAttribute('title', '맨 위로 가기');
+      btn.innerHTML = `
+        <span class="mono-icon mono-icon-stroke">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 15l-6-6-6 6"></path>
+          </svg>
+        </span>
+        <span class="back-to-top-tooltip">맨 위로</span>
+      `;
+      const fab = document.querySelector('.floating-theme-fab');
+      if (fab && fab.parentNode) {
+        fab.parentNode.insertBefore(btn, fab);
+      } else {
+        document.body.appendChild(btn);
+      }
+    }
+    const update = () => {
+      const show = window.scrollY > 200;
+      btn.classList.toggle('visible', show);
+      btn.tabIndex = show ? 0 : -1;
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+    btn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
+      });
+      const topTarget = document.querySelector('.skip-link, #main-content, h1');
+      if (topTarget) topTarget.focus({ preventScroll: true });
+    });
+  }
   document.addEventListener('DOMContentLoaded', () => {
     window.portfolioTheme = new ThemeManager();
     initTabs();
     initNavigation();
+    initBackToTop();
   }, {once:true});
 })();
