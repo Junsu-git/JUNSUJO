@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="ko" data-theme="light"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="조준수 포트폴리오 - 과제 06: 승리의 여신: 니케 4주년 차트 역주행 요인 및 개발자·기획자 관점 건슈팅 메커닉스 심층 분석 보고서">
+  <meta name="theme-color" content="#fafaf8">
+  <title>06. 승리의 여신: 니케 4주년 역주행 및 메커닉스 분석 보고서 | 조준수 포트폴리오</title>
+  <script src="../assets/js/theme-init.js"></script>
+  <link rel="stylesheet" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="../assets/css/portfolio-system.css">
+  <link rel="stylesheet" href="../assets/css/pages/assignment-06.css">
+  <link rel="stylesheet" href="../assets/css/project-detail.css">
+</head>
+<body><a class="skip-link" href="#main-content">본문 바로가기</a>
+
+  <!-- Top Sticky Header -->
+  <header class="mobile-header">
+    <a class="back-link-btn" href="../projects/sub-11-coursework.html#overview">← 과제 컬렉션</a>
+    <span class="header-caption">JUNSU JO / PORTFOLIO</span>
+  </header>
+
+  <!-- 2-Column Responsive Layout -->
+  <div class="detail-layout-container">
+
+    <!-- LEFT: Sticky TOC Rail -->
+    <aside class="toc-rail-container" aria-label="페이지 목차">
+      <div class="toc-rail-title">ON THIS PAGE</div>
+      <nav class="toc-track-line" aria-label="상세 목차">
+        <a class="toc-item-link" href="#growth">경험 평가와 배운 점</a>
+        <a class="toc-item-link" href="#overview">과제 개요와 마켓 지표</a>
+        <a class="toc-item-link" href="#tab-liveops">역주행 결론과 4주년 해부</a>
+        <a class="toc-item-link" href="#tab-mechanics">코어 메커닉스와 실플레이 UX</a>
+        <a class="toc-item-link" href="#tab-dev">개발자 관점 해석 (Tech·QA)</a>
+        <a class="toc-item-link" href="#tab-plan">기획자 관점 해석 (Design·BM)</a>
+        <a class="toc-item-link" href="#takeaways">실무 개선 제안과 총평</a>
+      </nav>
+    </aside>
+
+    <!-- RIGHT: Main Content -->
+    <main class="detail-main-content" id="main-content">
+      <div class="detail-page-heading">
+        <span class="eyebrow">CASE STUDY / LEARNING RECORD</span>
+        <h1>06. [게임 분석] 승리의 여신: 니케 4주년 역주행 및 메커닉스 분석 보고서</h1>
+        <p class="detail-sub-title">"서비스 4년 차 서브컬처 건슈팅은 어떻게 양대 마켓 최상위권을 재탈환했는가 — 4주년 업데이트(MARIA-n), 실플레이 UX, 클라이언트 개발·시스템 기획 이중 관점 역설계"</p>
+      </div>
+
+      <!-- 01. LEARNING GROWTH & CORE METRICS (First section inside <main> per portfolio contract) -->
+      <section class="learning-growth-card" id="growth">
+        <span class="growth-header-label">EXECUTIVE SUMMARY &amp; GROWTH</span>
+        <h2 class="growth-title">경험 평가와 배운 점</h2>
+        <p style="margin-bottom: 20px; color: var(--text-sub); font-size: 0.9rem; line-height: 1.85;">
+          픽업 비수기(10/29 구글 35위)에 머물던 성숙기 라이브 게임이 <strong>4주년 업데이트 직후 국내 App Store 1위·Google Play 3위(▲32), 일본·대만 마켓 1위</strong>로 수직 반등한 현상을 PC·모바일 교차 실플레이로 직접 검증하고, <strong>클라이언트 개발자(Spine 2D 스프링 물리·QA·보안)</strong>와 <strong>시스템 기획자(덱 시너지 앵커링·골드 마일리지 BM)</strong>의 두 시각으로 분리 해석했습니다.
+        </p>
+
+        <div class="growth-metric-grid">
+          <div class="growth-metric-item">
+            <span class="metric-label">국내 마켓 역주행 폭</span>
+            <span class="metric-val">iOS 1위 · 구글 3위</span>
+            <span class="metric-desc">10/29 구글 35위 대비 ▲32계단 급등</span>
+          </div>
+          <div class="growth-metric-item">
+            <span class="metric-label">글로벌 동시 흥행</span>
+            <span class="metric-val">일본 1위 · 대만 1위</span>
+            <span class="metric-desc">일본 Google Play · 대만 App Store 정상</span>
+          </div>
+          <div class="growth-metric-item">
+            <span class="metric-label">직접 플레이 검증</span>
+            <span class="metric-val">11시간 30분</span>
+            <span class="metric-desc">PC(16:9) &amp; Android(9:16) 교차 테스트</span>
+          </div>
+          <div class="growth-metric-item">
+            <span class="metric-label">직무별 분리 해석</span>
+            <span class="metric-val">Tech &amp; Design</span>
+            <span class="metric-desc">Spine 물리·QA 리스크 / 덱 앵커링 BM</span>
+          </div>
+        </div>
+
+        <div class="growth-detail-card">
+          <h4>분석 역량의 도약 (Before vs After)</h4>
+          <div class="before-after-grid">
+            <div class="before-box">
+              <span class="ba-label">분석 수행 전 (BEFORE)</span>
+              <ul class="ba-list">
+                <li>주년 업데이트 역주행을 단순한 '무료 뽑기 배포(사료)와 일러스트 화제성' 덕분으로만 피상적으로 인식.</li>
+                <li>2D 건슈팅 연출을 Live2D 기반의 정적인 스탠딩 이미지 변형 정도로 오인.</li>
+                <li>필그림 픽업 1%라는 낮은 확률이 왜 유저 저항 없이 높은 매출 전환을 만드는지 BM 구조 연결 부족.</li>
+              </ul>
+            </div>
+            <div class="after-box">
+              <span class="ba-label">분석 수행 후 (AFTER)</span>
+              <ul class="ba-list">
+                <li><strong>무료 배포 서포터(<code>라푼젤 : 생츄어리</code>)로 3버스트 딜러(<code>마리안 : 퀸</code>·<code>홍련 : 신살</code>) 뽑기 명분을 완성하는 '덱 시너지 앵커링'</strong> 공식 규명.</li>
+                <li><strong>Spine 2D 본(Bone) 조준 트래킹 + 훅의 법칙 감쇠 스프링 물리 + Unity C# Job System·Burst 병렬 최적화</strong> 구조 파악.</li>
+                <li><strong>200뽑기 골드 마일리지 영구 이월(이탈 방어) + 릴레이 픽업·코스튬(고과금 회수)</strong>의 가격 차별화(Price Discrimination) 모델 역기획 완료.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02. OVERVIEW & FACT SHEET -->
+      <section class="detail-hero-box" id="overview">
+        <h2>과제 개요와 마켓 지표</h2>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
+          <span class="badge-tag">ASSIGNMENT 06</span>
+          <span class="badge-tag">마켓 역주행 &amp; 메커닉스 분석</span>
+          <span class="badge-tag">개발자·기획자 이중 관점</span>
+          <span class="badge-tag">2026.11.05</span>
+        </div>
+
+        <p class="detail-lead-summary">
+          2026년 9월~11월 초까지의 모바일인덱스(MobileIndex) 시계열 순위 데이터와 4주년 대규모 패치(<code>MARIA-n</code>) 내역을 대조하고,
+          PC 공식 클라이언트와 모바일 기기에서의 실플레이 경험을 바탕으로 코어 건슈팅 재미 요소, UX 명암, 클라이언트 엔지니어링 구조 및 라이브 BM을 종합 분석한 보고서입니다.
+        </p>
+
+        <div class="meta-spec-grid">
+          <div class="meta-spec-item">
+            <span>타깃 게임 / 개발·배급</span>
+            <strong>승리의 여신: 니케 (SHIFT UP Corp. / Level Infinite)</strong>
+          </div>
+          <div class="meta-spec-item">
+            <span>대표 장르 및 출시일</span>
+            <strong>서브컬처 건슈팅(TPS 엄폐 사격) + 방치형 성장 RPG (2022.11.04 출시)</strong>
+          </div>
+          <div class="meta-spec-item">
+            <span>클라이언트 기술 스택</span>
+            <strong>Unity 엔진 · Spine 2D 본 애니메이션 · C# Job System &amp; Burst</strong>
+          </div>
+          <div class="meta-spec-item">
+            <span>실플레이 검증 환경</span>
+            <strong>2026.11.01 ~ 11.05 (PC FHD 16:9 8.5h + Android 9:16 3h)</strong>
+          </div>
+        </div>
+
+        <div class="md-source-bar">
+          <div>
+            <strong>마크다운 과제 원본 문서:</strong> <code>assignment-06_승리의_여신_니케_4주년_역주행_및_실플레이_분석보고서.md</code>
+          </div>
+          <a class="detail-nav-btn" href="../docs/portfolio_md/assignment-06_%EC%8A%B9%EB%A6%AC%EC%9D%98_%EC%97%AC%EC%8B%A0_%EB%8B%88%EC%BC%80_4%EC%A3%BC%EB%85%84_%EC%97%AD%EC%A3%BC%ED%96%89_%EB%B0%8F_%EC%8B%A4%ED%94%8C%EB%A0%88%EC%9D%B4_%EB%B6%84%EC%84%9D%EB%B3%B4%EA%B3%A0%EC%84%9C.md" target="_blank" rel="noopener noreferrer">MD 원본 보기 →</a>
+        </div>
+      </section>
+
+      <!-- 4-TAB NAVIGATION BAR (Managed by portfolio-system.js initTabs + TOC revealTarget) -->
+      <div class="tab-bar" aria-label="분석 세부 영역 선택">
+        <button class="tab-btn active" type="button" data-tab="tab-liveops">01. 역주행 결론 &amp; 4주년 해부</button>
+        <button class="tab-btn" type="button" data-tab="tab-mechanics">02. 코어 메커닉스 &amp; 실플레이 UX</button>
+        <button class="tab-btn" type="button" data-tab="tab-dev">03. 개발자 관점 해석 (Tech · QA)</button>
+        <button class="tab-btn" type="button" data-tab="tab-plan">04. 기획자 관점 해석 (Design · BM)</button>
+      </div>
+
+      <!-- =========================================================================
+           TAB 1: 역주행 결론 & 4주년 업데이트 해부
+           ========================================================================= -->
+      <section class="tab-pane active" id="tab-liveops">
+        <div class="content-card editorial-body">
+          <h3>핵심 결론: 왜 서비스 4년 차에 양대 마켓 최상위권으로 역주행했는가?</h3>
+          <p>
+            직접 플레이하며 4주년 업데이트(<code>MARIA-n</code>)의 유입·체류·결제 동선을 역추적한 결과, 이번 순위 폭등은 단순한 기념 보상이 아니라
+            <strong>[4년 서사의 회수 ➔ 무료 서포터 배포를 통한 덱 시너지 앵커링 ➔ 육성 병목 해소]</strong>가 정교하게 맞물린 <strong>4단계 라이브 옵스 깔때기(Funnel)</strong>의 결과로 분석됩니다.
+          </p>
+
+          <div class="nikke-funnel-grid">
+            <div class="nikke-funnel-step">
+              <span class="nikke-step-num">STAGE 01 · ACQUISITION</span>
+              <h4>4년 서사의 회수와 복귀 자극</h4>
+              <p>프롤로그 히로인 '마리안'의 기원(<code>MARIA-n</code>)과 1부 최종 결전(메인 49·50챕터)을 동시 개방해 휴면 유저의 서사적 부채감을 자극.</p>
+            </div>
+            <div class="nikke-funnel-step">
+              <span class="nikke-step-num">STAGE 02 · RETENTION</span>
+              <h4>육성 병목 완화와 체류 고정</h4>
+              <p>매일 무료 특수 모집으로 일일 접속을 고정하고, 신규 시스템 <code>싱크로 부스트</code>와 미니게임 <code>FADING AFFECTION</code>으로 조기 이탈 방어.</p>
+            </div>
+            <div class="nikke-funnel-step">
+              <span class="nikke-step-num">STAGE 03 · ANCHORING</span>
+              <h4>무료 배포를 통한 덱 완성 유도</h4>
+              <p>작열 2버스트 버퍼 <code>라푼젤 : 생츄어리</code>를 무료 배포하여, '임전' 시너지 파트너인 픽업 3버스트 딜러 획득 욕구를 점화.</p>
+            </div>
+            <div class="nikke-funnel-step">
+              <span class="nikke-step-num">STAGE 04 · MONETIZATION</span>
+              <h4>2단 시차 픽업 매출 스파이크</h4>
+              <p>1주차 <code>마리안 : 퀸</code>(10/29~)으로 비축 마일리지를 소진시킨 뒤, 2주차 <code>홍련 : 신살</code>(11/05~)을 연이어 오픈해 2차 결제 폭발 유도.</p>
+            </div>
+          </div>
+
+          <h3>모바일인덱스 시계열 순위 추이 (Ground Truth 교차 검증)</h3>
+          <div class="content-note">
+            <p>순위 지표는 수집 일자별 단일 스냅샷과 4주년 업데이트 직후 마켓 집계치를 분리 표기했습니다. Google Play(이동평균 반영 완만)와 App Store(실시간 버스트 민감)의 플랫폼 비대칭성을 함께 대조합니다.</p>
+          </div>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="승리의 여신 니케 시계열 매출 순위 추이">
+            <table>
+              <thead>
+                <tr>
+                  <th>기준 시점</th>
+                  <th>국내 Google Play 매출</th>
+                  <th>국내 App Store 매출</th>
+                  <th>글로벌 성과 및 시장 국면 해석</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>2026-09-03</strong></td>
+                  <td>16위</td>
+                  <td>20위권</td>
+                  <td>하반기 통상 이벤트 운영기</td>
+                </tr>
+                <tr>
+                  <td><strong>2026-09-17</strong></td>
+                  <td>34위 (▼18)</td>
+                  <td>30위권 밖</td>
+                  <td>주년 직전 유저들의 재화·티켓 비축기 진입</td>
+                </tr>
+                <tr>
+                  <td><strong>2026-10-01</strong></td>
+                  <td>15위 (▲19)</td>
+                  <td>20위권</td>
+                  <td>단기 픽업 반등 후 재차 주년 대기 관망세 전환</td>
+                </tr>
+                <tr>
+                  <td><strong>2026-10-29</strong></td>
+                  <td><strong>35위 (▼20)</strong></td>
+                  <td><strong>35위권 밖</strong></td>
+                  <td>4주년 패치 당일 정산 반영 직전 저점 (폭풍전야)</td>
+                </tr>
+                <tr>
+                  <td><strong>2026-11월 초 (4주년)</strong></td>
+                  <td><strong>3위 (▲32 급등)</strong></td>
+                  <td><strong>1위 (최정상 탈환)</strong></td>
+                  <td><strong>일본 Google Play 1위 · 대만 App Store 1위 동시 달성</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>최신 4주년 업데이트(<code>MARIA-n</code>) 구성요소별 기획 역할 분담</h3>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="4주년 업데이트 세부 내역 및 기획 역할">
+            <table>
+              <thead>
+                <tr>
+                  <th>업데이트 항목</th>
+                  <th>핵심 세부 스펙</th>
+                  <th>라이브 기획 및 매출 기여 메커니즘</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>신규 필그림 3종</strong><br>(전원 작열 코드 통일)</td>
+                  <td>• <strong>마리안 : 퀸</strong> (10/29~ 픽업 | 화력형·MG·3버스트 광역)<br>• <strong>홍련 : 신살</strong> (11/05~ 픽업 | 화력형·AR·3버스트 관통)<br>• <strong>라푼젤 : 생츄어리</strong> (무료 배포 | 지원형·RL·2버스트 힐·임전 버퍼)</td>
+                  <td><strong>덱 시너지 앵커링 &amp; 월말·월초 2단 점화</strong>:<br>무료 배포된 2버스트 라푼젤이 풀 버스트 시 '임전' 상태 아군 공격 대미지를 증폭시켜, 주력 3버스트 딜러 2종의 수집 당위성을 극대화함</td>
+                </tr>
+                <tr>
+                  <td><strong>메인 49·50챕터 &amp;</strong><br><strong>이벤트 <code>MARIA-n</code></strong></td>
+                  <td>• 메인 스토리 1부 대단원 '제3차 지상 탈환전' 개방<br>• 마리안과 지휘관의 과거·기원을 다룬 풀보이스 스토리 이벤트</td>
+                  <td><strong>휴면 복귀 트리거</strong>:<br>4년간 축적된 방주 1부 서사의 클라이맥스를 배치해 이탈 유저의 복귀 장벽을 감정적으로 돌파</td>
+                </tr>
+                <tr>
+                  <td><strong>서사형 미니게임</strong><br><strong><code>FADING AFFECTION</code></strong></td>
+                  <td>• 연구소 기록 열람 기반 텍스트 어드벤처 + 로그라이크 루프<br>• 다회차 분기 선택과 마리아 모델의 반복 소모·마모 과정 구현</td>
+                  <td><strong>체류 시간(Time Spent) 증대 &amp; 바이럴</strong>:<br>플레이어의 반복 행위 자체를 캐릭터의 소모 서사와 일치시켜 커뮤니티 자발적 스토리 해석 확산</td>
+                </tr>
+                <tr>
+                  <td><strong>신규 성장 지원</strong><br><strong><code>싱크로 부스트</code></strong></td>
+                  <td>• 싱크로 디바이스 증폭 이후 구간 상시 파밍 가속 시스템<br>• <strong>오버클럭 부스트</strong>(스킬칩 증량) + <strong>요격전 부스트</strong>(장비·모듈 가속)</td>
+                  <td><strong>2차 육성 병목 해소</strong>:<br>신규 필그림을 뽑고도 스킬칩·커스텀 모듈 부족으로 육성이 막히던 기존·복귀 유저의 소비 저항 제거</td>
+                </tr>
+                <tr>
+                  <td><strong>무료 모집 혜택 &amp;</strong><br><strong><code>디오라마 로비</code></strong></td>
+                  <td>• 특수 모집 및 필그림 선택 모집 <strong>매일 1회 무료 모집</strong> 제공<br>• SD 캐릭터 입체 배치 <strong>디오라마 로비</strong> 추가 및 로비 슬롯 15개 확장</td>
+                  <td><strong>일일 접속률(DAU) 방어 &amp; 관상 가치 강화</strong>:<br>이벤트 기간 매일 접속 습관을 형성하고 수집 캐릭터의 꾸미기 만족도 제고</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           TAB 2: 코어 메커닉스 & 실플레이 UX 피드백
+           ========================================================================= -->
+      <section class="tab-pane" id="tab-mechanics">
+        <div class="content-card editorial-body">
+          <h3>기본 메커닉스와 핵심 재미 요소(Core Fun) 분석</h3>
+          <p>
+            턴제 RPG와 오픈월드 액션이 주류인 서브컬처 시장에서 『승리의 여신: 니케』가 4년 넘게 대체 불가능한 입지를 지키는 핵심은
+            <strong>오락실 엄폐 건슈팅(Time Crisis 문법)의 직관적 손맛</strong>과 <strong>방치형 스쿼드 성장 루프</strong>의 결합에 있습니다.
+          </p>
+
+          <pre><code class="language-text">[코어 게임플레이 루프 (Core Gameplay Loop)]
+  방치형 전초기지 &amp; 일일 루틴 (크레디트 · 배틀 데이터 · 코어 더스트 시간당 수급)
+        ↓
+  싱크로 디바이스 레벨 동기화 &amp; 4주년 싱크로 부스트 (스킬칩 · 기업 오버로드 장비 육성)
+        ↓
+  건슈팅 스테이지 &amp; 레이드 수동 개입 (엄폐 체력 관리 · 저지 원 파훼 · 10초 풀 버스트 일점사)
+        ↓
+  메인·이벤트 스토리 해금 및 전초기지 방어 레벨 상승 (방치 보상 효율 영구 증가 → 루프 재순환)</code></pre>
+
+          <div class="points-grid">
+            <div class="point-box">
+              <h4>1. 엄폐(Cover) ⇄ 사격(Fire) 리소스 관리</h4>
+              <p>각 니케 앞의 엄폐물은 독립된 체력(Cover HP)을 가집니다. 보스의 전조 모션과 조준선을 읽고 스페이스바(전체 엄폐)로 즉사기를 방어한 뒤 재사격으로 전환하는 과정이 수집형 RPG에 실시간 액션의 긴장감을 부여합니다.</p>
+            </div>
+            <div class="point-box">
+              <h4>2. 버스트 체인(Ⅰ➔Ⅱ➔Ⅲ)과 풀 버스트 일점사</h4>
+              <p>20초·40초 쿨타임 아귀를 맞춰 3단계 버스트를 발동하면 10초간 '풀 버스트'에 돌입합니다. 이때 나머지 4명의 AI 사선이 플레이어 조준점 한 곳으로 일제히 수렴하며 시청각적 타격 도파민이 극대화됩니다.</p>
+            </div>
+            <div class="point-box">
+              <h4>3. 6종 화기 아키타입별 조작 문법 분화</h4>
+              <p>RL·SR의 수동 비차지 연사(속칭 '톡톡이')를 통한 고속 버스트 수급, MG(<code>마리안 : 퀸</code>)의 예열 탄막, AR(<code>홍련 : 신살</code>)·SG의 관통(Pierce) 다중 파츠 타격 등 무기군마다 수동 개입의 손맛이 명확히 구분됩니다.</p>
+            </div>
+            <div class="point-box">
+              <h4>4. 부위 파괴 · 저지 원(QTE)과 '투력 비비기'</h4>
+              <p>제한 시간 내 붉은 '저지 원'을 파괴해야 전멸기를 막을 수 있어 자동 전투만으로는 한계가 명확합니다. 덕분에 권장 전투력 대비 15~25% 적자 상태에서도 에임과 엄폐 컨트롤로 상위 구간을 뚫는 성취감이 작동합니다.</p>
+            </div>
+          </div>
+
+          <hr>
+
+          <h3>직접 플레이 경험 및 UX 피드백 (PC 16:9 vs 모바일 9:16 교차 체험)</h3>
+          <p>
+            5일간(2026.11.01 ~ 11.05, 총 11시간 30분) 초반 챕터 온보딩 동선과 4주년 이벤트 필드(<code>MARIA-n</code>), 미니게임(<code>FADING AFFECTION</code>), 신규 필그림 실전 편성을 PC와 모바일 양쪽에서 직접 플레이하며 도출한 UX 진단입니다.
+          </p>
+
+          <div class="ux-dual-grid">
+            <div class="ux-panel positive">
+              <div class="ux-panel-header">
+                <h4>긍정적 플레이 경험 (Good UX)</h4>
+                <span class="ux-tag">IMMERSION &amp; CONTROL</span>
+              </div>
+              <div class="ux-entry">
+                <strong>1. 프롤로그 직접 조준 연출과 4주년 서사의 공명</strong>
+                <p>챕터 1 마지막에서 플레이어가 직접 조준점을 옮겨 방아쇠를 당기게 만드는 인터랙티브 연출은 최고의 온보딩 훅입니다. 특히 현시점 로비의 <code>마리안 : 퀸</code> 배너 및 <code>MARIA-n</code> 이벤트와 즉각 맞물리며 강렬한 몰입을 만듭니다.</p>
+              </div>
+              <div class="ux-entry">
+                <strong>2. PC 클라이언트 가로(16:9) 해상도의 전장 시야 확장성</strong>
+                <p>모바일 세로(9:16)에서는 좌우 외곽 미사일과 저지 원 확인을 위해 드래그 패닝이 강제되지만, PC 와이드 화면에서는 5인 스쿼드 전원과 보스 좌우 파츠가 한 화면에 들어와 본격 아케이드 건슈팅의 쾌적함이 살아납니다.</p>
+              </div>
+              <div class="ux-entry">
+                <strong>3. 미니게임 <code>FADING AFFECTION</code>의 루도내러티브 일치</strong>
+                <p>단순 재화 파밍용 미니게임이 아니라, 다회차 선택지를 반복하며 기록을 모으는 플레이어의 피로와 무뎌짐 자체를 마리아 모델이 반복 소모·마모되는 비극적 서사와 동기화시킨 탁월한 UX 설계였습니다.</p>
+              </div>
+            </div>
+
+            <div class="ux-panel pain">
+              <div class="ux-panel-header">
+                <h4>불편 사항 및 개선 시급 지점 (UX Pain Points)</h4>
+                <span class="ux-tag">FRICTION &amp; FATIGUE</span>
+              </div>
+              <div class="ux-entry">
+                <strong>1. 로비 레드닷 과다와 기간 한정 돌발 과금 팝업 피로도</strong>
+                <p>복귀·신규 진입 시 수십 개의 알림 점(Red Dot)이 동시에 점등되어 시선 동선이 분산되며, 시리어스 스토리 스테이지 클리어 직후 화면을 덮는 기간 한정 패키지 팝업(Flash Offer)이 서사 여운을 해칩니다.</p>
+              </div>
+              <div class="ux-entry">
+                <strong>2. 메뉴 이동 시 잦은 암전 씬 로딩 (Transition Latency)</strong>
+                <p>전투 1판은 1분 30초 내외로 경쾌한 반면, <code>로비 ➔ 방주 ➔ 전초기지 ➔ 이벤트 필드</code>를 오갈 때마다 암전 로딩이 발생해 일일 숙제 수령을 위한 비전투 네비게이션 시간이 실제 전투 시간보다 길어집니다.</p>
+              </div>
+              <div class="ux-entry">
+                <strong>3. 고유 버프 조건이 밀집된 스킬 툴팁 가독성 한계</strong>
+                <p>4주년 신규 캐릭터의 고유 상태('임전' 등), 중첩 조건, 비례 대미지 수식이 작은 줄글로 나열되어 있어 인게임 버프 활성 여부와 시너지 대상을 직관적으로 파악하기 어렵습니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           TAB 3: 개발자 관점 해석 (Client / Tech / QA)
+           ========================================================================= -->
+      <section class="tab-pane" id="tab-dev">
+        <div class="content-card editorial-body">
+          <div class="role-split-callout">
+            <h4>클라이언트 개발 · QA 엔지니어링 관점 핵심 질문</h4>
+            <p>"2D 원화의 화풍을 훼손하지 않으면서 어떻게 실시간 3D 건슈팅의 조준 각도 추적(IK), 연사 반동 물리, 가변 해상도 대응을 모바일과 PC에서 구현했는가? 그리고 어디서 기술적 병목과 보안 리스크가 발생하는가?"</p>
+          </div>
+
+          <h3>1. Spine 2D 채택과 커스텀 스프링 물리(Spring Physics) 병렬 최적화</h3>
+          <ul>
+            <li><strong>왜 Live2D가 아닌 Spine 2D인가?</strong>: 정면 일러스트 메쉬 변형에 특화된 Live2D는 캐릭터가 엄폐물 뒤에서 몸을 일으켜 마우스·터치 좌표 방향으로 총구 각도를 실시간 회전(Aim Tracking / IK)시키고 피격 반동을 합성하기 어렵습니다. 니케는 계층적 본(Bone) 제어에 유리한 <strong>Spine 2D</strong>를 채택해 <code>Cover_Idle ⇄ Aim_Fire ⇄ Reload ⇄ Stun</code> 상태머신(FSM)을 정교하게 분리했습니다.</li>
+            <li><strong>훅의 법칙(<code>F = -kx - cv</code>) 동적 본 시뮬레이션과 멀티스레딩</strong>: 고속 연사 화기(예: <code>마리안 : 퀸</code>의 MG) 사격 시 프레임 단위로 발생하는 머리카락과 신체의 반동 흔들림을 키프레임으로 일일이 제작하면 에셋 용량이 폭증합니다. 이를 해결하기 위해 애니메이션 본과 물리 전용 본을 분리한 뒤 <strong>감쇠 스프링 물리(Hooke's Law)와 최대 변위 보조 구속(Constraint)</strong>을 적용했으며, 풀 버스트 구간(5인 Spine + 수십 기 랩쳐 + 탄막 파티클 동시 연산)의 메인 스레드 병목을 막기 위해 <strong>Unity C# Job System과 Burst Compiler</strong>로 물리 연산을 워커 스레드에 분산했습니다.</li>
+          </ul>
+
+          <h3>2. 가변 종횡비(9:16 ⇄ 16:9) 뷰포트 확장 및 관통 다중 콜라이더 판정</h3>
+          <ul>
+            <li><strong>무레터박스 크로스 플랫폼 카메라 설계</strong>: 세로형(9:16) 기준 전장을 PC 가로형(16:9 / 21:9)으로 넓힐 때 단순 검은 여백(Letterbox) 처리 대신 3D 배경 레이어와 2D 전장 카메라의 수평 시야각(FOV)을 동적으로 확장하고, HUD UI는 Safe Area 앵커링으로 좌우 하단에 재배치해 플랫폼별 최적 시야를 구현했습니다.</li>
+            <li><strong>관통(Pierce) 레이캐스트 다중 판정</strong>: <code>홍련 : 신살</code>과 같은 관통 특화 딜러 사격 시 단일 사선 위에 <code>[보스 파츠 콜라이더 A + 파츠 B + 본체 코어 콜라이더]</code>가 중첩될 때 각 히트박스에 독립 데미지 인스턴스를 발생시키며, 보스 Spine 애니메이션 본에 바인딩된 콜라이더 이동과 프레임 지연 없는 판정 동기화가 핵심 기술 요소로 작동합니다.</li>
+          </ul>
+
+          <h3>3. 클라이언트 QA 결함 및 기술·보안 리스크 진단표</h3>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="개발자 및 QA 관점 결함과 기술 리스크 진단">
+            <table>
+              <thead>
+                <tr>
+                  <th>이슈 ID</th>
+                  <th>결함 / 리스크 명칭</th>
+                  <th>심각도</th>
+                  <th>발생 조건 및 재현 스텝</th>
+                  <th>원인 진단 및 엔지니어링 해결 방안</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>TECH-01</strong></td>
+                  <td><strong>PC 런처 외부 CDN 스크립트 공급망 변조 리스크</strong></td>
+                  <td><strong>Critical</strong></td>
+                  <td>4주년 전후 PC 런처 구동 시 외부 CDN에서 로드하는 웹뷰 JS 스크립트(<code>aegis-fix</code> 계열 등) 무결성 노출 사례</td>
+                  <td>임베디드 브라우저(WebView/CEF)의 외부 리소스 로드 시 <strong>SRI(Subresource Integrity) 해시 검증</strong> 및 코드 서명 화이트리스트 핀닝 강제 필요</td>
+                </tr>
+                <tr>
+                  <td><strong>TECH-02</strong></td>
+                  <td><strong>프레임레이트(FPS) 종속 연사 화기 발사 틱 손실</strong></td>
+                  <td><strong>Major</strong></td>
+                  <td>1. 그래픽 30fps 제한 또는 모바일 발열 스로틀링 상태 진입<br>2. 고속 연사 MG(<code>마리안 : 퀸</code> 등) 풀 버스트 사격<br>3. PC 60fps 고정 대비 총 발사 탄수 및 누적 딜량 저하</td>
+                  <td><code>Update()</code> 프레임 주기가 발사 간격보다 길어질 때 잔여 <code>deltaTime</code>을 이월 누적하지 않으면 발생하는 <strong>Frame-rate Dependent DPS 손실</strong>. 누적 시간 루프(<code>while (acc &gt;= fireInterval)</code>) 보정 필수</td>
+                </tr>
+                <tr>
+                  <td><strong>TECH-03</strong></td>
+                  <td><strong>씬 전환 시 Addressables 메모리·로딩 스파이크</strong></td>
+                  <td><strong>Major</strong></td>
+                  <td>디오라마 로비 ⇄ 4주년 3D SD 이벤트 필드 ⇄ 방주 콘텐츠 반복 이동 시 2~4초 암전 로딩 지속</td>
+                  <td>고해상도 Spine 아틀라스 및 풀보이스 오디오 번들의 빈번한 언로드·재로드에 따른 <code>GC.Collect</code> 병목. 공용 로비 에셋 상주 풀링 및 비동기 프리페칭 개선 권장</td>
+                </tr>
+                <tr>
+                  <td><strong>TECH-04</strong></td>
+                  <td><strong>미니게임 <code>FADING AFFECTION</code> 분기 진행도 표기 혼선</strong></td>
+                  <td><strong>Minor</strong></td>
+                  <td>다회차 선택지 열람 후 특정 분기 조건 달성 시에도 완료율(100%) 기준 인지가 모호하거나 알림 배지 잔류</td>
+                  <td>다회차 플래그 상태 트리와 UI 진행률 바 매핑 시 미열람 서브 노드 힌트 시각화 트리 UI 보강 필요</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           TAB 4: 기획자 관점 해석 (System / Level / BM)
+           ========================================================================= -->
+      <section class="tab-pane" id="tab-plan">
+        <div class="content-card editorial-body">
+          <div class="role-split-callout planner">
+            <h4>시스템 · 레벨 · BM 기획자 관점 핵심 질문</h4>
+            <p>"방치형 성장 공식 위에 어떻게 수동 건슈팅 컨트롤의 가치를 공존시켰으며, 픽업 확률 1%라는 높은 허들에도 유저 저항을 최소화하면서 양대 마켓 1위 매출을 끌어내는 경제 구조는 무엇인가?"</p>
+          </div>
+
+          <h3>1. 전투력 패널티(CP Deficit) 레벨 디자인의 양면성</h3>
+          <ul>
+            <li><strong>콘텐츠 소모 속도 제어 장치(Time-Gate)</strong>: 스테이지 권장 전투력보다 내 스쿼드 전투력이 낮으면 부족 비율(%)에 따라 최종 스탯에 비선형 패널티가 부과됩니다. 만약 이 장치가 없었다면 에임 숙련도가 높은 소수 유저가 저레벨 상태로 모든 챕터를 단기간에 소모(Content Burnout)했을 것입니다.</li>
+            <li><strong>15~25% 적자 구간의 절묘한 줄타기</strong>: 패널티 15~25% 구간에서는 자동 전투(Auto)는 즉사하지만, 유저가 직접 <code>라푼젤 : 생츄어리</code>로 회복 타이밍을 잡고 <code>마리안 : 퀸</code>·<code>홍련 : 신살</code>의 풀 버스트를 보스 파츠 생성 시점에 맞추면 돌파가 가능하도록 밸런싱하여 <strong>'수동 조작의 효능감'</strong>과 <strong>'전초기지 방치·과금 성장의 동기'</strong>를 동시에 성립시켰습니다.</li>
+          </ul>
+
+          <h3>2. <code>싱크로 디바이스</code>와 4주년 <code>싱크로 부스트</code>의 경제학</h3>
+          <ul>
+            <li><strong>뽑기 전환율을 극대화하는 싱크로 디바이스</strong>: 상위 5명의 레벨만 육성하면 슬롯에 등록한 명함(0돌파) 캐릭터도 즉시 최고 레벨로 동기화됩니다. 신규 캐릭터 획득 직후 레벨업 재화 부족으로 창고에 방치되는 타 수집형 RPG의 구조적 문제를 제거해, <strong>뽑은 지 1분 만에 최전선 실전에 투입하는 즉각적 효능감</strong>을 보장합니다.</li>
+            <li><strong>2차 육성 병목을 정조준한 4주년 <code>싱크로 부스트</code></strong>: 서비스 4년이 누적되며 레벨 동기화만으로는 해결되지 않는 <strong>스킬칩(오버클럭)</strong>과 <strong>오버로드 장비 개조용 커스텀 모듈(요격전)</strong> 부족이 신규 캐릭터 구매 저항("뽑아도 스킬작·장비작을 못 해준다")으로 이어졌습니다. <code>싱크로 부스트</code>는 바로 이 2차 파밍 병목을 완화해 4주년 트리플 필그림의 육성 숨통을 틔워준 경제 밸런싱 패치입니다.</li>
+          </ul>
+
+          <h3>3. 필그림 1% 확률 저항을 넘은 '골드 마일리지 영구 이월'과 가격 차별화 BM</h3>
+          <div class="points-grid">
+            <div class="point-box">
+              <h4>이탈 방어 안전망: 골드 마일리지 영구 이월</h4>
+              <p>필그림 픽업 확률은 1%(일반 SSR 2%의 절반)로 낮지만, 모집 200회당 쌓이는 '골드 마일리지 티켓'이 픽업 종료 후에도 초기화되지 않고 영구 이월됩니다. 평소 모은 마일리지로 4주년 1% 필그림 명함을 즉시 정가 교환할 수 있어 무·소과금 유저의 폭사 이탈을 완벽히 방어합니다.</p>
+            </div>
+            <div class="point-box">
+              <h4>고과금 매출 회수: 릴레이 픽업 &amp; 코스튬 이원화</h4>
+              <p>명함 1장은 마일리지로 교환하더라도 4주년 주력 딜러 픽업이 2종(<code>마리안 : 퀸</code> ➔ <code>홍련 : 신살</code>) 연달아 배치되어 비축분 소진 지점부터 결제가 발생하며, 3돌파 로비 버스트 배경 해금과 하이엔드 코스튬 가챠·패스로 애정 과금을 분리 회수하는 <strong>가격 차별화(Price Discrimination)</strong>를 완성했습니다.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           03. PROPOSALS & FINAL TAKEAWAYS
+           ========================================================================= -->
+      <section class="content-card editorial-body" id="takeaways">
+        <h2>실무 개선 제안과 총평</h2>
+
+        <h3>SWOT 전략 매트릭스 요약</h3>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="승리의 여신 니케 SWOT 분석표">
+          <table>
+            <thead>
+              <tr>
+                <th>강점 (Strengths)</th>
+                <th>약점 (Weaknesses)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>• 독보적인 Spine 2D 물리 기반 하이엔드 건슈팅 타격감<br>• 4년간 빌드업된 압도적 시리어스 서사와 풀보이스·BGM 연출력<br>• 싱크로 디바이스 + 골드 마일리지 영구 이월의 합리적 수집 구조</td>
+                <td>• 메뉴 간 이동 시 잦은 암전 씬 로딩과 깊어진 일일 숙제 동선<br>• 전투력 패널티로 인해 신규 유저가 최신 메인 챕터(49·50지)까지 도달하는 데 걸리는 시간 장벽</td>
+              </tr>
+              <tr>
+                <th>기회 (Opportunities)</th>
+                <th>위협 (Threats)</th>
+              </tr>
+              <tr>
+                <td>• 방주 1부(50챕터) 완결 후 지상 2부 서사 개막을 통한 장기 IP 확장<br>• PC 클라이언트 정착 및 자사 콘솔 IP(<code>스텔라 블레이드</code> 등) 크로스오버 시너지</td>
+                <td>• PC 런처 외부 CDN 변조 이슈 등 외부 인프라 보안 신뢰도 리스크<br>• 4년 장기화에 따른 오버로드 장비 옵션작 피로도 및 신규 유입 허들</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>학생 개발자 · 기획자 관점의 4대 실무 개선 제안</h3>
+        <div class="proposal-grid">
+          <div class="proposal-card">
+            <span class="proposal-kicker">PROPOSAL 01 · CLIENT &amp; SECURITY</span>
+            <h4>런처 리소스 SRI 해시 검증 및 일일 루틴 단일 오버레이화</h4>
+            <p>외부 CDN 경유 런처 웹뷰 스크립트에 SHA-384 기반 Subresource Integrity(SRI) 검증과 서명 핀닝을 의무화하고, 자문·파견·전초기지 보상 수령은 무거운 씬 전환 없이 로비 내 단일 비동기 팝업 드로어에서 일괄 처리하도록 개선합니다.</p>
+          </div>
+          <div class="proposal-card">
+            <span class="proposal-kicker">PROPOSAL 02 · UI / UX FLOW</span>
+            <h4>시리어스 스토리 직후 돌발 과금 팝업 '세션 쿨다운' 도입</h4>
+            <p>메인 스토리 보스전이나 <code>MARIA-n</code> 같은 핵심 서사 컷씬 감상 직후에는 기간 한정 패키지 팝업 호출을 유예(Defer)하고, 로비 복귀 후 상점 배지로만 안내하여 내러티브 몰입 깨짐을 방지합니다.</p>
+          </div>
+          <div class="proposal-card">
+            <span class="proposal-kicker">PROPOSAL 03 · LEVEL &amp; ONBOARDING</span>
+            <h4>1부 완결(50챕터) 기념 '서사 전용 시네마틱 진행 모드' 확대</h4>
+            <p>4주년 화제성으로 유입된 신규 유저가 수개월의 방치 성장 없이도 최신 스토리 흐름을 따라잡을 수 있도록, 재화 보상을 최소화한 고정 대여 스쿼드 기반 스토리 감상 모드의 적용 범위를 대폭 넓혀 초반 잔존율(D7 Retention)을 방어합니다.</p>
+          </div>
+          <div class="proposal-card">
+            <span class="proposal-kicker">PROPOSAL 04 · COMBAT UX</span>
+            <h4>고유 버프 키워드('임전' 등) 중첩 하이퍼링크 툴팁 UI</h4>
+            <p>스킬 창에서 <code>'임전'</code> 등 고유 상태 키워드를 클릭·호버하면 발동 메커니즘과 연관 시너지 니케(<code>라푼젤 : 생츄어리</code> ⇄ <code>마리안 : 퀸</code>, <code>홍련 : 신살</code>)를 카드로 즉시 연결해 보여주는 중첩 툴팁 도입을 제안합니다.</p>
+          </div>
+        </div>
+
+        <div class="key-takeaway-box">
+          <h3>최종 총평 (게임 추천도 4.5 / 5.0 · 개발·기획 연구 가치 5.0 / 5.0)</h3>
+          <p>
+            『승리의 여신: 니케』의 4주년 차트 역주행은 단기 프로모션의 우연이 아니라,
+            <strong>① 챕터 1부터 4년간 쌓아 올린 서사적 부채의 극적인 회수</strong>,
+            <strong>② Spine 2D 본 트래킹과 병렬 스프링 물리로 구현한 대체 불가능한 건슈팅 손맛</strong>,
+            <strong>③ 무료 배포 서포터를 마중물 삼아 주력 픽업 딜러의 가치를 증폭시킨 치밀한 덱 시너지 BM</strong>이 완벽히 맞물려 만들어낸 라이브 서비스의 모범 사례입니다.
+          </p>
+        </div>
+      </section>
+
+      <!-- Footer Navigation -->
+      <footer class="detail-footer-nav">
+        <a class="detail-nav-btn" href="assignment-05.html">← 이전 과제 (05. 트릭컬 리바이브 분석)</a>
+        <a class="detail-nav-btn" href="../projects/sub-11-coursework.html#overview">과제 컬렉션 목록으로</a>
+        <a class="detail-nav-btn" href="../docs/portfolio_md/assignment-06_%EC%8A%B9%EB%A6%AC%EC%9D%98_%EC%97%AC%EC%8B%A0_%EB%8B%88%EC%BC%80_4%EC%A3%BC%EB%85%84_%EC%97%AD%EC%A3%BC%ED%96%89_%EB%B0%8F_%EC%8B%A4%ED%94%8C%EB%A0%88%EC%9D%B4_%EB%B6%84%EC%84%9D%EB%B3%B4%EA%B3%A0%EC%84%9C.md" target="_blank" rel="noopener noreferrer">MD 원본 보고서 열기 →</a>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Floating Theme Switcher FAB -->
+  <div class="floating-theme-fab" id="floatingThemeFab" aria-label="테마 설정">
+    <div class="theme-fab-spheres" aria-hidden="true" id="theme-options" inert="">
+      <button class="theme-fab-sphere" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드" type="button" tabindex="-1">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+        <span class="sphere-tooltip">라이트 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="dark" title="다크 모드" aria-label="다크 모드" type="button" tabindex="-1">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+        <span class="sphere-tooltip">다크 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정" type="button" tabindex="-1">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span>
+        <span class="sphere-tooltip">시스템 설정</span>
+      </button>
+    </div>
+    <button class="theme-fab-trigger" id="themeFabTrigger" title="테마 변경" aria-label="테마 변경" aria-controls="theme-options" aria-expanded="false" type="button">
+      <span class="fab-current-icon mono-icon mono-icon-stroke">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 2v20a10 10 0 0 0 0-20z"></path><circle cx="12" cy="12" r="10"></circle></svg>
+      </span>
+    </button>
+  </div>
+
+  <script src="../assets/js/portfolio-system.js"></script>
+</body></html>

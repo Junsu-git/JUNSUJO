@@ -42,7 +42,7 @@ const fs=require('node:fs'),path=require('node:path'),assert=require('node:asser
  assert.equal(hovered1,hovered2,'odd/even hovered row colors match');assert.notEqual(before[1],hovered2,'even row changes color on hover');
  await page.goto(origin+'/index.html');await page.locator('.theme-fab-trigger').click();await page.locator('[data-theme-set="dark"]').click();assert.equal(await page.locator('html').getAttribute('data-theme'),'dark');
  await page.locator('.game-experience-link').click();assert(page.url().endsWith('/game-experience.html'),'persistent link opens real experience page');
- await page.goto(origin+'/projects/sub-11-coursework.html');assert.equal(await page.locator('.coursework-card').count(),6);
+ await page.goto(origin+'/projects/sub-11-coursework.html');assert.equal(await page.locator('.coursework-card').count(),7);
  await page.screenshot({path:path.join(output,'portfolio-coursework-hub.png'),fullPage:false});
  for(const file of files.filter(f=>f.startsWith('assignments/'))){await page.goto(origin+'/'+file);assert(await page.locator('a[href="../projects/sub-11-coursework.html#overview"]').count(),file+' returns to its hub');}
  const report={pages:files.length,viewports:[390,1440],themes:['light','dark'],pageChecks:files.length*4,failures,errors,tableHover:{odd:hovered1,even:hovered2},themeAndNavigation:true,assignmentHubReturns:true};
