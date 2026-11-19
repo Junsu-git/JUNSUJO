@@ -24,3 +24,23 @@
 - `node scripts/verify-content-browser.cjs`: 25페이지 × 390/1440px × 라이트/다크, 총 100개 조합에서 가로 넘침·중복 ID·목차·로컬 파일 및 앵커·스크립트 오류 검사 통과. 실패 0건, 페이지 오류 0건.
 - 기존 브라우저 검증의 사이드바 선택자를 현재 접기/펼치기 UI에 맞췄다. 검증에서 발견한 과제 04·05의 원문 링크 3곳은 실제 `400_Archive` 경로로 복구했다.
 - 과제 07의 데스크톱 라이트·모바일 다크 화면을 시각 확인했다. 외부 사이트 응답과 실제 모바일 기기 성능, 매출 상승의 인과관계는 브라우저 UI 검증 대상이 아니다.
+
+## 2026-11-19 · 수업 과제 문서 마감
+
+- 자바: 기존 1~8일차 기록을 보존하고 9~14단원 노트·통합 Java 예제·예상 출력을 작성했다. 완료 상태는 14개 단원 문서 작성 범위다. JDK가 없어 실제 컴파일·실행은 수행하지 않았다.
+- TOP50: 원래 모바일인덱스 1~50위 게임명·순서와 새 50개 기록이 정확히 일치하는지 검사했다. 기존 자료 연결 8개와 가정 예시 42개를 구분하며 약 60분은 분석 분량으로 표기했다.
+- 소드 x 스태프: 기존 약 30분 / 전사 Lv.12 / 8.38k 범위를 유지하고 추가 심층분석 없이 최종본으로 마감했다.
+- `node scripts/verify-content-migration.cjs` 통과. 새 예시를 실플레이 완료로 바꾸지 않는지, 순위 목록이 바뀌지 않았는지 포함해 확인했다.
+- `node scripts/verify-content-browser.cjs` 통과. 25페이지 × 390/1440px × 라이트/다크 총 100개 화면 조합에서 실패 0건·페이지 오류 0건. 세 마감 문서의 로컬 링크와 컬렉션 복귀 동작 포함.
+- 데스크톱 자바 노트·모바일 TOP50·컬렉션 스크린샷 시각 확인. 읽기 전용 추가 리뷰에서 문서 범위와 코드의 예상 결과를 정적으로 검토했다.
+- `scripts/render-coursework.cjs`로 세 HTML을 Markdown 원문에서 재생성할 수 있다. 원래 계획·기록은 `400_Archive/2026-11-19_과제정리_이전본`에 보관했다.
+
+## 2026-11-19 · 원신 7.4 BM 개편 기획서(과제 08) 추가
+
+- 과제 08 HTML([assignments/assignment-08.html](../assignments/assignment-08.html))·전용 CSS([assets/css/pages/assignment-08.css](../assets/css/pages/assignment-08.css))·Markdown 원본([assignment-08_원신_7.4_인앱결제_및_기원BM_개편기획서.md](./portfolio_md/assignment-08_%EC%9B%90%EC%8B%A0_7.4_%EC%9D%B8%EC%95%B1%EA%B2%B0%EC%A0%9C_%EB%B0%8F_%EA%B8%B0%EC%9B%90BM_%EA%B0%9C%ED%8E%B8%EA%B8%B0%ED%9A%8D%EC%84%9C.md)) 및 시각화 에셋 4종(`assets/genshin-bm/*.png`)을 제작해 전공 포트폴리오 수업 과제 컬렉션 아홉 번째 카드로 연결하고, 메인 카드·컬렉션 개수(9종)를 동기화했다.
+- `node scripts/verify-content-migration.cjs`: 26페이지 구조·원문 링크 검사 통과.
+- `node scripts/verify-portfolio.cjs`: FAB, 키보드 접근, 다중 탭 동기화 및 10페이지 검사 통과.
+- `node scripts/verify-content-browser.cjs`: 26페이지 × 390/1440px × 라이트/다크 총 104개 조합에서 실패 0건, 페이지 오류 0건 통과.
+- 320/390/800/1440px × 라이트/다크 × 과제 08 전체 탭(3종)에서 가로 넘침·이모지·이미지 깨짐 0건 및 WCAG 7:1 이상 텍스트 대비·인터랙티브 시뮬레이터 동작을 확인했다.
+- 전체 포트폴리오(`projects/*.html`, `assignments/*.html`, `render-coursework.cjs`)에서 MD 원본 보기 버튼·배너 항목을 제거하고, 전 페이지 공용 탭 바 버튼(`tab-bar`, `tab-btn`, `tab-switch-btn`, `filter-btn`, `accordion-filter-btn`)의 활성/비활성 고대비 스타일과 핵심 단어·결론 강조 토큰(`.conclusion-banner`, `.lead-thesis`, `.hl-key`, `.hl-gold`, `.hl-green`)을 적용했다.
+- 과제 08 최상단에 원신 7.4 인게임 이벤트 일람 페이지 시안(`assets/genshin-bm/event-page-hero-mockup.png`)과 3대 실행 과제 카드(`ACTION 01~03`)를 배치하고, 전 26페이지 × 4너비 × 양 테마 × 전체 탭 상태의 텍스트 대비(>=7:1)·스크립트 오류 0건·레이아웃을 최종 검증했다.

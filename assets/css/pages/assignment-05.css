@@ -96,7 +96,7 @@
     .timeline-node.active .timeline-dot {
       border-color: var(--trickcal-pink);
       background: var(--trickcal-pink);
-      color: var(--text-sub);
+      color: var(--bg-page);
     }
     .timeline-content {
       background: var(--panel-strong);

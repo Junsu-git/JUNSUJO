@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 580" width="1200" height="580" font-family="'Pretendard', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090D1A"/>
+      <stop offset="100%" stop-color="#131C31"/>
+    </linearGradient>
+    <linearGradient id="asIsBar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#64748B"/>
+      <stop offset="100%" stop-color="#94A3B8"/>
+    </linearGradient>
+    <linearGradient id="toBeBar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="580" rx="16" fill="url(#bgGrad2)"/>
+  <rect x="16" y="16" width="1168" height="548" rx="12" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <text x="40" y="54" fill="#FBBF24" font-size="13" font-weight="700" letter-spacing="1.5">QUANTITATIVE PITY &amp; COST SIMULATION</text>
+  <text x="40" y="84" fill="#F8FAFC" font-size="23" font-weight="800">2. 기초 BM 개편(10연차 1,200원석 + 70뽑 천장) 및 패키지 결합 시 기대 비용 비교</text>
+  <text x="1160" y="54" fill="#94A3B8" font-size="12" text-anchor="end">기획 제안 수치 시뮬레이션 (비초회 1트럭 119,000원 = 8,080결정 기준)</text>
+  <line x1="40" y1="102" x2="1160" y2="102" stroke="#334155" stroke-width="1"/>
+
+  <!-- LEFT CARD -->
+  <rect x="40" y="122" width="550" height="416" rx="12" fill="#1E293B" fill-opacity="0.7" stroke="#334155"/>
+  <text x="64" y="156" fill="#F8FAFC" font-size="16.5" font-weight="700">5성 캐릭터 '명함(C0)' 획득 요구 원석 및 트럭 매칭 수식</text>
+  <text x="64" y="178" fill="#94A3B8" font-size="11.5">소프트 천장 80→70뽑 완화 + 배너당 첫 픽업 5성 획득까지 10연차 1,200원석(-25%)</text>
+
+  <!-- Group 1: 50/50 Soft Pity -->
+  <text x="64" y="214" fill="#E2E8F0" font-size="13" font-weight="700">1) 반천장 (5성 1회 도달 요구 원석)</text>
+  <text x="64" y="240" fill="#94A3B8" font-size="11.5">현행 (80뽑 × 160)</text>
+  <rect x="200" y="225" width="180" height="22" rx="4" fill="url(#asIsBar)"/>
+  <text x="390" y="241" fill="#F87171" font-size="12" font-weight="700">12,800 원석 (1.58트럭)</text>
+
+  <text x="64" y="272" fill="#38BDF8" font-size="11.5" font-weight="700">개편 (70뽑 × 120)</text>
+  <rect x="200" y="257" width="118" height="22" rx="4" fill="url(#toBeBar)"/>
+  <text x="328" y="273" fill="#38BDF8" font-size="12" font-weight="800">8,400 원석 (-34.4% · 1트럭 매칭)</text>
+
+  <!-- Group 2: Guaranteed Pickup -->
+  <text x="64" y="320" fill="#E2E8F0" font-size="13" font-weight="700">2) 확정 천장 (반천장 픽뚫 시 픽업 5성 100% 확정 요구 원석)</text>
+  <text x="64" y="346" fill="#94A3B8" font-size="11.5">현행 (160뽑 × 160)</text>
+  <rect x="200" y="331" width="240" height="22" rx="4" fill="url(#asIsBar)"/>
+  <text x="450" y="347" fill="#F87171" font-size="12" font-weight="700">25,600 원석</text>
+
+  <text x="64" y="378" fill="#38BDF8" font-size="11.5" font-weight="700">개편 (140뽑 × 120)</text>
+  <rect x="200" y="363" width="158" height="22" rx="4" fill="url(#toBeBar)"/>
+  <text x="368" y="379" fill="#38BDF8" font-size="12" font-weight="800">16,800 원석 (-34.4% · 8,800 절감)</text>
+
+  <!-- Formula Proof Box -->
+  <rect x="64" y="408" width="502" height="108" rx="8" fill="#0F172A" stroke="#38BDF8" stroke-opacity="0.6"/>
+  <text x="80" y="432" fill="#38BDF8" font-size="12" font-weight="800">[핵심 수식 설계 의도] Why 1,200 Primogems &amp; 70 Pity?</text>
+  <text x="80" y="454" fill="#E2E8F0" font-size="11.5">• 비초회 1트럭(₩119,000) 지급량 = 8,080 결정 vs 개편 반천장(70뽑) = 8,400 원석</text>
+  <text x="80" y="474" fill="#E2E8F0" font-size="11.5">• 기존에는 12만 원을 결제해도 50.5뽑에 그쳐 반천장조차 불가능했으나,</text>
+  <text x="80" y="494" fill="#FBBF24" font-size="11.5" font-weight="700">  개편 후에는 '1트럭(또는 하·중·상 패키지 ₩114,000) = 5성 천장 1회 확정' 공식 성립</text>
+
+  <!-- RIGHT CARD -->
+  <rect x="610" y="122" width="550" height="416" rx="12" fill="#1E293B" fill-opacity="0.7" stroke="#334155"/>
+  <text x="634" y="156" fill="#F8FAFC" font-size="16.5" font-weight="700">동일 예산(약 11.5~11.9만 원) 지출 시 유저 획득 가치 비교</text>
+  <text x="634" y="178" fill="#94A3B8" font-size="11.5">비초회 깡트럭 1개(₩119,000) vs 신규 하·중·상 성장 패키지 1세트(₩114,000)</text>
+
+  <!-- Left Mini Card: As-Is 119,000 -->
+  <rect x="634" y="198" width="242" height="186" rx="10" fill="#0F172A" stroke="#475569"/>
+  <text x="755" y="224" fill="#94A3B8" font-size="12.5" font-weight="700" text-anchor="middle">[현행] 비초회 1트럭 단독 결제</text>
+  <text x="755" y="250" fill="#F87171" font-size="19" font-weight="800" text-anchor="middle">₩119,000</text>
+  <line x1="652" y1="264" x2="858" y2="264" stroke="#334155"/>
+  <text x="650" y="290" fill="#CBD5E1" font-size="11.5">• 획득 결정: <tspan fill="#F8FAFC" font-weight="700">8,080 결정</tspan></text>
+  <text x="650" y="314" fill="#CBD5E1" font-size="11.5">• 기원 횟수: <tspan fill="#F87171" font-weight="700">50.5 뽑 (160원석)</tspan></text>
+  <text x="650" y="338" fill="#CBD5E1" font-size="11.5">• 천장 도달: <tspan fill="#F87171" font-weight="700">63.1% (반천장 실패)</tspan></text>
+  <text x="650" y="362" fill="#CBD5E1" font-size="11.5">• 육성 재화: <tspan fill="#94A3B8" font-weight="700">0 개 (별도 파밍)</tspan></text>
+
+  <!-- Right Mini Card: To-Be 114,000 -->
+  <rect x="894" y="198" width="242" height="186" rx="10" fill="#0F172A" stroke="#FBBF24" stroke-width="1.5"/>
+  <text x="1015" y="224" fill="#FBBF24" font-size="12.5" font-weight="800" text-anchor="middle">[개편] 하·중·상 패키지 3종 합산</text>
+  <text x="1015" y="250" fill="#38BDF8" font-size="19" font-weight="800" text-anchor="middle">₩114,000 (-₩5,000)</text>
+  <line x1="912" y1="264" x2="1118" y2="264" stroke="#334155"/>
+  <text x="908" y="290" fill="#CBD5E1" font-size="11.5">• 획득 결정: <tspan fill="#FBBF24" font-weight="700">9,280 결정 (120%)</tspan></text>
+  <text x="908" y="314" fill="#CBD5E1" font-size="11.5">• 기원 횟수: <tspan fill="#38BDF8" font-weight="800">77.3 뽑 (120원석)</tspan></text>
+  <text x="908" y="338" fill="#CBD5E1" font-size="11.5">• 천장 도달: <tspan fill="#4ADE80" font-weight="800">110.4% (70천장+7.3)</tspan></text>
+  <text x="908" y="362" fill="#CBD5E1" font-size="11.5">• 육성 재화: <tspan fill="#FBBF24" font-weight="700">왕관 1 + 육성 풀세트</tspan></text>
+
+  <!-- Whale Revenue Defense Logic Box -->
+  <rect x="634" y="408" width="502" height="108" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-opacity="0.6"/>
+  <text x="650" y="432" fill="#FBBF24" font-size="12" font-weight="800">[매출 방어] 고래(핵과금) 카니발라이제이션 방어 설계 (Guardrail)</text>
+  <text x="650" y="454" fill="#E2E8F0" font-size="11.5">1. <tspan fill="#38BDF8" font-weight="700">명함 획득 즉시 10연차 1,200→1,600원석 복귀</tspan>: 1~6돌파 구간 기존 단가 유지</text>
+  <text x="650" y="474" fill="#E2E8F0" font-size="11.5">2. <tspan fill="#38BDF8" font-weight="700">패키지 버전(6주)당 1회 구매 제한</tspan>: 풀돌 유저는 패키지 소진 후 깡트럭 결제</text>
+  <text x="650" y="494" fill="#4ADE80" font-size="11.5" font-weight="700">→ 핵과금 매출 침식을 최소화하고, 복귀·소중과금의 '명함 전환율(PU)'만 극대화!</text>
+</svg>

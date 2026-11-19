@@ -16,6 +16,16 @@
 .coursework-card h3{margin:12px 0 14px}.coursework-card p{flex:1}.coursework-card .detail-nav-btn{margin-top:10px}
 .game-experience-link{display:flex;justify-content:space-between;gap:10px;border:1px solid var(--line);border-radius:8px;padding:12px;font-size:.78rem;margin:20px 0;color:var(--text)}
 .slot-role{font-size:.75rem;color:var(--muted);margin:8px 0 12px}
+.editorial-body strong,.detail-card strong,.content-card strong,.point-box strong,.learning-growth-card strong{color:var(--text);font-weight:750}
+.editorial-body code{background:var(--panel-strong);border:1px solid var(--line);padding:1px 6px;border-radius:4px;color:var(--text);font-weight:600}
+.hl-key{background:var(--blue-subtle);color:var(--blue-text);padding:1px 6px;border-radius:4px;font-weight:700}
+.hl-gold{background:var(--gold-subtle);color:var(--gold-text);padding:1px 6px;border-radius:4px;font-weight:700}
+.hl-green{background:var(--green-subtle);color:var(--green-text);padding:1px 6px;border-radius:4px;font-weight:700}
+.conclusion-banner{background:var(--blue-subtle);border:1px solid var(--line-strong);border-left:4px solid var(--blue);border-radius:var(--radius-md);padding:20px 24px;margin:20px 0 24px}
+.conclusion-banner .conclusion-kicker{display:block;font:700 .72rem/1.4 var(--font-mono);letter-spacing:.1em;color:var(--blue-text);text-transform:uppercase;margin-bottom:8px}
+.conclusion-banner p,.conclusion-banner .conclusion-lead{margin:0;font-size:.98rem;font-weight:650;line-height:1.8;color:var(--text)}
+.lead-thesis{border-left:3px solid var(--gold);padding:12px 16px;margin:14px 0 20px;background:var(--gold-subtle);border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-size:.94rem;font-weight:600;line-height:1.8;color:var(--text)}
+.learning-growth-card{border-top:3px solid var(--blue)}
 .detail-main-content tbody tr{transition:background .15s ease}
 .detail-main-content tbody tr:nth-child(even){background:var(--panel-strong)}
 .detail-main-content tbody tr:hover,
