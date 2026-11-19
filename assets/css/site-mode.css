@@ -1,0 +1,6 @@
+.site-mode-switch{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;border:1px solid var(--line);border-radius:9px;background:var(--panel-strong);margin-top:24px}
+.site-mode-switch a{display:flex;align-items:center;justify-content:center;gap:7px;padding:10px 5px;font-size:.74rem;font-weight:600;color:var(--muted);border-radius:6px;white-space:nowrap;text-decoration:none}
+.site-mode-switch a:hover{background:var(--panel-hover);color:var(--text)}
+.site-mode-switch a[aria-current="page"]{background:var(--panel);color:var(--blue-text);box-shadow:0 1px 4px #0000000a}
+.site-mode-switch svg{width:15px;height:15px;flex:none}
+@media(max-width:1000px){.site-mode-switch{max-width:360px;margin-top:16px}.site-mode-switch a{padding:10px 16px}}

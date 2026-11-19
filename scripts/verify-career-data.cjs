@@ -1,0 +1,22 @@
+const assert = require('node:assert/strict');
+const archive = require('../assets/js/career-data.js');
+
+const summary = archive.summarize();
+assert.deepEqual(summary, {groups:12, events:22, recorded:20, connection:1, planned:1, awards:1, assignments:2, presentations:1});
+assert.equal(new Set(archive.events.map(event=>event.id)).size,22);
+assert.equal(archive.getRecords({month:'2026-09',category:'competition'}).length,3,'month and category intersect');
+assert.equal(archive.getRecords({month:'2026-11',category:'education',includePlanned:false}).length,5);
+assert.equal(archive.getRecords({query:'넥토리얼'}).length,2,'group names are searchable');
+assert.equal(archive.getRecords({query:'존재하지않는활동'}).length,0);
+assert.equal(archive.getRecords({includePlanned:false}).length,21);
+assert.deepEqual(archive.monthly.map(month=>month.total),[1,8,4,9]);
+assert.equal(archive.monthly.at(-1).connection,1);
+assert.equal(archive.monthly.at(-1).planned,1);
+assert.equal(archive.events.find(event=>event.id==='e22').status,'planned','future date never implies completion');
+assert.equal(archive.events.find(event=>event.id==='e18').status,'connection','the interview stays a connection record');
+assert(!archive.events.some(event=>event.date.startsWith('2026-03')),'ideation is context, not a semester event');
+const csv=archive.toCSV(archive.getRecords({query:'코멘토'}));
+assert.equal(csv.trim().split('\r\n').length,7,'Comento exports six events and a header');
+assert(csv.includes('예정'));
+assert(!csv.includes('undefined'));
+console.log('PASS: source counts, category/month intersection, search, status distinctions and CSV export.');

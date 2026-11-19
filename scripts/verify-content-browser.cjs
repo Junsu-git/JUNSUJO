@@ -10,7 +10,7 @@ const fs=require('node:fs'),path=require('node:path'),assert=require('node:asser
  await context.route(/https?:\/\/(?!127\.0\.0\.1)/,r=>r.abort());
  const page=await context.newPage();page.on('pageerror',e=>errors.push({url:page.url(),error:e.message}));
  const origin='http://127.0.0.1:'+server.address().port;
- const files=['index.html','game-experience.html',...['projects','assignments'].flatMap(dir=>fs.readdirSync(path.join(root,dir)).filter(n=>n.endsWith('.html')).map(n=>dir+'/'+n))];
+ const files=['index.html','game-experience.html','career.html',...['projects','assignments'].flatMap(dir=>fs.readdirSync(path.join(root,dir)).filter(n=>n.endsWith('.html')).map(n=>dir+'/'+n))];
  for(const width of [390,1440])for(const theme of ['light','dark'])for(const file of files){
   await page.setViewportSize({width,height:960});await page.goto(origin+'/'+file);
   await page.evaluate(t=>window.portfolioTheme.setTheme(t),theme);
