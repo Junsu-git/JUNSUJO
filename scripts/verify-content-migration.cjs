@@ -15,7 +15,7 @@ for (const file of pages) {
  if(file.startsWith('projects/project-'))assert(!/비트마스크|BrewingStation|비커 믹싱|3D 액션 FSM/.test(html),file+' removes fabricated engineering');
  if(/MD 원본 보기|MD 원본 보고서 열기|Markdown 원문 열기|작성 근거 문서 · Markdown|class="md-source-bar"|class="md-callout"/.test(html))assert.fail(file+' must not include MD original viewer items');
 }
-assert.equal((read('projects/sub-11-coursework.html').match(/class="coursework-card"/g)||[]).length,10,'coursework hub has ten independent assignments');
+assert.equal((read('projects/sub-11-coursework.html').match(/class="coursework-card"/g)||[]).length,11,'coursework hub has eleven independent assignments');
 assert(!read('projects/sub-07-maple.html').includes('-62%'),'do not repeat inconsistent summary statistic');
 assert(read('projects/sub-06-winter.html').includes('가정 데이터'),'distinguish simulated planning data');
 const top50 = read('assignments/assignment-02a.html');

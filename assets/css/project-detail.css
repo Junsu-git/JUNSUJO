@@ -14,6 +14,10 @@
 .coursework-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 .coursework-card{min-width:0;border:1px solid var(--line);border-radius:var(--radius-md);padding:24px;background:var(--panel);display:flex;flex-direction:column;align-items:flex-start}
 .coursework-card h3{margin:12px 0 14px}.coursework-card p{flex:1}.coursework-card .detail-nav-btn{margin-top:10px}
+.coursework-card-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;width:100%}
+.coursework-card-actions .detail-nav-btn{margin-top:0;display:inline-flex;align-items:center;gap:5px}
+.detail-nav-btn.is-play-accent{background:var(--blue);border-color:var(--blue);color:var(--text-contrast);font-weight:700}
+.detail-nav-btn.is-play-accent:hover{background:var(--blue);border-color:var(--blue);color:var(--text-contrast);opacity:.92}
 .game-experience-link{display:flex;justify-content:space-between;gap:10px;border:1px solid var(--line);border-radius:8px;padding:12px;font-size:.78rem;margin:20px 0;color:var(--text)}
 .slot-role{font-size:.75rem;color:var(--muted);margin:8px 0 12px}
 .editorial-body strong,.detail-card strong,.content-card strong,.point-box strong,.learning-growth-card strong{color:var(--text);font-weight:750}
