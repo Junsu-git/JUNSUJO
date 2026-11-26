@@ -30,4 +30,5 @@
 .detail-main-content tbody tr:nth-child(even){background:var(--panel-strong)}
 .detail-main-content tbody tr:hover,
 .detail-main-content tbody tr:nth-child(even):hover{background:var(--blue-subtle)}
+.detail-page-heading h1{word-break:keep-all}
 @media(max-width:700px){.coursework-grid{grid-template-columns:minmax(0,1fr)}.game-experience-link{margin:12px 0}.editorial-body{font-size:.86rem}}
