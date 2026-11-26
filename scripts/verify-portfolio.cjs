@@ -16,10 +16,16 @@ function serve() {
   });
   return new Promise(resolve => server.listen(0, '127.0.0.1', () => resolve(server)));
 }
-module.exports = { serve, root, chromium };
+const executablePath = [
+  'C:/Program Files/Google/Chrome/Application/chrome.exe',
+  'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',
+  'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
+  'C:/Program Files/Microsoft/Edge/Application/msedge.exe'
+].find(candidate => fs.existsSync(candidate));
+module.exports = { serve, root, chromium, executablePath };
 if (require.main === module) (async () => {
   const server = await serve();
-  const browser = await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe', headless:true});
+  const browser = await chromium.launch({ ...(executablePath ? { executablePath } : {}), headless:true });
   try {
     const context = await browser.newContext({viewport:{width:1440,height:960}, colorScheme:'light'});
     await context.route(/https?:\/\/(?!127\.0\.0\.1)/, route => route.abort());
@@ -49,7 +55,9 @@ if (require.main === module) (async () => {
     await page.locator('h1').first().click();
     assert.equal(await trigger.getAttribute('aria-expanded'), 'false');
     await trigger.click();
-    await page.screenshot({path:'C:/Users/wnstn/.codex/visualizations/2026/10/15/01a13e7f-c40c-72f3-9ada-60dc2d0453a5/portfolio-theme-open.png'});
+    const shotDir = process.env.PORTFOLIO_QA_OUTPUT || 'C:/Users/wnstn/.codex/visualizations/2026/10/15/01a13e7f-c40c-72f3-9ada-60dc2d0453a5';
+    fs.mkdirSync(shotDir, { recursive: true });
+    await page.screenshot({path: path.join(shotDir, 'portfolio-theme-open.png')});
     const buttons = await page.locator('.theme-fab-sphere').evaluateAll(nodes=>nodes.map(node=>{
       const box=node.getBoundingClientRect();return{x:box.x,y:box.y,width:box.width,height:box.height};
     }));

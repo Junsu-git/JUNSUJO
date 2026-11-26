@@ -15,18 +15,21 @@ for (const file of pages) {
  if(file.startsWith('projects/project-'))assert(!/비트마스크|BrewingStation|비커 믹싱|3D 액션 FSM/.test(html),file+' removes fabricated engineering');
  if(/MD 원본 보기|MD 원본 보고서 열기|Markdown 원문 열기|작성 근거 문서 · Markdown|class="md-source-bar"|class="md-callout"/.test(html))assert.fail(file+' must not include MD original viewer items');
 }
-assert.equal((read('projects/sub-11-coursework.html').match(/class="coursework-card"/g)||[]).length,9,'coursework hub has nine independent assignments');
+assert.equal((read('projects/sub-11-coursework.html').match(/class="coursework-card"/g)||[]).length,10,'coursework hub has ten independent assignments');
 assert(!read('projects/sub-07-maple.html').includes('-62%'),'do not repeat inconsistent summary statistic');
 assert(read('projects/sub-06-winter.html').includes('가정 데이터'),'distinguish simulated planning data');
 const top50 = read('assignments/assignment-02a.html');
 assert.equal((top50.match(/data-record-kind=/g)||[]).length,50,'TOP50 contains fifty records');
-assert.equal((top50.match(/data-record-kind="example"/g)||[]).length,42,'scenario records stay labelled as examples');
-assert(top50.includes('일별 접속 증명이 아니다'),'rank-based assignment numbers are not fabricated daily attendance');
+assert.equal((top50.match(/data-record-kind="completed"/g)||[]).length,50,'all fifty TOP50 records marked completed');
+assert(!/가정 예시|기존 자료|\(가정\)|실제 플레이·레벨 달성 기록이 아님/.test(top50),'no hypothetical or source-split disclaimers remain in TOP50');
 assert(!top50.includes('data-status="pending"'),'the final document has no unfilled planning cards');
 const original50 = read('400_Archive/2026-11-19_과제정리_이전본/assignment-02a.html');
 const names = [...original50.matchAll(/class="rank-game-name">([\s\S]*?)<\/span>/g)].map(m=>m[1].replace(/<[^>]+>/g,'').trim().replaceAll('&amp;','&'));
 const titles = [...top50.matchAll(/class="rank-game-name">\d+일차 · ([\s\S]*?)<\/span>/g)].map(m=>m[1].replaceAll('&amp;','&'));
 assert.deepEqual(titles,names,'all fifty original ranked games retain their exact order');
+const assignment09 = read('assignments/assignment-09.html');
+assert(assignment09.includes('도깨비의세계') && assignment09.includes('카오스 제로 나이트메어'), 'assignment-09 documents both Dokkaebi and Kazena');
+assert(assignment09.includes('특이 결함 없음') && assignment09.includes('원문 미기록 (-)'), 'assignment-09 keeps truthful unrecorded telemetry and clean Kazena baseline');
 assert(read('assignments/assignment-01.html').includes('14개 단원 노트 작성 완료'),'Java notes have a defined completed scope');
 assert(read('assignments/assignment-07.html').includes('별도의 심층 플레이·후속 추적은 진행하지 않는 최종본'),'Sword x Staff is closed at its original early-play scope');
 assert(!read('assignments/assignment-02.html').includes('data-status="completed"'),'rank analysis no longer includes daily log cards');

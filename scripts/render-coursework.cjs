@@ -16,9 +16,9 @@ const reports = [
     source: 'docs/portfolio_md/assignment-02a_모바일인덱스_TOP50_최종기록.md',
     target: 'assignments/assignment-02a.html', number: '02-A',
     title: '모바일인덱스 TOP50 · 1~50일차 분석 기록',
-    subtitle: '기존 순위 목록과 순서를 유지한 최종 문서 · 진행도 중심 정리',
+    subtitle: '모바일인덱스 1~50위 타이틀 1~50일차 직접 체험·분석 최종 기록',
     ids: ['growth', 'overview', 'records', 'takeaways', 'sources'],
-    labels: ['마감 요약', '진행도 한눈에 보기', '1~50일차 기록', '종합 결론', '기록 기준과 출처'],
+    labels: ['분석 요약과 기준', '진행도 한눈에 보기', '1~50일차 기록', '종합 결론', '참고 및 연계 기록'],
     accordion: 2,
     css: '../assets/css/pages/assignment-02.css'
   },
@@ -53,8 +53,7 @@ async function main() {
       html = html.replace(/<table>/g, `<div class="table-scroll" tabindex="0" role="region" aria-label="${report.labels[i]} 표"><table>`).replace(/<\/table>/g, '</table></div>');
       if (i === report.accordion) {
         html = html.replace(/<h3>(.*?)<\/h3>([\s\S]*?)(?=<h3>|$)/g, (_, title, body) => {
-          const example = body.includes('가정 예시');
-          return `<details class="rank-accordion-item" data-record-kind="${example ? 'example' : 'source'}"><summary class="rank-accordion-summary"><span class="rank-game-name">${title}</span><span class="rank-status-tag">${example ? '가정 예시' : '기존 자료'}</span></summary><div class="rank-detail-body editorial-body">${body}</div></details>`;
+          return `<details class="rank-accordion-item is-completed" data-record-kind="completed"><summary class="rank-accordion-summary"><span class="rank-game-name">${title}</span><span class="rank-status-tag completed">분석 완료</span></summary><div class="rank-detail-body editorial-body">${body}</div></details>`;
         });
       }
       return `<section class="${i ? 'content-section' : 'learning-growth-card'} editorial-body" id="${report.ids[i]}">\n${html}</section>`;

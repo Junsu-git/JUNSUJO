@@ -1,11 +1,11 @@
-const { serve, root, chromium } = require('./verify-portfolio.cjs');
+const { serve, root, chromium, executablePath } = require('./verify-portfolio.cjs');
 const fs = require('node:fs');
 const path = require('node:path');
 const assert = require('node:assert/strict');
-const output = 'C:/Users/wnstn/.codex/visualizations/2026/10/15/01a13e7f-c40c-72f3-9ada-60dc2d0453a5';
+const output = process.env.PORTFOLIO_QA_OUTPUT || 'C:/Users/wnstn/.codex/visualizations/2026/10/15/01a13e7f-c40c-72f3-9ada-60dc2d0453a5';
 (async()=>{
   const server = await serve();
-  const browser = await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
+  const browser = await chromium.launch({...(executablePath?{executablePath}:{}),headless:true});
   const failures = [], errors = [], summary = [], textContrast = [];
   try {
     const context = await browser.newContext({viewport:{width:1440,height:960},colorScheme:'light',reducedMotion:'reduce'});

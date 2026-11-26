@@ -1,0 +1,747 @@
+<!doctype html>
+<html lang="ko" data-theme="light"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="조준수 포트폴리오 - 과제 09: 2026.10.29 모바일인덱스 신작 도깨비의세계 및 카오스 제로 나이트메어(카제나) 실플레이 일지, 개발자·기획자 2관점 분석 및 Record-GamePlay.ps1 로거 구축 기록">
+  <meta name="theme-color" content="#fafaf8">
+  <title>09. 도깨비의세계 &amp; 카오스 제로 나이트메어 실플레이 분석 | 조준수 포트폴리오</title>
+  <script src="../assets/js/theme-init.js"></script>
+  <link rel="stylesheet" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="../assets/css/portfolio-system.css">
+  <link rel="stylesheet" href="../assets/css/pages/assignment-09.css">
+  <link rel="stylesheet" href="../assets/css/project-detail.css">
+</head>
+<body><a class="skip-link" href="#main-content">본문 바로가기</a>
+
+  <header class="mobile-header">
+    <a class="back-link-btn" href="../projects/sub-11-coursework.html#overview">← 과제 컬렉션</a>
+    <span class="header-caption">JUNSU JO / PORTFOLIO</span>
+  </header>
+
+  <div class="detail-layout-container">
+
+    <aside class="toc-rail-container" aria-label="페이지 목차">
+      <div class="toc-rail-title">ON THIS PAGE</div>
+      <nav class="toc-track-line" aria-label="상세 목차">
+        <a class="toc-item-link" href="#growth">핵심 결론과 분석 기준</a>
+        <a class="toc-item-link" href="#overview">양대 타이틀 개요·마켓 지표</a>
+        <a class="toc-item-link" href="#tab-dokkaebi">01. 도깨비의세계 실플레이</a>
+        <a class="toc-item-link" href="#tab-kazena">02. 카오스 제로 나이트메어</a>
+        <a class="toc-item-link" href="#tab-market">03. 10/29 차트 · 장르 비교</a>
+        <a class="toc-item-link" href="#tab-logger">04. 로거 도구 · 트래커</a>
+        <a class="toc-item-link" href="#takeaways">종합 결론 및 후속 검증</a>
+      </nav>
+    </aside>
+
+    <main class="detail-main-content" id="main-content">
+      <div class="detail-page-heading">
+        <span class="eyebrow">ASSIGNMENT 09 / DUAL-LENS PLAY LOG · 2026.11.01</span>
+        <h1>09. [실플레이 분석] 도깨비의세계 &amp;<br>카오스 제로 나이트메어(카제나)</h1>
+        <p class="detail-sub-title">"2026.10.29 모바일인덱스 신작 차트인을 근거로 두 타이틀을 선정하고, 개발자(Tech·QA)와 기획자(Design·BM)의 두 시선으로 직접 플레이·기록한 분석 일지"</p>
+      </div>
+
+      <!-- 01. EXECUTIVE SUMMARY & GROWTH (First section inside <main> per portfolio contract) -->
+      <section class="learning-growth-card editorial-body" id="growth">
+        <span class="growth-header-label">EXECUTIVE SUMMARY &amp; GROUND TRUTH LOG</span>
+        <h2 class="growth-title">핵심 결론과 분석 기준</h2>
+
+        <div class="conclusion-banner">
+          <span class="conclusion-kicker">CORE CONCLUSION</span>
+          <p class="conclusion-lead">
+            <strong>핵심 결론:</strong> 2026년 10월 29일 마켓에 동시 신규 진입한 카카오게임즈 <mark class="hl-gold">『도깨비의세계』(구글 1위·iOS 2위)</mark>와 스마일게이트 <mark class="hl-key">『카오스 제로 나이트메어(카제나)』(구글 21위·iOS 41위)</mark>를 대상으로 11월 1일 실플레이 검증을 수행한 결과, 도깨비의세계는 <mark class="hl-green">초반 커마 응답성·도트×2.5D 무드랍 렌더링·배경 차폐 하프톤 도트 셰이더</mark>라는 클라이언트 강점을 보인 반면 <mark class="hl-gold">절전/일반 모드 차이 불분명(QA)</mark>과 <mark class="hl-gold">성장 정체 파악 모호·직업 연계 스킬 부재(기획)</mark>가 확인되었고, 카제나는 <mark class="hl-green">1차 점검 기준 특이 결함 없이 안정 구동</mark>을 확인했습니다.
+          </p>
+        </div>
+
+        <p class="lead-thesis">
+          <strong>분석의 전제(팩트체크 원칙 준수):</strong> 본 문서는 <code>100_Projects/2026-10-29_모바일게임_순위분석_및_차기과제</code> 내 실플레이 로그와 모바일인덱스 스냅샷을 사실 그대로 옮긴 기록입니다. <code>2026-11-01</code> 세션의 플레이 시간·레벨 수치는 원문 로그상 미기록(<code>-</code>) 상태를 유지하며, 직접 확인한 관찰과 로드맵상 후속 검증 항목을 명확히 구분합니다.
+        </p>
+
+        <div class="growth-metric-grid">
+          <div class="growth-metric-item">
+            <span class="metric-label">도깨비의세계 (Kakao Games)</span>
+            <span class="metric-val">구글 1위 · iOS 2위</span>
+            <span class="metric-desc">10/29 신규 진입 · 오딘 잠식 없이 정상 석권</span>
+          </div>
+          <div class="growth-metric-item">
+            <span class="metric-label">카제나 (Smilegate)</span>
+            <span class="metric-val">구글 21위 · iOS 41위</span>
+            <span class="metric-desc">10/29 신규 진입 · 이클립스와 양동 라인업</span>
+          </div>
+          <div class="growth-metric-item">
+            <span class="metric-label">11/01 실플레이 기록 범위</span>
+            <span class="metric-val">Tech · Design 2관점</span>
+            <span class="metric-desc">도깨비 6건 구체 관찰 / 카제나 1차 특이결함 0건</span>
+          </div>
+          <div class="growth-metric-item">
+            <span class="metric-label">자체 구축 로깅 파이프라인</span>
+            <span class="metric-val">Record-GamePlay.ps1</span>
+            <span class="metric-desc">WinForms 2탭 GUI → MD 일지 자동 누적</span>
+          </div>
+        </div>
+
+        <div class="growth-detail-card">
+          <h4>분석 방법론 전환 (Before vs After)</h4>
+          <div class="before-after-grid">
+            <div class="before-box">
+              <span class="ba-label">기존 단편 감상 (BEFORE)</span>
+              <ul class="ba-list">
+                <li>게임을 플레이한 뒤 "그래픽이 좋다", "스킬이 아쉽다" 수준의 단편 인상만 남아 직무 관점별 재해석이 어려움.</li>
+                <li>시장 순위 스냅샷과 실제 플레이 선정 기준이 분리되어, 왜 지금 이 타이틀을 검증해야 하는지 맥락이 약함.</li>
+                <li>플레이 직후 감상이 휘발되거나 기술 결함(QA)과 시스템 개선(기획)이 뒤섞여 보고서화 비용이 큼.</li>
+              </ul>
+            </div>
+            <div class="after-box">
+              <span class="ba-label">데이터 연계 2관점 로깅 (AFTER)</span>
+              <ul class="ba-list">
+                <li><strong>마켓 데이터 선정:</strong> 10/29 모바일인덱스 차트에서 MMORPG 1위 신작(도깨비)과 서브컬처 신작(카제나)을 비교 대상으로 도출.</li>
+                <li><strong>개발자 · 기획자 관점 분리:</strong> 렌더링/셰이더/모드 차이(Tech·QA)와 성장 병목/직업 스킬 설계(Design·BM)를 독립 기록.</li>
+                <li><strong>전용 기록기 구현:</strong> <code>Record-GamePlay.ps1</code> GUI 도구를 제작해 일관된 포맷으로 <code>2026-11-01</code> 실플레이 일지를 영구화.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02. OVERVIEW & DUAL GAME FACT SHEET -->
+      <section class="detail-hero-box editorial-body" id="overview">
+        <h2>양대 타이틀 개요 및 마켓 지표</h2>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
+          <span class="badge-tag">ASSIGNMENT 09</span>
+          <span class="badge-tag">도깨비의세계 × 카제나 실플레이</span>
+          <span class="badge-tag">개발자·기획자 이중 관점</span>
+          <span class="badge-tag">2026.10.29 선정 · 11.01 기록</span>
+        </div>
+
+        <p class="detail-lead-summary">
+          2026년 10월 1일 차트까지 집계되지 않았던 두 신규 타이틀이 10월 29일 모바일인덱스 실시간 매출 순위에 동시 진입했습니다.
+          한쪽은 국내 대중 시장을 석권한 <strong>한국 설화 감성 2.5D 도트 MMORPG</strong>(도깨비의세계), 다른 한쪽은 <strong>서브컬처 다크 판타지 로그라이크 RPG</strong>(카오스 제로 나이트메어)로 장르·결제 구조·기술 리스크가 정반대 축에 놓여 있습니다.
+        </p>
+
+        <div class="dual-game-grid">
+          <article class="game-profile-card">
+            <div class="game-profile-top">
+              <div>
+                <span class="game-kicker">TITLE 01 · KAKAO GAMES CORP.</span>
+                <h3>도깨비의세계</h3>
+              </div>
+              <span class="status-pill is-verified">11/01 6건 상세 관찰</span>
+            </div>
+            <div class="game-spec-rows">
+              <div class="game-spec-cell">
+                <span>대표 장르</span>
+                <strong>MMORPG (2.5D 도트 · 설화 IP)</strong>
+              </div>
+              <div class="game-spec-cell">
+                <span>10/29 매출 순위</span>
+                <strong>구글 1위 · iOS 2위</strong>
+              </div>
+              <div class="game-spec-cell">
+                <span>로드맵 선정 순위</span>
+                <strong>차기 과제 1순위 (QA/온보딩)</strong>
+              </div>
+              <div class="game-spec-cell">
+                <span>11/01 기록 시간·레벨</span>
+                <strong>원문 미기록 (-) · 정성 메모 완</strong>
+              </div>
+            </div>
+          </article>
+
+          <article class="game-profile-card is-kazena">
+            <div class="game-profile-top">
+              <div>
+                <span class="game-kicker">TITLE 02 · SMILEGATE, INC.</span>
+                <h3>카오스 제로 나이트메어 (카제나)</h3>
+              </div>
+              <span class="status-pill is-baseline">11/01 1차 정상 구동</span>
+            </div>
+            <div class="game-spec-rows">
+              <div class="game-spec-cell">
+                <span>대표 장르</span>
+                <strong>서브컬처 다크 로그라이크 RPG</strong>
+              </div>
+              <div class="game-spec-cell">
+                <span>10/29 매출 순위</span>
+                <strong>구글 21위 · iOS 41위</strong>
+              </div>
+              <div class="game-spec-cell">
+                <span>로드맵 선정 순위</span>
+                <strong>차기 과제 4순위 (전투/밸런스 QA)</strong>
+              </div>
+              <div class="game-spec-cell">
+                <span>11/01 기록 시간·레벨</span>
+                <strong>원문 미기록 (-) · 특이 결함 없음</strong>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 4-TAB NAVIGATION BAR (Managed by portfolio-system.js initTabs + revealTarget) -->
+      <div class="tab-bar" aria-label="게임별 분석 영역 선택">
+        <button class="tab-btn active" type="button" data-tab="tab-dokkaebi">01. 도깨비의세계 실플레이 해부</button>
+        <button class="tab-btn" type="button" data-tab="tab-kazena">02. 카오스 제로 나이트메어 (카제나)</button>
+        <button class="tab-btn" type="button" data-tab="tab-market">03. 10/29 차트 · 장르 비교</button>
+        <button class="tab-btn" type="button" data-tab="tab-logger">04. 로거 파이프라인 · 트래커</button>
+      </div>
+
+      <!-- =========================================================================
+           TAB 1: 도깨비의세계 실플레이 해부
+           ========================================================================= -->
+      <section class="tab-pane active" id="tab-dokkaebi">
+        <div class="content-card editorial-body">
+          <h3>도깨비의세계 (<code>2026-11-01</code> 실플레이 로그 &amp; 이중 관점 해석)</h3>
+          <p>
+            『도깨비의세계』는 출시 직후 양대 마켓 1·2위를 기록한 대작인 만큼, 초반 접속 직후의 <strong>클라이언트 반응성·렌더링 안정성</strong>과 <strong>직업 스킬 구조·성장 인지 동선</strong>을 중심으로 밀도 있는 관찰이 기록됐습니다. 아래 인용문은 데일리 플레이 일지에 저장된 원문 그대로이며, 각 항목 아래에 개발자(Tech·QA)와 기획자(Design·BM) 시각의 해석을 연결했습니다.
+          </p>
+
+          <div class="dual-lens-grid">
+            <!-- Left Column: Developer / QA -->
+            <div class="lens-column">
+              <div class="lens-header">
+                <h4>개발자 관점 (Tech · QA · Client)</h4>
+                <span class="status-pill is-baseline">강점 3건 · 개선점 1건</span>
+              </div>
+
+              <article class="obs-card">
+                <div class="obs-card-head">
+                  <span class="obs-card-title">01. 간결한 커마 &amp; 즉각 조작 반응성</span>
+                  <span class="status-pill is-verified">POSITIVE</span>
+                </div>
+                <blockquote class="raw-log-quote">
+                  <span class="quote-meta">2026-11-01 RAW LOG · TECH/QA</span>
+                  "오 미친 커스터마이징 시스템 간결해서 좋은데, 켜자마자 움직이는데, 캐릭터 반응성이 엄청 좋네"
+                </blockquote>
+                <p class="obs-analysis">
+                  초반 온보딩에서 무거운 셰이더 컴파일이나 과도한 커스터마이징 뎁스로 진입 흐름을 끊지 않았으며, 월드 진입 직후 사용자 입력(이동·방향 전환)에 대한 <mark class="hl-green">Input Latency(입력 지연)</mark>가 매우 낮게 제어됨을 체감했습니다.
+                </p>
+              </article>
+
+              <article class="obs-card">
+                <div class="obs-card-head">
+                  <span class="obs-card-title">02. 도트 × 2.5D 배경 스크롤 프레임 안정성</span>
+                  <span class="status-pill is-verified">POSITIVE</span>
+                </div>
+                <blockquote class="raw-log-quote">
+                  <span class="quote-meta">2026-11-01 RAW LOG · TECH/QA</span>
+                  "ㄷㄷ 도트 그래픽에 배경이 움직이는데(2.5d 연출 같은데?) 프레임 드랍이 하나 없네"
+                </blockquote>
+                <p class="obs-analysis">
+                  2D 도트 스프라이트와 입체적 깊이감을 주는 다층 패럴랙스(2.5D) 배경 스크롤이 결합된 장면 전환에서도 체감 <mark class="hl-green">프레임 드랍(Stuttering) 없이</mark> 매끄러운 틱(Frame Pacing)을 유지했습니다.
+                </p>
+              </article>
+
+              <article class="obs-card">
+                <div class="obs-card-head">
+                  <span class="obs-card-title">03. 차폐(오클루전) 시 하프톤 도트 투과 셰이더</span>
+                  <span class="status-pill is-verified">SHADER TECH</span>
+                </div>
+                <blockquote class="raw-log-quote">
+                  <span class="quote-meta">2026-11-01 RAW LOG · TECH/QA</span>
+                  "와 씨 배경이랑 겹칠때 도트 스타일로 비쳐 보이는거 지리네(옛날 만화 그리드로 . 찍히는 연출)"
+                </blockquote>
+                <p class="obs-analysis">
+                  캐릭터가 전경 오브젝트 뒤에 가려질 때 흔히 쓰는 단색 반투명 알파 블렌딩 대신, <mark class="hl-key">스크린톤(하프톤 도트 매트릭스)</mark> 형태로 비쳐 보이게 처리해 도트 아트의 통일감과 실루엣 가독성을 동시에 확보했습니다.
+                </p>
+              </article>
+
+              <article class="obs-card is-issue">
+                <div class="obs-card-head">
+                  <span class="obs-card-title">04. 절전 모드와 일반 모드의 성능 차이 불분명</span>
+                  <span class="status-pill is-issue">QA UX ISSUE</span>
+                </div>
+                <blockquote class="raw-log-quote">
+                  <span class="quote-meta">2026-11-01 RAW LOG · TECH/QA</span>
+                  "절전 모드와 일반 모드의 성능 차이가 어떻게 다른지 좀 불분명했다."
+                </blockquote>
+                <p class="obs-analysis">
+                  MMORPG에서 장시간 방치·자동사냥의 핵심 장치인 절전 모드로 전환했을 때 프레임 캡(예: 60fps→15fps), 해상도 다운스케일, 배터리 소모 저감 여부가 <mark class="hl-gold">화면 체감이나 UI 안내로 명확히 구분되지 않는 점</mark>은 QA·최적화 검증 대상입니다.
+                </p>
+              </article>
+            </div>
+
+            <!-- Right Column: Designer / BM -->
+            <div class="lens-column is-design">
+              <div class="lens-header">
+                <h4>기획자 관점 (Design · System · BM)</h4>
+                <span class="status-pill is-issue">이슈 1건 · 긍정 1건</span>
+              </div>
+
+              <article class="obs-card is-issue">
+                <div class="obs-card-head">
+                  <span class="obs-card-title">05. 성장 정체 구간 불명확 &amp; 직업 연계 스킬 부재</span>
+                  <span class="status-pill is-issue">SYSTEM DESIGN</span>
+                </div>
+                <blockquote class="raw-log-quote">
+                  <span class="quote-meta">2026-11-01 RAW LOG · DESIGN/BM</span>
+                  "성장이 어디서 막힌지는 모르겠고, 스킬을 종류별로 사용해서 솔직히 좀 별로인것 같다. 뭔가 직업과 직업에 연관된 기술이 나오면 좋을텐데"
+                </blockquote>
+                <p class="obs-analysis">
+                  ① <strong>페이월·성장 벽(Wall) 피드백 부재:</strong> 현재 내가 왜 진행이 막히는지(장비·강화·레벨·스탯 중 어떤 축이 부족한지) 직관적으로 진단되지 않습니다.<br>
+                  ② <strong>직업 아이덴티티 약화:</strong> 무기와 계열 종류별로 범용 스킬을 섞어 쓰는 구조가 아니라, <mark class="hl-gold">선택한 직업 고유의 콘셉트와 시너지가 이어지는 직업 연계 스킬 트리</mark>가 설계되었다면 전투 몰입감이 훨씬 강화되었을 것입니다.
+                </p>
+              </article>
+
+              <article class="obs-card">
+                <div class="obs-card-head">
+                  <span class="obs-card-title">06. 스킬 이펙트 시각 완성도</span>
+                  <span class="status-pill is-verified">POSITIVE</span>
+                </div>
+                <blockquote class="raw-log-quote">
+                  <span class="quote-meta">2026-11-01 RAW LOG · DESIGN/BM</span>
+                  "스킬 이펙트는 좀 좋은것 같다."
+                </blockquote>
+                <p class="obs-analysis">
+                  스킬 체계(직업 연계)에 대한 아쉬움과는 별개로, 스킬 시전 시 도트/2.5D 배경 위로 터지는 <mark class="hl-green">이펙트 연출과 시각적 타격감</mark>은 유저의 초반 체류 동기를 지탱하는 강점으로 작용합니다.
+                </p>
+              </article>
+
+              <div class="content-note">
+                <p>
+                  <strong>초반 11/01 로그 범위 참고:</strong> 11/01 일지에는 플레이 시간과 도달 레벨 숫자, 과금 패키지 실제 결제 테스트가 기입되지 않았습니다(<code>-</code> 표기). 따라서 BM 효율이나 후반 레이드 밸런스는 추측으로 메우지 않고 아래 후속 점검 체크리스트로 분리했습니다.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visual Concept Diagram: Dokkaebi 2.5D + Halftone Occlusion -->
+          <h3>도깨비의세계 시각·기술 포인트 도해 (2.5D 도트 투과 &amp; 절전 비교 포인트)</h3>
+          <div class="render-diagram-grid">
+            <div class="diagram-panel">
+              <h4>관찰 A · 배경 차폐 시 하프톤 도트 투과 연출</h4>
+              <svg class="concept-svg" viewBox="0 0 420 200" role="img" aria-label="전경 오브젝트 뒤 캐릭터가 하프톤 도트 그리드 실루엣으로 비쳐 보이는 렌더링 도식">
+                <defs>
+                  <pattern id="halftoneGrid" width="8" height="8" patternUnits="userSpaceOnUse">
+                    <circle cx="4" cy="4" r="1.9" fill="var(--blue-text)" opacity="0.85"></circle>
+                  </pattern>
+                </defs>
+                <!-- Sky / 2.5D parallax strips -->
+                <rect x="0" y="0" width="420" height="200" fill="var(--panel)"></rect>
+                <rect x="0" y="138" width="420" height="62" fill="var(--panel-strong)"></rect>
+                <line x1="0" y1="138" x2="420" y2="138" stroke="var(--line-strong)" stroke-width="1.5"></line>
+                <!-- Parallax Hill -->
+                <path d="M0 138 Q95 75 210 138 T420 138 Z" fill="var(--panel-strong)" stroke="var(--line)" stroke-width="1"></path>
+                <!-- Visible Character Left -->
+                <rect x="52" y="88" width="38" height="50" rx="6" fill="var(--blue-subtle)" stroke="var(--blue)" stroke-width="2"></rect>
+                <circle cx="71" cy="76" r="11" fill="var(--blue-subtle)" stroke="var(--blue)" stroke-width="2"></circle>
+                <text x="71" y="160" text-anchor="middle" font-size="11" font-weight="700" fill="var(--text)">일반 노출 상태</text>
+                <!-- Arrow -->
+                <line x1="112" y1="108" x2="178" y2="108" stroke="var(--line-strong)" stroke-width="2" stroke-dasharray="4 3"></line>
+                <polygon points="178,103 188,108 178,113" fill="var(--text-sub)"></polygon>
+                <!-- Foreground pillar/tree occluder -->
+                <rect x="218" y="34" width="96" height="114" rx="8" fill="var(--gold-subtle)" stroke="var(--gold)" stroke-width="2"></rect>
+                <text x="266" y="54" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--gold-text)">전경 오브젝트</text>
+                <!-- Occluded character silhouette rendered via halftone dot grid -->
+                <rect x="247" y="82" width="38" height="56" rx="6" fill="url(#halftoneGrid)" stroke="var(--blue)" stroke-width="1.5" stroke-dasharray="3 2"></rect>
+                <circle cx="266" cy="70" r="11" fill="url(#halftoneGrid)" stroke="var(--blue)" stroke-width="1.5" stroke-dasharray="3 2"></circle>
+                <text x="266" y="168" text-anchor="middle" font-size="11" font-weight="700" fill="var(--blue-text)">만화 스크린톤(도트 그리드) 투과 실루엣</text>
+                <text x="266" y="184" text-anchor="middle" font-size="10" fill="var(--text-sub)">단순 알파 블렌딩 대신 도트 패턴으로 가독성·화풍 동시 유지</text>
+              </svg>
+              <p>배경 오브젝트와 캐릭터 Z-depth가 겹칠 때 옛날 만화 그리드처럼 점을 찍어 투과 처리함으로써 도트 아트의 조형을 해치지 않고 캐릭터 위치를 즉시 파악할 수 있습니다.</p>
+            </div>
+
+            <div class="diagram-panel">
+              <h4>관찰 B · 절전 모드 vs 일반 모드 체감·인지 괴리 구조</h4>
+              <svg class="concept-svg" viewBox="0 0 420 200" role="img" aria-label="일반 모드와 절전 모드 전환 시 FPS 캡, 전력, 체감 차이 안내가 불분명한 UX 이슈 비교도">
+                <rect x="0" y="0" width="420" height="200" fill="var(--panel)"></rect>
+                <!-- Normal Mode Box -->
+                <rect x="20" y="24" width="165" height="148" rx="8" fill="var(--panel-strong)" stroke="var(--line-strong)" stroke-width="1.5"></rect>
+                <text x="102" y="48" text-anchor="middle" font-size="12" font-weight="700" fill="var(--text)">일반 모드 (Normal)</text>
+                <line x1="34" y1="60" x2="170" y2="60" stroke="var(--line)"></line>
+                <text x="102" y="86" text-anchor="middle" font-size="11" fill="var(--text-sub)">2.5D 배경 프레임 안정</text>
+                <text x="102" y="110" text-anchor="middle" font-size="11" fill="var(--text-sub)">이펙트·조작 반응 쾌적</text>
+                <text x="102" y="138" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--green-text)">상태 기준선 확인됨</text>
+                <!-- Question Gap -->
+                <line x1="190" y1="98" x2="226" y2="98" stroke="var(--gold)" stroke-width="2"></line>
+                <rect x="192" y="72" width="34" height="20" rx="4" fill="var(--gold-subtle)" stroke="var(--gold)"></rect>
+                <text x="209" y="86" text-anchor="middle" font-size="10" font-weight="700" fill="var(--gold-text)">DIFF?</text>
+                <!-- Power Save Box -->
+                <rect x="232" y="24" width="168" height="148" rx="8" fill="var(--gold-subtle)" stroke="var(--gold)" stroke-width="1.5"></rect>
+                <text x="316" y="48" text-anchor="middle" font-size="12" font-weight="700" fill="var(--gold-text)">절전 모드 (Power Save)</text>
+                <line x1="246" y1="60" x2="386" y2="60" stroke="var(--gold)" opacity="0.4"></line>
+                <text x="316" y="86" text-anchor="middle" font-size="11" fill="var(--text)">렌더/프레임 캡 차이 불명확</text>
+                <text x="316" y="110" text-anchor="middle" font-size="11" fill="var(--text)">체감 발열·속도 차이 모호</text>
+                <text x="316" y="138" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--gold-text)">모드 전환 피드백 UI 필요</text>
+              </svg>
+              <p>절전 모드 진입 시 실제로 프레임/해상도/전력 소모가 어떻게 제어되는지 수치·배터리 절감 인디케이터나 명시적 화면 상태 차이가 전달되도록 QA 보완이 필요합니다.</p>
+            </div>
+          </div>
+
+          <h3>차기 QA · 기획 로드맵 체크포인트 대조표 (도깨비의세계)</h3>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="도깨비의세계 로드맵 체크포인트와 11월 1일 실플레이 확인 결과 대조표">
+            <table>
+              <thead>
+                <tr>
+                  <th>구분</th>
+                  <th>로드맵 검증 체크포인트</th>
+                  <th>11/01 실플레이 확인 결과</th>
+                  <th>검증 상태</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Tech · UX</strong></td>
+                  <td>초반 온보딩 진입 속도 및 조작 반응성</td>
+                  <td>커마 간결 · 실행 직후 이동 반응성 우수 확인</td>
+                  <td><span class="status-pill is-verified">확인 완료</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Tech · Render</strong></td>
+                  <td>2.5D/오브젝트 밀집 환경 프레임 유지율 &amp; 시인성</td>
+                  <td>2.5D 배경 프레임 드랍 0 · 하프톤 도트 차폐 투과 우수</td>
+                  <td><span class="status-pill is-verified">확인 완료</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Tech · Power</strong></td>
+                  <td>절전 모드 vs 일반 모드 전환 시 리소스·FPS 제어 차이</td>
+                  <td>두 모드 간 성능 차이가 사용자 체감·안내상 불분명함 포착</td>
+                  <td><span class="status-pill is-issue">개선 필요</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Design · Combat</strong></td>
+                  <td>직업 정체성과 연계된 전투 스킬 설계 및 이펙트</td>
+                  <td>스킬 이펙트 우수 / 종류별 스킬보다 직업 연관 기술 부족 지적</td>
+                  <td><span class="status-pill is-issue">개선 필요</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Design · Pacing</strong></td>
+                  <td>무과금 성장 정체 구간(Paywall) 명시성</td>
+                  <td>성장이 어디서 막히는지 진단 안내가 명확히 읽히지 않음</td>
+                  <td><span class="status-pill is-issue">개선 필요</span></td>
+                </tr>
+                <tr>
+                  <td><strong>QA · Deep</strong></td>
+                  <td>자동 타겟팅 잡몹 우선 오류 · PC 창모드 해상도 · 첫충전 BM</td>
+                  <td>로드맵 후속 세션(Lv.30 도달 목표) 추적 항목으로 분리 유지</td>
+                  <td><span class="status-pill is-pending">추적 대기</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           TAB 2: 카오스 제로 나이트메어 (카제나)
+           ========================================================================= -->
+      <section class="tab-pane" id="tab-kazena">
+        <div class="content-card editorial-body">
+          <h3>카오스 제로 나이트메어 / 카제나 (<code>2026-11-01</code> 실플레이 점검 &amp; QA 프레임워크)</h3>
+          <p>
+            『카오스 제로 나이트메어(카제나)』는 스마일게이트가 10월 말 선보인 서브컬처 다크 판타지 로그라이크 RPG로, 2026년 10월 29일 모바일인덱스 기준 <mark class="hl-key">Google Play 21위 · Apple App Store 41위</mark>에 신규 차트인했습니다. <code>2026-11-01</code> 1차 점검 세션에서는 <strong>치명적 기능 결함이나 온보딩 이탈 장애가 발생하지 않은 정상 구동 상태</strong>를 기록했습니다.
+          </p>
+
+          <div class="dual-lens-grid">
+            <div class="lens-column">
+              <div class="lens-header">
+                <h4>개발자 관점 (Tech · QA · Client)</h4>
+                <span class="status-pill is-baseline">1차 기준선 · 결함 0건</span>
+              </div>
+              <article class="obs-card is-baseline">
+                <div class="obs-card-head">
+                  <span class="obs-card-title">01. 초기 구동 안정성 · UI/로직 결함 점검</span>
+                  <span class="status-pill is-baseline">BASELINE OK</span>
+                </div>
+                <blockquote class="raw-log-quote">
+                  <span class="quote-meta">2026-11-01 RAW LOG · TECH/QA</span>
+                  "특이 결함 없음"
+                </blockquote>
+                <p class="obs-analysis">
+                  1차 플레이 구간에서 턴 넘김 프리징, 카드 드로우/버리기 연출 씹힘, 폰트 가독성 붕괴 등 즉시 보고할 만한 기술적 결함이 발견되지 않았습니다. <mark class="hl-key">없는 결함을 부풀리지 않고 기준선 그대로 기록</mark>해 후속 심층 세션과 대조할 수 있게 남겼습니다.
+                </p>
+              </article>
+            </div>
+
+            <div class="lens-column is-design">
+              <div class="lens-header">
+                <h4>기획자 관점 (Design · System · BM)</h4>
+                <span class="status-pill is-baseline">1차 기준선 · 특이사항 없음</span>
+              </div>
+              <article class="obs-card is-baseline">
+                <div class="obs-card-head">
+                  <span class="obs-card-title">02. 초반 덱빌딩 루프 및 온보딩 흐름 점검</span>
+                  <span class="status-pill is-baseline">BASELINE OK</span>
+                </div>
+                <blockquote class="raw-log-quote">
+                  <span class="quote-meta">2026-11-01 RAW LOG · DESIGN/BM</span>
+                  "특이사항 없음"
+                </blockquote>
+                <p class="obs-analysis">
+                  로그라이크 덱빌딩 초반 구간에서 급격한 불쾌감이나 진행 장애 없이 온보딩이 이어졌음을 확인했습니다. 다만 플레이 타임과 계정 레벨 수치는 원문상 미기록(<code>-</code>)이며, 천장 수치·고난도 심연 밸런스는 후속 추적 대상으로 분류했습니다.
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <h3>카제나 심층 검증 매트릭스 (차기 로드맵 &amp; <code>Record-GamePlay.ps1</code> 체크 기준)</h3>
+          <p>
+            1차 점검에서 안정성이 확인된 만큼, 로그라이크 RPG 장르 특성상 <strong>후반 챕터·고난도 덱 시너지 단계</strong>에서 발생할 수 있는 엣지 케이스를 사전에 구조화했습니다.
+          </p>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="카오스 제로 나이트메어 개발자 및 기획자 심층 검증 기준표">
+            <table>
+              <thead>
+                <tr>
+                  <th>검증 축</th>
+                  <th>세부 체크포인트 (로거 · 가이드 기준)</th>
+                  <th>11/01 1차 결과</th>
+                  <th>리스크 수준 / 의의</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Tech · 상태머신(FSM)</strong></td>
+                  <td>다중 버프·디버프(출혈/중첩) 동시 발동 시 턴 종료 차감 순서 오류</td>
+                  <td>초반 1차 구간 특이 결함 없음</td>
+                  <td><span class="status-pill is-baseline">고난도 누적 시 추적</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Tech · 연출 동기화</strong></td>
+                  <td>연속 카드 발동 시 애니메이션 스킵·드랍 및 턴 전환 프리징</td>
+                  <td>특이 결함 없음 확인</td>
+                  <td><span class="status-pill is-verified">1차 정상</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Tech · 텍스트 UX</strong></td>
+                  <td>키워드(출혈·방어 등) 팝업 툴팁 가독성 및 다해상도 폰트 대응</td>
+                  <td>가독성 파괴 결함 미발견</td>
+                  <td><span class="status-pill is-verified">1차 정상</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Design · 덱빌딩</strong></td>
+                  <td>캐릭터 고유 스킬 카드와 유물(아티팩트) 조합의 운 vs 실력 밸런스</td>
+                  <td>초반 특이 이탈 요인 없음</td>
+                  <td><span class="status-pill is-pending">챕터 진행 후 심층 기록</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Design · 가챠 BM</strong></td>
+                  <td>캐릭터 픽업 천장(Pity) · 전용 무기 가챠 분리 · 스태미나 소모 속도</td>
+                  <td>11/01 로그 기준 미측정 (시간·Lv 미기록)</td>
+                  <td><span class="status-pill is-pending">추적 대기</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           TAB 3: 10/29 마켓 지형도 & 양대 타이틀 비교
+           ========================================================================= -->
+      <section class="tab-pane" id="tab-market">
+        <div class="content-card editorial-body">
+          <h3>왜 이 두 게임이었는가? — <code>2026-10-29</code> 모바일인덱스 선정 근거</h3>
+          <p>
+            『2026-10-29 모바일게임 순위 심층분석 보고서』에 따르면 10월 말 한국 모바일 시장은 <strong>신작 MMORPG의 최상위권 세대교체</strong>와 <strong>서브컬처 신작의 차트 안착</strong>이 동시에 나타난 분기점이었습니다. 특히 <strong>카카오게임즈</strong>와 <strong>스마일게이트</strong>가 각각 기존작을 방어하며 신작을 추가 차트인시킨 구조가 가장 선명한 대비를 이뤘습니다.
+          </p>
+
+          <div class="market-chart-box">
+            <h4>2026-10-29 모바일인덱스 양대 마켓 순위 포지션 (Kakao Games vs Smilegate 2종 포트폴리오)</h4>
+            <p class="market-chart-caption">막대 길이가 길수록 상위 순위(1위에 근접)입니다. 10/01 차트에 없던 도깨비의세계와 카제나가 10/29 동시 진입했습니다.</p>
+            <svg class="concept-svg" viewBox="0 0 680 260" role="img" aria-label="도깨비의세계 오딘 이클립스 카오스 제로 나이트메어의 2026년 10월 29일 구글 플레이 및 앱스토어 매출 순위 비교 막대 차트">
+              <rect x="0" y="0" width="680" height="260" fill="var(--panel)"></rect>
+              <!-- Legend -->
+              <rect x="24" y="14" width="12" height="12" rx="2" fill="var(--blue)"></rect>
+              <text x="42" y="24" font-size="11" font-weight="700" fill="var(--text)">Google Play (10/29)</text>
+              <rect x="176" y="14" width="12" height="12" rx="2" fill="var(--gold)"></rect>
+              <text x="194" y="24" font-size="11" font-weight="700" fill="var(--text)">Apple App Store (10/29)</text>
+              <text x="656" y="24" text-anchor="end" font-size="10.5" fill="var(--text-sub)">기준: 모바일인덱스 실시간 순위 (50위 기준 스케일)</text>
+              <line x1="20" y1="36" x2="660" y2="36" stroke="var(--line)"></line>
+
+              <!-- Row 1: Dokkaebi (Google 1, iOS 2) -->
+              <text x="24" y="64" font-size="12" font-weight="700" fill="var(--text)">도깨비의세계 (Kakao · NEW)</text>
+              <rect x="220" y="50" width="350" height="14" rx="3" fill="var(--blue)"></rect>
+              <text x="578" y="61" font-size="11" font-weight="700" fill="var(--blue-text)">구글 1위</text>
+              <rect x="220" y="68" width="342" height="14" rx="3" fill="var(--gold)"></rect>
+              <text x="578" y="79" font-size="11" font-weight="700" fill="var(--gold-text)">iOS 2위</text>
+
+              <!-- Row 2: Odin (Google 16, iOS 27) -->
+              <text x="24" y="116" font-size="12" font-weight="600" fill="var(--text-sub)">오딘: 발할라 라이징 (Kakao)</text>
+              <rect x="220" y="102" width="245" height="14" rx="3" fill="var(--blue)" opacity="0.65"></rect>
+              <text x="473" y="113" font-size="11" font-weight="700" fill="var(--blue-text)">구글 16위</text>
+              <rect x="220" y="120" width="168" height="14" rx="3" fill="var(--gold)" opacity="0.65"></rect>
+              <text x="396" y="131" font-size="11" font-weight="700" fill="var(--gold-text)">iOS 27위</text>
+
+              <!-- Row 3: Eclipse (Google 10, iOS 10) -->
+              <text x="24" y="168" font-size="12" font-weight="600" fill="var(--text-sub)">이클립스 (Smilegate)</text>
+              <rect x="220" y="154" width="287" height="14" rx="3" fill="var(--blue)" opacity="0.65"></rect>
+              <text x="515" y="165" font-size="11" font-weight="700" fill="var(--blue-text)">구글 10위</text>
+              <rect x="220" y="172" width="287" height="14" rx="3" fill="var(--gold)" opacity="0.65"></rect>
+              <text x="515" y="183" font-size="11" font-weight="700" fill="var(--gold-text)">iOS 10위</text>
+
+              <!-- Row 4: Kazena (Google 21, iOS 41) -->
+              <text x="24" y="220" font-size="12" font-weight="700" fill="var(--text)">카제나 (Smilegate · NEW)</text>
+              <rect x="220" y="206" width="210" height="14" rx="3" fill="var(--blue)"></rect>
+              <text x="438" y="217" font-size="11" font-weight="700" fill="var(--blue-text)">구글 21위</text>
+              <rect x="220" y="224" width="70" height="14" rx="3" fill="var(--gold)"></rect>
+              <text x="298" y="235" font-size="11" font-weight="700" fill="var(--gold-text)">iOS 41위</text>
+            </svg>
+          </div>
+
+          <h3>장르·플랫폼별 양대 타이틀 구조 비교</h3>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="도깨비의세계와 카오스 제로 나이트메어 비교 분석표">
+            <table>
+              <thead>
+                <tr>
+                  <th>비교 항목</th>
+                  <th>도깨비의세계 (Kakao Games)</th>
+                  <th>카오스 제로 나이트메어 / 카제나 (Smilegate)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>장르 &amp; 핵심 문법</strong></td>
+                  <td>한국 전통 설화 IP 기반 2.5D 도트 MMORPG (자동+수동 혼용)</td>
+                  <td>서브컬처 다크 판타지 턴제 로그라이크 덱빌딩 RPG</td>
+                </tr>
+                <tr>
+                  <td><strong>10/01 → 10/29 변동</strong></td>
+                  <td>미집계(<code>⊘</code>) → <strong>Google 1위 / iOS 2위</strong> (런칭 직후 양대 마켓 최정상)</td>
+                  <td>미집계(<code>⊘</code>) → <strong>Google 21위 / iOS 41위</strong> (신규 차트인 안착)</td>
+                </tr>
+                <tr>
+                  <td><strong>자사 포트폴리오 전략</strong></td>
+                  <td>기존 『오딘』(구글 16위) 유저 잠식 없이 신규 2040 남녀 동반 흡수</td>
+                  <td>MMORPG 『이클립스』(양대 10위)와 결합한 하드코어+서브컬처 양동 라인업</td>
+                </tr>
+                <tr>
+                  <td><strong>11/01 Tech · QA 결과</strong></td>
+                  <td>커마 반응성·2.5D 프레임·하프톤 차폐 투과 우수 / <strong>절전 vs 일반 차이 불분명</strong></td>
+                  <td>1차 구간 기준 <strong>특이 결함 없음</strong> (턴·연출 정상 구동 기준선 확보)</td>
+                </tr>
+                <tr>
+                  <td><strong>11/01 Design · BM 결과</strong></td>
+                  <td>스킬 이펙트 우수 / <strong>성장 정체 파악 모호 · 직업 연계 스킬 구조 아쉬움</strong></td>
+                  <td>1차 구간 기준 <strong>특이사항 없음</strong> (후속 덱빌딩·천장 BM 추적 대기)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================================
+           TAB 4: 데일리 트래커 & Record-GamePlay.ps1 파이프라인
+           ========================================================================= -->
+      <section class="tab-pane" id="tab-logger">
+        <div class="content-card editorial-body">
+          <h3>전용 기록기 구축: <code>Record-GamePlay.ps1</code> (<code>GamePlayLogger.exe</code>)</h3>
+          <p>
+            게임 분석 일지가 형식 없이 흩어지는 문제를 막기 위해, 작성자는 <code>200_Areas/게임분석_표준가이드/개발자_vs_기획자_게임분석_관점_가이드.md</code>의 기준을 코드화한 <strong>Windows Forms 2탭 GUI 로거</strong>(<code>Record-GamePlay.ps1</code>, 컴파일본 <code>GamePlayLogger.exe</code>)를 직접 제작해 <code>도깨비의세계_카제나_데일리_플레이_로그.md</code>에 연결했습니다.
+          </p>
+
+          <div class="logger-arch-grid">
+            <div class="logger-step-card">
+              <span class="logger-step-kicker">STEP 01 · DUAL-TAB INPUT UI</span>
+              <h4>타이틀·관점별 UI 입력 강제</h4>
+              <p><code>$tabDk</code>(도깨비의세계)와 <code>$tabKz</code>(카제나) 탭 내부에 시간·레벨 TextBox와 <strong>개발자 관점(QA/성능)</strong> · <strong>기획자 관점(루프/BM)</strong> GroupBox를 물리적으로 분리 배치했습니다.</p>
+            </div>
+            <div class="logger-step-card">
+              <span class="logger-step-kicker">STEP 02 · VALIDATION &amp; DEFAULT</span>
+              <h4>비어 있는 칸과 사실 구분</h4>
+              <p>시간·레벨 미입력 시 빈값을 임의 추정하지 않고 <code>"-"</code>로 기록하며, 특이사항이 없는 항목은 <code>"특이 결함 없음"</code> / <code>"특이사항 없음"</code>으로 표준화해 사실 혼입을 차단합니다.</p>
+            </div>
+            <div class="logger-step-card">
+              <span class="logger-step-kicker">STEP 03 · UTF-8 MD APPEND</span>
+              <h4>지식 베이스 자동 누적</h4>
+              <p>저장 버튼 클릭 시 오늘 날짜(<code>$today</code>) 헤더와 비교 인사이트 블록을 조립해 <code>Add-Content -Encoding UTF8</code>로 데일리 플레이 로그 Markdown에 즉시 추가합니다.</p>
+            </div>
+          </div>
+
+          <pre class="code-snippet-box" aria-label="Record-GamePlay.ps1 핵심 저장 로직 발췌"><code># Record-GamePlay.ps1 — 개발자·기획자 2관점 표준화 저장 로직 발췌
+$dkTime = if ($txtDkTime.Text.Trim()) { $txtDkTime.Text.Trim() + "분" } else { "-" }
+$dkLv   = if ($txtDkLv.Text.Trim())   { $txtDkLv.Text.Trim() }         else { "-" }
+$dkDev  = if ($txtDkDev.Text.Trim())  { $txtDkDev.Text.Trim() }        else { "특이 결함 없음" }
+$dkDes  = if ($txtDkDesign.Text.Trim()){ $txtDkDesign.Text.Trim() }     else { "특이사항 없음" }
+
+Add-Content -Path $logPathJunsu -Value $entry -Encoding UTF8</code></pre>
+
+          <h3>데일리 트래커 일자별 현황 (<code>도깨비의세계_카제나_데일리_플레이_로그.md</code> 반영)</h3>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="데일리 플레이 트래커 일자별 기록 현황표">
+            <table>
+              <thead>
+                <tr>
+                  <th>일자</th>
+                  <th>세션 성격</th>
+                  <th>도깨비의세계 요약</th>
+                  <th>카제나 요약</th>
+                  <th>상태</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>2026-10-29 ~ 10-31</strong></td>
+                  <td>트래커 슬롯 · 로드맵 기준 정의</td>
+                  <td>튜토리얼·네트워크·프레임·페이월 점검 템플릿 확정</td>
+                  <td>상태이상·드로우 연산·가챠 천장 점검 템플릿 확정</td>
+                  <td><span class="status-pill is-pending">기준 정의 · 미기입 슬롯</span></td>
+                </tr>
+                <tr>
+                  <td><strong>2026-11-01 (일)</strong></td>
+                  <td><strong>실제 플레이 기록 세션</strong></td>
+                  <td>커마 반응성·2.5D 무드랍·하프톤 차폐 강점 / 절전 차이 모호·직업 연계 스킬 아쉬움 (시간·Lv <code>-</code>)</td>
+                  <td>개발자 관점 <code>특이 결함 없음</code> / 기획자 관점 <code>특이사항 없음</code> (시간·Lv <code>-</code>)</td>
+                  <td><span class="status-pill is-verified">기록 완료</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Day 4~5 후속 계획</strong></td>
+                  <td>심층 결함 재현 · 역기획</td>
+                  <td>자동 타겟팅 잡몹 우선 여부, PC/모바일 해상도, 첫충전 BM 추적</td>
+                  <td>덱빌딩 시너지 vs 운 비율, 버프/디버프 중첩 계산 순서 검증</td>
+                  <td><span class="status-pill is-pending">후속 추적 예정</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 07. FINAL TAKEAWAYS & CROSS-LINKS -->
+      <section class="content-section editorial-body" id="takeaways">
+        <h2>종합 결론 및 후속 검증 방향</h2>
+        <div class="key-takeaway-box">
+          <h3>개발자·기획자 교차 분석에서 얻은 핵심 교훈</h3>
+          <p>
+            <strong>같은 날 같은 도구로 두 장르를 교차 기록하면서 가장 분명히 배운 점은 "성공의 지표(1위 vs 21위)와 개별 QA·기획 이슈는 독립적으로 분리해 봐야 한다"는 사실입니다.</strong>
+            『도깨비의세계』는 마켓 1·2위를 석권할 만큼 초반 반응성, 2.5D 프레임 안정성, 하프톤 도트 투과 셰이더, 스킬 이펙트의 기술적 흡인력이 뛰어났지만, 그 이면에서 절전 모드 차이의 불투명성과 직업 연계 스킬 구조의 빈틈이 그대로 노출되었습니다. 반면 『카오스 제로 나이트메어』는 초반 1차 기준선에서 결함 없는 안정성을 확인한 만큼, 이후 고난도 턴제 상태이상 중첩 구간까지 추적 데이터를 쌓는 것이 정석적인 QA 접근입니다.
+          </p>
+        </div>
+
+        <h3>함께 보면 좋은 포트폴리오 기록</h3>
+        <ul>
+          <li><a href="assignment-02a.html">모바일인덱스 TOP50 · 1~50일차 분석 기록</a> — 9~11월 50개 타이틀의 진행도·핵심 루프·UX 비교 분석</li>
+          <li><a href="assignment-04.html">모바일인덱스 장르별 순위 분석 (09/17 vs 10/01)</a> — 10/29 급변 이전 시장 베이스라인 데이터</li>
+          <li><a href="assignment-06.html">승리의 여신: 니케 4주년 역주행·메커닉스 분석</a> — 동일한 개발자·기획자 이중 관점 심층 보고서 포맷</li>
+          <li><a href="assignment-07.html">소드 x 스태프 순위 상승·핵심 재미 분석</a> — 초반 실플레이 관찰과 마켓 순위 근거 분리 원칙 적용 사례</li>
+          <li><a href="../game-experience.html">개인 게임 플레이 이력</a> — PC·콘솔·모바일 장기 플레이 이력 아카이브</li>
+        </ul>
+      </section>
+
+      <footer class="detail-footer-nav">
+        <a class="detail-nav-btn" href="../projects/sub-11-coursework.html#overview">과제 컬렉션으로</a>
+      </footer>
+    </main>
+  </div>
+
+  <div class="floating-theme-fab" id="floatingThemeFab" aria-label="테마 설정">
+    <div class="theme-fab-spheres" aria-hidden="true" id="theme-options" inert="">
+      <button class="theme-fab-sphere" data-theme-set="light" title="라이트 모드" aria-label="라이트 모드" type="button" tabindex="-1">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+        <span class="sphere-tooltip">라이트 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="dark" title="다크 모드" aria-label="다크 모드" type="button" tabindex="-1">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+        <span class="sphere-tooltip">다크 모드</span>
+      </button>
+      <button class="theme-fab-sphere" data-theme-set="system" title="시스템 설정" aria-label="시스템 설정" type="button" tabindex="-1">
+        <span class="mono-icon mono-icon-stroke"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span>
+        <span class="sphere-tooltip">시스템 설정</span>
+      </button>
+    </div>
+    <button class="theme-fab-trigger" id="themeFabTrigger" title="테마 변경" aria-label="테마 변경" aria-controls="theme-options" aria-expanded="false" type="button">
+      <span class="fab-current-icon mono-icon mono-icon-stroke">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 2v20a10 10 0 0 0 0-20z"></path><circle cx="12" cy="12" r="10"></circle></svg>
+      </span>
+    </button>
+  </div>
+
+  <script src="../assets/js/portfolio-system.js"></script>
+</body></html>

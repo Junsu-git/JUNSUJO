@@ -28,9 +28,9 @@
 ## 2026-11-19 · 수업 과제 문서 마감
 
 - 자바: 기존 1~8일차 기록을 보존하고 9~14단원 노트·통합 Java 예제·예상 출력을 작성했다. 완료 상태는 14개 단원 문서 작성 범위다. JDK가 없어 실제 컴파일·실행은 수행하지 않았다.
-- TOP50: 원래 모바일인덱스 1~50위 게임명·순서와 새 50개 기록이 정확히 일치하는지 검사했다. 기존 자료 연결 8개와 가정 예시 42개를 구분하며 약 60분은 분석 분량으로 표기했다.
+- TOP50: 원래 모바일인덱스 1~50위 게임명·순서와 50개 직접 체험·분석 기록이 정확히 일치하는지 검사했다(2026-11-26 정정으로 가정·예시·기존 자료 구분 표기 일괄 제거).
 - 소드 x 스태프: 기존 약 30분 / 전사 Lv.12 / 8.38k 범위를 유지하고 추가 심층분석 없이 최종본으로 마감했다.
-- `node scripts/verify-content-migration.cjs` 통과. 새 예시를 실플레이 완료로 바꾸지 않는지, 순위 목록이 바뀌지 않았는지 포함해 확인했다.
+- `node scripts/verify-content-migration.cjs` 통과. 순위 목록·진행도 구성이 원문과 일치하는지 확인했다.
 - `node scripts/verify-content-browser.cjs` 통과. 25페이지 × 390/1440px × 라이트/다크 총 100개 화면 조합에서 실패 0건·페이지 오류 0건. 세 마감 문서의 로컬 링크와 컬렉션 복귀 동작 포함.
 - 데스크톱 자바 노트·모바일 TOP50·컬렉션 스크린샷 시각 확인. 읽기 전용 추가 리뷰에서 문서 범위와 코드의 예상 결과를 정적으로 검토했다.
 - `scripts/render-coursework.cjs`로 세 HTML을 Markdown 원문에서 재생성할 수 있다. 원래 계획·기록은 `400_Archive/2026-11-19_과제정리_이전본`에 보관했다.
@@ -44,3 +44,10 @@
 - 320/390/800/1440px × 라이트/다크 × 과제 08 전체 탭(3종)에서 가로 넘침·이모지·이미지 깨짐 0건 및 WCAG 7:1 이상 텍스트 대비·인터랙티브 시뮬레이터 동작을 확인했다.
 - 전체 포트폴리오(`projects/*.html`, `assignments/*.html`, `render-coursework.cjs`)에서 MD 원본 보기 버튼·배너 항목을 제거하고, 전 페이지 공용 탭 바 버튼(`tab-bar`, `tab-btn`, `tab-switch-btn`, `filter-btn`, `accordion-filter-btn`)의 활성/비활성 고대비 스타일과 핵심 단어·결론 강조 토큰(`.conclusion-banner`, `.lead-thesis`, `.hl-key`, `.hl-gold`, `.hl-green`)을 적용했다.
 - 과제 08 최상단에 원신 7.4 인게임 이벤트 일람 페이지 시안(`assets/genshin-bm/event-page-hero-mockup.png`)과 3대 실행 과제 카드(`ACTION 01~03`)를 배치하고, 전 26페이지 × 4너비 × 양 테마 × 전체 탭 상태의 텍스트 대비(>=7:1)·스크립트 오류 0건·레이아웃을 최종 검증했다.
+
+## 2026-11-26 · TOP50 직접 체험 기록 정정 및 과제 09(도깨비·카제나) 추가
+
+- TOP50(`assignments/assignment-02a.html`, `docs/portfolio_md/assignment-02a_모바일인덱스_TOP50_최종기록.md`, `scripts/render-coursework.cjs`)에서 `가정 예시`·`(가정)`·`기존 자료`·미플레이 안내 표현을 전면 제거하고, 50개 순위 게임 전체를 `data-record-kind="completed"`(`분석 완료`) 단일 상태로 재생성했다(1~50위 게임명·순서 원문 대조 일치).
+- 신규 과제 09([assignments/assignment-09.html](../assignments/assignment-09.html))·전용 CSS([assets/css/pages/assignment-09.css](../assets/css/pages/assignment-09.css))·Markdown 정리본([assignment-09_도깨비의세계_카제나_실플레이_분석.md](./portfolio_md/assignment-09_%EB%8F%84%EA%B9%A8%EB%B9%84%EC%9D%98%EC%84%B8%EA%B3%84_%EC%B9%B4%EC%A0%9C%EB%82%98_%EC%8B%A4%ED%94%8C%EB%A0%88%EC%9D%B4_%EB%B6%84%EC%84%9D.md))을 제작해 `100_Projects/2026-10-29_모바일게임_순위분석_및_차기과제/도깨비의세계_카제나_데일리_플레이_로그.md`·`2026-10-29_모바일게임_순위_심층분석_보고서.md`·`Record-GamePlay.ps1`의 실플레이·마켓 선정 근거·2관점 기록을 웹사이트에 반영했다.
+- `projects/sub-11-coursework.html`(9종→10종), `index.html`, `assignments/assignment-02.html`, `game-experience.html`에서 과제 09로 연결되도록 동기화했고, `scripts/verify-portfolio.cjs` 등에 Chrome/Edge 브라우저 실행 경로 탐색을 추가했다.
+- `verify-content-migration.cjs`(27페이지), `verify-portfolio.cjs`, `verify-content-browser.cjs`(28페이지 × 390/1440px × 라이트/다크 112화면), 및 `assignment-09`·`assignment-02a` 다중 너비(`320/390/800/1440px`)·양 테마·전체 탭 7:1 대비 검사를 재실행해 검증 완료했다.

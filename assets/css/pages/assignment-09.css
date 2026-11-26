@@ -1,0 +1,321 @@
+@layer legacy {
+  .detail-page-heading h1 {
+    word-break: keep-all;
+  }
+
+  /* Dual-Game Fact Sheet Grid (Overview) */
+  .dual-game-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin: 20px 0 18px;
+  }
+  .game-profile-card {
+    background: var(--panel);
+    border: 1px solid var(--line-strong);
+    border-top: 4px solid var(--gold);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+  }
+  .game-profile-card.is-kazena {
+    border-top-color: var(--blue);
+  }
+  .game-profile-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+  }
+  .game-kicker {
+    display: block;
+    font: 700 0.7rem/1.4 var(--font-mono);
+    letter-spacing: 0.08em;
+    color: var(--gold-text);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .game-profile-card.is-kazena .game-kicker {
+    color: var(--blue-text);
+  }
+  .game-profile-card h3 {
+    margin: 0;
+    font-size: 1.08rem;
+    color: var(--text);
+  }
+  .game-spec-rows {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .game-spec-cell {
+    background: var(--panel-strong);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    min-width: 0;
+  }
+  .game-spec-cell span {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+  .game-spec-cell strong {
+    display: block;
+    font-size: 0.84rem;
+    color: var(--text);
+    word-break: keep-all;
+  }
+
+  /* Status Pills (Zero Emoji, >=7:1 Contrast) */
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 9px;
+    border-radius: 4px;
+    font: 700 0.7rem/1.4 var(--font-mono);
+    letter-spacing: 0.04em;
+    border: 1px solid var(--line-strong);
+    background: var(--panel-strong);
+    color: var(--text);
+    white-space: nowrap;
+  }
+  .status-pill.is-verified {
+    background: var(--green-subtle);
+    color: var(--green-text);
+    border-color: var(--green);
+  }
+  .status-pill.is-issue {
+    background: var(--gold-subtle);
+    color: var(--gold-text);
+    border-color: var(--gold);
+  }
+  .status-pill.is-baseline {
+    background: var(--blue-subtle);
+    color: var(--blue-text);
+    border-color: var(--blue);
+  }
+  .status-pill.is-pending {
+    background: var(--panel-strong);
+    color: var(--text-sub);
+    border-color: var(--line-strong);
+  }
+
+  /* Dual Lens Split (Tech/QA vs Design/BM) */
+  .dual-lens-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin: 18px 0 24px;
+  }
+  .lens-column {
+    background: var(--panel-strong);
+    border: 1px solid var(--line-strong);
+    border-top: 4px solid var(--blue);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+  }
+  .lens-column.is-design {
+    border-top-color: var(--gold);
+  }
+  .lens-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .lens-header h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text);
+  }
+  .obs-card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--green);
+    border-radius: var(--radius-sm);
+    padding: 15px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .obs-card.is-issue {
+    border-left-color: var(--gold);
+  }
+  .obs-card.is-baseline {
+    border-left-color: var(--blue);
+  }
+  .obs-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .obs-card-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .raw-log-quote {
+    margin: 2px 0 4px;
+    padding: 9px 12px;
+    background: var(--panel-strong);
+    border-left: 3px solid var(--line-strong);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: 0.82rem;
+    line-height: 1.65;
+    color: var(--text);
+  }
+  .raw-log-quote .quote-meta {
+    display: block;
+    font: 600 0.68rem/1.4 var(--font-mono);
+    color: var(--muted);
+    margin-bottom: 3px;
+  }
+  .obs-analysis {
+    margin: 0;
+    font-size: 0.83rem;
+    line-height: 1.7;
+    color: var(--text-sub);
+  }
+
+  /* Visual Concept Card for Dokkaebi Rendering & Occlusion */
+  .render-diagram-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin: 18px 0 24px;
+  }
+  .diagram-panel {
+    background: var(--panel);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-md);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+  }
+  .diagram-panel h4 {
+    margin: 0;
+    font-size: 0.94rem;
+    color: var(--text);
+  }
+  .diagram-panel p {
+    margin: 0;
+    font-size: 0.81rem;
+    line-height: 1.65;
+    color: var(--text-sub);
+  }
+  .concept-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--panel-strong);
+  }
+
+  /* Market SVG Container */
+  .market-chart-box {
+    background: var(--panel);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-md);
+    padding: 18px;
+    margin: 18px 0 24px;
+  }
+  .market-chart-box h4 {
+    margin: 0 0 6px;
+    font-size: 0.98rem;
+    color: var(--text);
+  }
+  .market-chart-caption {
+    margin: 0 0 14px;
+    font-size: 0.8rem;
+    color: var(--text-sub);
+  }
+
+  /* Logger Tool Showcase */
+  .logger-arch-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin: 18px 0 22px;
+  }
+  .logger-step-card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--blue);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+  }
+  .logger-step-card:nth-child(2) { border-top-color: var(--gold); }
+  .logger-step-card:nth-child(3) { border-top-color: var(--green); }
+  .logger-step-kicker {
+    font: 700 0.68rem/1.4 var(--font-mono);
+    color: var(--blue-text);
+    letter-spacing: 0.06em;
+  }
+  .logger-step-card:nth-child(2) .logger-step-kicker { color: var(--gold-text); }
+  .logger-step-card:nth-child(3) .logger-step-kicker { color: var(--green-text); }
+  .logger-step-card h4 {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--text);
+  }
+  .logger-step-card p {
+    margin: 0;
+    font-size: 0.81rem;
+    line-height: 1.65;
+    color: var(--text-sub);
+  }
+  .code-snippet-box {
+    margin: 16px 0 22px;
+    padding: 16px 18px;
+    background: var(--panel-strong);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-sm);
+    overflow-x: auto;
+    font: 500 0.78rem/1.65 var(--font-mono);
+    color: var(--text);
+  }
+  .code-snippet-box code {
+    background: none;
+    border: 0;
+    padding: 0;
+    font-weight: 500;
+  }
+
+  @media (max-width: 900px) {
+    .dual-game-grid,
+    .dual-lens-grid,
+    .render-diagram-grid,
+    .logger-arch-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  @media (max-width: 520px) {
+    .game-spec-rows {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+}
