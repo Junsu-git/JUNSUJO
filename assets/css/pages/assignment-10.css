@@ -3,6 +3,108 @@
     word-break: keep-all;
   }
 
+  /* Top 6-Point Project Brief & Developer Retrospective */
+  .dd-brief-section {
+    margin: 20px 0 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .dd-brief-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+  .dd-brief-card {
+    background: var(--panel);
+    border: 1px solid var(--line-strong);
+    border-top: 3px solid var(--blue);
+    border-radius: var(--radius-md);
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+  }
+  .dd-brief-card.is-purpose { border-top-color: var(--green); }
+  .dd-brief-card.is-why { border-top-color: var(--gold); }
+  .dd-brief-card.is-challenge { border-top-color: var(--gold); }
+  .dd-brief-card.is-wide {
+    grid-column: 1 / -1;
+  }
+  .dd-brief-kicker {
+    display: block;
+    font: 700 0.69rem/1.4 var(--font-mono);
+    letter-spacing: 0.08em;
+    color: var(--blue-text);
+    text-transform: uppercase;
+  }
+  .dd-brief-card.is-purpose .dd-brief-kicker { color: var(--green-text); }
+  .dd-brief-card.is-why .dd-brief-kicker,
+  .dd-brief-card.is-challenge .dd-brief-kicker { color: var(--gold-text); }
+  .dd-brief-card h3 {
+    margin: 0;
+    font-size: 0.98rem;
+    color: var(--text);
+  }
+  .dd-brief-card p,
+  .dd-brief-card ul {
+    margin: 0;
+    font-size: 0.84rem;
+    line-height: 1.75;
+    color: var(--text-sub);
+  }
+  .dd-brief-card ul {
+    padding-left: 18px;
+  }
+  .dd-brief-card li + li {
+    margin-top: 6px;
+  }
+  .dd-takeaway-feature {
+    background: var(--panel-strong);
+    border: 1px solid var(--line-strong);
+    border-left: 4px solid var(--green);
+    border-radius: var(--radius-md);
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .dd-takeaway-feature .dd-brief-kicker {
+    color: var(--green-text);
+  }
+  .dd-takeaway-feature h3 {
+    margin: 0;
+    font-size: 1.04rem;
+    color: var(--text);
+  }
+  .dd-takeaway-cols {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+  .dd-takeaway-pillar {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 15px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+  }
+  .dd-takeaway-pillar h4 {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+  .dd-takeaway-pillar p {
+    margin: 0;
+    font-size: 0.83rem;
+    line-height: 1.75;
+    color: var(--text-sub);
+  }
+
   /* Play Portal Card (Top Playable Area) */
   .dd-play-stage {
     background: var(--panel-strong);
@@ -447,6 +549,8 @@
     }
   }
   @media (max-width: 820px) {
+    .dd-brief-grid,
+    .dd-takeaway-cols,
     .dual-lens-grid,
     .preset-grid {
       grid-template-columns: minmax(0, 1fr);
